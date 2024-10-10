@@ -1,47 +1,46 @@
-import { Box, Text, Flex } from '@vtex/brand-ui'
+import { Box, Flex, Text } from '@vtex/brand-ui'
 
 import EducationChannel from 'components/education-channel'
 import HelpCenterIcon from 'components/icons/helpcenter-icon'
-import CommunityIcon from 'components/icons/community-icon'
 
-import { getCommunityURL, getSupportURL } from 'utils/get-url'
+import { getSlackChannelURL } from 'utils/get-url'
 
-import styles from './styles'
 import { useIntl } from 'react-intl'
+import styles from './styles'
 
 const EducationSection = () => {
   const intl = useIntl()
 
   const educationChannels = [
     {
-      title: intl.formatMessage({ id: 'landing_page_education_support.title' }),
+      title: intl.formatMessage({ id: 'get_in_touch_subtitle' }),
       description: intl.formatMessage({
-        id: 'landing_page_education_support.description',
+        id: 'get_in_touch_text',
       }),
       textLink: intl.formatMessage({
-        id: 'landing_page_education_support.textLink',
+        id: 'channel_link',
       }),
-      link: getSupportURL(),
+      link: getSlackChannelURL(),
       icon: HelpCenterIcon,
     },
-    {
-      title: intl.formatMessage({
-        id: 'landing_page_education_community.title',
-      }),
-      description: intl.formatMessage({
-        id: 'landing_page_education_community.description',
-      }),
-      textLink: intl.formatMessage({
-        id: 'landing_page_education_community.textLink',
-      }),
-      link: getCommunityURL(),
-      icon: CommunityIcon,
-    },
+    // {
+    //   title: intl.formatMessage({
+    //     id: 'landing_page_education_community.title',
+    //   }),
+    //   description: intl.formatMessage({
+    //     id: 'landing_page_education_community.description',
+    //   }),
+    //   textLink: intl.formatMessage({
+    //     id: 'landing_page_education_community.textLink',
+    //   }),
+    //   link: getCommunityURL(),
+    //   icon: CommunityIcon,
+    // },
   ]
   return (
     <Box sx={styles.container}>
       <Text sx={styles.title}>
-        {intl.formatMessage({ id: 'landing_page_education.title' })}
+        {intl.formatMessage({ id: 'get_in_touch_title' })}
       </Text>
       <Flex sx={styles.channelsContainer}>
         {educationChannels.map((channel) => (

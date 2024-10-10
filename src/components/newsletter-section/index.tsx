@@ -1,10 +1,10 @@
 import { Box, Flex, Text } from '@vtex/brand-ui'
 
-import Image from 'next/image'
 import styles from 'components/newsletter-section/styles'
+import Image from 'next/image'
 
-import { FormattedMessage } from 'react-intl'
 import { SearchInput } from '@vtexdocs/components'
+import { FormattedMessage } from 'react-intl'
 
 const NewsletterSection = () => {
   return (
@@ -22,11 +22,11 @@ const NewsletterSection = () => {
         />
       </Box>
       <Flex sx={styles.newsletterBox}>
-        <Text sx={styles.newsletterTitle}>
+        {/* <Text sx={styles.newsletterTitle}>
           <FormattedMessage id="landing_page_newsletter.title" />
-        </Text>
+        </Text> */}
         <Text sx={styles.newsletterDescription}>
-          <FormattedMessage id="landing_page_newsletter.description" />
+          <FormattedMessage id="landing_subtitle" />
         </Text>
         <SearchInput />
       </Flex>

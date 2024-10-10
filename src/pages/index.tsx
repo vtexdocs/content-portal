@@ -1,38 +1,38 @@
 import { Grid } from '@vtex/brand-ui'
 import type { Page } from 'utils/typings/types'
 
-import NewsletterSection from 'components/newsletter-section'
+// import AnnouncementSection from 'components/announcement-section'
 import DocumentationSection from 'components/documentation-section'
-import AnnouncementSection from 'components/announcement-section'
+import NewsletterSection from 'components/newsletter-section'
 
-import Head from 'next/head'
-import styles from 'styles/landing-page'
-import getNavigation from 'utils/getNavigation'
-import { GetStaticProps } from 'next'
-import { useContext } from 'react'
-import { PreviewContext } from 'utils/contexts/preview'
-import SupportSection from 'components/support-section'
 import FaqSection from 'components/faq-section'
-import { localeType } from 'utils/navigation-utils'
+import SupportSection from 'components/support-section'
+import { GetStaticProps } from 'next'
+import Head from 'next/head'
+import { useContext } from 'react'
+import styles from 'styles/landing-page'
+import { PreviewContext } from 'utils/contexts/preview'
 import getAnnouncementsJson from 'utils/getAnnouncementsJson'
+import getNavigation from 'utils/getNavigation'
+import { localeType } from 'utils/navigation-utils'
 
 interface Props {
   branch: string
   announcementTimelineData: { title: string; date: string }[]
 }
 
-const Home: Page<Props> = ({ branch, announcementTimelineData }) => {
+const Home: Page<Props> = ({ branch }) => {
   const { setBranchPreview } = useContext(PreviewContext)
   setBranchPreview(branch)
 
   return (
     <>
       <Head>
-        <title>VTEX Help Center</title>
-        <meta property="og:title" content="VTEX Help Center" key="title" />
+        <title>VTEX Language Hub</title>
+        <meta property="og:title" content="VTEX Language Hub" key="title" />
         <meta
           property="og:description"
-          content="Build and extend your world of commerce with VTEX development platform and Core Commerce APIs."
+          content="All things language for users of words."
           key="desc"
         />
         <meta
@@ -45,7 +45,7 @@ const Home: Page<Props> = ({ branch, announcementTimelineData }) => {
         <DocumentationSection />
         <FaqSection />
         <SupportSection />
-        <AnnouncementSection announcements={announcementTimelineData} />
+        {/* <AnnouncementSection announcements={announcementTimelineData} /> */}
       </Grid>
     </>
   )

@@ -1,25 +1,24 @@
 import { Box, Flex, Link } from '@vtex/brand-ui'
-import styles from './styles'
-import {
-  getDeveloperPortalURL,
-  getGithubURL,
-  getCommunityURL,
-  getFeedbackURL,
-  getSiteMapURL,
-  getFacebookURL,
-  getInstagramURL,
-  getYoutubeURL,
-  getLinkedinURL,
-  getTwitterURL,
-} from 'utils/get-url'
-import { useIntl } from 'react-intl'
-import LocaleSwitcherFooter from 'components/locale-switcher-footer'
-import VtexLogoFooter from 'components/icons/vtexLogoFooter'
-import InstagramIcon from 'components/icons/instagram-icon'
-import YoutubeIcon from 'components/icons/youtube-icon'
 import FacebookCircleIcon from 'components/icons/facebook-circle-icon'
-import TwitterCircleIcon from 'components/icons/twitter-circle-icon'
+import InstagramIcon from 'components/icons/instagram-icon'
 import LinkedinCircleIcon from 'components/icons/linkedin-circle-icon'
+import TwitterCircleIcon from 'components/icons/twitter-circle-icon'
+import VtexLogoFooter from 'components/icons/vtexLogoFooter'
+import YoutubeIcon from 'components/icons/youtube-icon'
+import LocaleSwitcherFooter from 'components/locale-switcher-footer'
+import { useIntl } from 'react-intl'
+import {
+  getCommunityURL,
+  getFacebookURL,
+  getFeedbackURL,
+  getGithubURL,
+  getInstagramURL,
+  getLinkedinURL,
+  getSiteMapURL,
+  getTwitterURL,
+  getYoutubeURL
+} from 'utils/get-url'
+import styles from './styles'
 
 const Footer = () => {
   const intl = useIntl()
@@ -30,12 +29,6 @@ const Footer = () => {
         id: 'landing_page_footer_github.message',
       }),
       to: () => getGithubURL(),
-    },
-    {
-      message: intl.formatMessage({
-        id: 'landing_page_footer_developer_portal.message',
-      }),
-      to: () => getDeveloperPortalURL(),
     },
     {
       message: intl.formatMessage({

@@ -1,29 +1,27 @@
 import { getMessages } from 'utils/get-messages'
 import {
   getCommunityURL,
-  getLearningCenterURL,
   getDeveloperPortalURL,
-  getSupportURL,
   getFeedbackURL,
+  getLearningCenterURL,
+  getSupportURL,
 } from 'utils/get-url'
 
-import {
-  DocDataElement,
-  WhatsNextDataElement,
-  ResourceDataElement,
-  FaqDataElement,
-} from './typings/types'
-import { IntlShape } from 'react-intl'
-import libraryConfig from './libraryConfig'
 import DeveloperPortalIcon from 'components/icons/developer-portal-icon'
+import GraphIcon from 'components/icons/graph-icon'
+import LongArrowIcon from 'components/icons/long-arrow-icon'
+import PaperIcon from 'components/icons/paper-icon'
 import StartHereIcon from 'components/icons/start-here-icon'
 import TutorialsIcon from 'components/icons/tutorials-icon'
-import PaperIcon from 'components/icons/paper-icon'
 import WarningIcon from 'components/icons/warning-icon'
-import GraphIcon from 'components/icons/graph-icon'
-import MegaphoneIcon from 'components/icons/megaphone-icon'
-import InfoIcon from 'components/icons/info-icon'
-import LongArrowIcon from 'components/icons/long-arrow-icon'
+import { IntlShape } from 'react-intl'
+import libraryConfig from './libraryConfig'
+import {
+  DocDataElement,
+  FaqDataElement,
+  ResourceDataElement,
+  WhatsNextDataElement,
+} from './typings/types'
 
 libraryConfig
 export const messages = getMessages()
@@ -31,39 +29,50 @@ export const messages = getMessages()
 export const documentationData = (intl: IntlShape) => {
   const data: DocDataElement[] = [
     {
-      id: 'Start here',
+      id: 'Style Guides',
       Icon: StartHereIcon,
       title: intl.formatMessage({
-        id: 'documentation_start_here.title',
+        id: 'style_guides_card_title',
       }),
       description: intl.formatMessage({
-        id: 'documentation_start_here.description',
+        id: 'style_guides_card_subtitle',
       }),
       link: '/docs/tracks',
     },
     {
-      id: 'Tutorials & Solutions',
+      id: 'Glossaries',
       Icon: TutorialsIcon,
       title: intl.formatMessage({
-        id: 'documentation_tutorials.title',
+        id: 'glossaries_card_title',
       }),
       description: intl.formatMessage({
-        id: 'documentation_tutorials.description',
+        id: 'glossaries_card_subtitle',
       }),
       link: '/docs/tutorial',
     },
     {
-      id: 'Developers Portal',
+      id: 'Admin Review Logs',
       Icon: DeveloperPortalIcon,
       title: intl.formatMessage({
-        id: 'documentation_developers_portal.title',
+        id: 'admin_review_logs_card_title'
+      }),
+    description: intl.formatMessage({
+      id: 'admin_review_logs_card_subtitle'
+    }),
+      link: '',
+    },
+    {
+      id: 'Localization & Internationalization',
+      Icon: DeveloperPortalIcon,
+      title: intl.formatMessage({
+        id: 'Localization_and_internationalization_card_title',
       }),
       description: intl.formatMessage({
-        id: 'documentation_developers_portal.description',
+        id: 'Localization_and_internationalization_card_subtitle',
       }),
       link: 'https://developers.vtex.com/',
       isExternalLink: true,
-    },
+    }
   ]
   return data
 }
@@ -71,68 +80,79 @@ export const documentationData = (intl: IntlShape) => {
 export const menuDocumentationData = (intl: IntlShape) => {
   const data: DocDataElement[] = [
     {
-      id: 'Start here',
+      id: 'Style Guides',
       Icon: StartHereIcon,
       title: intl.formatMessage({
-        id: 'documentation_start_here.title',
+        id: 'style_guides_card_title',
       }),
       description: intl.formatMessage({
-        id: 'documentation_start_here.description',
+        id: 'style_guides_card_subtitle',
       }),
       link: '/docs/tracks',
     },
     {
-      id: 'Tutorials & Solutions',
+      id: 'Glossaries',
       Icon: TutorialsIcon,
       title: intl.formatMessage({
-        id: 'documentation_tutorials.title',
+        id: 'glossaries_card_title',
       }),
       description: intl.formatMessage({
-        id: 'documentation_tutorials.description',
+        id: 'glossaries_card_subtitle',
       }),
       link: '/docs/tutorial',
     },
     {
-      id: 'Developers Portal',
+      id: 'Admin Review Logs',
       Icon: DeveloperPortalIcon,
       title: intl.formatMessage({
-        id: 'documentation_developers_portal.title',
+        id: 'admin_review_logs_card_title',
       }),
       description: intl.formatMessage({
-        id: 'documentation_developers_portal.description',
+        id: 'admin_review_logs_card_subtitle',
       }),
       link: 'https://developers.vtex.com/',
       isExternalLink: true,
     },
+    {
+      id: 'Localization & Internationalization',
+      Icon: DeveloperPortalIcon,
+      title: intl.formatMessage({
+        id: 'Localization_and_internationalization_card_title',
+      }),
+      description: intl.formatMessage({
+        id: 'Localization_and_internationalization_card_subtitle',
+      }),
+      link: ''
+    }
   ]
   return data
 }
 
-export const updatesData = (intl: IntlShape) => {
-  const data: DocDataElement[] = [
-    {
-      id: 'FAQ',
-      Icon: InfoIcon,
-      title: intl.formatMessage({ id: 'updates_info_notes.title' }),
-      description: intl.formatMessage({
-        id: 'updates_info_notes.description',
-      }),
-      link: '/faq',
-    },
-    {
-      id: 'Announcements',
-      Icon: MegaphoneIcon,
-      title: intl.formatMessage({
-        id: 'announcements_page.title',
-      }),
-      description: intl.formatMessage({
-        id: 'announcements_page.description',
-      }),
-      link: '/announcements',
-    },
-  ]
-  return data
-}
+// export const updatesData = (intl: IntlShape) => {
+//   const data: DocDataElement[] = [
+//     {
+//       id: 'FAQ',
+//       Icon: InfoIcon,
+//       title: intl.formatMessage({ id: 'updates_info_notes.title' }),
+//       description: intl.formatMessage({
+//         id: 'updates_info_notes.description',
+//       }),
+//       link: '/faq',
+//     },
+//     {
+//       id: 'Announcements',
+//       Icon: MegaphoneIcon,
+//       title: intl.formatMessage({
+//         id: 'announcements_page.title',
+//       }),
+//       description: intl.formatMessage({
+//         id: 'announcements_page.description',
+//       }),
+//       link: '/announcements',
+//     },
+//   ]
+//   return data
+// }
 
 export const feedbackSectionData = (intl: IntlShape) => {
   const data: DocDataElement[] = [
@@ -150,74 +170,74 @@ export const feedbackSectionData = (intl: IntlShape) => {
   return data
 }
 
-export const knownIssuesData = (intl: IntlShape) => {
-  const data: DocDataElement[] = [
-    {
-      id: 'Known Issues',
-      Icon: WarningIcon,
-      title: intl.formatMessage({
-        id: 'sidebar_known_issues.title',
-      }),
-      description: intl.formatMessage({
-        id: 'sidebar_known_issues.description',
-      }),
-      link: '/known-issues',
-    },
-    {
-      id: 'Support Rules',
-      Icon: PaperIcon,
-      title: intl.formatMessage({
-        id: 'sidebar_support_rules.title',
-      }),
-      description: intl.formatMessage({
-        id: 'sidebar_support_rules.description',
-      }),
-      link: '#', //TODO: trocar rota
-    },
-  ]
+// export const knownIssuesData = (intl: IntlShape) => {
+//   const data: DocDataElement[] = [
+//     {
+//       id: 'Known Issues',
+//       Icon: WarningIcon,
+//       title: intl.formatMessage({
+//         id: 'sidebar_known_issues.title',
+//       }),
+//       description: intl.formatMessage({
+//         id: 'sidebar_known_issues.description',
+//       }),
+//       link: '/known-issues',
+//     },
+//     {
+//       id: 'Support Rules',
+//       Icon: PaperIcon,
+//       title: intl.formatMessage({
+//         id: 'sidebar_support_rules.title',
+//       }),
+//       description: intl.formatMessage({
+//         id: 'sidebar_support_rules.description',
+//       }),
+//       link: '#', //TODO: trocar rota
+//     },
+//   ]
 
-  return data
-}
+//   return data
+// }
 
-export const menuSupportData = (intl: IntlShape) => {
-  const data: DocDataElement[] = [
-    {
-      id: 'Known Issues',
-      Icon: WarningIcon,
-      title: intl.formatMessage({
-        id: 'sidebar_known_issues.title',
-      }),
-      description: intl.formatMessage({
-        id: 'sidebar_known_issues.description',
-      }),
-      link: '/known-issues',
-    },
-    {
-      id: 'Status',
-      Icon: GraphIcon,
-      title: intl.formatMessage({
-        id: 'menu_status.title',
-      }),
-      description: intl.formatMessage({
-        id: 'menu_status.description',
-      }),
-      link: 'https://status.vtex.com',
-    },
-    {
-      id: 'Support Rules',
-      Icon: PaperIcon,
-      title: intl.formatMessage({
-        id: 'sidebar_support_rules.title',
-      }),
-      description: intl.formatMessage({
-        id: 'sidebar_support_rules.description',
-      }),
-      link: '#', //TODO: trocar rota
-    },
-  ]
+// export const menuSupportData = (intl: IntlShape) => {
+//   const data: DocDataElement[] = [
+//     {
+//       id: 'Known Issues',
+//       Icon: WarningIcon,
+//       title: intl.formatMessage({
+//         id: 'sidebar_known_issues.title',
+//       }),
+//       description: intl.formatMessage({
+//         id: 'sidebar_known_issues.description',
+//       }),
+//       link: '/known-issues',
+//     },
+//     {
+//       id: 'Status',
+//       Icon: GraphIcon,
+//       title: intl.formatMessage({
+//         id: 'menu_status.title',
+//       }),
+//       description: intl.formatMessage({
+//         id: 'menu_status.description',
+//       }),
+//       link: 'https://status.vtex.com',
+//     },
+//     {
+//       id: 'Support Rules',
+//       Icon: PaperIcon,
+//       title: intl.formatMessage({
+//         id: 'sidebar_support_rules.title',
+//       }),
+//       description: intl.formatMessage({
+//         id: 'sidebar_support_rules.description',
+//       }),
+//       link: '#', //TODO: trocar rota
+//     },
+//   ]
 
-  return data
-}
+//   return data
+// }
 
 export const faqData = (intl: IntlShape) => {
   const data: FaqDataElement[] = [
@@ -272,47 +292,84 @@ export const faqData = (intl: IntlShape) => {
 export const supportData = (intl: IntlShape) => {
   const data: DocDataElement[] = [
     {
-      id: 'Known Issues',
+      id: 'Shoreline',
       Icon: WarningIcon,
       title: intl.formatMessage({
-        id: 'support_known_issues.title',
+        id: 'shoreline_card_title',
       }),
       description: intl.formatMessage({
-        id: 'support_known_issues.description',
-      }),
-      link: '/known-issues',
-    },
-    {
-      id: 'Support Plans',
-      Icon: PaperIcon,
-      title: intl.formatMessage({
-        id: 'support_plans.title',
-      }),
-      description: intl.formatMessage({
-        id: 'support_plans.description',
-      }),
-      link: '/',
-    },
-    {
-      id: 'Status',
-      Icon: GraphIcon,
-      title: intl.formatMessage({
-        id: 'support_status.title',
-      }),
-      description: intl.formatMessage({
-        id: 'support_status.description',
+        id: 'shoreline_card_subtitle',
       }),
       isExternalLink: true,
-      link: 'https://status.vtex.com/',
+      link: 'https://shoreline.vtex.com/',
     },
+    {
+      id: 'FastStore',
+      Icon: PaperIcon,
+      title: intl.formatMessage({
+        id: 'faststore_card_title',
+      }),
+      description: intl.formatMessage({
+        id: 'faststore_card_subtitle',
+      }),
+      isExternalLink: true,
+      link: 'https://faststore.dev/',
+    },
+    {
+      id: 'Translation Memories',
+      Icon: GraphIcon,
+      title: intl.formatMessage({
+        id: 'translation_memories_card_title',
+      }),
+      description: intl.formatMessage({
+        id: 'translation_memories_card_subtitle',
+      }),
+      isExternalLink: true,
+      link: 'https://docs.google.com/spreadsheets/d/17psfw_6SXQEKBZDvSDxMKLpGAoce8ztB/edit?usp=sharing&ouid=100655064255803046570&rtpof=true&sd=true',
+    },
+    {
+      id: 'Brand',
+      Icon: GraphIcon,
+      title: intl.formatMessage({
+        id: 'brand_card_title',
+      }),
+      description: intl.formatMessage({
+        id: 'brand_card_subtitle',
+      }),
+      isExternalLink: true,
+      link: 'https://brand.vtex.com/',
+    },
+    {
+      id: 'Developer Portal',
+      Icon: GraphIcon,
+      title: intl.formatMessage({
+        id: 'developer_portal_card_title',
+      }),
+      description: intl.formatMessage({
+        id: 'developer_portal_card_subtitle',
+      }),
+      isExternalLink: true,
+      link: 'https://developers.vtex.com/',
+    },
+    {
+      id: 'Help Center',
+      Icon: GraphIcon,
+      title: intl.formatMessage({
+        id: 'help_center_card_title',
+      }),
+      description: intl.formatMessage({
+        id: 'help_center_card_subtitle',
+      }),
+      isExternalLink: true,
+      link: 'https://help.vtex.com/en/',
+    }
   ]
   return data
 }
 
 export const getIcon = (doc: string, intl: IntlShape) => {
   return (
-    documentationData(intl).find((icon) => icon.title === doc)?.Icon ||
-    updatesData(intl).find((icon) => icon.title === doc)?.Icon
+    documentationData(intl).find((icon) => icon.title === doc)?.Icon
   )
 }
 

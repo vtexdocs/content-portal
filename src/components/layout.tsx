@@ -1,29 +1,25 @@
-import { Flex, Box } from '@vtex/brand-ui'
+import { Box, Flex } from '@vtex/brand-ui'
 import type { ReactElement } from 'react'
 import { useContext, useEffect } from 'react'
 import { TrackerContext } from 'utils/contexts/trackerContext'
 
 import { ThemeProvider } from '@vtex/brand-ui'
 
-import styles from 'styles/documentation-page'
-import Header from 'components/header'
 import Footer from 'components/footer'
+import Header from 'components/header'
+import styles from 'styles/documentation-page'
 
-import { DocumentationTitle, UpdatesTitle } from 'utils/typings/unionTypes'
-import Script from 'next/script'
 import {
   CookieBar,
   LibraryContextProvider,
   Sidebar,
 } from '@vtexdocs/components'
-import {
-  documentationData,
-  feedbackSectionData,
-  knownIssuesData,
-  menuSupportData,
-  updatesData,
-} from 'utils/constants'
+import Script from 'next/script'
 import { useIntl } from 'react-intl'
+import {
+  documentationData
+} from 'utils/constants'
+import { DocumentationTitle, UpdatesTitle } from 'utils/typings/unionTypes'
 import EducationSection from './education-section'
 
 interface Props {
@@ -60,14 +56,9 @@ export default function Layout({
       <LibraryContextProvider
         sections={[
           documentationData(intl),
-          knownIssuesData(intl),
-          updatesData(intl),
         ]}
         hamburguerMenuSections={[
-          documentationData(intl),
-          menuSupportData(intl),
-          updatesData(intl),
-          feedbackSectionData(intl),
+          documentationData(intl)
         ]}
         sectionSelected={sectionSelected ?? ''}
         fallback={sidebarfallback}

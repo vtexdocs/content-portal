@@ -1,35 +1,34 @@
 import {
-  Header as HeaderBrand,
-  Link as VtexLink,
-  Flex,
-  Text,
   Box,
+  Flex,
+  Header as HeaderBrand,
+  Text,
+  Link as VtexLink,
 } from '@vtex/brand-ui'
-import { useContext, useEffect, useRef, useState } from 'react'
 import { useRouter } from 'next/router'
+import { useEffect, useRef, useState } from 'react'
 
 import DropdownMenu from 'components/dropdown-menu'
-import VTEXHelpCenterIcon from 'components/icons/vtex-helpcenter-icon'
 import GridIcon from 'components/icons/grid-icon'
 import LongArrowIcon from 'components/icons/long-arrow-icon'
+import VTEXHelpCenterIcon from 'components/icons/vtex-helpcenter-icon'
 
 import { getFeedbackURL } from 'utils/get-url'
 
-import AnnouncementBar from 'components/announcement-bar'
 import LocaleSwitcher from 'components/locale-switcher'
 
-import styles from './styles'
-import { PreviewContext } from 'utils/contexts/preview'
-import { FormattedMessage, useIntl } from 'react-intl'
 import { HamburgerMenu, SearchInput } from '@vtexdocs/components'
+import { FormattedMessage } from 'react-intl'
+// import { PreviewContext } from 'utils/contexts/preview'
+import styles from './styles'
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const Header = () => {
   const router = useRouter()
-  const isBranchPreview = router.isPreview
-  const intl = useIntl()
+  // const isBranchPreview = router.isPreview
+  // const intl = useIntl()
 
-  const { branchPreview } = useContext(PreviewContext)
+  // const { branchPreview } = useContext(PreviewContext)
 
   const lastScroll = useRef(0)
   const modalOpen = useRef(false)
@@ -89,7 +88,7 @@ const Header = () => {
 
   return (
     <Box ref={headerElement} sx={styles.headerContainer}>
-      {!isBranchPreview ? (
+      {/* {!isBranchPreview ? (
         <AnnouncementBar
           closable={true}
           type="new"
@@ -109,7 +108,7 @@ const Header = () => {
             href: '/api/disable-preview',
           }}
         ></AnnouncementBar>
-      )}
+      )} */}
       <HeaderBrand sx={styles.headerBrand}>
         <VtexLink
           aria-label="Go back to Home"

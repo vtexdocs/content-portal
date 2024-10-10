@@ -1,12 +1,10 @@
 import { Box } from '@vtex/brand-ui'
 
 import DocumentationCard from 'components/documentation-card'
-import {
-  menuDocumentationData,
-  menuSupportData,
-  updatesData,
-} from 'utils/constants'
 import { useIntl } from 'react-intl'
+import {
+  menuDocumentationData
+} from 'utils/constants'
 
 import styles from './styles'
 
@@ -31,25 +29,18 @@ const DropdownMenu = () => {
           sx={styles.updatesContainer}
           data-cy="dropdown-menu-second-section"
         >
-          {menuSupportData(intl).map((card) => (
+          {/* {menuSupportData(intl).map((card) => (
             <DocumentationCard
               containerType="dropdown"
               key={card.title}
               {...card}
             />
-          ))}
+          ))} */}
         </Box>
         <Box
           sx={styles.updatesContainer}
           data-cy="dropdown-menu-second-section"
         >
-          {updatesData(intl).map((card) => (
-            <DocumentationCard
-              containerType="dropdown"
-              key={card.title}
-              {...card}
-            />
-          ))}
         </Box>
       </Box>
     </Box>

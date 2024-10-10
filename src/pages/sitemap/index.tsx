@@ -1,12 +1,12 @@
-import { Flex, Box, Text } from '@vtex/brand-ui' //eslint-disable-line
-import { Page } from 'utils/typings/types'
-import styles from 'styles/sitemap-page'
-import { GetStaticProps } from 'next'
-import getNavigation from 'utils/getNavigation'
-import { localeType } from 'utils/navigation-utils' //eslint-disable-line
+import { Box, Flex, Text } from '@vtex/brand-ui'; //eslint-disable-line
 import SiteMapSection from 'components/sitemap-section'
+import { GetStaticProps } from 'next'
 import { useIntl } from 'react-intl'
+import styles from 'styles/sitemap-page'
 import { additionalResourcesSitemap } from 'utils/constants'
+import getNavigation from 'utils/getNavigation'
+import { localeType } from 'utils/navigation-utils'; //eslint-disable-line
+import { Page } from 'utils/typings/types'
 
 interface Props {
   sections: [
@@ -21,9 +21,9 @@ const SiteMapPage: Page<Props> = ({ sections }) => {
   const intl = useIntl()
 
   const documentationTitleTranslated: { [key: string]: string } = {
-    'Start here': intl.formatMessage({ id: 'documentation_start_here.title' }),
-    'Tutorials & Solutions': intl.formatMessage({
-      id: 'documentation_tutorials.title',
+    'Style Guides': intl.formatMessage({ id: 'style_guides_card_title' }),
+    'Use grammar, style, and formatting convertions to make your VTEX content clear and consistent.': intl.formatMessage({
+      id: 'style_guides_subtitle',
     }),
   }
 
