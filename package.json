@@ -104,7 +104,15 @@
       "next": "$next"
     }
   },
-  
+  "lint-staged": {
+    "*.{ts,js,tsx,jsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.json": [
+      "prettier --write"
+    ]
+  },
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"

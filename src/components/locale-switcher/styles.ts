@@ -34,7 +34,7 @@ const baseLocaleSwitcher: SxStyleProp = {
 const localeSwitcher: SxStyleProp = {
   button: {
     ...baseLocaleSwitcher,
-    display: ['flex'],
+    display: 'none',
     ':hover': {
       color: '#142032',
     },

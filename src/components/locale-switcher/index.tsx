@@ -1,8 +1,8 @@
-import { useRouter } from 'next/router'
-import { Box, IconGlobe, Text, IconCaret, Flex } from '@vtex/brand-ui'
-import styles from './styles'
-import { Disclosure, DisclosureContent, useDisclosureState } from 'reakit'
+import { Box, Flex, IconCaret, IconGlobe, Text } from '@vtex/brand-ui'
 import { LocaleOption } from '@vtex/brand-ui/dist/components/Header/LocaleSwitcher'
+import { useRouter } from 'next/router'
+import { Disclosure, DisclosureContent, useDisclosureState } from 'reakit'
+import styles from './styles'
 
 interface OptionProps {
   screen: 'mobile' | 'large'

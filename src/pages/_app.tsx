@@ -1,33 +1,35 @@
 import type { AppProps } from 'next/app'
-import type { Page } from 'utils/typings/types'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { IntlProvider } from 'react-intl'
 import { getMessages } from 'utils/get-messages'
+import type { Page } from 'utils/typings/types'
 
+import '@vtexdocs/components/dist/index.css'
 import 'styles/global.css'
 import 'styles/rapidoc.css'
-import '@vtexdocs/components/dist/index.css'
 
+import { ErrorBoundary, SuspenseFallback } from 'components/error-boundary'
 import Layout from 'components/layout'
+import { Suspense } from 'react'
 
 type Props = AppProps & {
   Component: Page
 }
-import { ErrorBoundary, SuspenseFallback } from 'components/error-boundary'
-import { Suspense } from 'react'
 
-import TrackerProvider from 'utils/contexts/trackerContext'
 import PreviewContextProvider from 'utils/contexts/preview'
+import TrackerProvider from 'utils/contexts/trackerContext'
 
 function MyApp({ Component, pageProps }: Props) {
   const { locale } = useRouter()
   const currentLocale = locale ?? 'en'
   const messages = getMessages()
+  const defaultMessages = messages['en']
+  const currentMessages = messages[currentLocale] ?? defaultMessages
 
   return (
     <TrackerProvider>
-      <IntlProvider locale={currentLocale} messages={messages[currentLocale]}>
+      <IntlProvider locale={currentLocale} messages={currentMessages}>
         <Head>
           <meta
             property="og:image"
