@@ -47,14 +47,19 @@ export async function getAllDocsPaths(branch = 'main') {
 }
 
 export async function getDocsPaths(
-  category: 'tracks' | 'tutorials' | 'announcements' | 'faq' | 'known-issues',
+  category:
+    | 'style-guides'
+    | 'tutorials'
+    | 'announcements'
+    | 'faq'
+    | 'known-issues', //Mudar
   branch = 'main'
 ) {
   const docsPaths: { [slug: string]: { locale: string; path: string }[] } = {}
 
   const repoTree = await getGithubTree(
     'vtexdocs',
-    'help-center-content',
+    'language-hub-content',
     branch
   )
   // @ts-ignore

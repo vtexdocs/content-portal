@@ -1,14 +1,14 @@
-import Head from 'next/head'
-import { useEffect, useState, useContext, useRef } from 'react'
-import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
-import { PHASE_PRODUCTION_BUILD } from 'next/constants'
-import jp from 'jsonpath'
 import ArticlePagination from 'components/article-pagination'
-import { serialize } from 'next-mdx-remote/serialize'
-import { MDXRemoteSerializeResult } from 'next-mdx-remote'
-import remarkGFM from 'remark-gfm'
-import rehypeHighlight from 'rehype-highlight'
 import hljsCurl from 'highlightjs-curl'
+import jp from 'jsonpath'
+import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
+import { MDXRemoteSerializeResult } from 'next-mdx-remote'
+import { serialize } from 'next-mdx-remote/serialize'
+import { PHASE_PRODUCTION_BUILD } from 'next/constants'
+import Head from 'next/head'
+import { useContext, useEffect, useRef, useState } from 'react'
+import rehypeHighlight from 'rehype-highlight'
+import remarkGFM from 'remark-gfm'
 import remarkBlockquote from 'utils/remark_plugins/rehypeBlockquote'
 
 import remarkImages from 'utils/remark_plugins/plaiceholder'
@@ -17,25 +17,26 @@ import { Box, Flex, Text } from '@vtex/brand-ui'
 
 import DocumentContextProvider from 'utils/contexts/documentContext'
 
+import { Item, LibraryContext, TableOfContents } from '@vtexdocs/components'
+import Breadcrumb from 'components/breadcrumb'
 import Contributors from 'components/contributors'
 import FeedbackSection from 'components/feedback-section'
 import OnThisPage from 'components/on-this-page'
 import SeeAlsoSection from 'components/see-also-section'
-import { Item, LibraryContext, TableOfContents } from '@vtexdocs/components'
-import Breadcrumb from 'components/breadcrumb'
 
 import getHeadings from 'utils/getHeadings'
 import getNavigation from 'utils/getNavigation'
 // import getGithubFile from 'utils/getGithubFile'
-import { getDocsPaths as getTracksPaths } from 'utils/getDocsPaths'
-import replaceMagicBlocks from 'utils/replaceMagicBlocks'
-import escapeCurlyBraces from 'utils/escapeCurlyBraces'
-import replaceHTMLBlocks from 'utils/replaceHTMLBlocks'
 import { PreviewContext } from 'utils/contexts/preview'
+import escapeCurlyBraces from 'utils/escapeCurlyBraces'
+import { getDocsPaths as getTracksPaths } from 'utils/getDocsPaths'
+import replaceHTMLBlocks from 'utils/replaceHTMLBlocks'
+import replaceMagicBlocks from 'utils/replaceMagicBlocks'
 
 import styles from 'styles/documentation-page'
 import { ContributorsType } from 'utils/getFileContributors'
 
+import { MarkdownRenderer } from '@vtexdocs/components'
 import { getLogger } from 'utils/logging/log-util'
 import {
   flattenJSON,
@@ -43,12 +44,11 @@ import {
   getParents,
   localeType,
 } from 'utils/navigation-utils'
-import { MarkdownRenderer } from '@vtexdocs/components'
 // import { ParsedUrlQuery } from 'querystring'
 import { useIntl } from 'react-intl'
 import { remarkReadingTime } from 'utils/remark_plugins/remarkReadingTime'
 
-const docsPathsGLOBAL = await getTracksPaths('tracks')
+const docsPathsGLOBAL = await getTracksPaths('style-guides')
 
 interface Props {
   sectionSelected: string
@@ -109,7 +109,7 @@ const TrackPage: NextPage<Props> = ({
     <>
       <Head>
         <title>{serialized.frontmatter?.title as string}</title>
-        <meta name="docsearch:doctype" content="tracks" />
+        <meta name="docsearch:doctype" content="style-guides" />
         {serialized.frontmatter?.hidden && (
           <meta name="robots" content="noindex" />
         )}
@@ -219,11 +219,14 @@ export const getStaticProps: GetStaticProps = async ({
   const docsPaths =
     process.env.NEXT_PHASE === PHASE_PRODUCTION_BUILD
       ? docsPathsGLOBAL
-      : await getTracksPaths('tracks', branch)
+      : await getTracksPaths('style-guides', branch)
 
   const logger = getLogger('Start here')
 
+  console.log(slug)
+  console.log(docsPaths)
   const path = docsPaths[slug].find((e) => e.locale === locale)?.path
+  console.log(path)
 
   if (!path) {
     return {
@@ -239,14 +242,14 @@ export const getStaticProps: GetStaticProps = async ({
   // )
   let documentationContent =
     (await fetch(
-      `https://raw.githubusercontent.com/vtexdocs/help-center-content/${branch}/${path}`
+      `https://raw.githubusercontent.com/vtexdocs/language-hub-content/${branch}/${path}`
     )
       .then((res) => res.text())
       .catch((err) => console.log(err))) || ''
 
   const contributors =
     (await fetch(
-      `https://github.com/vtexdocs/help-center-content/file-contributors/${branch}/${path}`,
+      `https://github.com/vtexdocs/language-hub-content/file-contributors/${branch}/${path}`,
       {
         method: 'GET',
         headers: {
@@ -337,7 +340,7 @@ export const getStaticProps: GetStaticProps = async ({
           try {
             const documentationContent =
               (await fetch(
-                `https://raw.githubusercontent.com/vtexdocs/help-center-content/main/${seeAlsoPath}`
+                `https://raw.githubusercontent.com/vtexdocs/language-hub-content/main/${seeAlsoPath}`
               )
                 .then((res) => res.text())
                 .catch((err) => console.log(err))) || ''
@@ -438,7 +441,7 @@ export const getStaticProps: GetStaticProps = async ({
     const breadcrumbList: { slug: string; name: string; type: string }[] = []
     parentsArrayName.forEach((_el: string, idx: number) => {
       breadcrumbList.push({
-        slug: `/docs/tracks/${parentsArray[idx]}`,
+        slug: `/docs/style-guides/${parentsArray[idx]}`,
         name: parentsArrayName[idx],
         type: parentsArrayType[idx],
       })

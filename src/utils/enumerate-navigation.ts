@@ -11,7 +11,7 @@ interface Document {
   children: Document[]
 }
 
-const ENUMERABLE_SECTIONS_SLUGS = ['docs/tracks']
+const ENUMERABLE_SECTIONS_SLUGS = ['docs/style-guides']
 const ENUMERATION_TYPE = 'track'
 
 export const enumerateNavigation = (navbar: NavbarItem[]) => {

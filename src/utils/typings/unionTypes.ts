@@ -1,9 +1,9 @@
 export type Locale = 'en' | 'pt' | 'es'
 
 export type DocumentationTitle =
-  | 'Start here'
-  | 'Tutorials & Solutions'
-  | 'Developers Portal'
+  | 'Style Guides'
+  | 'Tutorials & Solutions' //Mudar
+  | 'Developers Portal' //Mudar
 
 export type UpdatesTitle = 'Announcement' | 'FAQ'
 

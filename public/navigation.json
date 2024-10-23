@@ -1,8 +1,8 @@
 {
   "navbar": [
     {
-      "documentation": "Start here",
-      "slugPrefix": "docs/tracks",
+      "documentation": "Style Guides",
+      "slugPrefix": "docs/style-guides",
       "categories": [
         {
           "name": {
