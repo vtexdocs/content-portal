@@ -48,7 +48,7 @@ import {
 import { useIntl } from 'react-intl'
 import { remarkReadingTime } from 'utils/remark_plugins/remarkReadingTime'
 
-const docsPathsGLOBAL = await getTracksPaths('style-guides')
+const docsPathsGLOBAL = await getTracksPaths('user-interfaces')
 
 interface Props {
   sectionSelected: string
@@ -109,7 +109,7 @@ const TrackPage: NextPage<Props> = ({
     <>
       <Head>
         <title>{serialized.frontmatter?.title as string}</title>
-        <meta name="docsearch:doctype" content="style-guides" />
+        <meta name="docsearch:doctype" content="documentation" />
         {serialized.frontmatter?.hidden && (
           <meta name="robots" content="noindex" />
         )}
@@ -219,7 +219,7 @@ export const getStaticProps: GetStaticProps = async ({
   const docsPaths =
     process.env.NEXT_PHASE === PHASE_PRODUCTION_BUILD
       ? docsPathsGLOBAL
-      : await getTracksPaths('style-guides', branch)
+      : await getTracksPaths('user-interfaces', branch)
 
   const logger = getLogger('Start here')
 
@@ -441,7 +441,7 @@ export const getStaticProps: GetStaticProps = async ({
     const breadcrumbList: { slug: string; name: string; type: string }[] = []
     parentsArrayName.forEach((_el: string, idx: number) => {
       breadcrumbList.push({
-        slug: `/docs/style-guides/${parentsArray[idx]}`,
+        slug: `/docs/user-interfaces/${parentsArray[idx]}`,
         name: parentsArrayName[idx],
         type: parentsArrayType[idx],
       })

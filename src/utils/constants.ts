@@ -37,7 +37,7 @@ export const documentationData = (intl: IntlShape) => {
       description: intl.formatMessage({
         id: 'style_guides_card_subtitle',
       }),
-      link: '/docs/tracks',
+      link: '/docs/style-guides',
     },
     {
       id: 'Glossaries',

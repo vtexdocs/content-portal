@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/ban-ts-comment */
-import octokit from 'utils/octokitConfig'
+import octokit from 'utils/octokitConfig';
 
 async function getGithubTree(org: string, repo: string, ref: string) {
   const response = octokit.request(
@@ -49,6 +49,12 @@ export async function getAllDocsPaths(branch = 'main') {
 export async function getDocsPaths(
   category:
     | 'style-guides'
+    | 'changelog'
+    | 'documentation'
+    | 'glossary'
+    | 'grammar'
+    | 'guides'
+    | 'user-interfaces'
     | 'tutorials'
     | 'announcements'
     | 'faq'
