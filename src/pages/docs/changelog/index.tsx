@@ -62,13 +62,13 @@ const TracksPage: NextPage<Props> = ({ branch }) => {
       <Head>
         <title>
           {intl.formatMessage({
-            id: 'start_here_page.title',
+            id: 'changelog_card_title',
           })}
         </title>
         <meta
           property="og:title"
           content={intl.formatMessage({
-            id: 'start_here_page.subtitle',
+            id: 'changelog_card_subtitle',
           })}
           key="title"
         />
@@ -76,24 +76,24 @@ const TracksPage: NextPage<Props> = ({ branch }) => {
       <Fragment>
         <PageHeader
           title={intl.formatMessage({
-            id: 'start_here_page.title',
+            id: 'changelog_card_title',
           })}
           description={intl.formatMessage({
-            id: 'start_here_page.subtitle',
+            id: 'changelog_card_subtitle',
           })}
           imageUrl={startHereImage}
           imageAlt={intl.formatMessage({
-            id: 'start_here_page.title',
+            id: 'changelog_card_subtitle',
           })}
         />
         <Box sx={styles.contentContainer}>
-          <ContentSection id={'start_here_page_marketplace'} length={16} />
-          <ContentSection id={'start_here_page_modules'} length={11} />
+          <ContentSection id={'changelog_page_section'} length={1} />
+          {/* <ContentSection id={'start_here_page_modules'} length={11} />
           <ContentSection id={'start_here_page_omnichannel'} length={4} />
           <ContentSection id={'start_here_page_vtex_io'} length={2} />
           <ContentSection id={'start_here_page_erp'} length={1} />
           <ContentSection id={'start_here_page_payment'} length={3} />
-          <ContentSection id={'start_here_page_conversational'} length={2} />
+          <ContentSection id={'start_here_page_conversational'} length={2} /> */}
         </Box>
       </Fragment>
     </>
@@ -105,7 +105,7 @@ export const getStaticProps: GetStaticProps = async ({
   previewData,
 }) => {
   const sidebarfallback = await getNavigation()
-  const sectionSelected = 'Start here'
+  const sectionSelected = 'Changelog'
 
   const previewBranch =
     preview && JSON.parse(JSON.stringify(previewData)).hasOwnProperty('branch')

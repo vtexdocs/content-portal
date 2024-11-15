@@ -5,7 +5,7 @@ import LinkedinCircleIcon from 'components/icons/linkedin-circle-icon'
 import TwitterCircleIcon from 'components/icons/twitter-circle-icon'
 import VtexLogoFooter from 'components/icons/vtexLogoFooter'
 import YoutubeIcon from 'components/icons/youtube-icon'
-import LocaleSwitcherFooter from 'components/locale-switcher-footer'
+// import LocaleSwitcherFooter from 'components/locale-switcher-footer'
 import { useIntl } from 'react-intl'
 import {
   getCommunityURL,
@@ -14,9 +14,8 @@ import {
   getGithubURL,
   getInstagramURL,
   getLinkedinURL,
-  getSiteMapURL,
   getTwitterURL,
-  getYoutubeURL
+  getYoutubeURL,
 } from 'utils/get-url'
 import styles from './styles'
 
@@ -28,11 +27,11 @@ const Footer = () => {
       message: intl.formatMessage({
         id: 'landing_page_footer_github.message',
       }),
-      to: () => getGithubURL(),
+      to: () => getGithubURL(), // Ajustar link.
     },
     {
       message: intl.formatMessage({
-        id: 'landing_page_footer_community.message',
+        id: 'footer_comunity',
       }),
       to: () => getCommunityURL(),
     },
@@ -41,12 +40,6 @@ const Footer = () => {
         id: 'landing_page_footer_feedback.message',
       }),
       to: () => getFeedbackURL(),
-    },
-    {
-      message: intl.formatMessage({
-        id: 'landing_page_footer_site_map.message',
-      }),
-      to: () => getSiteMapURL(),
     },
   ]
 
@@ -88,7 +81,7 @@ const Footer = () => {
             {link.message}
           </Link>
         ))}
-        <LocaleSwitcherFooter sx={styles.localeSwitchLanding} />
+        {/* <LocaleSwitcherFooter sx={styles.localeSwitchLanding} /> */}
       </Flex>
     </Box>
   )

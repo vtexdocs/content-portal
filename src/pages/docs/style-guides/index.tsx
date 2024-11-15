@@ -1,15 +1,15 @@
-import { Fragment, useContext } from 'react'
 import { Box, Flex, Text } from '@vtex/brand-ui'
+import PageHeader from 'components/page-header'
+import WhatsNextCard from 'components/whats-next-card'
 import { GetStaticProps, NextPage } from 'next'
+import Head from 'next/head'
+import { Fragment, useContext } from 'react'
+import { useIntl } from 'react-intl'
+import styles from 'styles/documentation-landing-page'
+import { PreviewContext } from 'utils/contexts/preview'
 import getNavigation from 'utils/getNavigation'
 import { DocumentationTitle, UpdatesTitle } from 'utils/typings/unionTypes'
-import PageHeader from 'components/page-header'
 import startHereImage from '../../../../public/images/start-here.png'
-import styles from 'styles/documentation-landing-page'
-import Head from 'next/head'
-import { PreviewContext } from 'utils/contexts/preview'
-import { useIntl } from 'react-intl'
-import WhatsNextCard from 'components/whats-next-card'
 
 interface Props {
   sidebarfallback: any //eslint-disable-line
@@ -62,13 +62,13 @@ const TracksPage: NextPage<Props> = ({ branch }) => {
       <Head>
         <title>
           {intl.formatMessage({
-            id: 'start_here_page.title',
+            id: 'style_guides_card_title',
           })}
         </title>
         <meta
           property="og:title"
           content={intl.formatMessage({
-            id: 'start_here_page.subtitle',
+            id: 'style_guides_page_subtitle',
           })}
           key="title"
         />
@@ -76,18 +76,18 @@ const TracksPage: NextPage<Props> = ({ branch }) => {
       <Fragment>
         <PageHeader
           title={intl.formatMessage({
-            id: 'start_here_page.title',
+            id: 'style_guides_card_title',
           })}
           description={intl.formatMessage({
-            id: 'start_here_page.subtitle',
+            id: 'style_guides_page_subtitle',
           })}
           imageUrl={startHereImage}
           imageAlt={intl.formatMessage({
-            id: 'start_here_page.title',
+            id: 'style_guides_card_title',
           })}
         />
         <Box sx={styles.contentContainer}>
-          <ContentSection id={'start_here_page_marketplace'} length={16} />
+          <ContentSection id={'style_guides_page_education'} length={1} />
           <ContentSection id={'start_here_page_modules'} length={11} />
           <ContentSection id={'start_here_page_omnichannel'} length={4} />
           <ContentSection id={'start_here_page_vtex_io'} length={2} />
@@ -105,7 +105,7 @@ export const getStaticProps: GetStaticProps = async ({
   previewData,
 }) => {
   const sidebarfallback = await getNavigation()
-  const sectionSelected = 'Start here'
+  const sectionSelected = 'Style Guides'
 
   const previewBranch =
     preview && JSON.parse(JSON.stringify(previewData)).hasOwnProperty('branch')

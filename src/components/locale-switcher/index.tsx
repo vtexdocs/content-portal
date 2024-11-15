@@ -18,14 +18,6 @@ export default function LocaleSwitcher() {
       label: 'EN',
       value: 'en',
     },
-    {
-      label: 'PT',
-      value: 'pt',
-    },
-    {
-      label: 'ES',
-      value: 'es',
-    },
   ]
 
   const handleOptionClick = (option: string) => {
