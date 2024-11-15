@@ -19,33 +19,35 @@ import DocumentContextProvider from 'utils/contexts/documentContext'
 
 import { Item, LibraryContext, TableOfContents } from '@vtexdocs/components'
 import Breadcrumb from 'components/breadcrumb'
-// import Contributors from 'components/contributors'
+import Contributors from 'components/contributors'
 import FeedbackSection from 'components/feedback-section'
 import OnThisPage from 'components/on-this-page'
 import SeeAlsoSection from 'components/see-also-section'
 
-import getHeadings from 'utils/getHeadings'
-import getNavigation from 'utils/getNavigation'
-// import getGithubFile from 'utils/getGithubFile'
 import { PreviewContext } from 'utils/contexts/preview'
 import escapeCurlyBraces from 'utils/escapeCurlyBraces'
 import { getDocsPaths as getTracksPaths } from 'utils/getDocsPaths'
+import getGithubFile from 'utils/getGithubFile'
+import getHeadings from 'utils/getHeadings'
+import getNavigation from 'utils/getNavigation'
 import replaceHTMLBlocks from 'utils/replaceHTMLBlocks'
 import replaceMagicBlocks from 'utils/replaceMagicBlocks'
 
 import styles from 'styles/documentation-page'
-// import { ContributorsType } from 'utils/getFileContributors'
+import getFileContributors, {
+  ContributorsType,
+} from 'utils/getFileContributors'
 
 import { MarkdownRenderer } from '@vtexdocs/components'
+import { ParsedUrlQuery } from 'querystring'
+import { useIntl } from 'react-intl'
 import { getLogger } from 'utils/logging/log-util'
 import {
-    flattenJSON,
-    getKeyByValue,
-    getParents,
-    localeType,
+  flattenJSON,
+  getKeyByValue,
+  getParents,
+  localeType,
 } from 'utils/navigation-utils'
-// import { ParsedUrlQuery } from 'querystring'
-import { useIntl } from 'react-intl'
 import { remarkReadingTime } from 'utils/remark_plugins/remarkReadingTime'
 
 const docsPathsGLOBAL = await getTracksPaths('grammar')
@@ -57,7 +59,7 @@ interface Props {
   content: string
   serialized: MDXRemoteSerializeResult
   sidebarfallback: any //eslint-disable-line
-  // contributors: ContributorsType[]
+  contributors: ContributorsType[]
   path: string
   headingList: Item[]
   seeAlsoData: {
@@ -86,7 +88,7 @@ const TrackPage: NextPage<Props> = ({
   serialized,
   path,
   headingList,
-  // contributors,
+  contributors,
   seeAlsoData,
   pagination,
   isListed,
@@ -134,7 +136,7 @@ const TrackPage: NextPage<Props> = ({
                     <Text sx={styles.readingTime}>
                       {intl.formatMessage(
                         {
-                          id: 'documentation_reading_time.text',
+                          id: 'grammar_reading_time.text',
                           defaultMessage: '',
                         },
                         { minutes: serialized.frontmatter?.readingTime }
@@ -146,10 +148,12 @@ const TrackPage: NextPage<Props> = ({
               </article>
             </Box>
 
-            {/* <Box sx={styles.bottomContributorsContainer}>
-              <Box sx={styles.bottomContributorsDivider} />
-              <Contributors contributors={contributors} />
-            </Box> */}
+            {
+              <Box sx={styles.bottomContributorsContainer}>
+                <Box sx={styles.bottomContributorsDivider} />
+                <Contributors contributors={contributors} />
+              </Box>
+            }
 
             <FeedbackSection docPath={path} slug={slug} />
             {isListed && (
@@ -169,7 +173,7 @@ const TrackPage: NextPage<Props> = ({
             )}
           </Box>
           <Box sx={styles.rightContainer}>
-            {/* <Contributors contributors={contributors} /> */}
+            {<Contributors contributors={contributors} />}
             <TableOfContents headingList={headings} />
           </Box>
           <OnThisPage />
@@ -180,21 +184,21 @@ const TrackPage: NextPage<Props> = ({
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  // const slugs: { [slug: string]: { locale: string; path: string }[] } =
-  //   await getTracksPaths('tracks')
+  const slugs: { [slug: string]: { locale: string; path: string }[] } =
+    await getTracksPaths('grammar')
 
-  // const paths: (
-  //   | string
-  //   | {
-  //       params: ParsedUrlQuery
-  //       locale?: string | undefined
-  //     }
-  // )[] = []
-  // Object.entries(slugs).forEach(([slug, locales]) => {
-  //   locales.forEach(({ locale }) => {
-  //     paths.push({ params: { slug }, locale })
-  //   })
-  // })
+  const paths: (
+    | string
+    | {
+        params: ParsedUrlQuery
+        locale?: string | undefined
+      }
+  )[] = []
+  Object.entries(slugs).forEach(([slug, locales]) => {
+    locales.forEach(({ locale }) => {
+      paths.push({ params: { slug }, locale })
+    })
+  })
   return {
     paths: [],
     fallback: 'blocking',
@@ -234,59 +238,61 @@ export const getStaticProps: GetStaticProps = async ({
     }
   }
 
-  // let documentationContent = await getGithubFile(
-  //   'vtexdocs',
-  //   'help-center-content',
-  //   branch,
-  //   path
-  // )
-  let documentationContent =
+  let documentationContent = ''
+  documentationContent = await getGithubFile(
+    'vtexdocs',
+    'language-hub-content',
+    branch,
+    path
+  )
+  documentationContent =
     (await fetch(
       `https://raw.githubusercontent.com/vtexdocs/language-hub-content/${branch}/${path}`
     )
       .then((res) => res.text())
       .catch((err) => console.log(err))) || ''
 
-  // const contributors =
-  //   (await fetch(
-  //     `https://github.com/vtexdocs/language-hub-content/file-contributors/${branch}/${path}`,
-  //     {
-  //       method: 'GET',
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //         Accept: 'application/json',
-  //       },
-  //     }
-  //   )
-  //     .then((res) => res.json())
-  //     .then(({ users }) => {
-  //       const result: ContributorsType[] = []
-  //       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  //       for (let i = 0; i < users.length; i++) {
-  //         const user = users[i]
-  //         if (user.id === '41898282') continue
-  //         result.push({
-  //           name: user.login,
-  //           login: user.login,
-  //           avatar: user.primaryAvatarUrl,
-  //           userPage: `https://github.com${user.profileLink}`,
-  //         })
-  //       }
+  let contributors = {}
+  contributors =
+    (await fetch(
+      `https://github.com/vtexdocs/language-hub-content/file-contributors/${branch}/${path}`,
+      {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+      }
+    )
+      .then((res) => res.json())
+      .then(({ users }) => {
+        const result: ContributorsType[] = []
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        for (let i = 0; i < users.length; i++) {
+          const user = users[i]
+          if (user.id === '41898282') continue
+          result.push({
+            name: user.login,
+            login: user.login,
+            avatar: user.primaryAvatarUrl,
+            userPage: `https://github.com${user.profileLink}`,
+          })
+        }
 
-  //       return result
-  //     })
-  //     .catch((err) => console.log(err))) || []
+        return result
+      })
+      .catch((err) => console.log(err))) || []
 
-  // const contributors = []
-  // const contributors =
-  //   (await getFileContributors(
-  //     'vtexdocs',
-  //     'help-center-content',
-  //     branch,
-  //     path
-  //   ).catch((err) => {
-  //     console.log(err)
-  //   })) || []
+  contributors = []
+  contributors =
+    (await getFileContributors(
+      'vtexdocs',
+      'help-center-content',
+      branch,
+      path
+    ).catch((err) => {
+      console.log(err)
+    })) || []
 
   let format: 'md' | 'mdx' = 'mdx'
   try {
@@ -338,19 +344,18 @@ export const getStaticProps: GetStaticProps = async ({
         )?.path
         if (seeAlsoPath) {
           try {
-            const documentationContent =
+            let documentationContent = await getGithubFile(
+              'vtexdocs',
+              'language-hub-content',
+              'main',
+              seeAlsoPath
+            )
+            documentationContent =
               (await fetch(
                 `https://raw.githubusercontent.com/vtexdocs/language-hub-content/main/${seeAlsoPath}`
               )
                 .then((res) => res.text())
                 .catch((err) => console.log(err))) || ''
-
-            // const documentationContent = await getGithubFile(
-            //   'vtexdocs',
-            //   'help-center-content',W
-            //   'main',
-            //   seeAlsoPath
-            // )
 
             const serialized = await serialize(documentationContent, {
               parseFrontmatter: true,
@@ -455,7 +460,7 @@ export const getStaticProps: GetStaticProps = async ({
         serialized,
         sidebarfallback,
         headingList,
-        // contributors,
+        contributors,
         path,
         seeAlsoData,
         pagination,
