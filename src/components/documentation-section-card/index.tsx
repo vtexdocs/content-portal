@@ -1,11 +1,11 @@
-import Link from 'next/link'
 import { Flex, Text } from '@vtex/brand-ui'
+import Link from 'next/link'
 
-import type { DocDataElement } from 'utils/typings/types'
-import styles from './styles'
+import LongArrowIcon from 'components/icons/long-arrow-icon'
 import { useRef } from 'react'
 import { useIntl } from 'react-intl'
-import LongArrowIcon from 'components/icons/long-arrow-icon'
+import type { DocDataElement } from 'utils/typings/types'
+import styles from './styles'
 
 const DocumentationSectionCard = ({
   Icon,
@@ -40,14 +40,14 @@ const DocumentationSectionCard = ({
           {!isExternalLink ? (
             <Text className="learnMoreText" sx={styles.learnMoreText}>
               {intl.formatMessage({
-                id: 'landing_page_documentation_card.learnMoreText',
+                id: 'landing_page_card_link_caption',
               })}
             </Text>
           ) : (
             <Flex sx={styles.accessPortal}>
               <Text className="accessPortal" sx={styles.learnMoreText}>
                 {intl.formatMessage({
-                  id: 'landing_page_documentation_card.accessPortal',
+                  id: 'landing_page_accessPortal',
                 })}
               </Text>
               <LongArrowIcon size={18} />

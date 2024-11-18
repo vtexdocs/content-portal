@@ -148,10 +148,10 @@ export const menuDocumentationData = (intl: IntlShape) => {
       id: 'Glossary',
       Icon: DeveloperPortalIcon,
       title: intl.formatMessage({
-        id: 'glossaries_card_title',
+        id: 'glossary_card_title',
       }),
       description: intl.formatMessage({
-        id: 'glossaries_card_subtitle',
+        id: 'glossary_card_subtitle',
       }),
       link: '/docs/glossary',
     },

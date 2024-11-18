@@ -282,6 +282,9 @@
 
   "landing_subtitle": "All things language for users of words.",
   "sections_title": "Sections",
+  "landing_page_card_link_caption": "Learn more",
+  "landing_page_accessPortal": "Go to portal",
+  "start_here_see_more": "See more",
   "style_guides_card_title": "Style Guides",
   "style_guides_card_subtitle": "Use grammar, style, and formatting convertions to make your VTEX content clear and consistent.",
   "style_guides_page_subtitle": "Use the right voice for the right audiences.",
