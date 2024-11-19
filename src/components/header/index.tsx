@@ -15,9 +15,8 @@ import VTEXHelpCenterIcon from 'components/icons/vtex-helpcenter-icon'
 
 import { getFeedbackURL } from 'utils/get-url'
 
-import LocaleSwitcher from 'components/locale-switcher'
 
-import { HamburgerMenu, SearchInput } from '@vtexdocs/components'
+import { SearchInput } from '@vtexdocs/components'
 import { FormattedMessage } from 'react-intl'
 // import { PreviewContext } from 'utils/contexts/preview'
 import styles from './styles'
@@ -142,7 +141,7 @@ const Header = () => {
 
           <VtexLink
             sx={styles.rightLinksItem}
-            href={getFeedbackURL()}
+            href={getFeedbackURL()} // Confirmar se vamos usar, se sim, atualizar link.
             target="_blank"
           >
             <LongArrowIcon />
@@ -150,13 +149,13 @@ const Header = () => {
               <FormattedMessage id="landing_page_header_feedback.message" />
             </Text>
           </VtexLink>
-          <Flex sx={styles.containerHamburguerLocale}>
+          {/* <Flex sx={styles.containerHamburguerLocale}>
             <HamburgerMenu />
             <Box sx={styles.splitter}></Box>
             <Box sx={styles.localeSwitcherContainer}>
               <LocaleSwitcher />
             </Box>
-          </Flex>
+          </Flex> */}
         </HeaderBrand.RightLinks>
       </HeaderBrand>
     </Box>

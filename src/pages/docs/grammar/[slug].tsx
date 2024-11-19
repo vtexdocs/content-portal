@@ -136,7 +136,7 @@ const TrackPage: NextPage<Props> = ({
                     <Text sx={styles.readingTime}>
                       {intl.formatMessage(
                         {
-                          id: 'grammar_reading_time.text',
+                          id: 'documentation_reading_time.text',
                           defaultMessage: '',
                         },
                         { minutes: serialized.frontmatter?.readingTime }

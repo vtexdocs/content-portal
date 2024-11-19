@@ -8,10 +8,14 @@ import {
 } from 'utils/get-url'
 
 import DeveloperPortalIcon from 'components/icons/developer-portal-icon'
+import DocumentationUpdatesIcon from 'components/icons/documentation-updates-icon'
 import GraphIcon from 'components/icons/graph-icon'
+import GridIcon from 'components/icons/grid-icon'
+import InfoIcon from 'components/icons/info-icon'
 import LongArrowIcon from 'components/icons/long-arrow-icon'
 import PaperIcon from 'components/icons/paper-icon'
-import StartHereIcon from 'components/icons/start-here-icon'
+import SearchIcon from 'components/icons/search-icon'
+import StatusIcon from 'components/icons/status-icon'
 import TutorialsIcon from 'components/icons/tutorials-icon'
 import WarningIcon from 'components/icons/warning-icon'
 import { IntlShape } from 'react-intl'
@@ -30,7 +34,7 @@ export const documentationData = (intl: IntlShape) => {
   const data: DocDataElement[] = [
     {
       id: 'Guides',
-      Icon: StartHereIcon,
+      Icon: TutorialsIcon,
       title: intl.formatMessage({
         id: 'guides_card_title',
       }),
@@ -41,7 +45,7 @@ export const documentationData = (intl: IntlShape) => {
     },
     {
       id: 'User Interfaces',
-      Icon: TutorialsIcon,
+      Icon: GridIcon,
       title: intl.formatMessage({
         id: 'user_interfaces_card_title',
       }),
@@ -52,7 +56,7 @@ export const documentationData = (intl: IntlShape) => {
     },
     {
       id: 'Documentation',
-      Icon: DeveloperPortalIcon,
+      Icon: DocumentationUpdatesIcon,
       title: intl.formatMessage({
         id: 'documentation_card_title',
       }),
@@ -63,7 +67,7 @@ export const documentationData = (intl: IntlShape) => {
     },
     {
       id: 'Grammar',
-      Icon: DeveloperPortalIcon,
+      Icon: InfoIcon,
       title: intl.formatMessage({
         id: 'grammar_card_title',
       }),
@@ -74,7 +78,7 @@ export const documentationData = (intl: IntlShape) => {
     },
     {
       id: 'Glossary',
-      Icon: DeveloperPortalIcon,
+      Icon: SearchIcon,
       title: intl.formatMessage({
         id: 'glossary_card_title',
       }),
@@ -85,7 +89,7 @@ export const documentationData = (intl: IntlShape) => {
     },
     {
       id: 'Changelog',
-      Icon: DeveloperPortalIcon,
+      Icon: StatusIcon,
       title: intl.formatMessage({
         id: 'changelog_card_title',
       }),
@@ -102,7 +106,7 @@ export const menuDocumentationData = (intl: IntlShape) => {
   const data: DocDataElement[] = [
     {
       id: 'Guides',
-      Icon: StartHereIcon,
+      Icon: TutorialsIcon,
       title: intl.formatMessage({
         id: 'guides_card_title',
       }),
@@ -113,7 +117,7 @@ export const menuDocumentationData = (intl: IntlShape) => {
     },
     {
       id: 'User Interfaces',
-      Icon: TutorialsIcon,
+      Icon: GridIcon,
       title: intl.formatMessage({
         id: 'user_interfaces_card_title',
       }),
@@ -124,7 +128,7 @@ export const menuDocumentationData = (intl: IntlShape) => {
     },
     {
       id: 'Documentation',
-      Icon: DeveloperPortalIcon,
+      Icon: DocumentationUpdatesIcon,
       title: intl.formatMessage({
         id: 'documentation_card_title',
       }),
@@ -135,7 +139,7 @@ export const menuDocumentationData = (intl: IntlShape) => {
     },
     {
       id: 'Grammar',
-      Icon: DeveloperPortalIcon,
+      Icon: InfoIcon,
       title: intl.formatMessage({
         id: 'grammar_card_title',
       }),
@@ -146,7 +150,7 @@ export const menuDocumentationData = (intl: IntlShape) => {
     },
     {
       id: 'Glossary',
-      Icon: DeveloperPortalIcon,
+      Icon: SearchIcon,
       title: intl.formatMessage({
         id: 'glossary_card_title',
       }),
@@ -157,7 +161,7 @@ export const menuDocumentationData = (intl: IntlShape) => {
     },
     {
       id: 'Changelog',
-      Icon: DeveloperPortalIcon,
+      Icon: StatusIcon,
       title: intl.formatMessage({
         id: 'changelog_card_title',
       }),
@@ -241,45 +245,78 @@ export const feedbackSectionData = (intl: IntlShape) => {
 //   return data
 // }
 
-// export const menuSupportData = (intl: IntlShape) => {
-//   const data: DocDataElement[] = [
-//     {
-//       id: 'Known Issues',
-//       Icon: WarningIcon,
-//       title: intl.formatMessage({
-//         id: 'sidebar_known_issues.title',
-//       }),
-//       description: intl.formatMessage({
-//         id: 'sidebar_known_issues.description',
-//       }),
-//       link: '/known-issues',
-//     },
-//     {
-//       id: 'Status',
-//       Icon: GraphIcon,
-//       title: intl.formatMessage({
-//         id: 'menu_status.title',
-//       }),
-//       description: intl.formatMessage({
-//         id: 'menu_status.description',
-//       }),
-//       link: 'https://status.vtex.com',
-//     },
-//     {
-//       id: 'Support Rules',
-//       Icon: PaperIcon,
-//       title: intl.formatMessage({
-//         id: 'sidebar_support_rules.title',
-//       }),
-//       description: intl.formatMessage({
-//         id: 'sidebar_support_rules.description',
-//       }),
-//       link: '#', //TODO: trocar rota
-//     },
-//   ]
+export const menuSupportData = (intl: IntlShape) => {
+  const data: DocDataElement[] = [
+    {
+      id: 'Shoreline',
+      Icon: DeveloperPortalIcon,
+      title: intl.formatMessage({
+        id: 'shoreline_card_title',
+      }),
+      description: intl.formatMessage({
+        id: 'shoreline_card_subtitle',
+      }),
+      link: 'https://shoreline.vtex.com/',
+    },
+    {
+      id: 'FastStore',
+      Icon: DeveloperPortalIcon,
+      title: intl.formatMessage({
+        id: 'faststore_card_title',
+      }),
+      description: intl.formatMessage({
+        id: 'faststore_card_subtitle',
+      }),
+      link: 'https://faststore.dev/',
+    },
+    {
+      id: 'Translation Memories',
+      Icon: DeveloperPortalIcon,
+      title: intl.formatMessage({
+        id: 'translation_memories_card_title',
+      }),
+      description: intl.formatMessage({
+        id: 'translation_memories_card_subtitle',
+      }),
+      link: 'https://docs.google.com/spreadsheets/d/17psfw_6SXQEKBZDvSDxMKLpGAoce8ztB/edit?usp=sharing&ouid=100655064255803046570&rtpof=true&sd=true',
+    },
+    {
+      id: 'Brand',
+      Icon: DeveloperPortalIcon,
+      title: intl.formatMessage({
+        id: 'brand_card_title',
+      }),
+      description: intl.formatMessage({
+        id: 'brand_card_subtitle',
+      }),
+      link: 'https://brand.vtex.com/',
+    },
+    {
+      id: 'Developer Portal',
+      Icon: DeveloperPortalIcon,
+      title: intl.formatMessage({
+        id: 'developer_portal_card_title',
+      }),
+      description: intl.formatMessage({
+        id: 'developer_portal_card_subtitle',
+      }),
+      link: 'https://developers.vtex.com/',
+    },
+    {
+      id: 'Help Center',
+      Icon: DeveloperPortalIcon,
+      title: intl.formatMessage({
+        id: 'help_center_card_title',
+      }),
+      description: intl.formatMessage({
+        id: 'help_center_card_subtitle',
+      }),
+      link: 'https://help.vtex.com/en/',
+    },
+  ]
 
-//   return data
-// }
+  return data
+}
 
 export const faqData = (intl: IntlShape) => {
   const data: FaqDataElement[] = [
@@ -335,7 +372,7 @@ export const supportData = (intl: IntlShape) => {
   const data: DocDataElement[] = [
     {
       id: 'Shoreline',
-      Icon: WarningIcon,
+      Icon: DeveloperPortalIcon,
       title: intl.formatMessage({
         id: 'shoreline_card_title',
       }),
@@ -347,7 +384,7 @@ export const supportData = (intl: IntlShape) => {
     },
     {
       id: 'FastStore',
-      Icon: PaperIcon,
+      Icon: DeveloperPortalIcon,
       title: intl.formatMessage({
         id: 'faststore_card_title',
       }),
@@ -359,7 +396,7 @@ export const supportData = (intl: IntlShape) => {
     },
     {
       id: 'Translation Memories',
-      Icon: GraphIcon,
+      Icon: DeveloperPortalIcon,
       title: intl.formatMessage({
         id: 'translation_memories_card_title',
       }),
@@ -371,7 +408,7 @@ export const supportData = (intl: IntlShape) => {
     },
     {
       id: 'Brand',
-      Icon: GraphIcon,
+      Icon: DeveloperPortalIcon,
       title: intl.formatMessage({
         id: 'brand_card_title',
       }),
@@ -383,7 +420,7 @@ export const supportData = (intl: IntlShape) => {
     },
     {
       id: 'Developer Portal',
-      Icon: GraphIcon,
+      Icon: DeveloperPortalIcon,
       title: intl.formatMessage({
         id: 'developer_portal_card_title',
       }),
@@ -395,7 +432,7 @@ export const supportData = (intl: IntlShape) => {
     },
     {
       id: 'Help Center',
-      Icon: GraphIcon,
+      Icon: DeveloperPortalIcon,
       title: intl.formatMessage({
         id: 'help_center_card_title',
       }),
