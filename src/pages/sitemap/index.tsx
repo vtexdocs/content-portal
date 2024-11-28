@@ -1,12 +1,12 @@
-import { Box, Flex, Text } from '@vtex/brand-ui'; //eslint-disable-line
-import SiteMapSection from 'components/sitemap-section'
-import { GetStaticProps } from 'next'
-import { useIntl } from 'react-intl'
-import styles from 'styles/sitemap-page'
-import { additionalResourcesSitemap } from 'utils/constants'
-import getNavigation from 'utils/getNavigation'
-import { localeType } from 'utils/navigation-utils'; //eslint-disable-line
-import { Page } from 'utils/typings/types'
+import { Box, Flex, Text } from '@vtex/brand-ui' //eslint-disable-line
+import SiteMapSection from 'components/sitemap-section' //eslint-disable-line
+import { GetStaticProps } from 'next' //eslint-disable-line
+import { useIntl } from 'react-intl' //eslint-disable-line
+import styles from 'styles/sitemap-page' //eslint-disable-line
+import { additionalResourcesSitemap } from 'utils/constants' //eslint-disable-line
+import getNavigation from 'utils/getNavigation' //eslint-disable-line
+import { localeType } from 'utils/navigation-utils' //eslint-disable-line
+import { Page } from 'utils/typings/types' //eslint-disable-line
 
 interface Props {
   sections: [
@@ -22,9 +22,10 @@ const SiteMapPage: Page<Props> = ({ sections }) => {
 
   const documentationTitleTranslated: { [key: string]: string } = {
     'Style Guides': intl.formatMessage({ id: 'style_guides_card_title' }),
-    'Use grammar, style, and formatting convertions to make your VTEX content clear and consistent.': intl.formatMessage({
-      id: 'style_guides_subtitle',
-    }),
+    'Use grammar, style, and formatting convertions to make your VTEX content clear and consistent.':
+      intl.formatMessage({
+        id: 'style_guides_subtitle',
+      }),
   }
 
   const arr = additionalResourcesSitemap(intl)

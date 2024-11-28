@@ -16,9 +16,7 @@ import {
 } from '@vtexdocs/components'
 import Script from 'next/script'
 import { useIntl } from 'react-intl'
-import {
-  documentationData
-} from 'utils/constants'
+import { documentationData } from 'utils/constants'
 import { DocumentationTitle, UpdatesTitle } from 'utils/typings/unionTypes'
 import EducationSection from './education-section'
 
@@ -54,12 +52,8 @@ export default function Layout({
   return (
     <ThemeProvider>
       <LibraryContextProvider
-        sections={[
-          documentationData(intl),
-        ]}
-        hamburguerMenuSections={[
-          documentationData(intl)
-        ]}
+        sections={[documentationData(intl)]}
+        hamburguerMenuSections={[documentationData(intl)]}
         sectionSelected={sectionSelected ?? ''}
         fallback={sidebarfallback}
         isPreview={isPreview}

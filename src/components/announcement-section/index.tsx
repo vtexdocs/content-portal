@@ -1,3 +1,4 @@
+export {} //eslint-disable-line
 // import { Flex } from '@vtex/brand-ui'
 // // import { useIntl } from 'react-intl'
 

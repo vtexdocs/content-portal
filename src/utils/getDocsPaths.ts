@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/ban-ts-comment */
-import octokit from 'utils/octokitConfig';
+import octokit from 'utils/octokitConfig' //eslint-disable-line
 
 async function getGithubTree(org: string, repo: string, ref: string) {
   const response = octokit.request(

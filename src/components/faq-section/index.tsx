@@ -1,6 +1,5 @@
 import { Box } from '@vtex/brand-ui'
 
-
 // import { useIntl } from 'react-intl'
 import styles from './styles'
 
