@@ -23,7 +23,8 @@ export const getSupportURL = () => {
 }
 
 export const getSlackChannelURL = () => {
-return 'https://vtex.enterprise.slack.com/archives/C03M28QG82U'}
+  return 'https://vtex.enterprise.slack.com/archives/C03M28QG82U'
+}
 
 export const getSiteMapURL = () => {
   return '/sitemap'

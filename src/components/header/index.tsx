@@ -15,7 +15,6 @@ import VTEXHelpCenterIcon from 'components/icons/vtex-helpcenter-icon'
 
 import { getFeedbackURL } from 'utils/get-url'
 
-
 import { SearchInput } from '@vtexdocs/components'
 import { FormattedMessage } from 'react-intl'
 // import { PreviewContext } from 'utils/contexts/preview'
