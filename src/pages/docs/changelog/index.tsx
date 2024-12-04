@@ -1,3 +1,4 @@
+export {} //eslint-disable-line
 // import { Box, Flex, Text } from '@vtex/brand-ui'
 // import PageHeader from 'components/page-header'
 // import WhatsNextCard from 'components/whats-next-card'
