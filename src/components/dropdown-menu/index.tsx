@@ -1,5 +1,4 @@
 import { Box } from '@vtex/brand-ui'
-
 import DocumentationCard from 'components/documentation-card'
 import { useIntl } from 'react-intl'
 import { menuDocumentationData, menuSupportData } from 'utils/constants'
