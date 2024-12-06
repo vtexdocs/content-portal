@@ -42,6 +42,17 @@ export const documentationData = (intl: IntlShape) => {
       link: '/docs/guides',
     },
     {
+      id: 'Grammar',
+      Icon: TutorialsIcon,
+      title: intl.formatMessage({
+        id: 'grammar_card_title',
+      }),
+      description: intl.formatMessage({
+        id: 'grammar_card_subtitle',
+      }),
+      link: '/docs/grammar',
+    },
+    {
       id: 'User Interfaces',
       Icon: GridIcon,
       title: intl.formatMessage({
@@ -112,6 +123,17 @@ export const menuDocumentationData = (intl: IntlShape) => {
         id: 'guides_card_subtitle',
       }),
       link: '/docs/guides',
+    },
+    {
+      id: 'Grammar',
+      Icon: TutorialsIcon,
+      title: intl.formatMessage({
+        id: 'grammar_card_title',
+      }),
+      description: intl.formatMessage({
+        id: 'grammar_card_subtitle',
+      }),
+      link: '/docs/grammar',
     },
     {
       id: 'User Interfaces',
