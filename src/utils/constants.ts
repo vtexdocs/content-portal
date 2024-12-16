@@ -11,11 +11,9 @@ import DeveloperPortalIcon from 'components/icons/developer-portal-icon'
 import DocumentationUpdatesIcon from 'components/icons/documentation-updates-icon'
 import GraphIcon from 'components/icons/graph-icon'
 import GridIcon from 'components/icons/grid-icon'
-import InfoIcon from 'components/icons/info-icon'
 import LongArrowIcon from 'components/icons/long-arrow-icon'
 import PaperIcon from 'components/icons/paper-icon'
 import SearchIcon from 'components/icons/search-icon'
-import StatusIcon from 'components/icons/status-icon'
 import TutorialsIcon from 'components/icons/tutorials-icon'
 import WarningIcon from 'components/icons/warning-icon'
 import { IntlShape } from 'react-intl'
@@ -44,6 +42,17 @@ export const documentationData = (intl: IntlShape) => {
       link: '/docs/guides',
     },
     {
+      id: 'Grammar',
+      Icon: TutorialsIcon,
+      title: intl.formatMessage({
+        id: 'grammar_card_title',
+      }),
+      description: intl.formatMessage({
+        id: 'grammar_card_subtitle',
+      }),
+      link: '/docs/grammar',
+    },
+    {
       id: 'User Interfaces',
       Icon: GridIcon,
       title: intl.formatMessage({
@@ -65,17 +74,17 @@ export const documentationData = (intl: IntlShape) => {
       }),
       link: '/docs/documentation',
     },
-    {
-      id: 'Grammar',
-      Icon: InfoIcon,
-      title: intl.formatMessage({
-        id: 'grammar_card_title',
-      }),
-      description: intl.formatMessage({
-        id: 'grammar_card_subtitle',
-      }),
-      link: '/docs/grammar',
-    },
+    // {
+    //   id: 'Grammar',
+    //   Icon: InfoIcon,
+    //   title: intl.formatMessage({
+    //     id: 'grammar_card_title',
+    //   }),
+    //   description: intl.formatMessage({
+    //     id: 'grammar_card_subtitle',
+    //   }),
+    //   link: '/docs/grammar',
+    // },
     {
       id: 'Glossary',
       Icon: SearchIcon,
@@ -87,17 +96,17 @@ export const documentationData = (intl: IntlShape) => {
       }),
       link: '/docs/glossary',
     },
-    {
-      id: 'Changelog',
-      Icon: StatusIcon,
-      title: intl.formatMessage({
-        id: 'changelog_card_title',
-      }),
-      description: intl.formatMessage({
-        id: 'changelog_card_subtitle',
-      }),
-      link: '/docs/changelog',
-    },
+    // {
+    //   id: 'Changelog',
+    //   Icon: StatusIcon,
+    //   title: intl.formatMessage({
+    //     id: 'changelog_card_title',
+    //   }),
+    //   description: intl.formatMessage({
+    //     id: 'changelog_card_subtitle',
+    //   }),
+    //   link: '/docs/changelog',
+    // },
   ]
   return data
 }
@@ -116,6 +125,17 @@ export const menuDocumentationData = (intl: IntlShape) => {
       link: '/docs/guides',
     },
     {
+      id: 'Grammar',
+      Icon: TutorialsIcon,
+      title: intl.formatMessage({
+        id: 'grammar_card_title',
+      }),
+      description: intl.formatMessage({
+        id: 'grammar_card_subtitle',
+      }),
+      link: '/docs/grammar',
+    },
+    {
       id: 'User Interfaces',
       Icon: GridIcon,
       title: intl.formatMessage({
@@ -137,17 +157,17 @@ export const menuDocumentationData = (intl: IntlShape) => {
       }),
       link: '/docs/documentation',
     },
-    {
-      id: 'Grammar',
-      Icon: InfoIcon,
-      title: intl.formatMessage({
-        id: 'grammar_card_title',
-      }),
-      description: intl.formatMessage({
-        id: 'grammar_card_subtitle',
-      }),
-      link: '/docs/grammar',
-    },
+    // {
+    //   id: 'Grammar',
+    //   Icon: InfoIcon,
+    //   title: intl.formatMessage({
+    //     id: 'grammar_card_title',
+    //   }),
+    //   description: intl.formatMessage({
+    //     id: 'grammar_card_subtitle',
+    //   }),
+    //   link: '/docs/grammar',
+    // },
     {
       id: 'Glossary',
       Icon: SearchIcon,
@@ -159,17 +179,17 @@ export const menuDocumentationData = (intl: IntlShape) => {
       }),
       link: '/docs/glossary',
     },
-    {
-      id: 'Changelog',
-      Icon: StatusIcon,
-      title: intl.formatMessage({
-        id: 'changelog_card_title',
-      }),
-      description: intl.formatMessage({
-        id: 'changelog_card_subtitle',
-      }),
-      link: '/docs/changelog',
-    },
+    // {
+    //   id: 'Changelog',
+    //   Icon: StatusIcon,
+    //   title: intl.formatMessage({
+    //     id: 'changelog_card_title',
+    //   }),
+    //   description: intl.formatMessage({
+    //     id: 'changelog_card_subtitle',
+    //   }),
+    //   link: '/docs/changelog',
+    // },
   ]
   return data
 }
