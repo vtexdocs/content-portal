@@ -87,7 +87,7 @@ const TracksPage: NextPage<Props> = ({ branch }) => {
           })}
         />
         <Box sx={styles.contentContainer}>
-          <ContentSection id={'grammar_page_section'} length={7} />
+          <ContentSection id={'grammar_page_section'} length={8} />
           {/* <ContentSection id={'start_here_page_modules'} length={11} />
           <ContentSection id={'start_here_page_omnichannel'} length={4} />
           <ContentSection id={'start_here_page_vtex_io'} length={2} />
