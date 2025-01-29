@@ -35,9 +35,9 @@ const ContentSection = ({ id, length }: { id: string; length: number }) => {
                 title={intl.formatMessage({
                   id: `${id}.content.${index}.title`,
                 })}
-                description={intl.formatMessage({
-                  id: `${id}.content.${index}.description`,
-                })}
+                // description={intl.formatMessage({
+                //   id: `${id}.content.${index}.description`,
+                // })}
                 linkTitle={intl.formatMessage({
                   id: 'start_here_see_more',
                 })}

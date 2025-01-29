@@ -28,7 +28,7 @@ const Home: Page<Props> = ({ branch }) => {
   return (
     <>
       <Head>
-        <title>VTEX Language Hub</title>
+        <title>VTEX Content Style Guide</title>
         <meta property="og:title" content="VTEX Language Hub" key="title" />
         <meta
           property="og:description"

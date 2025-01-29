@@ -35,9 +35,9 @@ const ContentSection = ({ id, length }: { id: string; length: number }) => {
                 title={intl.formatMessage({
                   id: `${id}.content.${index}.title`,
                 })}
-                description={intl.formatMessage({
-                  id: `${id}.content.${index}.description`,
-                })}
+                // description={intl.formatMessage({
+                //   id: `${id}.content.${index}.description`,
+                // })}
                 linkTitle={intl.formatMessage({
                   id: 'start_here_see_more',
                 })}
@@ -87,7 +87,7 @@ const TracksPage: NextPage<Props> = ({ branch }) => {
           })}
         />
         <Box sx={styles.contentContainer}>
-          <ContentSection id={'documentation_page_section'} length={8} />
+          <ContentSection id={'documentation_page_section'} length={15} />
           {/* <ContentSection id={'start_here_page_modules'} length={11} />
           <ContentSection id={'start_here_page_omnichannel'} length={4} />
           <ContentSection id={'start_here_page_vtex_io'} length={2} />

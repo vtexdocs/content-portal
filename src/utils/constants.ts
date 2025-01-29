@@ -476,9 +476,9 @@ export const whatsNextData = (intl: IntlShape) => {
       title: intl.formatMessage({
         id: 'app_development_page_new_to_app_development.title',
       }),
-      description: intl.formatMessage({
-        id: 'app_development_page_new_to_app_development.description',
-      }),
+      // description: intl.formatMessage({
+      //   id: 'app_development_page_new_to_app_development.description',
+      // }),
       linkTitle: intl.formatMessage({
         id: 'app_development_page_new_to_app_development.link',
       }),
@@ -488,9 +488,9 @@ export const whatsNextData = (intl: IntlShape) => {
       title: intl.formatMessage({
         id: 'app_development_page_solve_real_world_issues.title',
       }),
-      description: intl.formatMessage({
-        id: 'app_development_page_solve_real_world_issues.description',
-      }),
+      // description: intl.formatMessage({
+      //   id: 'app_development_page_solve_real_world_issues.description',
+      // }),
       linkTitle: intl.formatMessage({
         id: 'app_development_page_solve_real_world_issues.link',
       }),
@@ -500,9 +500,9 @@ export const whatsNextData = (intl: IntlShape) => {
       title: intl.formatMessage({
         id: 'app_development_page_build_foundations.title',
       }),
-      description: intl.formatMessage({
-        id: 'app_development_page_build_foundations.description',
-      }),
+      // description: intl.formatMessage({
+      //   id: 'app_development_page_build_foundations.description',
+      // }),
       linkTitle: intl.formatMessage({
         id: 'app_development_page_build_foundations.link',
       }),
@@ -512,9 +512,9 @@ export const whatsNextData = (intl: IntlShape) => {
       title: intl.formatMessage({
         id: 'app_development_page_go_further.title',
       }),
-      description: intl.formatMessage({
-        id: 'app_development_page_go_further.description',
-      }),
+      // description: intl.formatMessage({
+      //   id: 'app_development_page_go_further.description',
+      // }),
       linkTitle: intl.formatMessage({
         id: 'app_development_page_go_further.link',
       }),
