@@ -11,7 +11,7 @@ import { useEffect, useRef, useState } from 'react'
 import DropdownMenu from 'components/dropdown-menu'
 import GridIcon from 'components/icons/grid-icon'
 import LongArrowIcon from 'components/icons/long-arrow-icon'
-import VTEXHelpCenterIcon from 'components/icons/vtex-helpcenter-icon'
+import ContentPortalIcon from 'components/icons/Contentportal-icon'
 
 import { getFeedbackURL } from 'utils/get-url'
 
@@ -113,7 +113,7 @@ const Header = () => {
           href="/"
           sx={styles.headerBrandLink}
         >
-          <VTEXHelpCenterIcon sx={styles.logoSize} />
+          <ContentPortalIcon sx={styles.logoSize} />
         </VtexLink>
 
         <Box sx={styles.searchContainer}>

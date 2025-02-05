@@ -87,9 +87,15 @@ const TracksPage: NextPage<Props> = ({ branch }) => {
           })}
         />
         <Box sx={styles.contentContainer}>
-          <ContentSection id={'documentation_page_section'} length={15} />
-          {/* <ContentSection id={'start_here_page_modules'} length={11} />
-          <ContentSection id={'start_here_page_omnichannel'} length={4} />
+          <ContentSection
+            id={'documentation_page_section_general'}
+            length={8}
+          />
+          <ContentSection
+            id={'documentation_page_section_templates'}
+            length={7}
+          />
+          {/* <ContentSection id={'start_here_page_omnichannel'} length={4} />
           <ContentSection id={'start_here_page_vtex_io'} length={2} />
           <ContentSection id={'start_here_page_erp'} length={1} />
           <ContentSection id={'start_here_page_payment'} length={3} />
