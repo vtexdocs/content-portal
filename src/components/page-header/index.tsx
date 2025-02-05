@@ -13,8 +13,8 @@ interface IPageHeader {
 const PageHeader = ({
   title,
   description,
-  imageUrl,
   imageAlt,
+  imageUrl,
 }: IPageHeader) => {
   return (
     <Fragment>

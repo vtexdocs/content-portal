@@ -9,7 +9,8 @@ import styles from 'styles/documentation-landing-page'
 import { PreviewContext } from 'utils/contexts/preview'
 import getNavigation from 'utils/getNavigation'
 import { DocumentationTitle, UpdatesTitle } from 'utils/typings/unionTypes'
-import startHereImage from '../../../../public/images/start-here.png'
+// import startHereImage from '../../../../public/images/start-here.png'
+import documentationImage from '../../../../public/images/cs-documentation_desktop.png'
 
 interface Props {
   sidebarfallback: any //eslint-disable-line
@@ -81,7 +82,7 @@ const TracksPage: NextPage<Props> = ({ branch }) => {
           description={intl.formatMessage({
             id: 'documentation_card_subtitle',
           })}
-          imageUrl={startHereImage}
+          imageUrl={documentationImage}
           imageAlt={intl.formatMessage({
             id: 'documentation_card_subtitle',
           })}

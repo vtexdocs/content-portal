@@ -49,6 +49,8 @@ const welcomeText: SxStyleProp = {
 const welcomeImageOuterContainer: SxStyleProp = {
   width: '100%',
   overflow: 'hidden',
+  display: 'flex',
+  justifyContent: ['center', 'left'],
 }
 
 const welcomeImageInnerContainer: SxStyleProp = {
@@ -56,16 +58,17 @@ const welcomeImageInnerContainer: SxStyleProp = {
   mx: ['auto', 'initial'],
   right: [
     'initial',
-    '-308px',
-    '-308px',
-    '-308px',
-    '-490px',
-    '-621px',
-    '-863px',
-  ],
-  top: ['-92px', '-122px'],
-  width: ['500px', '592px'],
-  height: ['128px', '250px'],
+    '-150px',
+    '-200px',
+    '-250px',
+    '-300px',
+    '-350px',
+    '-400px',
+  ], // Ajustando o deslocamento para um posicionamento mais adequado
+  // top: ['-92px', '-122px'],
+  width: ['100%', '80%', '70%', '60%', '50%'], // Ajustando a largura para responsividade
+  maxWidth: '1020px', // Limitando a largura máxima para evitar cortes
+  height: 'auto',
 }
 
 const welcomeImageGradient: SxStyleProp = {
