@@ -10,7 +10,7 @@ import { PreviewContext } from 'utils/contexts/preview'
 import getNavigation from 'utils/getNavigation'
 import { DocumentationTitle, UpdatesTitle } from 'utils/typings/unionTypes'
 // import startHereImage from '../../../../public/images/start-here.png'
-import GuidesImage from '../../../../public/images/cs-user-interfaces_desktop.png'
+import GuidesImage from '../../../../public/images/cs-guides_desktop.png'
 
 interface Props {
   sidebarfallback: any //eslint-disable-line
