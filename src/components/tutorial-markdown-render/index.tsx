@@ -28,11 +28,10 @@ interface Props {
     title: string
     category: string
   }[]
-  // sectionSelected: string
-  // sidebarfallback: any //eslint-disable-line
+  sectionSelected: string
+  sidebarfallback: any //eslint-disable-line
   slug: string
-  // parentsArray: string[]
-  // path: string
+  parentsArray: string[]
   isListed: boolean
   branch: string
   pagination: {

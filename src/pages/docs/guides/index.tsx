@@ -9,7 +9,6 @@ import styles from 'styles/documentation-landing-page'
 import { PreviewContext } from 'utils/contexts/preview'
 import getNavigation from 'utils/getNavigation'
 import { DocumentationTitle, UpdatesTitle } from 'utils/typings/unionTypes'
-// import startHereImage from '../../../../public/images/start-here.png'
 import GuidesImage from '../../../../public/images/cs-guides_desktop.png'
 
 interface Props {
@@ -89,12 +88,6 @@ const TracksPage: NextPage<Props> = ({ branch }) => {
         />
         <Box sx={styles.contentContainer}>
           <ContentSection id={'guides_page_section'} length={3} />
-          {/* <ContentSection id={'start_here_page_modules'} length={11} />
-          <ContentSection id={'start_here_page_omnichannel'} length={4} />
-          <ContentSection id={'start_here_page_vtex_io'} length={2} />
-          <ContentSection id={'start_here_page_erp'} length={1} />
-          <ContentSection id={'start_here_page_payment'} length={3} />
-          <ContentSection id={'start_here_page_conversational'} length={2} /> */}
         </Box>
       </Fragment>
     </>

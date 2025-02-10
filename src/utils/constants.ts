@@ -268,17 +268,6 @@ export const feedbackSectionData = (intl: IntlShape) => {
 export const menuSupportData = (intl: IntlShape) => {
   const data: DocDataElement[] = [
     {
-      id: 'Shoreline',
-      Icon: DeveloperPortalIcon,
-      title: intl.formatMessage({
-        id: 'shoreline_card_title',
-      }),
-      description: intl.formatMessage({
-        id: 'shoreline_card_subtitle',
-      }),
-      link: 'https://shoreline.vtex.com/',
-    },
-    {
       id: 'FastStore',
       Icon: DeveloperPortalIcon,
       title: intl.formatMessage({
@@ -288,17 +277,6 @@ export const menuSupportData = (intl: IntlShape) => {
         id: 'faststore_card_subtitle',
       }),
       link: 'https://faststore.dev/',
-    },
-    {
-      id: 'Translation Memories',
-      Icon: DeveloperPortalIcon,
-      title: intl.formatMessage({
-        id: 'translation_memories_card_title',
-      }),
-      description: intl.formatMessage({
-        id: 'translation_memories_card_subtitle',
-      }),
-      link: 'https://docs.google.com/spreadsheets/d/17psfw_6SXQEKBZDvSDxMKLpGAoce8ztB/edit?usp=sharing&ouid=100655064255803046570&rtpof=true&sd=true',
     },
     {
       id: 'Brand',
@@ -391,18 +369,6 @@ export const faqData = (intl: IntlShape) => {
 export const supportData = (intl: IntlShape) => {
   const data: DocDataElement[] = [
     {
-      id: 'Shoreline',
-      Icon: DeveloperPortalIcon,
-      title: intl.formatMessage({
-        id: 'shoreline_card_title',
-      }),
-      description: intl.formatMessage({
-        id: 'shoreline_card_subtitle',
-      }),
-      isExternalLink: true,
-      link: 'https://shoreline.vtex.com/',
-    },
-    {
       id: 'FastStore',
       Icon: DeveloperPortalIcon,
       title: intl.formatMessage({
@@ -413,18 +379,6 @@ export const supportData = (intl: IntlShape) => {
       }),
       isExternalLink: true,
       link: 'https://faststore.dev/',
-    },
-    {
-      id: 'Translation Memories',
-      Icon: DeveloperPortalIcon,
-      title: intl.formatMessage({
-        id: 'translation_memories_card_title',
-      }),
-      description: intl.formatMessage({
-        id: 'translation_memories_card_subtitle',
-      }),
-      isExternalLink: true,
-      link: 'https://docs.google.com/spreadsheets/d/17psfw_6SXQEKBZDvSDxMKLpGAoce8ztB/edit?usp=sharing&ouid=100655064255803046570&rtpof=true&sd=true',
     },
     {
       id: 'Brand',
