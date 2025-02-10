@@ -53,7 +53,7 @@ export const documentationData = (intl: IntlShape) => {
       link: '/docs/grammar',
     },
     {
-      id: 'User Interfaces',
+      id: 'Interface copy',
       Icon: GridIcon,
       title: intl.formatMessage({
         id: 'user_interfaces_card_title',
@@ -136,7 +136,7 @@ export const menuDocumentationData = (intl: IntlShape) => {
       link: '/docs/grammar',
     },
     {
-      id: 'User Interfaces',
+      id: 'Interface copy',
       Icon: GridIcon,
       title: intl.formatMessage({
         id: 'user_interfaces_card_title',

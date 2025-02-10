@@ -106,7 +106,7 @@ export const getStaticProps: GetStaticProps = async ({
   previewData,
 }) => {
   const sidebarfallback = await getNavigation()
-  const sectionSelected = 'User Interfaces'
+  const sectionSelected = 'Interface copy'
 
   const previewBranch =
     preview && JSON.parse(JSON.stringify(previewData)).hasOwnProperty('branch')
