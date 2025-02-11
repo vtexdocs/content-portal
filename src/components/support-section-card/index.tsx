@@ -8,7 +8,7 @@ import type { DocDataElement } from 'utils/typings/types'
 import styles from './styles'
 
 const SupportSectionCard = ({
-  Icon,
+  // Icon,
   title,
   description,
   link,
@@ -21,7 +21,7 @@ const SupportSectionCard = ({
     <Link href={link}>
       <Flex sx={styles.cardContainer}>
         <Flex className="titleContainer" sx={styles.titleContainer}>
-          <Icon sx={styles.icon} />
+          {/* <Icon sx={styles.icon} /> */}
           <Text className="title" sx={styles.title}>
             {title}
           </Text>

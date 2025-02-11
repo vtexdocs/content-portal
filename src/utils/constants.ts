@@ -8,14 +8,15 @@ import {
 } from 'utils/get-url'
 
 import DeveloperPortalIcon from 'components/icons/developer-portal-icon'
-import DocumentationUpdatesIcon from 'components/icons/documentation-updates-icon'
 import GraphIcon from 'components/icons/graph-icon'
-import GridIcon from 'components/icons/grid-icon'
 import LongArrowIcon from 'components/icons/long-arrow-icon'
 import PaperIcon from 'components/icons/paper-icon'
-import SearchIcon from 'components/icons/search-icon'
-import TutorialsIcon from 'components/icons/tutorials-icon'
 import WarningIcon from 'components/icons/warning-icon'
+import GuidesIcon from 'components/icons/guides-icon'
+import GrammarIcon from 'components/icons/grammar-icon'
+import InterfacesIcon from 'components/icons/interface-copy-icon'
+import EducationIcon from 'components/icons/education-icon'
+import GlossaryIcon from 'components/icons/glossary-icon'
 import { IntlShape } from 'react-intl'
 import libraryConfig from './libraryConfig'
 import {
@@ -24,6 +25,7 @@ import {
   ResourceDataElement,
   WhatsNextDataElement,
 } from './typings/types'
+import InterfaceIcon from 'components/icons/interface-copy-icon'
 
 libraryConfig
 export const messages = getMessages()
@@ -32,7 +34,7 @@ export const documentationData = (intl: IntlShape) => {
   const data: DocDataElement[] = [
     {
       id: 'Guides',
-      Icon: TutorialsIcon,
+      Icon: GuidesIcon,
       title: intl.formatMessage({
         id: 'guides_card_title',
       }),
@@ -43,7 +45,7 @@ export const documentationData = (intl: IntlShape) => {
     },
     {
       id: 'Grammar',
-      Icon: TutorialsIcon,
+      Icon: GrammarIcon,
       title: intl.formatMessage({
         id: 'grammar_card_title',
       }),
@@ -54,7 +56,7 @@ export const documentationData = (intl: IntlShape) => {
     },
     {
       id: 'Interface copy',
-      Icon: GridIcon,
+      Icon: InterfacesIcon,
       title: intl.formatMessage({
         id: 'user_interfaces_card_title',
       }),
@@ -65,7 +67,7 @@ export const documentationData = (intl: IntlShape) => {
     },
     {
       id: 'Documentation',
-      Icon: DocumentationUpdatesIcon,
+      Icon: EducationIcon,
       title: intl.formatMessage({
         id: 'documentation_card_title',
       }),
@@ -74,20 +76,9 @@ export const documentationData = (intl: IntlShape) => {
       }),
       link: '/docs/documentation',
     },
-    // {
-    //   id: 'Grammar',
-    //   Icon: InfoIcon,
-    //   title: intl.formatMessage({
-    //     id: 'grammar_card_title',
-    //   }),
-    //   description: intl.formatMessage({
-    //     id: 'grammar_card_subtitle',
-    //   }),
-    //   link: '/docs/grammar',
-    // },
     {
       id: 'Glossary',
-      Icon: SearchIcon,
+      Icon: GlossaryIcon,
       title: intl.formatMessage({
         id: 'glossary_card_title',
       }),
@@ -96,17 +87,6 @@ export const documentationData = (intl: IntlShape) => {
       }),
       link: 'https://docs.google.com/spreadsheets/d/1vSSg5CrimqSxvWjBoXLE5P7ATJCdRnPT/edit?gid=1978438735#gid=1978438735',
     }, //TODO: Fazer abrir em uma nova aba.
-    // {
-    //   id: 'Changelog',
-    //   Icon: StatusIcon,
-    //   title: intl.formatMessage({
-    //     id: 'changelog_card_title',
-    //   }),
-    //   description: intl.formatMessage({
-    //     id: 'changelog_card_subtitle',
-    //   }),
-    //   link: '/docs/changelog',
-    // },
   ]
   return data
 }
@@ -115,7 +95,7 @@ export const menuDocumentationData = (intl: IntlShape) => {
   const data: DocDataElement[] = [
     {
       id: 'Guides',
-      Icon: TutorialsIcon,
+      Icon: GuidesIcon,
       title: intl.formatMessage({
         id: 'guides_card_title',
       }),
@@ -126,7 +106,7 @@ export const menuDocumentationData = (intl: IntlShape) => {
     },
     {
       id: 'Grammar',
-      Icon: TutorialsIcon,
+      Icon: GrammarIcon,
       title: intl.formatMessage({
         id: 'grammar_card_title',
       }),
@@ -137,7 +117,7 @@ export const menuDocumentationData = (intl: IntlShape) => {
     },
     {
       id: 'Interface copy',
-      Icon: GridIcon,
+      Icon: InterfaceIcon,
       title: intl.formatMessage({
         id: 'user_interfaces_card_title',
       }),
@@ -148,7 +128,7 @@ export const menuDocumentationData = (intl: IntlShape) => {
     },
     {
       id: 'Documentation',
-      Icon: DocumentationUpdatesIcon,
+      Icon: EducationIcon,
       title: intl.formatMessage({
         id: 'documentation_card_title',
       }),
@@ -157,20 +137,9 @@ export const menuDocumentationData = (intl: IntlShape) => {
       }),
       link: '/docs/documentation',
     },
-    // {
-    //   id: 'Grammar',
-    //   Icon: InfoIcon,
-    //   title: intl.formatMessage({
-    //     id: 'grammar_card_title',
-    //   }),
-    //   description: intl.formatMessage({
-    //     id: 'grammar_card_subtitle',
-    //   }),
-    //   link: '/docs/grammar',
-    // },
     {
       id: 'Glossary',
-      Icon: SearchIcon,
+      Icon: GlossaryIcon,
       title: intl.formatMessage({
         id: 'glossary_card_title',
       }),
@@ -179,46 +148,9 @@ export const menuDocumentationData = (intl: IntlShape) => {
       }),
       link: '/docs/glossary',
     },
-    // {
-    //   id: 'Changelog',
-    //   Icon: StatusIcon,
-    //   title: intl.formatMessage({
-    //     id: 'changelog_card_title',
-    //   }),
-    //   description: intl.formatMessage({
-    //     id: 'changelog_card_subtitle',
-    //   }),
-    //   link: '/docs/changelog',
-    // },
   ]
   return data
 }
-
-// export const updatesData = (intl: IntlShape) => {
-//   const data: DocDataElement[] = [
-//     {
-//       id: 'FAQ',
-//       Icon: InfoIcon,
-//       title: intl.formatMessage({ id: 'updates_info_notes.title' }),
-//       description: intl.formatMessage({
-//         id: 'updates_info_notes.description',
-//       }),
-//       link: '/faq',
-//     },
-//     {
-//       id: 'Announcements',
-//       Icon: MegaphoneIcon,
-//       title: intl.formatMessage({
-//         id: 'announcements_page.title',
-//       }),
-//       description: intl.formatMessage({
-//         id: 'announcements_page.description',
-//       }),
-//       link: '/announcements',
-//     },
-//   ]
-//   return data
-// }
 
 export const feedbackSectionData = (intl: IntlShape) => {
   const data: DocDataElement[] = [
@@ -235,35 +167,6 @@ export const feedbackSectionData = (intl: IntlShape) => {
 
   return data
 }
-
-// export const knownIssuesData = (intl: IntlShape) => {
-//   const data: DocDataElement[] = [
-//     {
-//       id: 'Known Issues',
-//       Icon: WarningIcon,
-//       title: intl.formatMessage({
-//         id: 'sidebar_known_issues.title',
-//       }),
-//       description: intl.formatMessage({
-//         id: 'sidebar_known_issues.description',
-//       }),
-//       link: '/known-issues',
-//     },
-//     {
-//       id: 'Support Rules',
-//       Icon: PaperIcon,
-//       title: intl.formatMessage({
-//         id: 'sidebar_support_rules.title',
-//       }),
-//       description: intl.formatMessage({
-//         id: 'sidebar_support_rules.description',
-//       }),
-//       link: '#', //TODO: trocar rota
-//     },
-//   ]
-
-//   return data
-// }
 
 export const menuSupportData = (intl: IntlShape) => {
   const data: DocDataElement[] = [
@@ -430,9 +333,6 @@ export const whatsNextData = (intl: IntlShape) => {
       title: intl.formatMessage({
         id: 'app_development_page_new_to_app_development.title',
       }),
-      // description: intl.formatMessage({
-      //   id: 'app_development_page_new_to_app_development.description',
-      // }),
       linkTitle: intl.formatMessage({
         id: 'app_development_page_new_to_app_development.link',
       }),
@@ -442,9 +342,6 @@ export const whatsNextData = (intl: IntlShape) => {
       title: intl.formatMessage({
         id: 'app_development_page_solve_real_world_issues.title',
       }),
-      // description: intl.formatMessage({
-      //   id: 'app_development_page_solve_real_world_issues.description',
-      // }),
       linkTitle: intl.formatMessage({
         id: 'app_development_page_solve_real_world_issues.link',
       }),
@@ -454,9 +351,6 @@ export const whatsNextData = (intl: IntlShape) => {
       title: intl.formatMessage({
         id: 'app_development_page_build_foundations.title',
       }),
-      // description: intl.formatMessage({
-      //   id: 'app_development_page_build_foundations.description',
-      // }),
       linkTitle: intl.formatMessage({
         id: 'app_development_page_build_foundations.link',
       }),
@@ -466,9 +360,6 @@ export const whatsNextData = (intl: IntlShape) => {
       title: intl.formatMessage({
         id: 'app_development_page_go_further.title',
       }),
-      // description: intl.formatMessage({
-      //   id: 'app_development_page_go_further.description',
-      // }),
       linkTitle: intl.formatMessage({
         id: 'app_development_page_go_further.link',
       }),
@@ -764,7 +655,7 @@ export const additionalResourcesSitemap = (intl: IntlShape) => {
         name: intl.formatMessage({
           id: 'sitemap_page_section_additional_resources.support_rules',
         }),
-        link: '#', // TODO: trocar rota
+        link: '#',
         icon: false,
       },
       {

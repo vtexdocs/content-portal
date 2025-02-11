@@ -68,7 +68,7 @@ const rightLinksItem: SxStyleProp = {
   visibility: 'visible',
   alignItems: 'center',
   padding: '0 !important',
-  margin: '0 0 0 32px !important',
+  margin: '0 32px 0 32px !important',
   svg: {
     mr: '8px',
   },

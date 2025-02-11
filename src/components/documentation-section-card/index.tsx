@@ -50,7 +50,7 @@ const DocumentationSectionCard = ({
                   id: 'landing_page_accessPortal',
                 })}
               </Text>
-              <LongArrowIcon size={18} />
+              <LongArrowIcon sx={styles.icon} />
             </Flex>
           )}
         </Flex>

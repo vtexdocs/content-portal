@@ -1,44 +1,38 @@
 import { Box, Flex, Text } from '@vtex/brand-ui'
 import styles from 'components/newsletter-section/styles'
 import Image from 'next/image'
+import { useEffect, useState } from 'react'
 import { FormattedMessage } from 'react-intl'
 
 const NewsletterSection = () => {
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    const checkScreenSize = () => setIsMobile(window.innerWidth <= 600)
+    checkScreenSize()
+    window.addEventListener('resize', checkScreenSize)
+    return () => window.removeEventListener('resize', checkScreenSize)
+  }, [])
+
   return (
-    <Box sx={{ ...styles.section, position: 'relative' }}>
+    <Box sx={styles.section}>
       <Box sx={styles.imageContainer}>
         <Image
-          src={'/images/landing.png'}
-          alt="Image of the VTEX store environment"
+          src={
+            isMobile
+              ? '/images/content-style-guide_mobile.png'
+              : '/images/landing.png'
+          }
+          alt="Image of alphabetical characters, symbolizing the textual content of the portal"
           fill
           style={{
-            width: '100%',
-            height: '100%',
-            objectFit: 'contain',
+            objectFit: 'cover',
+            objectPosition: 'center',
           }}
         />
       </Box>
-      <Flex
-        sx={{
-          position: 'absolute',
-          top: '50%',
-          left: '50%',
-          transform: 'translate(-50%, -50%)',
-          display: 'flex',
-          flexWrap: 'wrap',
-          justifyContent: 'center',
-          alignItems: 'center',
-          textAlign: 'center',
-          maxWidth: '90%',
-        }}
-      >
-        <Text
-          sx={{
-            fontSize: ['32px', '40px', '52.8px'],
-            fontWeight: 'bold',
-            color: '#4A4A4A',
-          }}
-        >
+      <Flex sx={styles.contentContainer}>
+        <Text sx={styles.text}>
           <FormattedMessage id="landing_subtitle_1" />{' '}
           <span style={{ color: '#0366DD' }}>
             <FormattedMessage id="landing_subtitle_2" />

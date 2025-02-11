@@ -15,7 +15,7 @@ import ContentPortalIcon from 'components/icons/Contentportal-icon'
 
 import { getFeedbackURL } from 'utils/get-url'
 
-import { SearchInput } from '@vtexdocs/components'
+// import { SearchInput } from '@vtexdocs/components'
 import { FormattedMessage } from 'react-intl'
 // import { PreviewContext } from 'utils/contexts/preview'
 import styles from './styles'
@@ -116,9 +116,9 @@ const Header = () => {
           <ContentPortalIcon sx={styles.logoSize} />
         </VtexLink>
 
-        <Box sx={styles.searchContainer}>
+        {/* <Box sx={styles.searchContainer}>
           <SearchInput />
-        </Box>
+        </Box> */}
 
         <HeaderBrand.RightLinks sx={styles.rightLinks}>
           <Flex

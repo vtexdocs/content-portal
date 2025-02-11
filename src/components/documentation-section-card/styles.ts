@@ -53,7 +53,9 @@ const infoContainer: SxStyleProp = {
 
 const icon: SxStyleProp = {
   width: '24px',
-  height: 'auto',
+  height: '24px',
+  minWidth: '24px',
+  minHeight: '24px',
 }
 
 const title: SxStyleProp = {
