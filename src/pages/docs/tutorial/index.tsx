@@ -189,7 +189,8 @@ const TutorialsPage: NextPage<Props> = ({ branch }) => {
           description={intl.formatMessage({
             id: 'start_here_page.subtitle',
           })}
-          imageUrl={image}
+          imageUrlDesktop={image}
+          imageUrlMobile={image}
           imageAlt={intl.formatMessage({
             id: 'app_development_page.title',
           })}

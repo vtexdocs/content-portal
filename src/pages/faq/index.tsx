@@ -96,7 +96,8 @@ const FaqPage: NextPage<Props> = ({ faqData, branch }) => {
           description={intl.formatMessage({
             id: 'landing_page_faq.description',
           })}
-          imageUrl={startHereImage}
+          imageUrlDesktop={startHereImage}
+          imageUrlMobile={startHereImage}
           imageAlt={intl.formatMessage({
             id: 'landing_page_faq.title',
           })}

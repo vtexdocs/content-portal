@@ -72,7 +72,8 @@ const TutorialMarkdownRender = (props: Props) => {
         description={intl.formatMessage({
           id: 'tutorial_and_solutions_page.description',
         })}
-        imageUrl={startHereImage}
+        imageUrlDesktop={startHereImage}
+        imageUrlMobile={startHereImage}
         imageAlt={intl.formatMessage({
           id: 'tutorial_and_solutions_page.title',
         })}
