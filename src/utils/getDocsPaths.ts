@@ -58,7 +58,8 @@ export async function getDocsPaths(
     | 'tutorials'
     | 'announcements'
     | 'faq'
-    | 'known-issues', //Mudar
+    | 'known-issues'
+    | 'formatting',
   branch = 'main'
 ) {
   const docsPaths: { [slug: string]: { locale: string; path: string }[] } = {}

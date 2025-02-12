@@ -10,6 +10,7 @@ import { PreviewContext } from 'utils/contexts/preview'
 import getNavigation from 'utils/getNavigation'
 import { DocumentationTitle, UpdatesTitle } from 'utils/typings/unionTypes'
 import GuidesImage from '../../../../public/images/cs-guides_desktop.png'
+import GuidesImageMobile from '../../../../public/images/cs-guides_mobile.png'
 
 interface Props {
   sidebarfallback: any //eslint-disable-line
@@ -35,9 +36,9 @@ const ContentSection = ({ id, length }: { id: string; length: number }) => {
                 title={intl.formatMessage({
                   id: `${id}.content.${index}.title`,
                 })}
-                // description={intl.formatMessage({
-                //   id: `${id}.content.${index}.description`,
-                // })}
+                description={intl.formatMessage({
+                  id: `${id}.content.${index}.description`,
+                })}
                 linkTitle={intl.formatMessage({
                   id: 'start_here_see_more',
                 })}
@@ -81,7 +82,8 @@ const TracksPage: NextPage<Props> = ({ branch }) => {
           description={intl.formatMessage({
             id: 'guides_card_subtitle',
           })}
-          imageUrl={GuidesImage}
+          imageUrlDesktop={GuidesImage}
+          imageUrlMobile={GuidesImageMobile}
           imageAlt={intl.formatMessage({
             id: 'guides_card_subtitle',
           })}

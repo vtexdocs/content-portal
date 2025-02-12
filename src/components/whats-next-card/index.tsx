@@ -4,16 +4,21 @@ import type { WhatsNextDataElement } from 'utils/typings/types'
 
 import styles from './styles'
 
-const WhatsNextCard = ({ title, linkTitle, linkTo }: WhatsNextDataElement) => {
+const WhatsNextCard = ({
+  title,
+  linkTitle,
+  linkTo,
+  description,
+}: WhatsNextDataElement) => {
   return (
     <Link href={linkTo} sx={styles.container}>
       <Box>
         <Text sx={styles.title} className="title">
           {title}
         </Text>
-        {/* <Text sx={styles.description} className="description">
+        <Text sx={styles.description} className="description">
           {description}
-        </Text> */}
+        </Text>
         <Flex sx={styles.linkContainer}>
           <Text sx={styles.link} className="link">
             {linkTitle}

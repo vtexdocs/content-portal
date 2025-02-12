@@ -26,6 +26,7 @@ import {
   WhatsNextDataElement,
 } from './typings/types'
 import InterfaceIcon from 'components/icons/interface-copy-icon'
+import FormattingIcon from 'components/icons/formatting-icon'
 
 libraryConfig
 export const messages = getMessages()
@@ -42,6 +43,7 @@ export const documentationData = (intl: IntlShape) => {
         id: 'guides_card_subtitle',
       }),
       link: '/docs/guides',
+      isExternalLink: false,
     },
     {
       id: 'Grammar',
@@ -53,6 +55,19 @@ export const documentationData = (intl: IntlShape) => {
         id: 'grammar_card_subtitle',
       }),
       link: '/docs/grammar',
+      isExternalLink: false,
+    },
+    {
+      id: 'Formatting',
+      Icon: FormattingIcon,
+      title: intl.formatMessage({
+        id: 'formatting_card_title',
+      }),
+      description: intl.formatMessage({
+        id: 'formatting_card_subtitle',
+      }),
+      link: '/docs/formatting',
+      isExternalLink: false,
     },
     {
       id: 'Interface copy',
@@ -64,6 +79,7 @@ export const documentationData = (intl: IntlShape) => {
         id: 'user_interfaces_card_subtitle',
       }),
       link: '/docs/user-interfaces',
+      isExternalLink: false,
     },
     {
       id: 'Documentation',
@@ -75,6 +91,7 @@ export const documentationData = (intl: IntlShape) => {
         id: 'documentation_card_subtitle',
       }),
       link: '/docs/documentation',
+      isExternalLink: false,
     },
     {
       id: 'Glossary',
@@ -86,6 +103,7 @@ export const documentationData = (intl: IntlShape) => {
         id: 'glossary_card_subtitle',
       }),
       link: 'https://docs.google.com/spreadsheets/d/1vSSg5CrimqSxvWjBoXLE5P7ATJCdRnPT/edit?gid=1978438735#gid=1978438735',
+      isExternalLink: true,
     }, //TODO: Fazer abrir em uma nova aba.
   ]
   return data
@@ -103,6 +121,7 @@ export const menuDocumentationData = (intl: IntlShape) => {
         id: 'guides_card_subtitle',
       }),
       link: '/docs/guides',
+      isExternalLink: false,
     },
     {
       id: 'Grammar',
@@ -114,6 +133,19 @@ export const menuDocumentationData = (intl: IntlShape) => {
         id: 'grammar_card_subtitle',
       }),
       link: '/docs/grammar',
+      isExternalLink: false,
+    },
+    {
+      id: 'Formatting',
+      Icon: FormattingIcon,
+      title: intl.formatMessage({
+        id: 'formatting_card_title',
+      }),
+      description: intl.formatMessage({
+        id: 'formatting_card_subtitle',
+      }),
+      link: '/docs/formatting',
+      isExternalLink: false,
     },
     {
       id: 'Interface copy',
@@ -125,6 +157,7 @@ export const menuDocumentationData = (intl: IntlShape) => {
         id: 'user_interfaces_card_subtitle',
       }),
       link: '/docs/user-interfaces',
+      isExternalLink: false,
     },
     {
       id: 'Documentation',
@@ -136,6 +169,7 @@ export const menuDocumentationData = (intl: IntlShape) => {
         id: 'documentation_card_subtitle',
       }),
       link: '/docs/documentation',
+      isExternalLink: false,
     },
     {
       id: 'Glossary',
@@ -147,6 +181,7 @@ export const menuDocumentationData = (intl: IntlShape) => {
         id: 'glossary_card_subtitle',
       }),
       link: '/docs/glossary',
+      isExternalLink: true,
     },
   ]
   return data
@@ -180,6 +215,7 @@ export const menuSupportData = (intl: IntlShape) => {
         id: 'faststore_card_subtitle',
       }),
       link: 'https://faststore.dev/',
+      isExternalLink: true,
     },
     {
       id: 'Brand',
@@ -191,6 +227,7 @@ export const menuSupportData = (intl: IntlShape) => {
         id: 'brand_card_subtitle',
       }),
       link: 'https://brand.vtex.com/',
+      isExternalLink: true,
     },
     {
       id: 'Developer Portal',
@@ -202,6 +239,7 @@ export const menuSupportData = (intl: IntlShape) => {
         id: 'developer_portal_card_subtitle',
       }),
       link: 'https://developers.vtex.com/',
+      isExternalLink: true,
     },
     {
       id: 'Help Center',
@@ -213,6 +251,7 @@ export const menuSupportData = (intl: IntlShape) => {
         id: 'help_center_card_subtitle',
       }),
       link: 'https://help.vtex.com/en/',
+      isExternalLink: true,
     },
   ]
 
@@ -337,6 +376,7 @@ export const whatsNextData = (intl: IntlShape) => {
         id: 'app_development_page_new_to_app_development.link',
       }),
       linkTo: '/docs/guides/vtex-io-getting-started',
+      description: 'app_development_page_new_to_app_development.description',
     },
     {
       title: intl.formatMessage({
@@ -346,6 +386,8 @@ export const whatsNextData = (intl: IntlShape) => {
         id: 'app_development_page_solve_real_world_issues.link',
       }),
       linkTo: '/docs/guides/app-development-guides',
+      description:
+        'app_development_page_solve_real_world_issues.link.description',
     },
     {
       title: intl.formatMessage({
@@ -355,6 +397,7 @@ export const whatsNextData = (intl: IntlShape) => {
         id: 'app_development_page_build_foundations.link',
       }),
       linkTo: '/docs/guides/concepts',
+      description: 'pp_development_page_build_foundations.description',
     },
     {
       title: intl.formatMessage({
@@ -365,6 +408,7 @@ export const whatsNextData = (intl: IntlShape) => {
       }),
       linkTo:
         '/docs/guides/vtex-io-documentation-homologation-requirements-for-vtex-app-store',
+      description: 'app_development_page_go_further.description',
     },
   ]
   return data
