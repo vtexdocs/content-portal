@@ -12,6 +12,10 @@ const imageContainer: SxStyleProp = {
   },
 
   '> img': {
+    width: '100%', // Ajusta a imagem para caber no modal
+    height: 'auto',
+    maxWidth: '100%',
+    maxHeight: '100%',
     display: 'block',
     padding: '0',
     margin: '0',
@@ -20,8 +24,8 @@ const imageContainer: SxStyleProp = {
 
 const container: SxStyleProp = {
   margin: '0',
-  width: '100%',
-  height: '100%',
+  width: '100vw',
+  height: '100vh',
   backgroundColor: 'rgba(0,0,0,0.9)',
   position: 'fixed',
   top: '0',
@@ -33,6 +37,8 @@ const container: SxStyleProp = {
 }
 
 const modal: SxStyleProp = {
+  width: '90vw', // Permitir que o modal ocupe quase toda a largura da tela
+  height: 'auto', // Deixa o conteúdo determinar a altura
   display: 'inline-block',
   margin: 'auto',
   boxShadow: '2px 4px 16px rgb(0 0 0 / 30%)',
@@ -42,8 +48,11 @@ const modal: SxStyleProp = {
 
   '> img': {
     display: 'block',
-    maxHeight: 'calc(100vh - 50px)',
-    maxWidth: 'calc(100vw - 50px)',
+    '@media (max-width: 480px)': {
+      maxHeight: '100vh',
+      maxWidth: '100vw',
+      width: '100%',
+    },
     width: 'auto',
     margin: '0',
     padding: '0',

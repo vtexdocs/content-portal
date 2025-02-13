@@ -1,7 +1,5 @@
 import { Grid } from '@vtex/brand-ui'
 import type { Page } from 'utils/typings/types'
-
-// import AnnouncementSection from 'components/announcement-section'
 import DocumentationSection from 'components/documentation-section'
 import NewsletterSection from 'components/newsletter-section'
 
@@ -29,23 +27,26 @@ const Home: Page<Props> = ({ branch }) => {
     <>
       <Head>
         <title>VTEX Content Style Guide</title>
-        <meta property="og:title" content="VTEX Language Hub" key="title" />
+        <meta
+          property="og:title"
+          content="VTEX Content Style Guide"
+          key="title"
+        />
         <meta
           property="og:description"
-          content="All things language for users of words."
+          content="All things language for users of words at VTEX"
           key="desc"
         />
-        <meta
+        {/* <meta
           property="og:image"
           content="https://cdn.jsdelivr.net/gh/vtexdocs/devportal@main/public/images/meta-image.png"
-        />
+        /> */}
       </Head>
       <Grid sx={styles.grid}>
         <NewsletterSection />
         <DocumentationSection />
         <FaqSection />
         <SupportSection />
-        {/* <AnnouncementSection announcements={announcementTimelineData} /> */}
       </Grid>
     </>
   )

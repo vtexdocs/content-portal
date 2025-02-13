@@ -1,10 +1,10 @@
 import styles from './styles'
-import type { PropsWithChildren } from 'react'
 import { useDialogState, Dialog } from 'reakit/Dialog'
 import { Box, Button, Text, SxProps, Link } from '@vtex/brand-ui'
 import { IconClose } from './IconClose'
 
-interface AnnouncementBarProps extends PropsWithChildren<SxProps> {
+interface AnnouncementBarProps extends SxProps {
+  children?: React.ReactNode
   type: string
   label?: string
   closable: boolean

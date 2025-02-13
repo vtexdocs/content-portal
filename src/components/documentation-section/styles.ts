@@ -21,9 +21,9 @@ const cardsContainer: SxStyleProp = {
   justifyContent: 'center',
   flexWrap: 'wrap',
   gap: '32px',
-  display: ['flex', 'flex', 'flex', 'grid'], // Mantém flexbox para telas menores e usa grid para telas maiores
-  gridTemplateColumns: ['1fr', '1fr', '1fr', 'repeat(3, 1fr)'], // 3 colunas em telas grandes
-  gridTemplateRows: ['auto', 'auto', 'auto', 'repeat(2, auto)'], // 2 linhas em telas grandes
+  display: ['flex', 'flex', 'flex', 'grid'],
+  gridTemplateColumns: ['1fr', '1fr', '1fr', 'repeat(3, 1fr)'],
+  gridTemplateRows: ['auto', 'auto', 'auto', 'repeat(2, auto)'],
 }
 
 export default {

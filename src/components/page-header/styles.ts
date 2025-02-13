@@ -64,10 +64,9 @@ const welcomeImageInnerContainer: SxStyleProp = {
     '-300px',
     '-350px',
     '-400px',
-  ], // Ajustando o deslocamento para um posicionamento mais adequado
-  // top: ['-92px', '-122px'],
-  width: ['100%', '80%', '70%', '60%', '50%'], // Ajustando a largura para responsividade
-  maxWidth: '1020px', // Limitando a largura máxima para evitar cortes
+  ],
+  width: ['100%', '80%', '70%', '60%', '50%'],
+  maxWidth: '1020px',
   height: 'auto',
 }
 

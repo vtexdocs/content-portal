@@ -1,9 +1,9 @@
 import { SxStyleProp } from '@vtex/brand-ui'
 
 const section: SxStyleProp = {
-  width: ['375px', '100%', '100%'], // Definindo largura fixa para mobile
+  width: ['375px', '100%', '100%'],
   maxWidth: '1440px',
-  height: ['530px', 'auto', '498px'], // Altura fixa para mobile
+  height: ['530px', 'auto', '498px'],
   borderBottom: '1px solid #E7E9EE',
   display: 'flex',
   flexDirection: 'column',

@@ -1,6 +1,6 @@
-import { Icon } from '@vtex/brand-ui'
+import { Icon, IconProps } from '@vtex/brand-ui'
 
-const GuidesIcon = (props) => (
+const GuidesIcon = (props: IconProps) => (
   <Icon
     {...props}
     width="25"
