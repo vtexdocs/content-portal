@@ -95,7 +95,7 @@ const TracksPage: NextPage<Props> = ({ branch }) => {
           />
           <ContentSection
             id={'documentation_page_section_templates'}
-            length={7}
+            length={8}
           />
         </Box>
       </Fragment>

@@ -102,7 +102,7 @@ export const documentationData = (intl: IntlShape) => {
       description: intl.formatMessage({
         id: 'glossary_card_subtitle',
       }),
-      link: 'https://docs.google.com/spreadsheets/d/1vSSg5CrimqSxvWjBoXLE5P7ATJCdRnPT/edit?gid=1978438735#gid=1978438735',
+      link: 'https://docs.google.com/spreadsheets/d/1zf7FG6LPXpmTcHYwieI6mvAFhVIrNBy1/edit?gid=1467925083#gid=1467925083',
       isExternalLink: true,
     }, //TODO: Fazer abrir em uma nova aba.
   ]

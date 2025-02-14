@@ -37,10 +37,6 @@ const Home: Page<Props> = ({ branch }) => {
           content="All things language for users of words at VTEX"
           key="desc"
         />
-        {/* <meta
-          property="og:image"
-          content="https://cdn.jsdelivr.net/gh/vtexdocs/devportal@main/public/images/meta-image.png"
-        /> */}
       </Head>
       <Grid sx={styles.grid}>
         <NewsletterSection />
