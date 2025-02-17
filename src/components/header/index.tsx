@@ -9,6 +9,7 @@ import { useRouter } from 'next/router'
 import { useEffect, useRef, useState } from 'react'
 import DropdownMenu from 'components/dropdown-menu'
 import GridIcon from 'components/icons/grid-icon'
+import MenuIcon from 'components/icons/menu-icon' // Importe o novo ícone
 import LongArrowIcon from 'components/icons/long-arrow-icon'
 import ContentPortalIcon from 'components/icons/Contentportal-icon'
 import { getFeedbackURL } from 'utils/get-url'
@@ -63,6 +64,24 @@ const Header = () => {
       router.events.off('routeChangeStart', () => setShowDropdown(false))
   }, [router.events])
 
+  const renderMenuIcon = () => {
+    if (typeof window !== 'undefined' && window.innerWidth < 768) {
+      return menuOpen ? (
+        <CloseIcon color="#E31C58" />
+      ) : (
+        <Box sx={styles.menuIconContainer}>
+          <MenuIcon
+            sx={styles.menuIcon}
+            className="mobile-icon"
+            color="#E31C58"
+          />
+        </Box>
+      )
+    } else {
+      return <GridIcon />
+    }
+  }
+
   return (
     <Box ref={headerElement} sx={styles.headerContainer}>
       <HeaderBrand sx={styles.headerBrand}>
@@ -75,13 +94,9 @@ const Header = () => {
         </VtexLink>
 
         <HeaderBrand.RightLinks sx={styles.rightLinks}>
-          <Flex
-            sx={styles.dropdownContainer}
-            // onMouseOver={() => setShowDropdown(true)}  //Remove these events
-            // onMouseLeave={() => setShowDropdown(false)}  //Remove these events
-          >
+          <Flex sx={styles.dropdownContainer}>
             <Flex sx={styles.dropdownButton(showDropdown)} onClick={toggleMenu}>
-              {menuOpen ? <CloseIcon /> : <GridIcon />}
+              {renderMenuIcon()}
               <Text sx={styles.rightButtonsText} data-cy="docs-dropdown">
                 <FormattedMessage id="landing_page_header_docs.message" />
               </Text>
@@ -89,7 +104,7 @@ const Header = () => {
             {showDropdown && <DropdownMenu />}
           </Flex>
 
-          {!menuOpen && (
+          {typeof window !== 'undefined' && window.innerWidth >= 768 && (
             <VtexLink
               sx={styles.rightLinksItem}
               href={getFeedbackURL()}
