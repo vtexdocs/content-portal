@@ -12,6 +12,7 @@ const CloseIcon = (props: IconProps) => (
   >
     <path
       d="M8 8L24 24"
+      fill="#E31C58"
       stroke="currentcolor"
       strokeWidth="2"
       strokeLinecap="round"
@@ -19,6 +20,7 @@ const CloseIcon = (props: IconProps) => (
     />
     <path
       d="M24 8L8 24"
+      fill="#E31C58"
       stroke="currentcolor"
       strokeWidth="2"
       strokeLinecap="round"

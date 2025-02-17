@@ -16,7 +16,7 @@ const cardContainer: SxStyleProp = {
 
   ':active, :hover': {
     cursor: 'pointer',
-    borderColor: '#CCCED8',
+    // borderColor: '#CCCED8',
     transition: 'all 0.3s ease-out',
   },
 

@@ -7,49 +7,38 @@ import {
 } from '@vtex/brand-ui'
 import { useRouter } from 'next/router'
 import { useEffect, useRef, useState } from 'react'
-
 import DropdownMenu from 'components/dropdown-menu'
 import GridIcon from 'components/icons/grid-icon'
 import LongArrowIcon from 'components/icons/long-arrow-icon'
 import ContentPortalIcon from 'components/icons/Contentportal-icon'
-
 import { getFeedbackURL } from 'utils/get-url'
-
-// import { SearchInput } from '@vtexdocs/components'
 import { FormattedMessage } from 'react-intl'
-// import { PreviewContext } from 'utils/contexts/preview'
 import styles from './styles'
+import CloseIcon from 'components/icons/close-icon'
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const Header = () => {
   const router = useRouter()
-  // const isBranchPreview = router.isPreview
-  // const intl = useIntl()
-
-  // const { branchPreview } = useContext(PreviewContext)
-
   const lastScroll = useRef(0)
   const modalOpen = useRef(false)
+  const headerElement = useRef<HTMLElement>(null)
   const [showDropdown, setShowDropdown] = useState(false)
-  const headerElement = useRef<HTMLElement>()
+  const [menuOpen, setMenuOpen] = useState(false)
+
+  const toggleMenu = () => {
+    setMenuOpen((prev) => !prev)
+    setShowDropdown((prev) => !prev) // Also toggle dropdown visibility
+  }
 
   useEffect(() => {
-    const body = document.body
-
     const observer = new MutationObserver(() => {
       modalOpen.current = !modalOpen.current
       if (headerElement.current) {
-        if (modalOpen.current) {
-          const headerHeight = headerElement.current.children[0].clientHeight
-          headerElement.current.style.top = `-${headerHeight}px`
-        } else {
-          headerElement.current.style.top = '0'
-        }
+        headerElement.current.style.top = modalOpen.current
+          ? `-${headerElement.current.children[0].clientHeight}px`
+          : '0'
       }
     })
-    observer.observe(body, {
-      attributeFilter: ['style'],
-    })
+    observer.observe(document.body, { attributeFilter: ['style'] })
   }, [])
 
   useEffect(() => {
@@ -57,56 +46,25 @@ const Header = () => {
       setShowDropdown(false)
       if (headerElement.current && !modalOpen.current) {
         const headerHeight = headerElement.current.children[0].clientHeight
-        if (
-          window.scrollY > headerHeight &&
-          window.scrollY > lastScroll.current
-        ) {
-          headerElement.current.style.top = `-${headerHeight}px`
-        } else {
-          headerElement.current.style.top = '0'
-        }
+        headerElement.current.style.top =
+          window.scrollY > headerHeight && window.scrollY > lastScroll.current
+            ? `-${headerHeight}px`
+            : '0'
         lastScroll.current = window.scrollY
       }
     }
-
-    window.removeEventListener('scroll', onScroll)
     window.addEventListener('scroll', onScroll, { passive: true })
-
     return () => window.removeEventListener('scroll', onScroll)
-  }, [headerElement.current])
+  }, [])
 
   useEffect(() => {
-    const hideDropdown = () => {
-      setShowDropdown(false)
-    }
-
-    router.events.on('routeChangeStart', hideDropdown)
-    return () => router.events.off('routeChangeStart', hideDropdown)
-  }, [])
+    router.events.on('routeChangeStart', () => setShowDropdown(false))
+    return () =>
+      router.events.off('routeChangeStart', () => setShowDropdown(false))
+  }, [router.events])
 
   return (
     <Box ref={headerElement} sx={styles.headerContainer}>
-      {/* {!isBranchPreview ? (
-        <AnnouncementBar
-          closable={true}
-          type="new"
-          label={intl.formatMessage({ id: 'announcement_bar.headline' })}
-          action={{
-            button: intl.formatMessage({ id: 'announcement_bar.button' }),
-            href: 'https://forms.gle/5EvnahjuwQqwumDd9',
-          }}
-        ></AnnouncementBar>
-      ) : (
-        <AnnouncementBar
-          closable={false}
-          type="warning"
-          label={`🚧 You are currently using branch ${branchPreview} in preview mode. This content may differ from the published version.`}
-          action={{
-            button: 'EXIT PREVIEW MODE',
-            href: '/api/disable-preview',
-          }}
-        ></AnnouncementBar>
-      )} */}
       <HeaderBrand sx={styles.headerBrand}>
         <VtexLink
           aria-label="Go back to Home"
@@ -116,45 +74,33 @@ const Header = () => {
           <ContentPortalIcon sx={styles.logoSize} />
         </VtexLink>
 
-        {/* <Box sx={styles.searchContainer}>
-          <SearchInput />
-        </Box> */}
-
         <HeaderBrand.RightLinks sx={styles.rightLinks}>
           <Flex
             sx={styles.dropdownContainer}
-            onMouseOver={() => setShowDropdown(true)}
-            onMouseLeave={() => setShowDropdown(false)}
+            // onMouseOver={() => setShowDropdown(true)}  //Remove these events
+            // onMouseLeave={() => setShowDropdown(false)}  //Remove these events
           >
-            <Flex sx={styles.dropdownButton(showDropdown)}>
-              <GridIcon />
+            <Flex sx={styles.dropdownButton(showDropdown)} onClick={toggleMenu}>
+              {menuOpen ? <CloseIcon /> : <GridIcon />}
               <Text sx={styles.rightButtonsText} data-cy="docs-dropdown">
-                {' '}
-                {/*TODO: mudar data-cy no teste */}
                 <FormattedMessage id="landing_page_header_docs.message" />
               </Text>
             </Flex>
-
             {showDropdown && <DropdownMenu />}
           </Flex>
 
-          <VtexLink
-            sx={styles.rightLinksItem}
-            href={getFeedbackURL()} // Confirmar se vamos usar, se sim, atualizar link.
-            target="_blank"
-          >
-            <LongArrowIcon />
-            <Text sx={styles.rightButtonsText}>
-              <FormattedMessage id="landing_page_header_feedback.message" />
-            </Text>
-          </VtexLink>
-          {/* <Flex sx={styles.containerHamburguerLocale}>
-            <HamburgerMenu />
-            <Box sx={styles.splitter}></Box>
-            <Box sx={styles.localeSwitcherContainer}>
-              <LocaleSwitcher />
-            </Box>
-          </Flex> */}
+          {!menuOpen && (
+            <VtexLink
+              sx={styles.rightLinksItem}
+              href={getFeedbackURL()}
+              target="_blank"
+            >
+              <LongArrowIcon />
+              <Text sx={styles.rightButtonsText}>
+                <FormattedMessage id="landing_page_header_feedback.message" />
+              </Text>
+            </VtexLink>
+          )}
         </HeaderBrand.RightLinks>
       </HeaderBrand>
     </Box>

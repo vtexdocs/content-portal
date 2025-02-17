@@ -10,7 +10,7 @@ const InterfacesIcon = (props: IconProps) => (
     xmlns="http://www.w3.org/2000/svg"
   >
     <path
-      fill="#000"
+      fill="currentColor"
       d="M2 20V4h20v16zm18-9V6H4v5zm-10 7h10v-5H10zm-6 0h4v-5H4z"
     />
   </Icon>

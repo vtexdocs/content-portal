@@ -16,8 +16,8 @@ const cardContainer: SxStyleProp = {
   ':active, :hover': {
     cursor: 'pointer',
     backgroundColor: 'white',
-    borderColor: 'muted.2',
-    boxShadow: '0px 0px 16px rgba(0, 0, 0, 0.1)',
+    // borderColor: 'muted.2',
+    // boxShadow: '0px 0px 16px rgba(0, 0, 0, 0.1)',
     transition: 'all 0.3s ease-out',
 
     '.title': {

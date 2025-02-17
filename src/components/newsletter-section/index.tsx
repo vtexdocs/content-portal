@@ -21,7 +21,7 @@ const NewsletterSection = () => {
           src={
             isMobile
               ? '/images/content-style-guide_mobile.png'
-              : '/images/landing.png'
+              : '/images/content-style-guide_desktop.png'
           }
           alt="Image of alphabetical characters, symbolizing the textual content of the portal"
           fill

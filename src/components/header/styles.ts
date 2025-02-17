@@ -62,9 +62,9 @@ const rightLinksItem: SxStyleProp = {
   display: [
     'none !important',
     'none !important',
-    'none !important',
     'flex !important',
-  ],
+    'flex !important',
+  ], // Hide on mobile
   visibility: 'visible',
   alignItems: 'center',
   padding: '0 !important',
@@ -83,9 +83,9 @@ const rightLinksItem: SxStyleProp = {
 
 const dropdownContainer: SxStyleProp = {
   display: [
-    'none !important',
-    'none !important',
-    'none !important',
+    'flex !important',
+    'flex !important',
+    'flex !important',
     'flex !important',
   ],
   textTransform: 'none',
@@ -109,6 +109,9 @@ const dropdownButton: (active: boolean) => SxStyleProp = (active: boolean) => ({
     'svg > path': {
       fill: '#C81E51',
     },
+  },
+  '> Text': {
+    display: ['none !important', 'none', 'initial'], // Hide the "Menu" text on mobile
   },
 })
 
