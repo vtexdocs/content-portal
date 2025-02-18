@@ -42,7 +42,8 @@ const AdminPage: NextPage<Props> = ({ file, fileContent, isPRPreview }) => {
             <PageHeader
               title={headerTitle}
               description={headerDescription}
-              imageUrl={image}
+              imageUrlDesktop={image}
+              imageUrlMobile={image}
               imageAlt="Sidebar editor"
             />
             <Box sx={styles.contentContainer}>

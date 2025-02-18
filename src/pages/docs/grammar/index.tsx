@@ -9,7 +9,8 @@ import styles from 'styles/documentation-landing-page'
 import { PreviewContext } from 'utils/contexts/preview'
 import getNavigation from 'utils/getNavigation'
 import { DocumentationTitle, UpdatesTitle } from 'utils/typings/unionTypes'
-import startHereImage from '../../../../public/images/start-here.png'
+import GrammarImage from '../../../../public/images/cs-grammar_desktop.png'
+import GrammarImageMobile from '../../../../public/images/cs-grammar_mobile.png'
 
 interface Props {
   sidebarfallback: any //eslint-disable-line
@@ -81,19 +82,14 @@ const TracksPage: NextPage<Props> = ({ branch }) => {
           description={intl.formatMessage({
             id: 'grammar_card_subtitle',
           })}
-          imageUrl={startHereImage}
+          imageUrlDesktop={GrammarImage}
+          imageUrlMobile={GrammarImageMobile}
           imageAlt={intl.formatMessage({
             id: 'grammar_card_subtitle',
           })}
         />
         <Box sx={styles.contentContainer}>
-          <ContentSection id={'grammar_page_section'} length={7} />
-          {/* <ContentSection id={'start_here_page_modules'} length={11} />
-          <ContentSection id={'start_here_page_omnichannel'} length={4} />
-          <ContentSection id={'start_here_page_vtex_io'} length={2} />
-          <ContentSection id={'start_here_page_erp'} length={1} />
-          <ContentSection id={'start_here_page_payment'} length={3} />
-          <ContentSection id={'start_here_page_conversational'} length={2} /> */}
+          <ContentSection id={'grammar_page_section'} length={9} />
         </Box>
       </Fragment>
     </>

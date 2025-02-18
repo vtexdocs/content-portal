@@ -6,9 +6,9 @@ import styles from './styles'
 
 const WhatsNextCard = ({
   title,
-  description,
   linkTitle,
   linkTo,
+  description,
 }: WhatsNextDataElement) => {
   return (
     <Link href={linkTo} sx={styles.container}>

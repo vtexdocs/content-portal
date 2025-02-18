@@ -148,6 +148,9 @@ const TutorialPage: NextPage<Props> = ({
       contributors={componentProps.contributors}
       seeAlsoData={componentProps.seeAlsoData}
       path={componentProps.path}
+      sectionSelected={''}
+      sidebarfallback={undefined}
+      parentsArray={[]}
     />
   ) : (
     <TutorialIndexing

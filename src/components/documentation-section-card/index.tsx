@@ -40,17 +40,17 @@ const DocumentationSectionCard = ({
           {!isExternalLink ? (
             <Text className="learnMoreText" sx={styles.learnMoreText}>
               {intl.formatMessage({
-                id: 'landing_page_card_link_caption',
+                id: 'landing_page_accessPortal',
               })}
             </Text>
           ) : (
             <Flex sx={styles.accessPortal}>
               <Text className="accessPortal" sx={styles.learnMoreText}>
                 {intl.formatMessage({
-                  id: 'landing_page_accessPortal',
+                  id: 'landing_page_card_link_caption',
                 })}
               </Text>
-              <LongArrowIcon size={18} />
+              <LongArrowIcon sx={styles.icon} />
             </Flex>
           )}
         </Flex>

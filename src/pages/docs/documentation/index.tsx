@@ -9,7 +9,8 @@ import styles from 'styles/documentation-landing-page'
 import { PreviewContext } from 'utils/contexts/preview'
 import getNavigation from 'utils/getNavigation'
 import { DocumentationTitle, UpdatesTitle } from 'utils/typings/unionTypes'
-import startHereImage from '../../../../public/images/start-here.png'
+import documentationImage from '../../../../public/images/cs-documentation_desktop.png'
+import documentationImageMobile from '../../../../public/images/cs-documentation_mobile.png'
 
 interface Props {
   sidebarfallback: any //eslint-disable-line
@@ -81,19 +82,21 @@ const TracksPage: NextPage<Props> = ({ branch }) => {
           description={intl.formatMessage({
             id: 'documentation_card_subtitle',
           })}
-          imageUrl={startHereImage}
+          imageUrlDesktop={documentationImage}
+          imageUrlMobile={documentationImageMobile}
           imageAlt={intl.formatMessage({
             id: 'documentation_card_subtitle',
           })}
         />
         <Box sx={styles.contentContainer}>
-          <ContentSection id={'documentation_page_section'} length={8} />
-          {/* <ContentSection id={'start_here_page_modules'} length={11} />
-          <ContentSection id={'start_here_page_omnichannel'} length={4} />
-          <ContentSection id={'start_here_page_vtex_io'} length={2} />
-          <ContentSection id={'start_here_page_erp'} length={1} />
-          <ContentSection id={'start_here_page_payment'} length={3} />
-          <ContentSection id={'start_here_page_conversational'} length={2} /> */}
+          <ContentSection
+            id={'documentation_page_section_general'}
+            length={8}
+          />
+          <ContentSection
+            id={'documentation_page_section_templates'}
+            length={8}
+          />
         </Box>
       </Fragment>
     </>

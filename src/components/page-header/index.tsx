@@ -1,26 +1,37 @@
 import Image, { StaticImageData } from 'next/image'
 import { Box, Flex, Text } from '@vtex/brand-ui'
 import styles from './styles'
-import { Fragment } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 
 interface IPageHeader {
   title: string
   description: string
-  imageUrl: StaticImageData
+  imageUrlDesktop: StaticImageData
+  imageUrlMobile: StaticImageData
   imageAlt: string
 }
 
 const PageHeader = ({
   title,
   description,
-  imageUrl,
   imageAlt,
+  imageUrlDesktop,
+  imageUrlMobile,
 }: IPageHeader) => {
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    const checkScreenSize = () => setIsMobile(window.innerWidth <= 600)
+    checkScreenSize()
+    window.addEventListener('resize', checkScreenSize)
+    return () => window.removeEventListener('resize', checkScreenSize)
+  }, [])
+
   return (
     <Fragment>
       <Box sx={styles.welcomeOuterContainer}>
         <Flex sx={styles.welcomeInnerContainer}>
-          <Box sx={styles.welcomeHeader}>
+          <Box sx={{ ...styles.welcomeHeader, mt: ['-100px', 'initial'] }}>
             <Text sx={styles.welcomeText}>{title}</Text>
             <Text sx={styles.welcomeSubtitle}>{description}</Text>
           </Box>
@@ -29,10 +40,15 @@ const PageHeader = ({
               <Box sx={styles.welcomeImageGradient}></Box>
               <Image
                 alt={imageAlt}
-                src={imageUrl}
+                src={isMobile ? imageUrlMobile : imageUrlDesktop}
                 style={{
                   maxWidth: '100%',
-                  height: 'auto',
+                  height: isMobile ? '242px' : 'auto',
+                  width: isMobile ? '100%' : '100%',
+                  objectFit: 'cover',
+                  objectPosition: 'center',
+                  display: 'block',
+                  margin: '0 auto',
                 }}
               />
             </Box>

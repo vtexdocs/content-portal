@@ -2220,9 +2220,9 @@
                 },
                 {
                   "name": {
-                    "en": "Glossary",
-                    "es": "Glosario",
-                    "pt": "Glossário"
+                    "en": "Glossary →",
+                    "es": "Glosario →",
+                    "pt": "Glossário →"
                   },
                   "slug": "glossary",
                   "origin": "",

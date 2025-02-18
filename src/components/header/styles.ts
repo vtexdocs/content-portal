@@ -1,3 +1,5 @@
+// styles.ts
+
 import type { SxStyleProp } from '@vtex/brand-ui'
 
 const menuContainer: SxStyleProp = {
@@ -59,16 +61,10 @@ const rightLinks: SxStyleProp = {
 }
 
 const rightLinksItem: SxStyleProp = {
-  display: [
-    'none !important',
-    'none !important',
-    'none !important',
-    'flex !important',
-  ],
   visibility: 'visible',
   alignItems: 'center',
   padding: '0 !important',
-  margin: '0 0 0 32px !important',
+  margin: '0 32px 0 32px !important',
   svg: {
     mr: '8px',
   },
@@ -83,9 +79,9 @@ const rightLinksItem: SxStyleProp = {
 
 const dropdownContainer: SxStyleProp = {
   display: [
-    'none !important',
-    'none !important',
-    'none !important',
+    'flex !important',
+    'flex !important',
+    'flex !important',
     'flex !important',
   ],
   textTransform: 'none',
@@ -107,7 +103,7 @@ const dropdownButton: (active: boolean) => SxStyleProp = (active: boolean) => ({
   ':hover': {
     color: '#C81E51',
     'svg > path': {
-      fill: '#C81E51',
+      stroke: '#C81E51',
     },
   },
 })
@@ -213,6 +209,26 @@ const splitter: SxStyleProp = {
   background: '#E7E9EE',
 }
 
+const menuIconContainer: SxStyleProp = {
+  position: 'relative',
+  width: '24px',
+  height: '24px',
+  display: 'inline-block',
+}
+
+const gridIcon: SxStyleProp = {
+  position: 'absolute',
+  top: 0,
+  left: 0,
+}
+
+const menuIcon: SxStyleProp = {
+  position: 'absolute',
+  top: 0,
+  left: 0,
+  color: '#E31C58',
+}
+
 export default {
   splitter,
   menuContainer,
@@ -238,4 +254,7 @@ export default {
   arrowIcon,
   arrowIconActive,
   localeSwitcherContainer,
+  menuIconContainer,
+  gridIcon,
+  menuIcon,
 }

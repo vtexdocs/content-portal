@@ -41,7 +41,6 @@ const localeSwitcher: SxStyleProp = {
     height: '100%',
     justifyContent: 'flex-start',
     borderLeft: ['1px solid #e7e9ed'],
-    // ml: '40px',
   },
 }
 

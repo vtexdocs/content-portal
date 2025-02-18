@@ -18,7 +18,6 @@ import Script from 'next/script'
 import { useIntl } from 'react-intl'
 import { documentationData } from 'utils/constants'
 import { DocumentationTitle, UpdatesTitle } from 'utils/typings/unionTypes'
-import EducationSection from './education-section'
 
 interface Props {
   sidebarfallback: any //eslint-disable-line
@@ -106,7 +105,6 @@ export default function Layout({
           {!hideSidebar && <Sidebar parentsArray={parentsArray} />}
           <Box sx={styles.mainContainer}>{children}</Box>
         </Flex>
-        <EducationSection />
         <Footer />
       </LibraryContextProvider>
     </ThemeProvider>
