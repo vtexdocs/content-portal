@@ -49,7 +49,7 @@ const DocumentationSectionCard = ({
           </Flex>
         </Flex>
       </a>
-    );
+    )
   }
 
   return (
@@ -80,7 +80,7 @@ const DocumentationSectionCard = ({
         </Flex>
       </Flex>
     </Link>
-  );
-};
+  )
+}
 
 export default DocumentationSectionCard
