@@ -90,7 +90,7 @@ export const documentationData = (intl: IntlShape) => {
       }),
       link: 'https://docs.google.com/spreadsheets/d/1zf7FG6LPXpmTcHYwieI6mvAFhVIrNBy1/edit?gid=1467925083#gid=1467925083',
       isExternalLink: true,
-    }, //TODO: Fazer abrir em uma nova aba.
+    },
   ]
   return data
 }
@@ -166,7 +166,7 @@ export const menuDocumentationData = (intl: IntlShape) => {
       description: intl.formatMessage({
         id: 'glossary_card_subtitle',
       }),
-      link: '/docs/glossary',
+      link: 'https://docs.google.com/spreadsheets/d/1zf7FG6LPXpmTcHYwieI6mvAFhVIrNBy1/edit?gid=1467925083#gid=1467925083',
       isExternalLink: true,
     },
   ]
