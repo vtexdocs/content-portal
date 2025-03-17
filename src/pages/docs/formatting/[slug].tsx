@@ -49,7 +49,6 @@ import {
   localeType,
 } from 'utils/navigation-utils'
 import { remarkReadingTime } from 'utils/remark_plugins/remarkReadingTime'
-import rehypeSetTableWidth from 'utils/remark_plugins/rehypeSetTableWidth';
 
 const docsPathsGLOBAL = await getTracksPaths('formatting')
 
@@ -320,7 +319,7 @@ export const getStaticProps: GetStaticProps = async ({
           remarkReadingTime,
         ],
         rehypePlugins: [
-          [rehypeHighlight, { languages: { hljsCurl }, ignoreMissing: true }], rehypeSetTableWidth
+          [rehypeHighlight, { languages: { hljsCurl }, ignoreMissing: true }],
         ],
         format,
       },
