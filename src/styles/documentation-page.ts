@@ -20,7 +20,7 @@ const innerContainer: SxStyleProp = {
 const articleBox: SxStyleProp = {
   fontSize: '1em',
   lineHeight: '1.375em',
-  width: ['100%', 'auto'],
+  width: ['100%', '70%'],
   a: {
     color: '#E31C58',
   },

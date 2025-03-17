@@ -12,7 +12,7 @@ const Footer = () => {
       message: intl.formatMessage({
         id: 'landing_page_footer_github.message',
       }),
-      to: () => getGithubURL(), // Ajustar link.
+      to: () => getGithubURL(),
     },
     {
       message: intl.formatMessage({
@@ -33,7 +33,12 @@ const Footer = () => {
       <VtexLogoFooter sx={{ width: '61px', height: '22px' }} />
       <Flex sx={styles.textLinkItems}>
         {links.map((link, index) => (
-          <Link sx={{ color: '#CCCED8' }} key={index} href={link.to()}>
+          <Link
+            sx={{ color: '#CCCED8' }}
+            key={index}
+            href={link.to()}
+            target="_blank"
+          >
             {link.message}
           </Link>
         ))}

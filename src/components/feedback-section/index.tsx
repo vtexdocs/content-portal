@@ -23,7 +23,7 @@ const FeedbackSection = ({ slug, docPath, suggestEdits = true }: DocPath) => {
     })
   }
 
-  const urlToEdit = `https://github.com/vtexdocs/language-hub-content/edit/main/${docPath}`
+  const urlToEdit = `https://github.com/vtexdocs/content-portal-content/edit/main/${docPath}`
 
   return (
     <FeedbackSectionComponent

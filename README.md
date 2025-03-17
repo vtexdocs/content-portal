@@ -7,7 +7,7 @@ This portal was created to guide VTEX employees on writing and content standardi
 This project utilizes the following technologies:
 - **React** and **Next.js** for building the interface
 - **Algolia** for searching and indexing Markdown files
-- [**language-hub-content**](https://github.com/vtexdocs/language-hub-content) as the source repository for content
+- [**content-portal-content**](https://github.com/vtexdocs/content-portal-content) as the source repository for content
 
 ## 📦 Installation and Execution
 
