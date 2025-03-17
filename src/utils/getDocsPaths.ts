@@ -66,7 +66,7 @@ export async function getDocsPaths(
 
   const repoTree = await getGithubTree(
     'vtexdocs',
-    'language-hub-content',
+    'content-portal-content',
     branch
   )
   // @ts-ignore

@@ -241,13 +241,13 @@ export const getStaticProps: GetStaticProps = async ({
   let documentationContent = ''
   documentationContent = await getGithubFile(
     'vtexdocs',
-    'language-hub-content',
+    'content-portal-content',
     branch,
     path
   )
   documentationContent =
     (await fetch(
-      `https://raw.githubusercontent.com/vtexdocs/language-hub-content/${branch}/${path}`
+      `https://raw.githubusercontent.com/vtexdocs/content-portal-content/${branch}/${path}`
     )
       .then((res) => res.text())
       .catch((err) => console.log(err))) || ''
@@ -255,7 +255,7 @@ export const getStaticProps: GetStaticProps = async ({
   let contributors = {}
   contributors =
     (await fetch(
-      `https://github.com/vtexdocs/language-hub-content/file-contributors/${branch}/${path}`,
+      `https://github.com/vtexdocs/content-portal-content/file-contributors/${branch}/${path}`,
       {
         method: 'GET',
         headers: {
@@ -346,13 +346,13 @@ export const getStaticProps: GetStaticProps = async ({
           try {
             let documentationContent = await getGithubFile(
               'vtexdocs',
-              'language-hub-content',
+              'content-portal-content',
               'main',
               seeAlsoPath
             )
             documentationContent =
               (await fetch(
-                `https://raw.githubusercontent.com/vtexdocs/language-hub-content/main/${seeAlsoPath}`
+                `https://raw.githubusercontent.com/vtexdocs/content-portal-content/main/${seeAlsoPath}`
               )
                 .then((res) => res.text())
                 .catch((err) => console.log(err))) || ''
