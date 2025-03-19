@@ -200,7 +200,7 @@ export const menuSupportData = (intl: IntlShape) => {
       description: intl.formatMessage({
         id: 'faststore_card_subtitle',
       }),
-      link: 'https://faststore.dev/',
+      link: 'https://developers.vtex.com/docs/guides/faststore/',
       isExternalLink: true,
     },
     {
@@ -256,7 +256,7 @@ export const supportData = (intl: IntlShape) => {
         id: 'faststore_card_subtitle',
       }),
       isExternalLink: true,
-      link: 'https://faststore.dev/',
+      link: 'https://developers.vtex.com/docs/guides/faststore/',
     },
     {
       id: 'Brand',
