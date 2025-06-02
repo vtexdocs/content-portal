@@ -88,7 +88,7 @@ export const documentationData = (intl: IntlShape) => {
       description: intl.formatMessage({
         id: 'glossary_card_subtitle',
       }),
-      link: 'https://docs.google.com/spreadsheets/d/1zf7FG6LPXpmTcHYwieI6mvAFhVIrNBy1/edit?gid=1467925083#gid=1467925083',
+      link: 'https://docs.google.com/spreadsheets/d/1vSSg5CrimqSxvWjBoXLE5P7ATJCdRnPT/edit?gid=722394202#gid=722394202',
       isExternalLink: true,
     },
   ]
@@ -166,7 +166,7 @@ export const menuDocumentationData = (intl: IntlShape) => {
       description: intl.formatMessage({
         id: 'glossary_card_subtitle',
       }),
-      link: 'https://docs.google.com/spreadsheets/d/1zf7FG6LPXpmTcHYwieI6mvAFhVIrNBy1/edit?gid=1467925083#gid=1467925083',
+      link: 'https://docs.google.com/spreadsheets/d/1vSSg5CrimqSxvWjBoXLE5P7ATJCdRnPT/edit?gid=722394202#gid=722394202',
       isExternalLink: true,
     },
   ]
