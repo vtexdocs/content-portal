@@ -89,7 +89,7 @@ const TracksPage: NextPage<Props> = ({ branch }) => {
           })}
         />
         <Box sx={styles.contentContainer}>
-          <ContentSection id={'guides_page_section'} length={4} />
+          <ContentSection id={'guides_page_section'} length={5} />
         </Box>
       </Fragment>
     </>
