@@ -17,16 +17,10 @@ const title: SxStyleProp = {
 }
 
 const cardsContainer: SxStyleProp = {
-  width: ['100%', '100%', '100%', '1000px'],
+  width: ['100%', '100%', '100%', '100%', '1000px', '100%'],
   justifyContent: 'center',
   flexWrap: 'wrap',
   gap: '32px',
-  display: ['flex', 'flex', 'flex', 'grid'],
-  gridTemplateColumns: ['1fr', '1fr', '1fr', 'repeat(3, 1fr)'],
-  gridTemplateRows: ['auto', 'auto', 'auto', 'repeat(2, auto)'],
-  'svg > path': {
-    fill: '#4A596B',
-  },
 }
 
 export default {

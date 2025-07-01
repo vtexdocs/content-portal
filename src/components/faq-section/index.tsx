@@ -1,11 +1,17 @@
-import { Box } from '@vtex/brand-ui'
+import { Box, Button, Flex, Text } from '@vtex/brand-ui'
+
+import { faqData } from 'utils/constants'
+
 import styles from './styles'
+import { useIntl } from 'react-intl'
+import FaqSectionCard from 'components/faq-section-card'
+import Link from 'next/link'
 
 const FaqSection = () => {
-  // const intl = useIntl()
+  const intl = useIntl()
   return (
     <Box sx={styles.sectionContainer}>
-      {/* <Box sx={styles.titleContainer}>
+      <Box sx={styles.titleContainer}>
         <Box>
           <Text sx={styles.title}>
             {intl.formatMessage({
@@ -37,7 +43,7 @@ const FaqSection = () => {
             {intl.formatMessage({ id: 'landing_page_faq.button' })}
           </Button>
         </Link>
-      </Box> */}
+      </Box>
     </Box>
   )
 }

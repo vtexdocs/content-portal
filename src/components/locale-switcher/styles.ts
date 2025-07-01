@@ -34,13 +34,14 @@ const baseLocaleSwitcher: SxStyleProp = {
 const localeSwitcher: SxStyleProp = {
   button: {
     ...baseLocaleSwitcher,
-    display: 'none',
+    display: ['flex'],
     ':hover': {
       color: '#142032',
     },
     height: '100%',
     justifyContent: 'flex-start',
     borderLeft: ['1px solid #e7e9ed'],
+    // ml: '40px',
   },
 }
 

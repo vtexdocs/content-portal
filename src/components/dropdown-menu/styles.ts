@@ -10,21 +10,11 @@ const outerContainer: SxStyleProp = {
   background: 'white',
   padding: '8px',
   maxHeight: 'calc(100vh - 5rem)',
-  zIndex: 10, // Alterado de -1 para 10 para garantir visibilidade
-
-  /** Estilos específicos para mobile */
-  '@media screen and (max-width: 768px)': {
-    width: '100%', // Ocupa toda a largura da tela
-    left: 0, // Alinha à esquerda
-    right: 0, // Ocupa toda a largura
-    top: '4rem', // Ajuste para não cobrir elementos superiores
-    borderRadius: '0px 0px 12px 12px', // Bordas mais suaves em mobile
-    padding: '12px', // Mais espaço interno para melhor toque
-  },
+  zIndex: -1,
 }
 
 const innerContainer: SxStyleProp = {
-  overflowY: 'auto',
+  overflowY: 'scroll',
   overscrollBehavior: 'contain',
   maxHeight: 'calc(100vh - 5rem - 16px)',
   scrollbarWidth: 'thin',
@@ -45,12 +35,6 @@ const innerContainer: SxStyleProp = {
     '::-webkit-scrollbar-thumb': {
       background: '#CCCED8',
     },
-  },
-
-  /** Estilos específicos para mobile */
-  '@media screen and (max-width: 768px)': {
-    maxHeight: 'calc(100vh - 6rem)', // Ajuste de altura em mobile
-    padding: '8px 16px', // Melhor espaçamento interno
   },
 }
 

@@ -17,12 +17,34 @@ const innerContainer: SxStyleProp = {
   px: ['auto', '5em', '7em', '7em', '7em', '7em', '20em'],
 }
 
+const infoContainer: SxStyleProp = {
+  flexDirection: 'row',
+  // justifyContent: 'center',
+  justifyContent: 'space-between',
+  alignItems: 'space-between',
+  pt: ['28px', '64px'],
+  mx: '0',
+  // px: ['auto', '5em', '7em', '7em', '7em', '7em', '20em'],
+}
+
 const articleBox: SxStyleProp = {
   fontSize: '1em',
   lineHeight: '1.375em',
-  width: ['100%', '70%'],
+  width: ['100%', 'auto'],
   a: {
     color: '#E31C58',
+  },
+  ul: {
+    li: {
+      mt: '0.5em',
+      mb: '0.5em',
+    },
+  },
+  ol: {
+    li: {
+      mt: '0.5em',
+      mb: '0.5em',
+    },
   },
   header: {
     borderBottom: '1px solid #E7E9EE',
@@ -52,7 +74,7 @@ const articleBox: SxStyleProp = {
   },
   strong: {
     fontWeight: '600',
-    overflowWrap: 'anywhere',
+    overflowWrap: 'break-word',
   },
   hr: {
     border: '0.5px solid #E7E9EE',
@@ -114,12 +136,6 @@ const divider: SxStyleProp = {
   borderBottom: '1px solid #E7E9EE',
 }
 
-const readingTime: SxStyleProp = {
-  color: '#A1AAB7',
-  fontSize: '16px',
-  lineHeight: '18px',
-}
-
 const flexContainer: SxStyleProp = {
   flexWrap: 'wrap',
   flexDirection: 'column',
@@ -146,7 +162,7 @@ const indexContainer: SxStyleProp = {
 }
 
 const textContainer: SxStyleProp = {
-  width: ['100%', '544px'],
+  width: '100%',
   gap: '8px',
   pb: '43px',
   mb: '64px',
@@ -182,8 +198,8 @@ export default {
   releaseAction,
   documentationExcerpt,
   innerContainer,
+  infoContainer,
   divider,
-  readingTime,
   flexContainer,
   detailedInfo,
   id,

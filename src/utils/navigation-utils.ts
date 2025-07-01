@@ -40,15 +40,23 @@ export const getParents = (
   parent?: string
 ) => {
   const pathParts = path?.split('children')
-  const desiredData = data === 'name' ? `${data}.${locale}` : data
+  const desiredData =
+    data === 'name' || data === 'slug' ? `${data}.${locale}` : data
   pathParts?.splice(-1)
   let prev = ''
   pathParts?.map((el) => {
     el = prev + el
     prev = el + 'children'
 
-    if (!parent || flattenedSidebar[`${el}${desiredData}`].includes(parent)) {
-      parentsArray.push(flattenedSidebar[`${el}${desiredData}`])
+    const localizedData = flattenedSidebar[`${el}${desiredData}`]
+    const unlocalizedData = flattenedSidebar[`${el}${data}`]
+    if (
+      localizedData &&
+      (!parent || (localizedData && localizedData.includes(parent)))
+    ) {
+      parentsArray.push(localizedData)
+    } else if (unlocalizedData) {
+      parentsArray.push(unlocalizedData)
     }
   })
 

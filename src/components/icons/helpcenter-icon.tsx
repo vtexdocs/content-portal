@@ -1,7 +1,7 @@
 import type { IconProps } from '@vtex/brand-ui'
 import { Icon } from '@vtex/brand-ui'
 
-const ContentPortalIcon = (props: IconProps) => (
+const HelpCenterIcon = (props: IconProps) => (
   <Icon
     {...props}
     viewBox="0 0 64 65"
@@ -42,4 +42,4 @@ const ContentPortalIcon = (props: IconProps) => (
   </Icon>
 )
 
-export default ContentPortalIcon
+export default HelpCenterIcon

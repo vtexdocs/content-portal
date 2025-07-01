@@ -51,7 +51,7 @@ const bottomContainer: SxStyleProp = {
 const title: { [size in AnnouncementCardSize]: SxStyleProp } = {
   small: {
     mb: '8px',
-    fontSize: '14px',
+    fontSize: '12px',
     lineHeight: '16px',
     color: 'muted.0',
   },

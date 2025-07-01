@@ -1,18 +1,17 @@
 import { useContext } from 'react'
 import { Box, Flex, Text } from '@vtex/brand-ui'
 import AnimateHeight from 'react-animate-height'
-
 import { DocumentContext } from 'utils/contexts/documentContext'
+import { TableOfContents } from '@vtexdocs/components'
 
 import MenuIcon from 'components/icons/menu-icon'
 import CloseIcon from 'components/icons/close-icon'
 
 import styles from './styles'
 import { FormattedMessage } from 'react-intl'
-import { TableOfContents } from '@vtexdocs/components'
 
 const OnThisPage = () => {
-  const { onThisPageOpenStatus, setOnThisPageOpenStatus } =
+  const { headings, onThisPageOpenStatus, setOnThisPageOpenStatus } =
     useContext(DocumentContext)
 
   return (
@@ -27,7 +26,7 @@ const OnThisPage = () => {
             <FormattedMessage id="api_guide_documentation_page_on_this_page.title" />
           </Text>
           <Box>
-            <TableOfContents />
+            <TableOfContents headingList={headings} />
           </Box>
         </Box>
       </AnimateHeight>

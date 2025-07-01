@@ -11,7 +11,7 @@ const FeedbackSection = ({ slug, docPath, suggestEdits = true }: DocPath) => {
     const feedback = {
       data: [
         new Date().toISOString(),
-        `https://developers.vtex.com/docs/tutorial/${slug}`,
+        `https://help.vtex.com/docs/tutorials/${slug}`,
         liked ? 'positive' : 'negative',
         comment,
       ],
@@ -23,7 +23,7 @@ const FeedbackSection = ({ slug, docPath, suggestEdits = true }: DocPath) => {
     })
   }
 
-  const urlToEdit = `https://github.com/vtexdocs/content-portal-content/edit/main/${docPath}`
+  const urlToEdit = `https://github.com/vtexdocs/help-center-content/edit/main/${docPath}`
 
   return (
     <FeedbackSectionComponent

@@ -7,7 +7,7 @@ export const getDeveloperPortalURL = () => {
 }
 
 export const getGithubURL = () => {
-  return `https://github.com/vtexdocs/content-portal`
+  return `https://github.com/vtexdocs/helpcenter`
 }
 
 export const getCommunityURL = () => {
@@ -20,14 +20,6 @@ export const getLearningCenterURL = () => {
 
 export const getSupportURL = () => {
   return 'https://help.vtex.com/en/support'
-}
-
-export const getSlackChannelURL = () => {
-  return 'https://vtex.enterprise.slack.com/archives/C03M28QG82U'
-}
-
-export const getSiteMapURL = () => {
-  return '/sitemap'
 }
 
 export const getLinkedinURL = () => {

@@ -4,8 +4,8 @@ import DocumentationSectionCard from '../documentation-section-card'
 
 import { documentationData } from 'utils/constants'
 
-import { useIntl } from 'react-intl'
 import styles from './styles'
+import { useIntl } from 'react-intl'
 
 const DocumentationSection = () => {
   const intl = useIntl()
@@ -13,7 +13,7 @@ const DocumentationSection = () => {
     <Box sx={styles.sectionContainer}>
       <Text sx={styles.title}>
         {intl.formatMessage({
-          id: 'sections_title',
+          id: 'landing_page_documentation.title',
         })}
       </Text>
       <Flex

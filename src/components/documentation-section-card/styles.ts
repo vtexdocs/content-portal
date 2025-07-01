@@ -16,8 +16,8 @@ const cardContainer: SxStyleProp = {
   ':active, :hover': {
     cursor: 'pointer',
     backgroundColor: 'white',
-    // borderColor: 'muted.2',
-    // boxShadow: '0px 0px 16px rgba(0, 0, 0, 0.1)',
+    borderColor: 'muted.2',
+    boxShadow: '0px 0px 16px rgba(0, 0, 0, 0.1)',
     transition: 'all 0.3s ease-out',
 
     '.title': {
@@ -53,9 +53,7 @@ const infoContainer: SxStyleProp = {
 
 const icon: SxStyleProp = {
   width: '24px',
-  height: '24px',
-  minWidth: '24px',
-  minHeight: '24px',
+  height: 'auto',
 }
 
 const title: SxStyleProp = {
@@ -96,7 +94,7 @@ const quickStartedContainer: SxStyleProp = {
     transition: 'all 0.3s ease-out',
 
     '.learnMoreText': {
-      color: '#000711',
+      color: '#c81e51',
       transition: 'all 0.3s ease-out',
     },
   },
@@ -106,7 +104,8 @@ const learnMoreText: SxStyleProp = {
   fontSize: '16px',
   lineHeight: '22px',
   fontWeight: '400',
-  color: 'muted.0',
+  color: '#e31c58',
+  textDecoration: 'underline solid 1px',
 }
 
 const accessPortal: SxStyleProp = {

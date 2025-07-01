@@ -16,6 +16,8 @@ import ArticlePagination from 'components/article-pagination'
 import Contributors from 'components/contributors'
 import { MDXRemoteSerializeResult } from 'next-mdx-remote'
 import { ContributorsType } from 'utils/getFileContributors'
+import CopyLinkButton from 'components/copy-link-button'
+import TimeToRead from 'components/TimeToRead'
 
 interface Props {
   content: string
@@ -28,10 +30,7 @@ interface Props {
     title: string
     category: string
   }[]
-  sectionSelected: string
-  sidebarfallback: any //eslint-disable-line
   slug: string
-  parentsArray: string[]
   isListed: boolean
   branch: string
   pagination: {
@@ -47,6 +46,7 @@ interface Props {
   breadcrumbList: { slug: string; name: string; type: string }[]
   headings: Item[]
 }
+
 const TutorialMarkdownRender = (props: Props) => {
   const intl = useIntl()
 
@@ -54,7 +54,7 @@ const TutorialMarkdownRender = (props: Props) => {
     <>
       <Head>
         <title>{props.serialized.frontmatter?.title as string}</title>
-        <meta name="docsearch:doctype" content="Tutorials & Solutions" />
+        <meta name="docsearch:doctype" content="Tutorials" />
         {props.serialized.frontmatter?.hidden && (
           <meta name="robots" content="noindex" />
         )}
@@ -67,44 +67,53 @@ const TutorialMarkdownRender = (props: Props) => {
       </Head>
       <PageHeader
         title={intl.formatMessage({
-          id: 'tutorial_and_solutions_page.title',
+          id: 'documentation_tutorials.title',
         })}
         description={intl.formatMessage({
-          id: 'tutorial_and_solutions_page.description',
+          id: 'documentation_tutorials.description',
         })}
-        imageUrlDesktop={startHereImage}
-        imageUrlMobile={startHereImage}
+        imageUrl={startHereImage}
         imageAlt={intl.formatMessage({
-          id: 'tutorial_and_solutions_page.title',
+          id: 'documentation_tutorials.title',
         })}
       />
       <DocumentContextProvider headings={props.headings}>
         <Flex sx={styles.innerContainer}>
           <Box sx={styles.articleBox}>
             <Box sx={styles.contentContainer}>
-              <article>
-                <header>
-                  <Breadcrumb breadcrumbList={props.breadcrumbList} />
-                  <Text sx={styles.documentationTitle} className="title">
-                    {props.serialized.frontmatter?.title}
-                  </Text>
-                  <Text sx={styles.documentationExcerpt}>
-                    {props.serialized.frontmatter?.excerpt}
-                  </Text>
-                </header>
-                <Text sx={styles.readingTime}>
-                  {intl.formatMessage(
-                    {
-                      id: 'documentation_reading_time.text',
-                      defaultMessage: '',
-                    },
-                    {
-                      minutes: props.serialized.frontmatter?.readingTime,
-                    }
+              <Box sx={styles.textContainer}>
+                <article>
+                  <header>
+                    <Breadcrumb breadcrumbList={props.breadcrumbList} />
+                    <Text sx={styles.documentationTitle} className="title">
+                      {props.serialized.frontmatter?.title}
+                    </Text>
+                    <Text sx={styles.documentationExcerpt}>
+                      {props.serialized.frontmatter?.excerpt}
+                    </Text>
+                    <Flex
+                      sx={{
+                        display: 'flex',
+                        justifyContent: 'flex-end',
+                        marginBottom: '16px',
+                      }}
+                    >
+                      <CopyLinkButton />
+                    </Flex>
+                  </header>
+                  {props.serialized.frontmatter?.readingTime && (
+                    <TimeToRead
+                      minutes={
+                        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                        (props.serialized.frontmatter.readingTime as any)
+                          ?.text ||
+                        String(props.serialized.frontmatter.readingTime)
+                      }
+                    />
                   )}
-                </Text>
-                <MarkdownRenderer serialized={props.serialized} />
-              </article>
+                  <MarkdownRenderer serialized={props.serialized} />
+                </article>
+              </Box>
             </Box>
 
             <Box sx={styles.bottomContributorsContainer}>
