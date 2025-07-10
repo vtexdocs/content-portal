@@ -1,12 +1,13 @@
 import Image, { StaticImageData } from 'next/image'
 import { Box, Flex, Text } from '@vtex/brand-ui'
 import styles from './styles'
-import { Fragment } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 
 interface IPageHeader {
   title: string
   description: string
-  imageUrl: StaticImageData
+  imageUrlDesktop: StaticImageData
+  imageUrlMobile: StaticImageData
   imageAlt: string
   priority?: boolean
 }
@@ -14,10 +15,19 @@ interface IPageHeader {
 const PageHeader = ({
   title,
   description,
-  imageUrl,
+  imageUrlDesktop,
+  imageUrlMobile,
   imageAlt,
   priority = false,
 }: IPageHeader) => {
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    const checkScreenSize = () => setIsMobile(window.innerWidth <= 600)
+    checkScreenSize()
+    window.addEventListener('resize', checkScreenSize)
+    return () => window.removeEventListener('resize', checkScreenSize)
+  }, [])
   return (
     <Fragment>
       <Box sx={styles.welcomeOuterContainer}>
@@ -31,7 +41,7 @@ const PageHeader = ({
               <Box sx={styles.welcomeImageGradient}></Box>
               <Image
                 alt={imageAlt}
-                src={imageUrl}
+                src={isMobile ? imageUrlMobile : imageUrlDesktop}
                 priority={priority}
                 style={{
                   maxWidth: '100%',

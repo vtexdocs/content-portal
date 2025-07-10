@@ -21,7 +21,7 @@ export async function getAllDocsPaths(branch = 'main') {
 
   const repoTree = await getGithubTree(
     'vtexdocs',
-    'help-center-content',
+    'content-portal-content',
     branch
   )
   // @ts-ignore
@@ -82,12 +82,17 @@ function buildDocsPathsFromTree(repoTree: any, category: string) {
 
 export async function getDocsPaths(
   category:
-    | 'tracks'
+    | 'guides'
+    | 'grammar'
+    | 'formatting'
+    | 'interface-copy'
+    | 'documentation'
+    | 'glossary'
+    | 'changelog'
     | 'tutorials'
     | 'announcements'
     | 'faq'
-    | 'known-issues'
-    | 'troubleshooting',
+    | 'known-issues',
   branch = 'main'
 ) {
   const staticBuild = isStaticBuild()
@@ -96,7 +101,7 @@ export async function getDocsPaths(
   }
   const repoTree = await getGithubTree(
     'vtexdocs',
-    'help-center-content',
+    'content-portal-content',
     branch
   )
   if (staticBuild) {
@@ -114,7 +119,7 @@ export async function getStaticPathsForDocType(
 
   const repoTree = await getGithubTree(
     'vtexdocs',
-    'help-center-content',
+    'content-portal-content',
     branch
   )
 

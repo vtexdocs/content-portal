@@ -136,6 +136,12 @@ const divider: SxStyleProp = {
   borderBottom: '1px solid #E7E9EE',
 }
 
+const readingTime: SxStyleProp = {
+  color: '#A1AAB7',
+  fontSize: '16px',
+  lineHeight: '18px',
+}
+
 const flexContainer: SxStyleProp = {
   flexWrap: 'wrap',
   flexDirection: 'column',
@@ -200,6 +206,7 @@ export default {
   innerContainer,
   infoContainer,
   divider,
+  readingTime,
   flexContainer,
   detailedInfo,
   id,

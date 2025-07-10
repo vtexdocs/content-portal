@@ -7,7 +7,7 @@ export const getDeveloperPortalURL = () => {
 }
 
 export const getGithubURL = () => {
-  return `https://github.com/vtexdocs/helpcenter`
+  return `https://github.com/vtexdocs/content-portal`
 }
 
 export const getCommunityURL = () => {

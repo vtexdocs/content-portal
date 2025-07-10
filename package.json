@@ -1,6 +1,6 @@
 {
-  "name": "helpcenter",
-  "version": "0.8.0",
+  "name": "content-portal",
+  "version": "2.0.0",
   "private": true,
   "engines": {
     "npm": "please-use-yarn",
