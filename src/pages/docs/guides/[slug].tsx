@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import { useEffect, useState, useContext, useRef } from 'react'
-import { NextPage, GetStaticPaths, GetStaticProps } from 'next' // MODIFIED: Changed GetServerSideProps to GetStaticProps
+import { NextPage, GetStaticPaths, GetStaticProps } from 'next'
 import { PHASE_PRODUCTION_BUILD } from 'next/constants'
 import jp from 'jsonpath'
 import ArticlePagination from 'components/article-pagination'
@@ -26,11 +26,8 @@ import Breadcrumb from 'components/breadcrumb'
 
 import getHeadings from 'utils/getHeadings'
 import getNavigation from 'utils/getNavigation'
-import getGithubFile from 'utils/getGithubFile' // ADDED: Import getGithubFile
-import {
-  getDocsPaths as getTracksPaths,
-  // getStaticPathsForDocType, // Removed unused import
-} from 'utils/getDocsPaths'
+import getGithubFile from 'utils/getGithubFile'
+import { getDocsPaths as getTracksPaths } from 'utils/getDocsPaths'
 import replaceMagicBlocks from 'utils/replaceMagicBlocks'
 import escapeCurlyBraces from 'utils/escapeCurlyBraces'
 import replaceHTMLBlocks from 'utils/replaceHTMLBlocks'
@@ -39,7 +36,7 @@ import { PreviewContext } from 'utils/contexts/preview'
 import styles from 'styles/documentation-page'
 import getFileContributors, {
   ContributorsType,
-} from 'utils/getFileContributors' // MODIFIED: Import getFileContributors as default
+} from 'utils/getFileContributors'
 
 import { getLogger } from 'utils/logging/log-util'
 import {
@@ -57,7 +54,6 @@ import TimeToRead from 'components/TimeToRead'
 import { getBreadcrumbsList } from 'utils/getBreadcrumbsList'
 import CopyLinkButton from 'components/copy-link-button'
 
-// Initialize in getStaticProps
 let docsPathsGLOBAL: Record<string, { locale: string; path: string }[]> | null =
   null
 
@@ -67,7 +63,6 @@ interface Props {
   breadcrumbList: { slug: string; name: string; type: string }[]
   content: string
   serialized: MDXRemoteSerializeResult
-  // ❌ REMOVED: sidebarfallback (navigation now loaded client-side)
   contributors: ContributorsType[]
   path: string
   headingList: Item[]
@@ -151,7 +146,6 @@ const TrackPage: NextPage<Props> = ({
                           }
                         />
                       )}
-                      {/* Adiciona a propriedade justifyContent ao Flex para alinhar o botão à direita */}
                       <Flex
                         sx={{
                           display: 'flex',
@@ -203,9 +197,8 @@ const TrackPage: NextPage<Props> = ({
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  // Use getTracksPaths to get all available slugs for tracks
+  
   const docsPaths = await getTracksPaths('guides')
-  // Generate a path for each slug/locale combination
   const paths = Object.entries(docsPaths).flatMap(([slug, entries]) =>
     entries.map(({ locale }) => ({
       params: { slug },
@@ -251,7 +244,7 @@ export const getStaticProps: GetStaticProps = async ({
       ? await getTracksPaths('guides', branch)
       : docsPathsGLOBAL
 
-  const logger = getLogger('TracksPage-GetStaticProps') // MODIFIED: More specific logger name
+  const logger = getLogger('TracksPage-GetStaticProps')
 
   const pathEntry = docsPaths[slug]?.find((e) => e.locale === currentLocale)
 
@@ -263,7 +256,6 @@ export const getStaticProps: GetStaticProps = async ({
   }
   const resolvedPath = pathEntry.path
 
-  // MODIFIED: Use getGithubFile to fetch documentation content
   let documentationContent: string | null = null
   try {
     documentationContent = await getGithubFile(
@@ -281,7 +273,6 @@ export const getStaticProps: GetStaticProps = async ({
 
   documentationContent = documentationContent || ''
 
-  // MODIFIED: Use getFileContributors to fetch contributors
   let contributors: ContributorsType[] = []
   try {
     const fetchedContributors = await getFileContributors(
@@ -290,7 +281,6 @@ export const getStaticProps: GetStaticProps = async ({
       branch,
       resolvedPath
     )
-    // Ensure fetchedContributors is an array before assigning
     if (Array.isArray(fetchedContributors)) {
       contributors = fetchedContributors
     } else {
@@ -327,7 +317,6 @@ export const getStaticProps: GetStaticProps = async ({
       },
     })
 
-    // Allow PUBLISHED and CHANGED status documents to be visible
     const allowedStatuses = ['PUBLISHED', 'CHANGED']
     const status = serialized.frontmatter?.status as string
 
@@ -391,7 +380,6 @@ export const getStaticProps: GetStaticProps = async ({
       })
     )
 
-    // Extract slug strings for the current locale from navigation
     const docsListSlugObjects = jp.query(
       sidebarfallback,
       `$..[?(@.type=='markdown')]..slug`
@@ -401,7 +389,6 @@ export const getStaticProps: GetStaticProps = async ({
       `$..[?(@.type=='markdown')]..name`
     )
 
-    // Convert slug objects to strings for the current locale
     const docsListSlug = docsListSlugObjects
       .map((slugObj: Record<string, string> | string) => {
         if (typeof slugObj === 'object' && slugObj[currentLocale]) {
@@ -409,7 +396,6 @@ export const getStaticProps: GetStaticProps = async ({
         } else if (typeof slugObj === 'string') {
           return slugObj
         }
-        // Fallback to 'en' if current locale not found
         return (slugObj as Record<string, string>)?.en || null
       })
       .filter(Boolean)
@@ -419,7 +405,6 @@ export const getStaticProps: GetStaticProps = async ({
         if (typeof nameObj === 'object') {
           return nameObj
         }
-        // If it's already a string, wrap it in an object for consistency
         return { [currentLocale]: nameObj as string }
       }
     )
@@ -469,7 +454,7 @@ export const getStaticProps: GetStaticProps = async ({
     const parentsArrayType: string[] = []
     let sectionSelected = ''
     if (keyPath) {
-      sectionSelected = flattenedSidebar[`${keyPath[0]}.guides`]
+      sectionSelected = flattenedSidebar[`${keyPath[0]}.documentation`]
       getParents(
         keyPath,
         'name',
@@ -508,11 +493,10 @@ export const getStaticProps: GetStaticProps = async ({
         documentationContent = await replaceMagicBlocks(documentationContent)
       }
     } catch (error) {
-      logger.error(`Error processing markdown for ${resolvedPath}: ${error}`) // MODIFIED: Improved error logging
+      logger.error(`Error processing markdown for ${resolvedPath}: ${error}`)
       format = 'md'
     }
 
-    // Ensure parentsArray does not contain undefined values
     parentsArray.push(slug)
     const sanitizedParentsArray = parentsArray.map((item) =>
       item === undefined ? null : item
@@ -532,7 +516,6 @@ export const getStaticProps: GetStaticProps = async ({
         parentsArray: sanitizedParentsArray,
         slug,
         serialized,
-        // ❌ REMOVED: sidebarfallback (3.4MB navigation no longer sent to client)
         headingList,
         contributors,
         path: resolvedPath,

@@ -10,7 +10,6 @@ import { useRouter } from 'next/router'
 import { HamburgerMenu, SearchInput } from '@vtexdocs/components'
 
 import DropdownMenu from 'components/dropdown-menu'
-import VTEXHelpCenterIcon from 'components/icons/vtex-helpcenter-icon'
 import GridIcon from 'components/icons/grid-icon'
 import LongArrowIcon from 'components/icons/long-arrow-icon'
 import { getFeedbackURL } from 'utils/get-url'
@@ -21,6 +20,7 @@ import LocaleSwitcher from 'components/locale-switcher'
 import styles from './styles'
 import { PreviewContext } from 'utils/contexts/preview'
 import { FormattedMessage } from 'react-intl'
+import ContentPortalIcon from 'components/icons/Contentportal-icon'
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const Header = () => {
@@ -104,7 +104,7 @@ const Header = () => {
           href="/"
           sx={styles.headerBrandLink}
         >
-          <VTEXHelpCenterIcon sx={styles.logoSize} />
+          <ContentPortalIcon sx={styles.logoSize} />
         </VtexLink>
 
         <Box sx={styles.searchContainer}>

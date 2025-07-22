@@ -21,6 +21,12 @@ const cardsContainer: SxStyleProp = {
   justifyContent: 'center',
   flexWrap: 'wrap',
   gap: '32px',
+  display: ['flex', 'flex', 'flex', 'grid'],
+  gridTemplateColumns: ['1fr', '1fr', '1fr', 'repeat(3, 1fr)'],
+  gridTemplateRows: ['auto', 'auto', 'auto', 'repeat(2, auto)'],
+  'svg > path': {
+    fill: '#4A596B',
+  },
 }
 
 export default {

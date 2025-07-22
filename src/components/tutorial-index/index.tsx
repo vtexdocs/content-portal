@@ -21,7 +21,8 @@ const TutorialIndexing = ({ ...props }) => {
         description={intl.formatMessage({
           id: 'tutorials_landing_page.description',
         })}
-        imageUrl={startHereImage}
+        imageUrlDesktop={startHereImage}
+        imageUrlMobile={startHereImage}
         imageAlt={intl.formatMessage({
           id: 'tutorials_landing_page.title',
         })}

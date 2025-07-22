@@ -2,10 +2,8 @@ import { Grid } from '@vtex/brand-ui'
 import type { Page } from 'utils/typings/types'
 
 import NewsletterSection from 'components/newsletter-section'
-import DocumentationSection from 'components/documentation-section'
-import AnnouncementSection from 'components/announcement-section'
-import SupportSection from 'components/support-section'
-import FaqSection from 'components/faq-section'
+import SectionsSection from 'components/sections-section'
+import OtherResourcesSection from 'components/other-resources-section'
 
 import { getDocsPaths as getAnnouncementsPaths } from 'utils/getDocsPaths'
 import Head from 'next/head'
@@ -31,8 +29,8 @@ const Home: Page<Props> = ({ branch, announcementTimelineData }) => {
   return (
     <>
       <Head>
-        <title>VTEX Help Center</title>
-        <meta property="og:title" content="VTEX Help Center" key="title" />
+        <title>VTEX Content Style Guide</title>
+        <meta property="og:title" content="VTEX Content Style Guide" key="title" />
         <meta
           property="og:description"
           content="Build and extend your world of commerce with VTEX development platform and Core Commerce APIs."
@@ -53,13 +51,8 @@ const Home: Page<Props> = ({ branch, announcementTimelineData }) => {
       </Head>
       <Grid sx={styles.grid}>
         <NewsletterSection />
-        <DocumentationSection />
-        <FaqSection />
-        <SupportSection />
-        <AnnouncementSection
-          annoucementsAmout={5}
-          announcements={announcementTimelineData}
-        />
+        <SectionsSection />
+        <OtherResourcesSection />
       </Grid>
     </>
   )

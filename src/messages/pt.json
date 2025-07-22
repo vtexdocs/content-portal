@@ -1,6 +1,5 @@
 {
   "announcement_bar.button": "Voltar ao portal anterior",
-  "announcement_bar.label": "Você está visualizando nosso novo Help Center beta.",
   "landing_page_newsletter.title": "Como podemos ajudar?",
   "landing_page_newsletter.description": "Encontre respostas, soluções e orientações sobre a plataforma VTEX em um só lugar.",
   "landing_page_newsletter.policyText": "Read our ",
@@ -420,7 +419,7 @@
   "landing_subtitle_3": "for users of words at VTEX",
   "sections_title": "Sections",
   "landing_page_card_link_caption": "Go to page",
-  "landing_page_accessPortal": "Learn more",
+  "landing_page_card.acess": "Learn more",
   "start_here_see_more": "See more",
   "guides_card_title": "Guides",
   "guides_card_subtitle": "Explore VTEX core principles that shape language choices in content creation",

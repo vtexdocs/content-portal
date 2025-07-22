@@ -9,16 +9,14 @@ interface IPageHeader {
   imageUrlDesktop: StaticImageData
   imageUrlMobile: StaticImageData
   imageAlt: string
-  priority?: boolean
 }
 
 const PageHeader = ({
   title,
   description,
+  imageAlt,
   imageUrlDesktop,
   imageUrlMobile,
-  imageAlt,
-  priority = false,
 }: IPageHeader) => {
   const [isMobile, setIsMobile] = useState(false)
 
@@ -28,11 +26,12 @@ const PageHeader = ({
     window.addEventListener('resize', checkScreenSize)
     return () => window.removeEventListener('resize', checkScreenSize)
   }, [])
+
   return (
     <Fragment>
       <Box sx={styles.welcomeOuterContainer}>
         <Flex sx={styles.welcomeInnerContainer}>
-          <Box sx={styles.welcomeHeader}>
+          <Box sx={{ ...styles.welcomeHeader, mt: ['-100px', 'initial'] }}>
             <Text sx={styles.welcomeText}>{title}</Text>
             <Text sx={styles.welcomeSubtitle}>{description}</Text>
           </Box>
@@ -42,10 +41,14 @@ const PageHeader = ({
               <Image
                 alt={imageAlt}
                 src={isMobile ? imageUrlMobile : imageUrlDesktop}
-                priority={priority}
                 style={{
                   maxWidth: '100%',
-                  height: 'auto',
+                  height: isMobile ? '242px' : 'auto',
+                  width: isMobile ? '100%' : '100%',
+                  objectFit: 'cover',
+                  objectPosition: 'center',
+                  display: 'block',
+                  margin: '0 auto',
                 }}
               />
             </Box>

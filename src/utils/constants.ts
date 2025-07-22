@@ -16,120 +16,172 @@ import {
 import { IntlShape } from 'react-intl'
 import libraryConfig from './libraryConfig'
 import DeveloperPortalIcon from 'components/icons/developer-portal-icon'
-import StartHereIcon from 'components/icons/start-here-icon'
-import TutorialsIcon from 'components/icons/tutorials-icon'
 import PaperIcon from 'components/icons/paper-icon'
 import WarningIcon from 'components/icons/warning-icon'
 import GraphIcon from 'components/icons/graph-icon'
-import MegaphoneIcon from 'components/icons/megaphone-icon'
-import FAQIcon from 'components/icons/faq-icon'
 import LongArrowIcon from 'components/icons/long-arrow-icon'
 import TroubleshootingIcon from 'components/icons/troubleshooting-icon'
+import GuidesIcon from 'components/icons/guides-icon'
+import FormattingIcon from 'components/icons/formatting-icon'
+import InterfacesIcon from 'components/icons/interface-copy-icon'
+import EducationIcon from 'components/icons/education-icon'
+import GlossaryIcon from 'components/icons/glossary-icon'
+import GrammarIcon from 'components/icons/grammar-icon'
 
 libraryConfig
 export const messages = getMessages()
 
-export const documentationData = (intl: IntlShape) => {
+export const sectionsData = (intl: IntlShape) => {
   const data: DocDataElement[] = [
     {
-      id: 'Start here',
-      Icon: StartHereIcon,
+      id: 'Guides',
+      Icon: GuidesIcon,
       title: intl.formatMessage({
-        id: 'documentation_start_here.title',
+        id: 'guides_card_title',
       }),
       description: intl.formatMessage({
-        id: 'documentation_start_here.description',
+        id: 'guides_card_subtitle',
       }),
-      link: '/docs/tracks',
+      link: '/docs/guides',
+      isExternalLink: false,
     },
     {
-      id: 'Tutorials',
-      Icon: TutorialsIcon,
+      id: 'Grammar',
+      Icon: GrammarIcon,
       title: intl.formatMessage({
-        id: 'documentation_tutorials.title',
+        id: 'grammar_card_title',
       }),
       description: intl.formatMessage({
-        id: 'documentation_tutorials.description',
+        id: 'grammar_card_subtitle',
       }),
-      link: '/docs/tutorials',
+      link: '/docs/grammar',
+      isExternalLink: false,
     },
     {
-      id: 'Developers Portal',
-      Icon: DeveloperPortalIcon,
+      id: 'Formatting',
+      Icon: FormattingIcon,
       title: intl.formatMessage({
-        id: 'documentation_developers_portal.title',
+        id: 'formatting_card_title',
       }),
       description: intl.formatMessage({
-        id: 'documentation_developers_portal.description',
+        id: 'formatting_card_subtitle',
       }),
-      link: 'https://developers.vtex.com/',
+      link: '/docs/formatting',
+      isExternalLink: false,
+    },
+    {
+      id: 'Interface copy',
+      Icon: InterfacesIcon,
+      title: intl.formatMessage({
+        id: 'user_interfaces_card_title',
+      }),
+      description: intl.formatMessage({
+        id: 'user_interfaces_card_subtitle',
+      }),
+      link: '/docs/interface-copy',
+      isExternalLink: false,
+    },
+    {
+      id: 'Documentation',
+      Icon: EducationIcon,
+      title: intl.formatMessage({
+        id: 'documentation_card_title',
+      }),
+      description: intl.formatMessage({
+        id: 'documentation_card_subtitle',
+      }),
+      link: '/docs/documentation',
+      isExternalLink: false,
+    },
+    {
+      id: 'Glossary',
+      Icon: GlossaryIcon,
+      title: intl.formatMessage({
+        id: 'glossary_card_title',
+      }),
+      description: intl.formatMessage({
+        id: 'glossary_card_subtitle',
+      }),
+      link: 'https://docs.google.com/spreadsheets/d/1vSSg5CrimqSxvWjBoXLE5P7ATJCdRnPT/edit?gid=722394202#gid=722394202',
       isExternalLink: true,
     },
   ]
   return data
 }
 
-export const menuDocumentationData = (intl: IntlShape) => {
+export const menuSectionData = (intl: IntlShape) => {
   const data: DocDataElement[] = [
     {
-      id: 'Start here',
-      Icon: StartHereIcon,
+      id: 'Guides',
+      Icon: GuidesIcon,
       title: intl.formatMessage({
-        id: 'documentation_start_here.title',
+        id: 'guides_card_title',
       }),
       description: intl.formatMessage({
-        id: 'documentation_start_here.description',
+        id: 'guides_card_subtitle',
       }),
-      link: '/docs/tracks',
+      link: '/docs/guides',
+      isExternalLink: false,
     },
     {
-      id: 'Tutorials',
-      Icon: TutorialsIcon,
+      id: 'Grammar',
+      Icon: GrammarIcon,
       title: intl.formatMessage({
-        id: 'documentation_tutorials.title',
+        id: 'grammar_card_title',
       }),
       description: intl.formatMessage({
-        id: 'documentation_tutorials.description',
+        id: 'grammar_card_subtitle',
       }),
-      link: '/docs/tutorials',
+      link: '/docs/grammar',
+      isExternalLink: false,
     },
     {
-      id: 'Developers Portal',
-      Icon: DeveloperPortalIcon,
+      id: 'Formatting',
+      Icon: FormattingIcon,
       title: intl.formatMessage({
-        id: 'documentation_developers_portal.title',
+        id: 'formatting_card_title',
       }),
       description: intl.formatMessage({
-        id: 'documentation_developers_portal.description',
+        id: 'formatting_card_subtitle',
       }),
-      link: 'https://developers.vtex.com/',
+      link: '/docs/formatting',
+      isExternalLink: false,
+    },
+    {
+      id: 'Interface copy',
+      Icon: InterfacesIcon,
+      title: intl.formatMessage({
+        id: 'user_interfaces_card_title',
+      }),
+      description: intl.formatMessage({
+        id: 'user_interfaces_card_subtitle',
+      }),
+      link: '/docs/interface-copy',
+      isExternalLink: false,
+    },
+    {
+      id: 'Documentation',
+      Icon: EducationIcon,
+      title: intl.formatMessage({
+        id: 'documentation_card_title',
+      }),
+      description: intl.formatMessage({
+        id: 'documentation_card_subtitle',
+      }),
+      link: '/docs/documentation',
+      isExternalLink: false,
+    },
+    {
+      id: 'Glossary',
+      Icon: GlossaryIcon,
+      title: intl.formatMessage({
+        id: 'glossary_card_title',
+      }),
+      description: intl.formatMessage({
+        id: 'glossary_card_subtitle',
+      }),
+      link: 'https://docs.google.com/spreadsheets/d/1vSSg5CrimqSxvWjBoXLE5P7ATJCdRnPT/edit?gid=722394202#gid=722394202',
       isExternalLink: true,
-    },
-  ]
-  return data
-}
-
-export const updatesData = (intl: IntlShape) => {
-  const data: DocDataElement[] = [
-    {
-      id: 'FAQ',
-      Icon: FAQIcon,
-      title: intl.formatMessage({ id: 'updates_info_notes.title' }),
-      description: intl.formatMessage({
-        id: 'updates_info_notes.description',
-      }),
-      link: '/faq',
-    },
-    {
-      id: 'Announcements',
-      Icon: MegaphoneIcon,
-      title: intl.formatMessage({
-        id: 'announcements_page.title',
-      }),
-      description: intl.formatMessage({
-        id: 'announcements_page.description',
-      }),
-      link: '/announcements',
     },
   ]
   return data
@@ -194,48 +246,52 @@ export const knownIssuesData = (intl: IntlShape) => {
 export const menuSupportData = (intl: IntlShape) => {
   const data: DocDataElement[] = [
     {
-      id: 'Known Issues',
-      Icon: WarningIcon,
+      id: 'FastStore',
+      Icon: DeveloperPortalIcon,
       title: intl.formatMessage({
-        id: 'sidebar_known_issues.title',
+        id: 'faststore_card_title',
       }),
       description: intl.formatMessage({
-        id: 'sidebar_known_issues.description',
+        id: 'faststore_card_subtitle',
       }),
-      link: '/known-issues',
+      link: 'https://developers.vtex.com/docs/guides/faststore/',
+      isExternalLink: true,
     },
     {
-      id: 'Status',
-      Icon: GraphIcon,
+      id: 'Brand',
+      Icon: DeveloperPortalIcon,
       title: intl.formatMessage({
-        id: 'menu_status.title',
+        id: 'brand_card_title',
       }),
       description: intl.formatMessage({
-        id: 'menu_status.description',
+        id: 'brand_card_subtitle',
       }),
-      link: 'https://status.vtex.com',
+      link: 'https://brand.vtex.com/',
+      isExternalLink: true,
     },
     {
-      id: 'Support Rules',
-      Icon: PaperIcon,
+      id: 'Developer Portal',
+      Icon: DeveloperPortalIcon,
       title: intl.formatMessage({
-        id: 'sidebar_support_rules.title',
+        id: 'developer_portal_card_title',
       }),
       description: intl.formatMessage({
-        id: 'sidebar_support_rules.description',
+        id: 'developer_portal_card_subtitle',
       }),
-      link: intl.formatMessage({
-        id: 'sidebar_support_rules.link',
-      }),
+      link: 'https://developers.vtex.com/',
+      isExternalLink: true,
     },
     {
-      id: 'Troubleshooting',
-      Icon: TroubleshootingIcon,
-      title: intl.formatMessage({ id: 'menu_troubleshooting.title' }),
-      description: intl.formatMessage({
-        id: 'menu_troubleshooting.description',
+      id: 'Help Center',
+      Icon: DeveloperPortalIcon,
+      title: intl.formatMessage({
+        id: 'help_center_card_title',
       }),
-      link: '/troubleshooting',
+      description: intl.formatMessage({
+        id: 'help_center_card_subtitle',
+      }),
+      link: 'https://help.vtex.com/en/',
+      isExternalLink: true,
     },
   ]
 
@@ -292,43 +348,55 @@ export const faqData = (intl: IntlShape) => {
   return data
 }
 
-export const supportData = (intl: IntlShape) => {
+export const otherPortals = (intl: IntlShape) => {
   const data: DocDataElement[] = [
     {
-      id: 'Known Issues',
-      Icon: WarningIcon,
+      id: 'FastStore',
+      Icon: DeveloperPortalIcon,
       title: intl.formatMessage({
-        id: 'support_known_issues.title',
+        id: 'faststore_card_title',
       }),
       description: intl.formatMessage({
-        id: 'support_known_issues.description',
-      }),
-      link: '/known-issues',
-    },
-    {
-      id: 'Support Plans',
-      Icon: PaperIcon,
-      title: intl.formatMessage({
-        id: 'support_plans.title',
-      }),
-      description: intl.formatMessage({
-        id: 'support_plans.description',
-      }),
-      link: intl.formatMessage({
-        id: 'support_plans.link',
-      }),
-    },
-    {
-      id: 'Status',
-      Icon: GraphIcon,
-      title: intl.formatMessage({
-        id: 'support_status.title',
-      }),
-      description: intl.formatMessage({
-        id: 'support_status.description',
+        id: 'faststore_card_subtitle',
       }),
       isExternalLink: true,
-      link: 'https://status.vtex.com/',
+      link: 'https://developers.vtex.com/docs/guides/faststore/',
+    },
+    {
+      id: 'Brand',
+      Icon: DeveloperPortalIcon,
+      title: intl.formatMessage({
+        id: 'brand_card_title',
+      }),
+      description: intl.formatMessage({
+        id: 'brand_card_subtitle',
+      }),
+      isExternalLink: true,
+      link: 'https://brand.vtex.com/',
+    },
+    {
+      id: 'Developer Portal',
+      Icon: DeveloperPortalIcon,
+      title: intl.formatMessage({
+        id: 'developer_portal_card_title',
+      }),
+      description: intl.formatMessage({
+        id: 'developer_portal_card_subtitle',
+      }),
+      isExternalLink: true,
+      link: 'https://developers.vtex.com/',
+    },
+    {
+      id: 'Help Center',
+      Icon: DeveloperPortalIcon,
+      title: intl.formatMessage({
+        id: 'help_center_card_title',
+      }),
+      description: intl.formatMessage({
+        id: 'help_center_card_subtitle',
+      }),
+      isExternalLink: true,
+      link: 'https://help.vtex.com/en/',
     },
   ]
   return data
@@ -336,8 +404,7 @@ export const supportData = (intl: IntlShape) => {
 
 export const getIcon = (doc: string, intl: IntlShape) => {
   return (
-    documentationData(intl).find((icon) => icon.title === doc)?.Icon ||
-    updatesData(intl).find((icon) => icon.title === doc)?.Icon
+    sectionsData(intl).find((icon) => icon.title === doc)?.Icon
   )
 }
 

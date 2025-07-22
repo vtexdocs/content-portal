@@ -7,8 +7,7 @@ import { useRef } from 'react'
 import { useIntl } from 'react-intl'
 import LongArrowIcon from 'components/icons/long-arrow-icon'
 
-const SupportSectionCard = ({
-  Icon,
+const OtherResourcesCard = ({
   title,
   description,
   link,
@@ -21,7 +20,6 @@ const SupportSectionCard = ({
     <Link href={link}>
       <Flex sx={styles.cardContainer}>
         <Flex className="titleContainer" sx={styles.titleContainer}>
-          <Icon sx={styles.icon} />
           <Text className="title" sx={styles.title}>
             {title}
           </Text>
@@ -42,14 +40,14 @@ const SupportSectionCard = ({
           {!isExternalLink ? (
             <Text className="learnMoreText" sx={styles.learnMoreText}>
               {intl.formatMessage({
-                id: 'landing_page_documentation_card.learnMoreText',
+                id: 'landing_page_card.acess',
               })}
             </Text>
           ) : (
             <Flex sx={styles.accessPortal}>
               <Text className="accessPortal" sx={styles.learnMoreText}>
                 {intl.formatMessage({
-                  id: 'landing_page_documentation_card.accessPortal',
+                  id: 'landing_page_card_link_caption',
                 })}
               </Text>
               <LongArrowIcon size={18} />
@@ -61,4 +59,4 @@ const SupportSectionCard = ({
   )
 }
 
-export default SupportSectionCard
+export default OtherResourcesCard
