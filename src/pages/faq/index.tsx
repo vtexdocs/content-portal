@@ -135,11 +135,11 @@ const FaqPage: NextPage<Props> = ({ faqData, branch }) => {
           description={intl.formatMessage({
             id: 'landing_page_faq.description',
           })}
-          imageUrl={faqImage}
+          imageUrlDesktop={faqImage}
+          imageUrlMobile={faqImage}
           imageAlt={intl.formatMessage({
             id: 'landing_page_faq.title',
           })}
-          priority
         />
         <Flex sx={styles.container}>
           <Flex sx={styles.optionsContainer}>

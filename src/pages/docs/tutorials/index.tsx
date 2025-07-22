@@ -79,11 +79,11 @@ const TutorialsPage: NextPage<Props> = ({ branch }) => {
           description={intl.formatMessage({
             id: 'tutorials_page.subtitle',
           })}
-          imageUrl={startHereImage}
+          imageUrlDesktop={startHereImage}
+          imageUrlMobile={startHereImage}
           imageAlt={intl.formatMessage({
             id: 'app_development_page.title',
           })}
-          priority
         />
         <Box sx={styles.contentContainer}>
           <ContentSection id={'tutorials_main_page'} length={40} />

@@ -62,10 +62,7 @@ export default function Layout({
   return (
     <ThemeProvider>
       <LibraryContextProvider
-        sections={[
-          sectionsData(intl),
-          knownIssuesData(intl),
-        ]}
+        sections={[sectionsData(intl), knownIssuesData(intl)]}
         hamburguerMenuSections={[
           sectionsData(intl),
           menuSupportData(intl),

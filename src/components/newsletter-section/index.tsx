@@ -33,7 +33,7 @@ const NewsletterSection = () => {
             width: '100%',
             height: '100%',
             objectFit: 'cover',
-            objectPosition: 'center'
+            objectPosition: 'center',
           }}
         />
         <Flex sx={styles.contentContainer}>
@@ -44,7 +44,7 @@ const NewsletterSection = () => {
             </span>{' '}
             <FormattedMessage id="landing_subtitle_3" />
           </Text>
-          <Text style={{color: 'transparent'}}>just for spacing</Text>
+          <Text style={{ color: 'transparent' }}>just for spacing</Text>
           <SearchInput />
         </Flex>
       </Box>

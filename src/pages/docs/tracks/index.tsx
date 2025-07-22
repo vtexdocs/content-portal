@@ -82,11 +82,11 @@ const TracksPage: NextPage<Props> = ({ branch }) => {
           description={intl.formatMessage({
             id: 'start_here_page.subtitle',
           })}
-          imageUrl={startHereImage}
+          imageUrlDesktop={startHereImage}
+          imageUrlMobile={startHereImage}
           imageAlt={intl.formatMessage({
             id: 'start_here_page.title',
           })}
-          priority
         />
         <Box sx={styles.contentContainer}>
           <ContentSection id={'start_here_page_onboarding'} length={3} />

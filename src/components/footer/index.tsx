@@ -1,11 +1,6 @@
 import { Box, Flex, Link } from '@vtex/brand-ui'
 import styles from './styles'
-import {
-  getDeveloperPortalURL,
-  getGithubURL,
-  getCommunityURL,
-  getFeedbackURL,
-} from 'utils/get-url'
+import { getGithubURL, getCommunityURL, getFeedbackURL } from 'utils/get-url'
 import { useIntl } from 'react-intl'
 import LocaleSwitcherFooter from 'components/locale-switcher-footer'
 import VtexLogoFooter from 'components/icons/vtexLogoFooter'

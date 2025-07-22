@@ -108,7 +108,8 @@ const TroubleshootingPage: NextPage<Props> = ({
           description={intl.formatMessage({
             id: 'troubleshooting_page.description',
           })}
-          imageUrl={troubleshooting}
+          imageUrlDesktop={troubleshooting}
+          imageUrlMobile={troubleshooting}
           imageAlt={intl.formatMessage({ id: 'troubleshooting_page.title' })}
         />
         <Flex sx={styles.container}>

@@ -98,7 +98,8 @@ const AnnouncementsPage: NextPage<Props> = ({ announcementsData, branch }) => {
           description={intl.formatMessage({
             id: 'announcements_page.description',
           })}
-          imageUrl={startHereImage}
+          imageUrlDesktop={startHereImage}
+          imageUrlMobile={startHereImage}
           imageAlt={intl.formatMessage({
             id: 'announcements_page.title',
           })}

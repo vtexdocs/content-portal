@@ -92,7 +92,9 @@ export async function getDocsPaths(
     | 'tutorials'
     | 'announcements'
     | 'faq'
-    | 'known-issues',
+    | 'known-issues'
+    | 'tracks'
+    | 'troubleshooting',
   branch = 'main'
 ) {
   const staticBuild = isStaticBuild()

@@ -22,7 +22,7 @@ interface Props {
   announcementTimelineData: AnnouncementDataElement[]
 }
 
-const Home: Page<Props> = ({ branch, announcementTimelineData }) => {
+const Home: Page<Props> = ({ branch }) => {
   const { setBranchPreview } = useContext(PreviewContext)
   setBranchPreview(branch)
 
@@ -30,7 +30,11 @@ const Home: Page<Props> = ({ branch, announcementTimelineData }) => {
     <>
       <Head>
         <title>VTEX Content Style Guide</title>
-        <meta property="og:title" content="VTEX Content Style Guide" key="title" />
+        <meta
+          property="og:title"
+          content="VTEX Content Style Guide"
+          key="title"
+        />
         <meta
           property="og:description"
           content="Build and extend your world of commerce with VTEX development platform and Core Commerce APIs."

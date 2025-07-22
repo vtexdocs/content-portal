@@ -403,9 +403,7 @@ export const otherPortals = (intl: IntlShape) => {
 }
 
 export const getIcon = (doc: string, intl: IntlShape) => {
-  return (
-    sectionsData(intl).find((icon) => icon.title === doc)?.Icon
-  )
+  return sectionsData(intl).find((icon) => icon.title === doc)?.Icon
 }
 
 export const whatsNextData = (intl: IntlShape) => {

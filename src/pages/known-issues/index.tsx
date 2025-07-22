@@ -122,11 +122,11 @@ const KnownIssuesPage: NextPage<Props> = ({ knownIssuesData, branch }) => {
           description={intl.formatMessage({
             id: 'known_issues_page.subtitle',
           })}
-          imageUrl={startHereImage}
+          imageUrlDesktop={startHereImage}
+          imageUrlMobile={startHereImage}
           imageAlt={intl.formatMessage({
             id: 'known_issues_page.title',
           })}
-          priority
         />
         <Flex sx={styles.container}>
           <Flex sx={styles.optionsContainer}>

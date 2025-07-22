@@ -197,7 +197,6 @@ const TrackPage: NextPage<Props> = ({
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  
   const docsPaths = await getTracksPaths('guides')
   const paths = Object.entries(docsPaths).flatMap(([slug, entries]) =>
     entries.map(({ locale }) => ({
