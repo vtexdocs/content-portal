@@ -61249,14 +61249,14 @@
                         },
                         {
                             "name": {
-                                "en": "Teste 2",
-                                "es": "Teste 2",
-                                "pt": "Teste 2"
+                                "en": "Product and feature naming",
+                                "es": "Product and feature naming",
+                                "pt": "Product and feature naming"
                             },
                             "slug": {
-                                "en": "teste-2",
-                                "es": "teste-2",
-                                "pt": "teste-2"
+                                "en": "product-and-feature-naming",
+                                "es": "product-and-feature-naming",
+                                "pt": "product-and-feature-naming"
                             },
                             "origin": "",
                             "type": "markdown",
@@ -61264,14 +61264,558 @@
                         },
                         {
                             "name": {
-                                "en": "Teste 3",
-                                "es": "Teste 3",
-                                "pt": "Teste 3"
+                                "en": "US English standard",
+                                "es": "US English standard",
+                                "pt": "US English standard"
                             },
                             "slug": {
-                                "en": "teste-3",
-                                "es": "teste-3",
-                                "pt": "teste-3"
+                                "en": "us-english-standard",
+                                "es": "us-english-standard",
+                                "pt": "us-english-standard"
+                            },
+                            "origin": "",
+                            "type": "markdown",
+                            "children": []
+                        },
+                        {
+                            "name": {
+                                "en": "Inclusive language",
+                                "es": "Inclusive language",
+                                "pt": "Inclusive language"
+                            },
+                            "slug": {
+                                "en": "inclusive-language",
+                                "es": "inclusive-language",
+                                "pt": "inclusive-language"
+                            },
+                            "origin": "",
+                            "type": "markdown",
+                            "children": []
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "documentation": "Grammar",
+            "name": {
+                "en": "Grammar",
+                "es": "Grammar",
+                "pt": "Grammar"
+            },
+            "slugPrefix": "docs/grammar",
+            "categories": [
+                {
+                    "name": {
+                        "en": "General",
+                        "es": "General",
+                        "pt": "Geral"
+                    },
+                    "slug": {
+                        "en": "general",
+                        "es": "general",
+                        "pt": "general"
+                    },
+                    "origin": "",
+                    "type": "category",
+                    "children": [
+                        {
+                            "name": {
+                                "en": "Articles",
+                                "es": "Articles",
+                                "pt": "Articles"
+                            },
+                            "slug": {
+                                "en": "articles",
+                                "es": "articles",
+                                "pt": "articles"
+                            },
+                            "origin": "",
+                            "type": "markdown",
+                            "children": []
+                        },
+                        {
+                            "name": {
+                                "en": "Capitalization",
+                                "es": "Capitalization",
+                                "pt": "Capitalization"
+                            },
+                            "slug": {
+                                "en": "capitalization",
+                                "es": "capitalization",
+                                "pt": "capitalization"
+                            },
+                            "origin": "",
+                            "type": "markdown",
+                            "children": []
+                        },
+                        {
+                            "name": {
+                                "en": "Abbreviations",
+                                "es": "Abbreviations",
+                                "pt": "Abbreviations"
+                            },
+                            "slug": {
+                                "en": "abbreviations",
+                                "es": "abbreviations",
+                                "pt": "abbreviations"
+                            },
+                            "origin": "",
+                            "type": "markdown",
+                            "children": []
+                        },
+                        {
+                            "name": {
+                                "en": "Verbs",
+                                "es": "Verbs",
+                                "pt": "Verbs"
+                            },
+                            "slug": {
+                                "en": "verbs",
+                                "es": "verbs",
+                                "pt": "verbs"
+                            },
+                            "origin": "",
+                            "type": "markdown",
+                            "children": []
+                        },
+                        {
+                            "name": {
+                                "en": "Pronouns",
+                                "es": "Pronouns",
+                                "pt": "Pronouns"
+                            },
+                            "slug": {
+                                "en": "pronouns",
+                                "es": "pronouns",
+                                "pt": "pronouns"
+                            },
+                            "origin": "",
+                            "type": "markdown",
+                            "children": []
+                        },
+                        {
+                            "name": {
+                                "en": "Adjectives",
+                                "es": "Adjectives",
+                                "pt": "Adjectives"
+                            },
+                            "slug": {
+                                "en": "adjectives",
+                                "es": "adjectives",
+                                "pt": "adjectives"
+                            },
+                            "origin": "",
+                            "type": "markdown",
+                            "children": []
+                        },
+                        {
+                            "name": {
+                                "en": "Contractions",
+                                "es": "Contractions",
+                                "pt": "Contractions"
+                            },
+                            "slug": {
+                                "en": "contractions",
+                                "es": "contractions",
+                                "pt": "contractions"
+                            },
+                            "origin": "",
+                            "type": "markdown",
+                            "children": []
+                        },
+                        {
+                            "name": {
+                                "en": "Punctuation",
+                                "es": "Punctuation",
+                                "pt": "Punctuation"
+                            },
+                            "slug": {
+                                "en": "punctuation",
+                                "es": "punctuation",
+                                "pt": "punctuation"
+                            },
+                            "origin": "",
+                            "type": "markdown",
+                            "children": []
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "documentation": "Formatting",
+            "name": {
+                "en": "Formatting",
+                "es": "Formatting",
+                "pt": "Formatting"
+            },
+            "slugPrefix": "docs/formatting",
+            "categories": [
+                {
+                    "name": {
+                        "en": "General",
+                        "es": "General",
+                        "pt": "Geral"
+                    },
+                    "slug": {
+                        "en": "general",
+                        "es": "general",
+                        "pt": "general"
+                    },
+                    "origin": "",
+                    "type": "category",
+                    "children": [
+                        {
+                            "name": {
+                                "en": "Headings and titles",
+                                "es": "Headings and titles",
+                                "pt": "Headings and titles"
+                            },
+                            "slug": {
+                                "en": "headings-and-titles",
+                                "es": "headings-and-titles",
+                                "pt": "headings-and-titles"
+                            },
+                            "origin": "",
+                            "type": "markdown",
+                            "children": []
+                        },
+                        {
+                            "name": {
+                                "en": "Lists and tables",
+                                "es": "Lists and tables",
+                                "pt": "Lists and tables"
+                            },
+                            "slug": {
+                                "en": "lists-and-tables",
+                                "es": "lists-and-tables",
+                                "pt": "lists-and-tables"
+                            },
+                            "origin": "",
+                            "type": "markdown",
+                            "children": []
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "documentation": "Interface copy",
+            "name": {
+                "en": "Interface copy",
+                "es": "Interface copy",
+                "pt": "Interface copy"
+            },
+            "slugPrefix": "docs/interface-copy",
+            "categories": [
+                {
+                    "name": {
+                        "en": "General",
+                        "es": "General",
+                        "pt": "Geral"
+                    },
+                    "slug": {
+                        "en": "general",
+                        "es": "general",
+                        "pt": "general"
+                    },
+                    "origin": "",
+                    "type": "category",
+                    "children": [
+                        {
+                            "name": {
+                                "en": "Actions labels",
+                                "es": "Actions labels",
+                                "pt": "Actions labels"
+                            },
+                            "slug": {
+                                "en": "action-labels",
+                                "es": "action-labels",
+                                "pt": "action-labels"
+                            },
+                            "origin": "",
+                            "type": "markdown",
+                            "children": []
+                        },
+                        {
+                            "name": {
+                                "en": "Content labels",
+                                "es": "Content labels",
+                                "pt": "Content labels"
+                            },
+                            "slug": {
+                                "en": "content-labels",
+                                "es": "content-labels",
+                                "pt": "content-labels"
+                            },
+                            "origin": "",
+                            "type": "markdown",
+                            "children": []
+                        },
+                        {
+                            "name": {
+                                "en": "Descriptions",
+                                "es": "Descriptions",
+                                "pt": "Descriptions"
+                            },
+                            "slug": {
+                                "en": "descriptions",
+                                "es": "descriptions",
+                                "pt": "descriptions"
+                            },
+                            "origin": "",
+                            "type": "markdown",
+                            "children": []
+                        },
+                        {
+                            "name": {
+                                "en": "Messages",
+                                "es": "Messages",
+                                "pt": "Messages"
+                            },
+                            "slug": {
+                                "en": "messages",
+                                "es": "messages",
+                                "pt": "messages"
+                            },
+                            "origin": "",
+                            "type": "markdown",
+                            "children": []
+                        },
+                        {
+                            "name": {
+                                "en": "Placeholder texts",
+                                "es": "Placeholder texts",
+                                "pt": "Placeholder texts"
+                            },
+                            "slug": {
+                                "en": "placeholder-texts",
+                                "es": "placeholder-texts",
+                                "pt": "placeholder-texts"
+                            },
+                            "origin": "",
+                            "type": "markdown",
+                            "children": []
+                        },
+                        {
+                            "name": {
+                                "en": "Titles",
+                                "es": "Titles",
+                                "pt": "Titles"
+                            },
+                            "slug": {
+                                "en": "titles",
+                                "es": "titles",
+                                "pt": "titles"
+                            },
+                            "origin": "",
+                            "type": "markdown",
+                            "children": []
+                        },
+                        {
+                            "name": {
+                                "en": "Data formats",
+                                "es": "Data formats",
+                                "pt": "Data formats"
+                            },
+                            "slug": {
+                                "en": "data-formats",
+                                "es": "data-formats",
+                                "pt": "data-formats"
+                            },
+                            "origin": "",
+                            "type": "markdown",
+                            "children": []
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "documentation": "Documentation",
+            "name": {
+                "en": "Documentation",
+                "es": "Documentation",
+                "pt": "Documentation"
+            },
+            "slugPrefix": "docs/documentation",
+            "categories": [
+                {
+                    "name": {
+                        "en": "Guidelines",
+                        "es": "Guidelines",
+                        "pt": "Guidelines"
+                    },
+                    "slug": {
+                        "en": "guidelines",
+                        "es": "guidelines",
+                        "pt": "guidelines"
+                    },
+                    "origin": "",
+                    "type": "category",
+                    "children": [
+                        {
+                            "name": {
+                                "en": "Documentation overview",
+                                "es": "Documentation overview",
+                                "pt": "Documentation overview"
+                            },
+                            "slug": {
+                                "en": "documentation-overview",
+                                "es": "documentation-overview",
+                                "pt": "documentation-overview"
+                            },
+                            "origin": "",
+                            "type": "markdown",
+                            "children": []
+                        },
+                        {
+                            "name": {
+                                "en": "Contribution guidelines",
+                                "es": "Contribution guidelines",
+                                "pt": "Contribution guidelines"
+                            },
+                            "slug": {
+                                "en": "contribution-guidelines",
+                                "es": "contribution-guidelines",
+                                "pt": "contribution-guidelines"
+                            },
+                            "origin": "",
+                            "type": "markdown",
+                            "children": []
+                        }
+                    ]
+                },
+                {
+                    "name": {
+                        "en": "Templates",
+                        "es": "Templates",
+                        "pt": "Templates"
+                    },
+                    "slug": {
+                        "en": "templates",
+                        "es": "templates",
+                        "pt": "templates"
+                    },
+                    "origin": "",
+                    "type": "category",
+                    "children": [
+                        {
+                            "name": {
+                                "en": "Onboarding",
+                                "es": "Onboarding",
+                                "pt": "Onboarding"
+                            },
+                            "slug": {
+                                "en": "onboarding",
+                                "es": "onboarding",
+                                "pt": "onboarding"
+                            },
+                            "origin": "",
+                            "type": "markdown",
+                            "children": []
+                        },
+                        {
+                            "name": {
+                                "en": "Troubleshooting",
+                                "es": "Troubleshooting",
+                                "pt": "Troubleshooting"
+                            },
+                            "slug": {
+                                "en": "troubleshooting",
+                                "es": "troubleshooting",
+                                "pt": "troubleshooting"
+                            },
+                            "origin": "",
+                            "type": "markdown",
+                            "children": []
+                        },
+                        {
+                            "name": {
+                                "en": "App documentation",
+                                "es": "App documentation",
+                                "pt": "App documentation"
+                            },
+                            "slug": {
+                                "en": "app-documentation",
+                                "es": "app-documentation",
+                                "pt": "app-documentation"
+                            },
+                            "origin": "",
+                            "type": "markdown",
+                            "children": []
+                        },
+                        {
+                            "name": {
+                                "en": "Release notes",
+                                "es": "Release notes",
+                                "pt": "Release notes"
+                            },
+                            "slug": {
+                                "en": "release-notes",
+                                "es": "release-notes",
+                                "pt": "release-notes"
+                            },
+                            "origin": "",
+                            "type": "markdown",
+                            "children": []
+                        },
+                        {
+                            "name": {
+                                "en": "How-to guides",
+                                "es": "How-to guides",
+                                "pt": "How-to guides"
+                            },
+                            "slug": {
+                                "en": "how-to-guides",
+                                "es": "how-to-guides",
+                                "pt": "how-to-guides"
+                            },
+                            "origin": "",
+                            "type": "markdown",
+                            "children": []
+                        },
+                        {
+                            "name": {
+                                "en": "Tutorials",
+                                "es": "Tutorials",
+                                "pt": "Tutorials"
+                            },
+                            "slug": {
+                                "en": "tutorials",
+                                "es": "tutorials",
+                                "pt": "tutorials"
+                            },
+                            "origin": "",
+                            "type": "markdown",
+                            "children": []
+                        },
+                        {
+                            "name": {
+                                "en": "Announcements",
+                                "es": "Announcements",
+                                "pt": "Announcements"
+                            },
+                            "slug": {
+                                "en": "announcements",
+                                "es": "announcements",
+                                "pt": "announcements"
+                            },
+                            "origin": "",
+                            "type": "markdown",
+                            "children": []
+                        },
+                        {
+                            "name": {
+                                "en": "Known issues overview",
+                                "es": "Known issues overview",
+                                "pt": "Known issues overview"
+                            },
+                            "slug": {
+                                "en": "known-issues-overview",
+                                "es": "known-issues-overview",
+                                "pt": "known-issues-overview"
                             },
                             "origin": "",
                             "type": "markdown",

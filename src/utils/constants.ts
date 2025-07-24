@@ -20,7 +20,6 @@ import PaperIcon from 'components/icons/paper-icon'
 import WarningIcon from 'components/icons/warning-icon'
 import GraphIcon from 'components/icons/graph-icon'
 import LongArrowIcon from 'components/icons/long-arrow-icon'
-import TroubleshootingIcon from 'components/icons/troubleshooting-icon'
 import GuidesIcon from 'components/icons/guides-icon'
 import FormattingIcon from 'components/icons/formatting-icon'
 import InterfacesIcon from 'components/icons/interface-copy-icon'
@@ -197,46 +196,6 @@ export const feedbackSectionData = (intl: IntlShape) => {
       }),
       description: '',
       link: getFeedbackURL(),
-    },
-  ]
-
-  return data
-}
-
-export const knownIssuesData = (intl: IntlShape) => {
-  const data: DocDataElement[] = [
-    {
-      id: 'Known Issues',
-      Icon: WarningIcon,
-      title: intl.formatMessage({
-        id: 'sidebar_known_issues.title',
-      }),
-      description: intl.formatMessage({
-        id: 'sidebar_known_issues.description',
-      }),
-      link: '/known-issues',
-    },
-    {
-      id: 'Support Rules',
-      Icon: PaperIcon,
-      title: intl.formatMessage({
-        id: 'sidebar_support_rules.title',
-      }),
-      description: intl.formatMessage({
-        id: 'sidebar_support_rules.description',
-      }),
-      link: intl.formatMessage({
-        id: 'sidebar_support_rules.link',
-      }),
-    },
-    {
-      id: 'Troubleshooting',
-      Icon: TroubleshootingIcon,
-      title: intl.formatMessage({
-        id: 'sidebar_troubleshooting.title',
-      }),
-      description: 'sidebar_troubleshooting.description',
-      link: '/troubleshooting',
     },
   ]
 

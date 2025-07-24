@@ -19,7 +19,6 @@ import {
 import {
   sectionsData,
   feedbackSectionData,
-  knownIssuesData,
   menuSupportData,
 } from 'utils/constants'
 import { useIntl } from 'react-intl'
@@ -62,7 +61,7 @@ export default function Layout({
   return (
     <ThemeProvider>
       <LibraryContextProvider
-        sections={[sectionsData(intl), knownIssuesData(intl)]}
+        sections={[sectionsData(intl)]}
         hamburguerMenuSections={[
           sectionsData(intl),
           menuSupportData(intl),

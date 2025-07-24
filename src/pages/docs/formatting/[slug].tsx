@@ -469,7 +469,7 @@ export const getStaticProps: GetStaticProps = async ({
     const parentsArrayType: string[] = []
     let sectionSelected = ''
     if (keyPath) {
-      sectionSelected = flattenedSidebar[`${keyPath[0]}.formatting`]
+      sectionSelected = flattenedSidebar[`${keyPath[0]}.documentation`]
       getParents(
         keyPath,
         'name',
