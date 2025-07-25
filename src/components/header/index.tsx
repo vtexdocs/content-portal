@@ -7,15 +7,15 @@ import {
 } from '@vtex/brand-ui'
 import { useContext, useEffect, useRef, useState } from 'react'
 import { useRouter } from 'next/router'
-import { HamburgerMenu, SearchInput } from '@vtexdocs/components'
-
+import { HamburgerMenu } from '@vtexdocs/components'
+// import { SearchInput } from '@vtexdocs/components'
 import DropdownMenu from 'components/dropdown-menu'
 import GridIcon from 'components/icons/grid-icon'
 import LongArrowIcon from 'components/icons/long-arrow-icon'
 import { getFeedbackURL } from 'utils/get-url'
 
 import AnnouncementBar from 'components/announcement-bar'
-import LocaleSwitcher from 'components/locale-switcher'
+// import LocaleSwitcher from 'components/locale-switcher'
 
 import styles from './styles'
 import { PreviewContext } from 'utils/contexts/preview'
@@ -107,9 +107,9 @@ const Header = () => {
           <ContentPortalIcon sx={styles.logoSize} />
         </VtexLink>
 
-        <Box sx={styles.searchContainer}>
+        {/* <Box sx={styles.searchContainer}>
           <SearchInput />
-        </Box>
+        </Box> */}
 
         <HeaderBrand.RightLinks sx={styles.rightLinks}>
           <Flex
@@ -142,9 +142,9 @@ const Header = () => {
           <Flex sx={styles.containerHamburguerLocale}>
             <HamburgerMenu />
             <Box sx={styles.splitter}></Box>
-            <Box sx={styles.localeSwitcherContainer}>
+            {/* <Box sx={styles.localeSwitcherContainer}>
               <LocaleSwitcher />
-            </Box>
+            </Box> */}
           </Flex>
         </HeaderBrand.RightLinks>
       </HeaderBrand>

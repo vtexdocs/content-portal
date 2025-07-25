@@ -5,7 +5,7 @@ import Image from 'next/image'
 import styles from 'components/newsletter-section/styles'
 
 import { FormattedMessage } from 'react-intl'
-import { SearchInput } from '@vtexdocs/components'
+// import { SearchInput } from '@vtexdocs/components'
 
 const NewsletterSection = () => {
   const [isMobile, setIsMobile] = useState(false)
@@ -45,7 +45,7 @@ const NewsletterSection = () => {
             <FormattedMessage id="landing_subtitle_3" />
           </Text>
           <Text style={{ color: 'transparent' }}>just for spacing</Text>
-          <SearchInput />
+          {/* <SearchInput /> */}
         </Flex>
       </Box>
     </Box>
