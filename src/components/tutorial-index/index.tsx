@@ -16,15 +16,15 @@ const TutorialIndexing = ({ ...props }) => {
     <>
       <PageHeader
         title={intl.formatMessage({
-          id: 'tutorial_and_solutions_page.title',
+          id: 'tutorials_landing_page.title',
         })}
         description={intl.formatMessage({
-          id: 'tutorial_and_solutions_page.description',
+          id: 'tutorials_landing_page.description',
         })}
         imageUrlDesktop={startHereImage}
         imageUrlMobile={startHereImage}
         imageAlt={intl.formatMessage({
-          id: 'tutorial_and_solutions_page.title',
+          id: 'tutorials_landing_page.title',
         })}
       />
       <Flex sx={styles.innerContainer}>
@@ -38,7 +38,7 @@ const TutorialIndexing = ({ ...props }) => {
               </header>
               <Box sx={styles.textContainer}>
                 <Box sx={styles.titleContainer}>
-                  <Text>{props.name}</Text>
+                  <Text>{props.name || 'Untitled'}</Text>
                 </Box>
                 <Box sx={styles.indexContainer}>
                   <Text sx={{ fontSize: '22px', pt: '32px' }}>
@@ -47,7 +47,7 @@ const TutorialIndexing = ({ ...props }) => {
                   <Flex sx={styles.linksContainer}>
                     {props.children.map(
                       (el: { slug: string; name: string }) => (
-                        <Link href={el.slug}>{el.name}</Link>
+                        <Link href={el.slug}>{el.name || 'Untitled'}</Link>
                       )
                     )}
                   </Flex>

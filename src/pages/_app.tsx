@@ -1,35 +1,34 @@
 import type { AppProps } from 'next/app'
+import type { Page } from 'utils/typings/types'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { IntlProvider } from 'react-intl'
 import { getMessages } from 'utils/get-messages'
-import type { Page } from 'utils/typings/types'
 
-import '@vtexdocs/components/dist/index.css'
+import '@code-hike/mdx/dist/index.css'
 import 'styles/global.css'
-import 'styles/rapidoc.css'
+import '@vtexdocs/components/dist/index.css'
+import '@fortawesome/fontawesome-free/css/all.css'
 
-import { ErrorBoundary, SuspenseFallback } from 'components/error-boundary'
 import Layout from 'components/layout'
-import { Suspense } from 'react'
 
 type Props = AppProps & {
   Component: Page
 }
+import { ErrorBoundary, SuspenseFallback } from 'components/error-boundary'
+import { Suspense } from 'react'
 
-import PreviewContextProvider from 'utils/contexts/preview'
 import TrackerProvider from 'utils/contexts/trackerContext'
+import PreviewContextProvider from 'utils/contexts/preview'
 
 function MyApp({ Component, pageProps }: Props) {
   const { locale } = useRouter()
   const currentLocale = locale ?? 'en'
   const messages = getMessages()
-  const defaultMessages = messages['en']
-  const currentMessages = messages[currentLocale] ?? defaultMessages
 
   return (
     <TrackerProvider>
-      <IntlProvider locale={currentLocale} messages={currentMessages}>
+      <IntlProvider locale={currentLocale} messages={messages[currentLocale]}>
         <Head>
           <meta
             property="og:image"
@@ -42,7 +41,7 @@ function MyApp({ Component, pageProps }: Props) {
         </Head>
         <PreviewContextProvider>
           <Layout
-            sidebarfallback={pageProps.sidebarfallback}
+            // ❌ REMOVED: sidebarfallback (now loaded client-side)
             hideSidebar={Component.hideSidebar}
             isPreview={pageProps.isPreview ?? false}
             sectionSelected={pageProps.sectionSelected}

@@ -1,8 +1,11 @@
 import { Box, Flex, Text } from '@vtex/brand-ui'
-import styles from 'components/newsletter-section/styles'
-import Image from 'next/image'
 import { useEffect, useState } from 'react'
+
+import Image from 'next/image'
+import styles from 'components/newsletter-section/styles'
+
 import { FormattedMessage } from 'react-intl'
+// import { SearchInput } from '@vtexdocs/components'
 
 const NewsletterSection = () => {
   const [isMobile, setIsMobile] = useState(false)
@@ -23,23 +26,28 @@ const NewsletterSection = () => {
               ? '/images/content-style-guide_mobile.png'
               : '/images/content-style-guide_desktop.png'
           }
-          alt="Image of alphabetical characters, symbolizing the textual content of the portal"
+          alt="Image of the VTEX store environment"
           fill
+          priority
           style={{
+            width: '100%',
+            height: '100%',
             objectFit: 'cover',
             objectPosition: 'center',
           }}
         />
+        <Flex sx={styles.contentContainer}>
+          <Text sx={styles.text}>
+            <FormattedMessage id="landing_subtitle_1" />{' '}
+            <span style={{ color: '#0366DD' }}>
+              <FormattedMessage id="landing_subtitle_2" />
+            </span>{' '}
+            <FormattedMessage id="landing_subtitle_3" />
+          </Text>
+          <Text style={{ color: 'transparent' }}>just for spacing</Text>
+          {/* <SearchInput /> */}
+        </Flex>
       </Box>
-      <Flex sx={styles.contentContainer}>
-        <Text sx={styles.text}>
-          <FormattedMessage id="landing_subtitle_1" />{' '}
-          <span style={{ color: '#0366DD' }}>
-            <FormattedMessage id="landing_subtitle_2" />
-          </span>{' '}
-          <FormattedMessage id="landing_subtitle_3" />
-        </Text>
-      </Flex>
     </Box>
   )
 }

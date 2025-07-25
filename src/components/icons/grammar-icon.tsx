@@ -1,6 +1,6 @@
 import { Icon, IconProps } from '@vtex/brand-ui'
 
-const EmailIcon = (props: IconProps) => (
+const GrammarIcon = (props: IconProps) => (
   <Icon
     {...props}
     width="25"
@@ -16,4 +16,4 @@ const EmailIcon = (props: IconProps) => (
   </Icon>
 )
 
-export default EmailIcon
+export default GrammarIcon

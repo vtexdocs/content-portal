@@ -59,8 +59,8 @@ const contentTitle: SxStyleProp = {
 
 const contentDescription: SxStyleProp = {
   marginBottom: '30px',
-  fontSize: '16px',
-  lineHeight: '22px !important',
+  fontSize: ['16px', '16px'],
+  lineHeight: ['22px', '22px'],
   fontWeight: '400',
   color: '#4A596B',
 }

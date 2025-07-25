@@ -1,8 +1,9 @@
 import { Box, Flex, Link } from '@vtex/brand-ui'
-import VtexLogoFooter from 'components/icons/vtexLogoFooter'
-import { useIntl } from 'react-intl'
-import { getCommunityURL, getFeedbackURL, getGithubURL } from 'utils/get-url'
 import styles from './styles'
+import { getGithubURL, getCommunityURL, getFeedbackURL } from 'utils/get-url'
+import { useIntl } from 'react-intl'
+// import LocaleSwitcherFooter from 'components/locale-switcher-footer'
+import VtexLogoFooter from 'components/icons/vtexLogoFooter'
 
 const Footer = () => {
   const intl = useIntl()
@@ -16,7 +17,7 @@ const Footer = () => {
     },
     {
       message: intl.formatMessage({
-        id: 'footer_comunity',
+        id: 'landing_page_footer_community.message',
       }),
       to: () => getCommunityURL(),
     },
@@ -33,15 +34,11 @@ const Footer = () => {
       <VtexLogoFooter sx={{ width: '61px', height: '22px' }} />
       <Flex sx={styles.textLinkItems}>
         {links.map((link, index) => (
-          <Link
-            sx={{ color: '#CCCED8' }}
-            key={index}
-            href={link.to()}
-            target="_blank"
-          >
+          <Link sx={{ color: '#CCCED8' }} key={index} href={link.to()}>
             {link.message}
           </Link>
         ))}
+        {/* <LocaleSwitcherFooter sx={styles.localeSwitchLanding} /> */}
       </Flex>
     </Box>
   )

@@ -1,4 +1,4 @@
-import { Box, Flex, IconCaret, Link, Text } from '@vtex/brand-ui'
+import { Box, Flex, IconCaret, Text, Link } from '@vtex/brand-ui'
 
 import type { WhatsNextDataElement } from 'utils/typings/types'
 
@@ -6,9 +6,9 @@ import styles from './styles'
 
 const WhatsNextCard = ({
   title,
+  description,
   linkTitle,
   linkTo,
-  description,
 }: WhatsNextDataElement) => {
   return (
     <Link href={linkTo} sx={styles.container}>

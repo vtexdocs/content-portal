@@ -1,13 +1,13 @@
 export type Locale = 'en' | 'pt' | 'es'
 
 export type DocumentationTitle =
-  | 'Style Guides'
-  | 'Tutorials & Solutions' //Mudar
-  | 'Developers Portal' //Mudar
+  | 'Start here'
+  | 'Tutorials'
+  | 'Developers Portal'
 
 export type UpdatesTitle = 'Announcement' | 'FAQ'
 
-export type SlugPrefix = 'tutorial'
+export type SlugPrefix = 'tutorials'
 
 export type ResourceTitle =
   | 'Community'

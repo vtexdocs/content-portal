@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/ban-ts-comment */
-import octokit from 'utils/octokitConfig' //eslint-disable-line
+import octokit from 'utils/octokitConfig'
 
 async function getGithubTree(org: string, repo: string, ref: string) {
   const response = octokit.request(
@@ -21,7 +21,7 @@ export async function getAllDocsPaths(branch = 'main') {
 
   const repoTree = await getGithubTree(
     'vtexdocs',
-    'help-center-content',
+    'content-portal-content',
     branch
   )
   // @ts-ignore
@@ -32,9 +32,11 @@ export async function getAllDocsPaths(branch = 'main') {
     if (path.startsWith(`docs/`)) {
       const match = path.match(re)
       const filename = match?.groups?.filename ? match?.groups?.filename : ''
-      const filetype = match?.groups?.filetype ? match?.groups?.filetype : ''
       const fileLocale = match?.groups?.locale ? match?.groups?.locale : ''
-      if (filetype === 'md' || filetype === 'mdx') {
+      if (
+        match?.groups?.filetype === 'md' ||
+        match?.groups?.filetype === 'mdx'
+      ) {
         if (!docsPaths[filename]) docsPaths[filename] = []
         docsPaths[filename].push({
           locale: fileLocale,
@@ -46,50 +48,100 @@ export async function getAllDocsPaths(branch = 'main') {
   return docsPaths
 }
 
+let cachedRepoTree: any = null
+
+function isStaticBuild() {
+  return process.env.NEXT_PHASE === 'phase-production-build'
+}
+
+function buildDocsPathsFromTree(repoTree: any, category: string) {
+  const docsPaths: { [slug: string]: { locale: string; path: string }[] } = {}
+  // @ts-ignore
+  repoTree.tree.map((node: any) => {
+    const path = node.path
+    // Match docs/{locale}/{category}/.../{filename}.md(x)
+    const re = /^docs\/(?<locale>pt|es|en)\/(?<rest>.+)\.(?<filetype>md|mdx)$/
+    const match = path.match(re)
+    if (match) {
+      const { locale, rest } = match.groups as any
+      const segments = rest.split('/')
+      const fileCategory = segments[0]
+      if (fileCategory === category) {
+        // Use only the filename as the slug
+        const slug = segments[segments.length - 1]
+        if (!docsPaths[slug]) docsPaths[slug] = []
+        docsPaths[slug].push({
+          locale,
+          path,
+        })
+      }
+    }
+  })
+  return docsPaths
+}
+
 export async function getDocsPaths(
   category:
-    | 'style-guides'
-    | 'changelog'
+    | 'guides'
+    | 'grammar'
+    | 'formatting'
+    | 'interface-copy'
     | 'documentation'
     | 'glossary'
-    | 'grammar'
-    | 'guides'
-    | 'user-interfaces'
+    | 'changelog'
     | 'tutorials'
     | 'announcements'
     | 'faq'
     | 'known-issues'
-    | 'formatting',
+    | 'tracks'
+    | 'troubleshooting',
   branch = 'main'
 ) {
-  const docsPaths: { [slug: string]: { locale: string; path: string }[] } = {}
+  const staticBuild = isStaticBuild()
+  if (staticBuild && cachedRepoTree) {
+    return buildDocsPathsFromTree(cachedRepoTree, category)
+  }
+  const repoTree = await getGithubTree(
+    'vtexdocs',
+    'content-portal-content',
+    branch
+  )
+  if (staticBuild) {
+    cachedRepoTree = repoTree
+  }
+  return buildDocsPathsFromTree(repoTree, category)
+}
+
+export async function getStaticPathsForDocType(
+  docType: 'tracks' | 'tutorials',
+  branch = 'main'
+): Promise<{ params: { lang: string; slug: string } }[]> {
+  const pathsForStaticGeneration: { params: { lang: string; slug: string } }[] =
+    []
 
   const repoTree = await getGithubTree(
     'vtexdocs',
     'content-portal-content',
     branch
   )
+
+  const pathRegex = new RegExp(
+    '^(?<lang>en|es|pt)/docs/(?<actualDocType>tracks|tutorials)/(?<slug>.+)\\.(md|mdx)$'
+  )
+
   // @ts-ignore
-  repoTree.tree.map((node: any) => {
-    const path = node.path
-    const re =
-      /^(?<path>.+\/)*(?<locale>pt|es|en+)\/(?<localeDir>.+\/)*(?<filename>.+)\.(?<filetype>.+)$/
-    if (path.startsWith(`docs/`)) {
-      const match = path.match(re)
-      const localeDir = match?.groups?.localeDir ? match?.groups?.localeDir : ''
-      if (localeDir.startsWith(category)) {
-        const filename = match?.groups?.filename ? match?.groups?.filename : ''
-        const filetype = match?.groups?.filetype ? match?.groups?.filetype : ''
-        const fileLocale = match?.groups?.locale ? match?.groups?.locale : ''
-        if (filetype === 'md' || filetype === 'mdx') {
-          if (!docsPaths[filename]) docsPaths[filename] = []
-          docsPaths[filename].push({
-            locale: fileLocale,
-            path,
-          })
-        }
+  repoTree.tree.forEach((node: any) => {
+    const path = node.path as string
+    const match = path.match(pathRegex)
+
+    if (match && match.groups) {
+      const { lang, actualDocType: pathDocType, slug } = match.groups
+      if (pathDocType === docType) {
+        pathsForStaticGeneration.push({
+          params: { lang, slug },
+        })
       }
     }
   })
-  return docsPaths
+  return pathsForStaticGeneration
 }

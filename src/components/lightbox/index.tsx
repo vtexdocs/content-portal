@@ -17,8 +17,6 @@ export default function LightBox({ children }: Props) {
       const scrollTop = document.body.getBoundingClientRect().top
       document.body.style.top = `${scrollTop}px`
       document.body.classList.add('modal-open')
-      document.body.style.overflow = 'hidden'
-      document.body.style.removeProperty('overflow')
     } else {
       document.body.classList.remove('modal-open')
       document.body.style.removeProperty('top')

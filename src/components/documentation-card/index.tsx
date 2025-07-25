@@ -9,13 +9,10 @@ import { MouseEventHandler } from 'react'
 export interface DocumentProps extends DataElement {
   title: string
 }
-
 export interface CardProps extends DocumentProps {
   containerType: 'dropdown' | 'see-also' | 'mobile'
   onClick?: MouseEventHandler<HTMLAnchorElement> | undefined
-  isExternalLink?: boolean
 }
-
 const DocumentationCard = ({
   title,
   description,
@@ -23,16 +20,10 @@ const DocumentationCard = ({
   containerType,
   Icon,
   onClick,
-  isExternalLink = false, // Default to false if not provided
 }: CardProps) => {
   return (
     <Link href={link} legacyBehavior>
-      <a
-        onClick={onClick}
-        style={{ width: '100%' }}
-        target={isExternalLink ? '_blank' : undefined}
-        rel={isExternalLink ? 'noopener noreferrer' : undefined}
-      >
+      <a onClick={onClick} style={{ width: '100%' }}>
         <Box sx={cardContainer(containerType)}>
           <Flex sx={titleContainer(containerType)}>
             <Icon size={24} sx={{ color: '#4A596B' }} />

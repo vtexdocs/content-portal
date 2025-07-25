@@ -1,17 +1,11 @@
-interface NavbarItem {
-  documentation: string
-  slugPrefix: string
-  categories: Document[]
-}
+import type {
+  NavbarItem,
+  Document,
+  LocalizedText,
+  LocalizedSlug,
+} from '../types/navigation'
 
-interface Document {
-  slug: string
-  name: { en: string; es: string; pt: string }
-  type: string
-  children: Document[]
-}
-
-const ENUMERABLE_SECTIONS_SLUGS = ['docs/style-guides']
+const ENUMERABLE_SECTIONS_SLUGS = ['docs/tracks']
 const ENUMERATION_TYPE = 'track'
 
 export const enumerateNavigation = (navbar: NavbarItem[]) => {
@@ -33,7 +27,12 @@ const enumerateChildren = (
   enumerate: boolean
 ): Document[] => {
   const children = document.children.map((currDoc, index) => {
-    if (enumerate) currDoc.name = enumerateName(currDoc.name, index + 1)
+    if (enumerate) {
+      currDoc.name = enumerateName(currDoc.name, index + 1)
+      if (typeof currDoc.slug === 'object') {
+        currDoc.slug = enumerateSlug(currDoc.slug, index + 1)
+      }
+    }
     currDoc.children = enumerateChildren(
       currDoc,
       ENUMERATION_TYPE === currDoc.type
@@ -44,13 +43,18 @@ const enumerateChildren = (
   return children
 }
 
-const enumerateName = (
-  name: { en: string; es: string; pt: string },
-  id: number
-) => {
+const enumerateName = (name: LocalizedText, id: number): LocalizedText => {
   name.en = id + '. ' + name.en
   name.es = id + '. ' + name.es
   name.pt = id + '. ' + name.pt
 
   return name
+}
+
+const enumerateSlug = (slug: LocalizedSlug, id: number): LocalizedSlug => {
+  slug.en = id + '-' + slug.en
+  slug.es = id + '-' + slug.es
+  slug.pt = id + '-' + slug.pt
+
+  return slug
 }
