@@ -16,9 +16,9 @@
                         "pt": "General"
                     },
                     "slug": {
-                        "en": "general",
-                        "es": "general",
-                        "pt": "general"
+                        "en": "index-guides",
+                        "es": "index-guides",
+                        "pt": "index-guides"
                     },
                     "origin": "",
                     "type": "category",
@@ -103,9 +103,9 @@
                         "pt": "General"
                     },
                     "slug": {
-                        "en": "general",
-                        "es": "general",
-                        "pt": "general"
+                        "en": "index-grammar",
+                        "es": "index-grammar",
+                        "pt": "index-grammar"
                     },
                     "origin": "",
                     "type": "category",
@@ -250,9 +250,9 @@
                         "pt": "General"
                     },
                     "slug": {
-                        "en": "general",
-                        "es": "general",
-                        "pt": "general"
+                        "en": "index-formatting",
+                        "es": "index-formatting",
+                        "pt": "index-formatting"
                     },
                     "origin": "",
                     "type": "category",
@@ -307,9 +307,9 @@
                         "pt": "General"
                     },
                     "slug": {
-                        "en": "general",
-                        "es": "general",
-                        "pt": "general"
+                        "en": "index-interface-copy",
+                        "es": "index-interface-copy",
+                        "pt": "index-interface-copy"
                     },
                     "origin": "",
                     "type": "category",
@@ -439,9 +439,9 @@
                         "pt": "Guidelines"
                     },
                     "slug": {
-                        "en": "guidelines",
-                        "es": "guidelines",
-                        "pt": "guidelines"
+                        "en": "index-documentation",
+                        "es": "index-documentation",
+                        "pt": "index-documentation"
                     },
                     "origin": "",
                     "type": "category",
@@ -485,9 +485,9 @@
                         "pt": "Templates"
                     },
                     "slug": {
-                        "en": "templates",
-                        "es": "templates",
-                        "pt": "templates"
+                        "en": "index-documentation",
+                        "es": "index-documentation",
+                        "pt": "index-documentation"
                     },
                     "origin": "",
                     "type": "category",
