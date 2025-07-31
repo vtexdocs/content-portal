@@ -7,15 +7,16 @@ import { useIntl } from 'react-intl'
 import { PreviewContext } from 'utils/contexts/preview'
 import getNavigation from 'utils/getNavigation'
 import { DocumentationTitle, UpdatesTitle } from 'utils/typings/unionTypes'
+// Ajuste o caminho conforme a sua estrutura de pastas
+import { glossaryData } from '../../../components/glossary-data/glossaryData'
 import GrammarImage from '../../../../public/images/cs-grammar_desktop.png'
 import GrammarImageMobile from '../../../../public/images/cs-grammar_mobile.png'
 import styles from './glossary.module.css'
-import { glossaryData } from './glossaryData'
 
 declare global {
   interface Window {
-    jQuery: any
-    DataTable: any
+    jQuery: any //eslint-disable-line
+    DataTable: any //eslint-disable-line
   }
 }
 
@@ -25,11 +26,10 @@ interface Props {
   branch: string
 }
 
-
 const TracksPage: NextPage<Props> = ({ branch }) => {
   const { setBranchPreview } = useContext(PreviewContext)
   const intl = useIntl()
-  const [dataTable, setDataTable] = useState<any>(null)
+  const [dataTable, setDataTable] = useState<any>(null) //eslint-disable-line
 
   setBranchPreview(branch)
 
@@ -105,17 +105,46 @@ const TracksPage: NextPage<Props> = ({ branch }) => {
             >
               <thead>
                 <tr>
-                  <th>Term</th>
+                  <th>ID</th>
+                  <th>Term en-US 🇺🇲</th>
+                  <th>Term pt-BR 🇧🇷</th>
+                  <th>Term es-MX 🇲🇽</th>
                   <th>Definition</th>
+                  <th>Approval date</th>
                 </tr>
               </thead>
               <tbody>
-                {glossaryData.map((item, index) => (
-                  <tr key={index}>
-                    <td>{item.term}</td>
-                    <td>{item.definition}</td>
-                  </tr>
-                ))}
+                {glossaryData.map((item) => {
+                  // --- LÓGICA DE ESTILIZAÇÃO DINÂMICA ---
+                  const statusClass =
+                    item.status === 'obsolete'
+                      ? styles.obsolete
+                      : item.status === 'notRecommended'
+                      ? styles.notRecommended
+                      : ''
+
+                  const hoverTitle =
+                    item.status === 'obsolete'
+                      ? 'Obsolete'
+                      : item.status === 'notRecommended'
+                      ? 'Not recommended'
+                      : ''
+
+                  return (
+                    <tr
+                      key={item.id}
+                      className={statusClass}
+                      title={hoverTitle}
+                    >
+                      <td>{item.id}</td>
+                      <td>{item.term_en_US}</td>
+                      <td>{item.term_pt_BR}</td>
+                      <td>{item.term_es_MX}</td>
+                      <td>{item.definition}</td>
+                      <td>{item.approvalDate}</td>
+                    </tr>
+                  )
+                })}
               </tbody>
             </table>
           </div>
