@@ -1,28 +1,15 @@
-/* Este container vai "blindar" nossa tabela contra estilos globais */
 .dataTableContainer {
     width: 80%;
-    /* Define que o container ocupará 80% da largura do seu elemento pai */
     margin: 0 auto;
-    /* Centraliza o container horizontalmente na página */
     padding: 2rem 0;
-    /* Adiciona um espaçamento vertical para não colar no header acima */
 }
 
-/* 
-  Usamos :global() para atingir as classes que o DataTables injeta,
-  pois elas não são "módulos" e não devem ser hasheadas.
-  A classe .dataTableContainer aumenta a especificidade, forçando
-  estes estilos a terem prioridade sobre os globais.
-*/
-
-/* Resetando estilos globais que podem interferir */
 .dataTableContainer :global(table.dataTable) {
     border-collapse: collapse !important;
     border-spacing: 0 !important;
     color: #333 !important;
 }
 
-/* ... (o resto do arquivo continua igual) ... */
 .dataTableContainer :global(.dataTables_wrapper) {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
         Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -37,6 +24,7 @@
     color: inherit !important;
     font-weight: normal !important;
     text-align: left !important;
+    vertical-align: middle;
 }
 
 .dataTableContainer :global(thead th) {
@@ -70,21 +58,23 @@
     border-color: #337ab7 !important;
 }
 
-.obsolete {
-  background-color: #ffebee !important; /* Vermelho claro */
-  color: #c62828 !important; /* Vermelho escuro para texto */
-  cursor: help; /* Muda o cursor para indicar informação extra */
+.badge {
+    margin-top: 10px;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    line-height: 1.2;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
-/* Estilos para linhas não recomendadas */
-.notRecommended {
-  background-color: #fff8e1 !important; /* Amarelo claro */
-  color: #6d4c41 !important; /* Marrom escuro para texto */
-  cursor: help; /* Muda o cursor para indicar informação extra */
+.badgeObsolete {
+    background-color: #fff8e1;
+    color: #8c5a00;
 }
 
-/* Efeito sutil de hover para dar feedback visual */
-.obsolete:hover,
-.notRecommended:hover {
-  filter: brightness(95%);
+.badgeNotRecommended {
+    background-color: #ffebee;
+    color: #c62828;
 }

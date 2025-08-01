@@ -7,8 +7,10 @@ import { useIntl } from 'react-intl'
 import { PreviewContext } from 'utils/contexts/preview'
 import getNavigation from 'utils/getNavigation'
 import { DocumentationTitle, UpdatesTitle } from 'utils/typings/unionTypes'
-// Ajuste o caminho conforme a sua estrutura de pastas
-import { glossaryData } from '../../../components/glossary-data/glossaryData'
+import {
+  glossaryData,
+  GlossaryEntry,
+} from '../../../components/glossary-data/glossaryData'
 import GrammarImage from '../../../../public/images/cs-grammar_desktop.png'
 import GrammarImageMobile from '../../../../public/images/cs-grammar_mobile.png'
 import styles from './glossary.module.css'
@@ -26,6 +28,26 @@ interface Props {
   branch: string
 }
 
+const TermCell = ({ term }: { term: GlossaryEntry['term_en_US'] }) => {
+  if (!term.status) {
+    return <>{term.text}</>
+  }
+
+  const badgeClass =
+    term.status === 'obsolete'
+      ? styles.badgeObsolete
+      : styles.badgeNotRecommended
+  const badgeText = term.status === 'obsolete' ? 'Obsolete' : 'Not Recommended'
+
+  return (
+    <div>
+      <span>{term.text}</span>
+      <br />
+      <span className={`${styles.badge} ${badgeClass}`}>{badgeText}</span>
+    </div>
+  )
+}
+
 const TracksPage: NextPage<Props> = ({ branch }) => {
   const { setBranchPreview } = useContext(PreviewContext)
   const intl = useIntl()
@@ -37,10 +59,13 @@ const TracksPage: NextPage<Props> = ({ branch }) => {
     if (typeof window.jQuery === 'function' && !dataTable) {
       const table = window.jQuery('#glossaryTable').DataTable({
         destroy: true,
+        // dom: "<'row'<'col-sm-12 col-md-6'f><'col-sm-12 col-md-6'l>>" +
+        //      "<'row'<'col-sm-12'tr>>" +
+        //      "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
         language: {
-          search: 'Search:',
+          search: '<strong>Search:</strong>',
           lengthMenu: 'View _MENU_ items per page',
-          info: 'Viewing from _START_ to _END_ of _TOTAL_ items',
+          info: 'Viewing _START_ to _END_ of _TOTAL_ items',
           paginate: {
             first: 'First',
             last: 'Last',
@@ -110,41 +135,24 @@ const TracksPage: NextPage<Props> = ({ branch }) => {
                   <th>Term pt-BR 🇧🇷</th>
                   <th>Term es-MX 🇲🇽</th>
                   <th>Definition</th>
-                  <th>Approval date</th>
                 </tr>
               </thead>
               <tbody>
-                {glossaryData.map((item) => {
-                  // --- LÓGICA DE ESTILIZAÇÃO DINÂMICA ---
-                  const statusClass =
-                    item.status === 'obsolete'
-                      ? styles.obsolete
-                      : item.status === 'notRecommended'
-                      ? styles.notRecommended
-                      : ''
-
-                  const hoverTitle =
-                    item.status === 'obsolete'
-                      ? 'Obsolete'
-                      : item.status === 'notRecommended'
-                      ? 'Not recommended'
-                      : ''
-
-                  return (
-                    <tr
-                      key={item.id}
-                      className={statusClass}
-                      title={hoverTitle}
-                    >
-                      <td>{item.id}</td>
-                      <td>{item.term_en_US}</td>
-                      <td>{item.term_pt_BR}</td>
-                      <td>{item.term_es_MX}</td>
-                      <td>{item.definition}</td>
-                      <td>{item.approvalDate}</td>
-                    </tr>
-                  )
-                })}
+                {glossaryData.map((item) => (
+                  <tr key={item.id}>
+                    <td>{item.id}</td>
+                    <td>
+                      <TermCell term={item.term_en_US} />
+                    </td>
+                    <td>
+                      <TermCell term={item.term_pt_BR} />
+                    </td>
+                    <td>
+                      <TermCell term={item.term_es_MX} />
+                    </td>
+                    <td>{item.definition}</td>
+                  </tr>
+                ))}
               </tbody>
             </table>
           </div>
