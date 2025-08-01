@@ -1,0 +1,80 @@
+.dataTableContainer {
+    width: 80%;
+    margin: 0 auto;
+    padding: 2rem 0;
+}
+
+.dataTableContainer :global(table.dataTable) {
+    border-collapse: collapse !important;
+    border-spacing: 0 !important;
+    color: #333 !important;
+}
+
+.dataTableContainer :global(.dataTables_wrapper) {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+        Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 1rem;
+}
+
+.dataTableContainer :global(th),
+.dataTableContainer :global(td) {
+    padding: 8px 10px !important;
+    border: 1px solid #ddd !important;
+    background: none !important;
+    color: inherit !important;
+    font-weight: normal !important;
+    text-align: left !important;
+    vertical-align: middle;
+}
+
+.dataTableContainer :global(thead th) {
+    font-weight: bold !important;
+    background-color: #f9f9f9 !important;
+}
+
+.dataTableContainer :global(.dataTables_filter input),
+.dataTableContainer :global(.dataTables_length select) {
+    border: 1px solid #aaa !important;
+    border-radius: 3px !important;
+    padding: 5px !important;
+    background-color: white !important;
+    margin-left: 0.5em;
+    display: inline-block !important;
+    width: auto !important;
+}
+
+.dataTableContainer :global(.dataTables_paginate .paginate_button) {
+    padding: 0.5em 1em !important;
+    margin: 0 2px !important;
+    border: 1px solid #ddd !important;
+    cursor: pointer;
+    color: #337ab7 !important;
+    background: white !important;
+}
+
+.dataTableContainer :global(.dataTables_paginate .paginate_button.current) {
+    background: #337ab7 !important;
+    color: white !important;
+    border-color: #337ab7 !important;
+}
+
+.badge {
+    margin-top: 10px;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    line-height: 1.2;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.badgeObsolete {
+    background-color: #fff8e1;
+    color: #8c5a00;
+}
+
+.badgeNotRecommended {
+    background-color: #ffebee;
+    color: #c62828;
+}
