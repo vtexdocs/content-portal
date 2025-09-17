@@ -27,7 +27,7 @@ interface Props {
   sidebarfallback: any
   sectionSelected?: DocumentationTitle | UpdatesTitle | ''
   branch: string
-  glossaryData: FormattedGlossaryEntry[];
+  glossaryData: FormattedGlossaryEntry[]
 }
 
 const TermCell = ({ term }: { term: FormattedGlossaryEntry['term_en_US'] }) => {
@@ -37,15 +37,19 @@ const TermCell = ({ term }: { term: FormattedGlossaryEntry['term_en_US'] }) => {
     return <></>
   }
 
-  const isObsolete = term.status === 'obsolete';
-  const isNotRecommended = term.status === 'not_recommended';
+  const isObsolete = term.status === 'obsolete'
+  const isNotRecommended = term.status === 'not_recommended'
 
   if (!isObsolete && !isNotRecommended) {
     return <>{term.text}</>
   }
 
-  const badgeClass = isObsolete ? styles.badgeObsolete : styles.badgeNotRecommended
-  const badgeTextId = isObsolete ? 'glossary_status_obsolete' : 'glossary_status_not_recommended'
+  const badgeClass = isObsolete
+    ? styles.badgeObsolete
+    : styles.badgeNotRecommended
+  const badgeTextId = isObsolete
+    ? 'glossary_status_obsolete'
+    : 'glossary_status_not_recommended'
 
   return (
     <div>
@@ -63,13 +67,19 @@ const GlossaryPage: NextPage<Props> = ({ branch, glossaryData }) => {
   const intl = useIntl()
   const [dataTableInstance, setDataTableInstance] = useState<any>(null)
   const [areScriptsLoaded, setAreScriptsLoaded] = useState(false)
-  const jQueryLoadedRef = useRef(false);
+  const jQueryLoadedRef = useRef(false)
 
   setBranchPreview(branch)
 
   const initializeDataTable = () => {
-    if (areScriptsLoaded && window.jQuery && window.jQuery.fn.DataTable && glossaryData.length > 0 && !dataTableInstance) {
-      console.log("Attempting to initialize DataTable...");
+    if (
+      areScriptsLoaded &&
+      window.jQuery &&
+      window.jQuery.fn.DataTable &&
+      glossaryData.length > 0 &&
+      !dataTableInstance
+    ) {
+      console.log('Attempting to initialize DataTable...')
       try {
         const table = window.jQuery('#glossaryTable').DataTable({
           destroy: true,
@@ -78,41 +88,53 @@ const GlossaryPage: NextPage<Props> = ({ branch, glossaryData }) => {
           info: true,
           language: {
             search: intl.formatMessage({ id: 'glossary_datatable_search' }),
-            lengthMenu: intl.formatMessage({ id: 'glossary_datatable_length_menu' }),
+            lengthMenu: intl.formatMessage({
+              id: 'glossary_datatable_length_menu',
+            }),
             info: intl.formatMessage({ id: 'glossary_datatable_info' }),
             paginate: {
-              first: intl.formatMessage({ id: 'glossary_datatable_paginate_first' }),
-              last: intl.formatMessage({ id: 'glossary_datatable_paginate_last' }),
-              next: intl.formatMessage({ id: 'glossary_datatable_paginate_next' }),
-              previous: intl.formatMessage({ id: 'glossary_datatable_paginate_previous' }),
+              first: intl.formatMessage({
+                id: 'glossary_datatable_paginate_first',
+              }),
+              last: intl.formatMessage({
+                id: 'glossary_datatable_paginate_last',
+              }),
+              next: intl.formatMessage({
+                id: 'glossary_datatable_paginate_next',
+              }),
+              previous: intl.formatMessage({
+                id: 'glossary_datatable_paginate_previous',
+              }),
             },
           },
-        });
-        setDataTableInstance(table);
-        console.log("DataTable initialized successfully.");
+        })
+        setDataTableInstance(table)
+        console.log('DataTable initialized successfully.')
       } catch (error) {
-        console.error("Error initializing DataTable:", error);
+        console.error('Error initializing DataTable:', error)
       }
     } else if (glossaryData.length === 0) {
-      console.warn("No glossary data available to initialize DataTable.");
+      console.warn('No glossary data available to initialize DataTable.')
     } else if (dataTableInstance) {
-      console.log("DataTable instance already exists, skipping re-initialization.");
+      console.log(
+        'DataTable instance already exists, skipping re-initialization.'
+      )
     } else if (!areScriptsLoaded) {
-      console.log("Scripts not yet loaded, deferring DataTable initialization.");
+      console.log('Scripts not yet loaded, deferring DataTable initialization.')
     }
-  };
+  }
 
   useEffect(() => {
-    initializeDataTable();
+    initializeDataTable()
 
     return () => {
       if (dataTableInstance) {
-        console.log("Destroying DataTable instance during cleanup.");
-        dataTableInstance.destroy();
-        setDataTableInstance(null);
+        console.log('Destroying DataTable instance during cleanup.')
+        dataTableInstance.destroy()
+        setDataTableInstance(null)
       }
-    };
-  }, [glossaryData, areScriptsLoaded]);
+    }
+  }, [glossaryData, areScriptsLoaded])
 
   return (
     <>
@@ -152,40 +174,58 @@ const GlossaryPage: NextPage<Props> = ({ branch, glossaryData }) => {
         <div className={styles.dataTableContainer}>
           <div className="content">
             {glossaryData && glossaryData.length > 0 ? (
-                <table
-                    id="glossaryTable"
-                    className="display"
-                    style={{ width: '100%' }}
-                >
-                    <thead>
-                    <tr>
-                        <th>{intl.formatMessage({ id: 'glossary_table_header_id' })}</th>
-                        <th>{intl.formatMessage({ id: 'glossary_table_header_term_en_us' })}</th>
-                        <th>{intl.formatMessage({ id: 'glossary_table_header_term_es_mx' })}</th>
-                        <th>{intl.formatMessage({ id: 'glossary_table_header_term_pt_br' })}</th>
-                        <th>{intl.formatMessage({ id: 'glossary_table_header_definition' })}</th>
+              <table
+                id="glossaryTable"
+                className="display"
+                style={{ width: '100%' }}
+              >
+                <thead>
+                  <tr>
+                    <th>
+                      {intl.formatMessage({ id: 'glossary_table_header_id' })}
+                    </th>
+                    <th>
+                      {intl.formatMessage({
+                        id: 'glossary_table_header_term_en_us',
+                      })}
+                    </th>
+                    <th>
+                      {intl.formatMessage({
+                        id: 'glossary_table_header_term_es_mx',
+                      })}
+                    </th>
+                    <th>
+                      {intl.formatMessage({
+                        id: 'glossary_table_header_term_pt_br',
+                      })}
+                    </th>
+                    <th>
+                      {intl.formatMessage({
+                        id: 'glossary_table_header_definition',
+                      })}
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {glossaryData.map((item) => (
+                    <tr key={item.id}>
+                      <td>{item.id}</td>
+                      <td>
+                        <TermCell term={item.term_en_US} />
+                      </td>
+                      <td>
+                        <TermCell term={item.term_es_MX} />
+                      </td>
+                      <td>
+                        <TermCell term={item.term_pt_BR} />
+                      </td>
+                      <td>{item.definition}</td>
                     </tr>
-                    </thead>
-                    <tbody>
-                    {glossaryData.map((item) => (
-                        <tr key={item.id}>
-                            <td>{item.id}</td>
-                            <td>
-                                <TermCell term={item.term_en_US} />
-                            </td>
-                            <td>
-                                <TermCell term={item.term_es_MX} />
-                            </td>
-                            <td>
-                                <TermCell term={item.term_pt_BR} />
-                            </td>
-                            <td>{item.definition}</td>
-                        </tr>
-                    ))}
-                    </tbody>
-                </table>
+                  ))}
+                </tbody>
+              </table>
             ) : (
-                <p>{intl.formatMessage({ id: 'glossary_no_data_available' })}</p>
+              <p>{intl.formatMessage({ id: 'glossary_no_data_available' })}</p>
             )}
           </div>
         </div>
@@ -195,25 +235,35 @@ const GlossaryPage: NextPage<Props> = ({ branch, glossaryData }) => {
         src="https://code.jquery.com/jquery-3.7.1.min.js"
         strategy="afterInteractive"
         onLoad={() => {
-            if (typeof window.jQuery === 'function') {
-                console.log("jQuery script loaded.");
-                jQueryLoadedRef.current = true;
-            }
+          if (typeof window.jQuery === 'function') {
+            console.log('jQuery script loaded.')
+            jQueryLoadedRef.current = true
+          }
         }}
       />
       <Script
         src="https://cdn.datatables.net/2.3.2/js/dataTables.js"
         strategy="afterInteractive"
         onLoad={() => {
-            if (jQueryLoadedRef.current && typeof window.jQuery.fn.DataTable === 'function') {
-                console.log("DataTables script loaded and jQuery is ready. Setting scripts loaded state.");
-                setAreScriptsLoaded(true);
-            } else {
-                console.error("DataTables script loaded but jQuery or DataTable function not found, or jQuery not fully initialized.");
-                if (!jQueryLoadedRef.current) console.error("jQuery was not marked as loaded.");
-                if (typeof window.jQuery !== 'function') console.error("window.jQuery is not a function.");
-                if (typeof window.jQuery.fn.DataTable !== 'function') console.error("window.jQuery.fn.DataTable is not a function.");
-            }
+          if (
+            jQueryLoadedRef.current &&
+            typeof window.jQuery.fn.DataTable === 'function'
+          ) {
+            console.log(
+              'DataTables script loaded and jQuery is ready. Setting scripts loaded state.'
+            )
+            setAreScriptsLoaded(true)
+          } else {
+            console.error(
+              'DataTables script loaded but jQuery or DataTable function not found, or jQuery not fully initialized.'
+            )
+            if (!jQueryLoadedRef.current)
+              console.error('jQuery was not marked as loaded.')
+            if (typeof window.jQuery !== 'function')
+              console.error('window.jQuery is not a function.')
+            if (typeof window.jQuery.fn.DataTable !== 'function')
+              console.error('window.jQuery.fn.DataTable is not a function.')
+          }
         }}
       />
     </>
@@ -233,8 +283,8 @@ export const getStaticProps: GetStaticProps = async ({
       : 'main'
   const branch = preview ? previewBranch : 'main'
 
-  const glossaryData = await getCrowdinGlossaryData();
-  console.log(`getStaticProps fetched ${glossaryData.length} entries.`);
+  const glossaryData = await getCrowdinGlossaryData()
+  console.log(`getStaticProps fetched ${glossaryData.length} entries.`)
 
   return {
     props: {
