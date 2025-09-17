@@ -546,5 +546,19 @@
   "changelog_page_section.title": "Changelog",
   "changelog_page_section.content.0.title": "Example file",
   "changelog_page_section.content.0.description": " ",
-  "changelog_page_section.content.0.link": "/docs/changelog/changelog-test"
+  "changelog_page_section.content.0.link": "/docs/changelog/changelog-test",
+  "glossary_status_obsolete": "Obsoleto",
+  "glossary_status_not_recommended": "No Recomendado",
+  "glossary_datatable_search": "<strong>Buscar:</strong>",
+  "glossary_datatable_length_menu": "Ver _MENU_ elementos por página",
+  "glossary_datatable_info": "Mostrando _START_ a _END_ de _TOTAL_ elementos",
+  "glossary_datatable_paginate_first": "Primero",
+  "glossary_datatable_paginate_last": "Último",
+  "glossary_datatable_paginate_next": "Siguiente",
+  "glossary_datatable_paginate_previous": "Anterior",
+  "glossary_table_header_id": "ID",
+  "glossary_table_header_term_en_us": "Término en inglés 🇺🇲",
+  "glossary_table_header_term_pt_br": "Término en portugués 🇧🇷",
+  "glossary_table_header_term_es_mx": "Término en español 🇲🇽",
+  "glossary_table_header_definition": "Definición"
 }
