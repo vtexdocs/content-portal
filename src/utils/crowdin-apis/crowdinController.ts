@@ -1,16 +1,12 @@
 import axios from 'axios';
 
 const crowdinToken = process.env.CROWDIN_TOKEN;
-const englishGlossaryID = process.env.CROWDIN_ENGLISH_GLOSSARY_ID;
-// Removidos spanishGlossaryID e portugueseGlossaryID
+const mainGlossaryID = process.env.CROWDIN_ENGLISH_GLOSSARY_ID;
 
 const baseURL = 'https://api.crowdin.com';
 
 const CONCEPTS_ENDPOINT_BASE = (glossaryId: string) => `${baseURL}/api/v2/glossaries/${glossaryId}/concepts`;
 const TERMS_ENDPOINT_BASE = (glossaryId: string) => `${baseURL}/api/v2/glossaries/${glossaryId}/terms`;
-
-
-// --- Type Definitions based on your provided API responses ---
 
 interface CrowdinConceptApiResponse {
     data: Array<{
@@ -41,7 +37,7 @@ interface CrowdinTermApiResponse {
             text: string;
             description: string | null;
             partOfSpeech: string | null;
-            status: 'active' | 'not recommended' | 'obsolete' | null; // Tipos de status da API Crowdin
+            status: 'active' | 'not recommended' | 'obsolete' | null;
             type: string | null;
             gender: string | null;
             note: string | null;
@@ -59,22 +55,21 @@ interface ConceptData {
     definition: string;
 }
 
-interface TermData {
+export interface TermData {
     id: number;
     text: string;
     languageId: string;
     conceptId: number;
-    status: 'active' | 'not recommended' | 'obsolete' | null; // Tipos de status da API Crowdin
+    status: 'active' | 'not recommended' | 'obsolete' | null;
 }
 
-// O tipo foi ajustado para conter apenas o termo em inglês e refletir os status mapeados ou null
 export interface FormattedGlossaryEntry {
     id: number;
     definition: string;
-    term_en_US: { text: string; status: 'obsolete' | 'not_recommended' | null }; // Status mapeados ou null
+    term_en_US: { text: string; status: 'obsolete' | 'not_recommended' | null } | null;
+    term_es_MX: { text: string; status: 'obsolete' | 'not_recommended' | null } | null;
+    term_pt_BR: { text: string; status: 'obsolete' | 'not_recommended' | null } | null;
 }
-
-// --- Generic Fetching Functions ---
 
 const fetchAllPaginatedData = async <T>(url: string): Promise<T[]> => {
     if (!crowdinToken) {
@@ -84,7 +79,7 @@ const fetchAllPaginatedData = async <T>(url: string): Promise<T[]> => {
 
     let allData: T[] = [];
     let offset = 0;
-    const limit = 500; // Aumentamos o limite para tentar buscar mais dados por chamada
+    const limit = 500;
 
     try {
         while (true) {
@@ -103,7 +98,7 @@ const fetchAllPaginatedData = async <T>(url: string): Promise<T[]> => {
             allData = allData.concat(dataBatch);
 
             if (dataBatch.length < limit) {
-                break; // Parar se a quantidade de dados for menor que o limite, indicando o final
+                break;
             }
             offset += limit;
         }
@@ -148,55 +143,77 @@ const fetchTerms = async (glossaryId: string): Promise<TermData[]> => {
     }));
 };
 
+const mapCrowdinStatus = (crowdinStatus: TermData['status']): 'obsolete' | 'not_recommended' | null => {
+    if (crowdinStatus === 'obsolete') return 'obsolete';
+    if (crowdinStatus === 'not recommended') return 'not_recommended';
+    return null;
+};
 
 export const getCrowdinGlossaryData = async (): Promise<FormattedGlossaryEntry[]> => {
-    if (!englishGlossaryID) {
-        console.error('Crowdin English Glossary ID is not set in .env.local.');
+    if (!mainGlossaryID) {
+        console.error('Crowdin Main Glossary ID (CROWDIN_ENGLISH_GLOSSARY_ID) is not set in .env.local.');
         return [];
     }
 
-    console.log("Fetching Crowdin glossary data for English only...");
+    console.log("Fetching Crowdin glossary data from the main glossary ID...");
 
     try {
-        const concepts = await fetchConcepts(englishGlossaryID);
-        console.log(`Fetched ${concepts.length} concepts for English.`);
+        const concepts = await fetchConcepts(mainGlossaryID);
+        console.log(`Fetched ${concepts.length} concepts from main glossary ID (${mainGlossaryID}).`);
         if (concepts.length === 0) {
-            console.warn("No concepts fetched for English. Returning empty glossary data.");
+            console.warn("No concepts fetched. Returning empty glossary data.");
             return [];
         }
 
-        const englishTerms = await fetchTerms(englishGlossaryID);
-        console.log(`Fetched ${englishTerms.length} English terms.`);
+        const allTermsFromMainGlossary = await fetchTerms(mainGlossaryID);
+        console.log(`Fetched ${allTermsFromMainGlossary.length} terms from main glossary ID (${mainGlossaryID}).`);
 
         const termMapEn = new Map<number, TermData>();
-        englishTerms.forEach(term => termMapEn.set(term.conceptId, term));
+        const termMapEs = new Map<number, TermData>();
+        const termMapPt = new Map<number, TermData>();
+
+        allTermsFromMainGlossary.forEach(term => {
+            if (term.languageId === 'en') {
+                termMapEn.set(term.conceptId, term);
+            } else if (term.languageId === 'es-MX') {
+                termMapEs.set(term.conceptId, term);
+            } else if (term.languageId === 'pt-BR') {
+                termMapPt.set(term.conceptId, term);
+            }
+        });
+
+        console.log(`Organized ${termMapEn.size} English terms, ${termMapEs.size} Spanish terms, ${termMapPt.size} Portuguese terms.`);
 
         const formattedData: FormattedGlossaryEntry[] = [];
 
         for (const concept of concepts) {
             const englishTerm = termMapEn.get(concept.id);
+            const spanishTerm = termMapEs.get(concept.id);
+            const portugueseTerm = termMapPt.get(concept.id);
 
-            if (englishTerm) {
-                // Mapeia o status da API do Crowdin para o formato interno
-                const mapCrowdinStatus = (crowdinStatus: TermData['status']): 'obsolete' | 'not_recommended' | null => {
-                    if (crowdinStatus === 'obsolete') return 'obsolete';
-                    if (crowdinStatus === 'not recommended') return 'not_recommended';
-                    return null; // Retorna explicitamente null para qualquer outro status (incluindo 'active' e null da API)
-                };
-
-                formattedData.push({
-                    id: concept.id,
-                    definition: concept.definition || '', // Garante que a definição nunca seja undefined
-                    term_en_US: {
-                        text: englishTerm.text,
-                        status: mapCrowdinStatus(englishTerm.status),
-                    },
-                });
-            } else {
-                console.warn(`Concept ID ${concept.id} missing English term.`);
+            if (!englishTerm) {
+                console.warn(`Concept ID ${concept.id} missing English term in main glossary. Skipping entry.`);
+                continue;
             }
+
+            formattedData.push({
+                id: concept.id,
+                definition: concept.definition || '',
+                term_en_US: {
+                    text: englishTerm.text,
+                    status: mapCrowdinStatus(englishTerm.status),
+                },
+                term_es_MX: spanishTerm ? {
+                    text: spanishTerm.text,
+                    status: mapCrowdinStatus(spanishTerm.status),
+                } : null,
+                term_pt_BR: portugueseTerm ? {
+                    text: portugueseTerm.text,
+                    status: mapCrowdinStatus(portugueseTerm.status),
+                } : null,
+            });
         }
-        console.log(`Formatted ${formattedData.length} English glossary entries.`);
+        console.log(`Formatted ${formattedData.length} glossary entries.`);
         return formattedData;
     } catch (error) {
         console.error('Unhandled error in getCrowdinGlossaryData:', error);

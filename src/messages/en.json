@@ -554,8 +554,8 @@
   "glossary_datatable_paginate_next": "Next",
   "glossary_datatable_paginate_previous": "Previous",
   "glossary_table_header_id": "ID",
-  "glossary_table_header_term_en_us": "Term en-US 🇺🇲",
-  "glossary_table_header_term_pt_br": "Term pt-BR 🇧🇷",
-  "glossary_table_header_term_es_mx": "Term es-MX 🇲🇽",
+  "glossary_table_header_term_en_us": "English term",
+  "glossary_table_header_term_pt_br": "Portuguese term",
+  "glossary_table_header_term_es_mx": "Spanish term",
   "glossary_table_header_definition": "Definition"
 }

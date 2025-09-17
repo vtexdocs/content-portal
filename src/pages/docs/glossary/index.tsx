@@ -30,17 +30,13 @@ interface Props {
   glossaryData: FormattedGlossaryEntry[];
 }
 
-// TermCell agora recebe apenas o tipo do termo em inglês
 const TermCell = ({ term }: { term: FormattedGlossaryEntry['term_en_US'] }) => {
   const intl = useIntl()
 
-  // Garante que term e term.text existem antes de tentar acessá-los
   if (!term || !term.text) {
     return <></>
   }
 
-  // O status 'not_recommended' é um mapeamento interno nosso de 'deprecated' do Crowdin
-  // O estilo é o mesmo para ambos 'obsolete' e 'not_recommended'
   const isObsolete = term.status === 'obsolete';
   const isNotRecommended = term.status === 'not_recommended';
 
@@ -72,13 +68,11 @@ const GlossaryPage: NextPage<Props> = ({ branch, glossaryData }) => {
   setBranchPreview(branch)
 
   const initializeDataTable = () => {
-    // console.log("initializeDataTable called. areScriptsLoaded:", areScriptsLoaded, "jQuery:", !!window.jQuery, "DataTable.fn:", !!(window.jQuery && window.jQuery.fn.DataTable), "data length:", glossaryData.length, "dataTableInstance:", !!dataTableInstance);
-
     if (areScriptsLoaded && window.jQuery && window.jQuery.fn.DataTable && glossaryData.length > 0 && !dataTableInstance) {
       console.log("Attempting to initialize DataTable...");
       try {
         const table = window.jQuery('#glossaryTable').DataTable({
-          destroy: true, // Garante que se houver uma instância anterior, ela seja destruída
+          destroy: true,
           paging: true,
           searching: true,
           info: true,
@@ -109,18 +103,16 @@ const GlossaryPage: NextPage<Props> = ({ branch, glossaryData }) => {
   };
 
   useEffect(() => {
-    // console.log("useEffect: glossaryData or areScriptsLoaded changed. Calling initializeDataTable.");
     initializeDataTable();
 
     return () => {
-      // Cleanup: Destrói a instância do DataTable quando o componente é desmontado
       if (dataTableInstance) {
         console.log("Destroying DataTable instance during cleanup.");
         dataTableInstance.destroy();
         setDataTableInstance(null);
       }
     };
-  }, [glossaryData, areScriptsLoaded]); // Dependências: re-inicializa se os dados ou o estado dos scripts mudar
+  }, [glossaryData, areScriptsLoaded]);
 
   return (
     <>
@@ -169,7 +161,8 @@ const GlossaryPage: NextPage<Props> = ({ branch, glossaryData }) => {
                     <tr>
                         <th>{intl.formatMessage({ id: 'glossary_table_header_id' })}</th>
                         <th>{intl.formatMessage({ id: 'glossary_table_header_term_en_us' })}</th>
-                        {/* Removidas as colunas para PT-BR e ES-MX */}
+                        <th>{intl.formatMessage({ id: 'glossary_table_header_term_es_mx' })}</th>
+                        <th>{intl.formatMessage({ id: 'glossary_table_header_term_pt_br' })}</th>
                         <th>{intl.formatMessage({ id: 'glossary_table_header_definition' })}</th>
                     </tr>
                     </thead>
@@ -180,7 +173,12 @@ const GlossaryPage: NextPage<Props> = ({ branch, glossaryData }) => {
                             <td>
                                 <TermCell term={item.term_en_US} />
                             </td>
-                            {/* Removidas as células para PT-BR e ES-MX */}
+                            <td>
+                                <TermCell term={item.term_es_MX} />
+                            </td>
+                            <td>
+                                <TermCell term={item.term_pt_BR} />
+                            </td>
                             <td>{item.definition}</td>
                         </tr>
                     ))}
@@ -211,7 +209,6 @@ const GlossaryPage: NextPage<Props> = ({ branch, glossaryData }) => {
                 console.log("DataTables script loaded and jQuery is ready. Setting scripts loaded state.");
                 setAreScriptsLoaded(true);
             } else {
-                // Adicione um log de erro mais detalhado se jQuery ou DataTable não estiver pronto
                 console.error("DataTables script loaded but jQuery or DataTable function not found, or jQuery not fully initialized.");
                 if (!jQueryLoadedRef.current) console.error("jQuery was not marked as loaded.");
                 if (typeof window.jQuery !== 'function') console.error("window.jQuery is not a function.");

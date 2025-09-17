@@ -557,8 +557,8 @@
   "glossary_datatable_paginate_next": "Siguiente",
   "glossary_datatable_paginate_previous": "Anterior",
   "glossary_table_header_id": "ID",
-  "glossary_table_header_term_en_us": "Término en inglés 🇺🇲",
-  "glossary_table_header_term_pt_br": "Término en portugués 🇧🇷",
-  "glossary_table_header_term_es_mx": "Término en español 🇲🇽",
+  "glossary_table_header_term_en_us": "Término en inglés",
+  "glossary_table_header_term_pt_br": "Término en portugués",
+  "glossary_table_header_term_es_mx": "Término en español",
   "glossary_table_header_definition": "Definición"
 }

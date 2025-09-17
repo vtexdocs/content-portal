@@ -572,8 +572,8 @@
   "glossary_datatable_paginate_next": "Próxima",
   "glossary_datatable_paginate_previous": "Anterior",
   "glossary_table_header_id": "ID",
-  "glossary_table_header_term_en_us": "Termo em inglês 🇺🇲",
-  "glossary_table_header_term_pt_br": "Termo em português 🇧🇷",
-  "glossary_table_header_term_es_mx": "Termo em espanhol 🇲🇽",
+  "glossary_table_header_term_en_us": "Termo em inglês",
+  "glossary_table_header_term_pt_br": "Termo em português",
+  "glossary_table_header_term_es_mx": "Termo em espanhol",
   "glossary_table_header_definition": "Definição"
 }
