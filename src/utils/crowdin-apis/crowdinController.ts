@@ -22,7 +22,7 @@ interface CrowdinConceptApiResponse {
       note: string | null
       url: string | null
       figure: string | null
-      languagesDetails: any[]
+      languagesDetails: any[] //eslint-disable-line
       createdAt: string
       updatedAt: string
     }
@@ -104,7 +104,7 @@ const fetchAllPaginatedData = async <T>(url: string): Promise<T[]> => {
         },
       })
 
-      const dataBatch = response.data?.data?.map((item: any) => item.data) || []
+      const dataBatch = response.data?.data?.map((item: any) => item.data) || [] //eslint-disable-line
 
       allData = allData.concat(dataBatch)
 

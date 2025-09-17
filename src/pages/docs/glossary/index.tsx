@@ -18,13 +18,13 @@ import styles from './glossary.module.css'
 
 declare global {
   interface Window {
-    jQuery: any
-    DataTable: any
+    jQuery: any //eslint-disable-line
+    DataTable: any //eslint-disable-line
   }
 }
 
 interface Props {
-  sidebarfallback: any
+  sidebarfallback: any //eslint-disable-line
   sectionSelected?: DocumentationTitle | UpdatesTitle | ''
   branch: string
   glossaryData: FormattedGlossaryEntry[]
@@ -65,7 +65,7 @@ const TermCell = ({ term }: { term: FormattedGlossaryEntry['term_en_US'] }) => {
 const GlossaryPage: NextPage<Props> = ({ branch, glossaryData }) => {
   const { setBranchPreview } = useContext(PreviewContext)
   const intl = useIntl()
-  const [dataTableInstance, setDataTableInstance] = useState<any>(null)
+  const [dataTableInstance, setDataTableInstance] = useState<any>(null) //eslint-disable-line
   const [areScriptsLoaded, setAreScriptsLoaded] = useState(false)
   const jQueryLoadedRef = useRef(false)
 
