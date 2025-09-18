@@ -107,6 +107,13 @@ const GlossaryPage: NextPage<Props> = ({ branch, glossaryData }) => {
               }),
             },
           },
+          columnDefs: [
+            { width: '6%', targets: 0 }, //ID
+            { width: '15%', targets: 1 }, // Term_en_US
+            { width: '15%', targets: 2 }, // Term_es_MX
+            { width: '15%', targets: 3 }, // Term_pt_BR
+            { width: '49%', targets: 4 }, // Definition
+          ],
         })
         setDataTableInstance(table)
         console.log('DataTable initialized successfully.')
