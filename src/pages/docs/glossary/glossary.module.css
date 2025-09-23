@@ -89,7 +89,8 @@
 }
 
 .statusCircleObsolete,
-.statusCircleNotRecommended {
+.statusCircleNotRecommended,
+.statusCirclePreferred {
     display: inline-block;
     width: 10px;
     height: 10px;
@@ -134,7 +135,8 @@
 }
 
 .glossaryLegend p .statusCircleObsolete,
-.glossaryLegend p .statusCircleNotRecommended {
+.glossaryLegend p .statusCircleNotRecommended,
+.glossaryLegend p .statusCirclePreferred {
     margin-right: 8px;
     width: 12px;
     height: 12px;

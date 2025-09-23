@@ -39,7 +39,7 @@ interface CrowdinTermApiResponse {
       text: string
       description: string | null
       partOfSpeech: string | null
-      status: 'active' | 'not recommended' | 'obsolete' | null
+      status: 'active' | 'not recommended' | 'obsolete' | 'preferred' | null
       type: string | null
       gender: string | null
       note: string | null
@@ -62,7 +62,7 @@ export interface TermData {
   text: string
   languageId: string
   conceptId: number
-  status: 'active' | 'not recommended' | 'obsolete' | null
+  status: 'active' | 'not recommended' | 'obsolete' | 'preferred' | null
 }
 
 export interface FormattedGlossaryEntry {
@@ -70,15 +70,15 @@ export interface FormattedGlossaryEntry {
   definition: string
   term_en_US: {
     text: string
-    status: 'obsolete' | 'not_recommended' | null
+    status: 'obsolete' | 'not_recommended' | 'preferred' | null
   } | null
   term_es_MX: {
     text: string
-    status: 'obsolete' | 'not_recommended' | null
+    status: 'obsolete' | 'not_recommended' | 'preferred' | null
   } | null
   term_pt_BR: {
     text: string
-    status: 'obsolete' | 'not_recommended' | null
+    status: 'obsolete' | 'not_recommended' | 'preferred' | null
   } | null
 }
 
@@ -159,9 +159,10 @@ const fetchTerms = async (glossaryId: string): Promise<TermData[]> => {
 
 const mapCrowdinStatus = (
   crowdinStatus: TermData['status']
-): 'obsolete' | 'not_recommended' | null => {
+): 'obsolete' | 'not_recommended' | 'preferred' | null => {
   if (crowdinStatus === 'obsolete') return 'obsolete'
   if (crowdinStatus === 'not recommended') return 'not_recommended'
+  if (crowdinStatus === 'preferred') return 'preferred'
   return null
 }
 

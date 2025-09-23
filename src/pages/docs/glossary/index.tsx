@@ -39,17 +39,25 @@ const TermCell = ({ term }: { term: FormattedGlossaryEntry['term_en_US'] }) => {
 
   const isObsolete = term.status === 'obsolete'
   const isNotRecommended = term.status === 'not_recommended'
+  const isPreferred = term.status === 'preferred'
 
-  if (!isObsolete && !isNotRecommended) {
+  if (!isObsolete && !isNotRecommended && !isPreferred) {
     return <>{term.text}</>
   }
 
-  const statusCircleClass = isObsolete
-    ? styles.statusCircleObsolete
-    : styles.statusCircleNotRecommended
-  const statusTooltipText = isObsolete
-    ? intl.formatMessage({ id: 'glossary_status_avoid' })
-    : intl.formatMessage({ id: 'glossary_status_dont_use' })
+  let statusCircleClass = ''
+  let statusTooltipText = ''
+
+  if (isObsolete) {
+    statusCircleClass = styles.statusCircleObsolete
+    statusTooltipText = intl.formatMessage({ id: 'glossary_status_avoid' })
+  } else if (isNotRecommended) {
+    statusCircleClass = styles.statusCircleNotRecommended
+    statusTooltipText = intl.formatMessage({ id: 'glossary_status_dont_use' })
+  } else if (isPreferred) {
+    statusCircleClass = styles.statusCirclePreferred
+    statusTooltipText = intl.formatMessage({ id: 'glossary_status_preffered' })
+  }
 
   return (
     <div className={styles.termWithStatus}>
