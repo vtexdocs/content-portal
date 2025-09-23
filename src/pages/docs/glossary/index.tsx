@@ -91,6 +91,7 @@ const GlossaryPage: NextPage<Props> = ({ branch, glossaryData }) => {
           paging: true,
           searching: true,
           info: true,
+          stripeClasses: [], // Prevent default striping to avoid conflicts with custom styles. Not working yet.
           language: {
             searchPlaceholder: intl.formatMessage({
               id: 'glossary_datatable_search',

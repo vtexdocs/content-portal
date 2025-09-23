@@ -7,7 +7,7 @@
 .dataTableContainer :global(table.dataTable) {
     border-collapse: collapse !important;
     border-spacing: 0 !important;
-    color: #333 !important;
+    border: none !important;
 }
 
 .dataTableContainer :global(.dataTables_wrapper) {
@@ -18,8 +18,10 @@
 
 .dataTableContainer :global(th),
 .dataTableContainer :global(td) {
-    padding: 8px 10px !important;
-    border: 1px solid #ddd !important;
+    padding: 12px 16px !important; 
+    border-left: none !important;
+    border-right: none !important;
+    border-top: none !important;
     background: none !important;
     color: inherit !important;
     font-weight: normal !important;
@@ -32,11 +34,20 @@
     background-color: #f9f9f9 !important;
 }
 
-/* Ajustes para o campo de busca (filter) */
+.dataTableContainer :global(tbody tr.odd),
+.dataTableContainer :global(tbody tr.even),
+.dataTableContainer :global(tbody tr) {
+    background-color: white !important; /* Keep all lines with default backgrond. Not working yet. */
+}
+
+.dataTableContainer :global(tbody tr:hover) {
+    background-color: #F8F7FC !important; /* Only change background on hover. Not working yet. */
+}
+
 .dataTableContainer :global(.dataTables_filter) label {
-    display: flex; /* Para alinhar o input e remover o "Search:" */
+    display: flex;
     align-items: center;
-    visibility: hidden; /* Esconde a label "Search:" padrão */
+    visibility: hidden;
     width: 0;
     height: 0;
     overflow: hidden;
@@ -47,13 +58,13 @@
     border-radius: 3px !important;
     padding: 5px !important;
     background-color: white !important;
-    margin-left: 0 !important; /* Remover a margem esquerda extra */
+    margin-left: 0 !important;
     display: inline-block !important;
-    width: auto !important;
-    visibility: visible; /* Garante que o input seja visível */
-    height: auto;
-    flex-grow: 1; /* Permite que o input preencha o espaço disponível */
-    margin-right: 0.5em; /* Espaço entre o input e outros elementos no 'top' */
+    width: 288px !important;
+    visibility: visible;
+    height: 40px;
+    flex-grow: 1;
+    margin-right: 0.5em;
 }
 
 
@@ -85,33 +96,32 @@
 .termWithStatus {
     display: flex;
     align-items: center;
-    gap: 5px; /* Espaçamento entre o termo e o círculo */
+    gap: 5px;
 }
 
 .statusCircleObsolete,
 .statusCircleNotRecommended,
 .statusCirclePreferred {
     display: inline-block;
-    width: 10px;
-    height: 10px;
+    width: 8px;
+    height: 8px;
     border-radius: 50%;
-    cursor: help; /* Indica que é um elemento interativo com tooltip */
-    flex-shrink: 0; /* Impede que o círculo diminua */
+    cursor: pointer;
+    flex-shrink: 0;
 }
 
 .statusCircleObsolete {
-    background-color: #ffc107; /* Tom de amarelo */
+    background-color: #D8B401;
 }
 
 .statusCircleNotRecommended {
-    background-color: #dc3545; /* Tom de vermelho */
+    background-color: #dc3545;
 }
 
 .statusCirclePreferred {
-    background-color: #28a745; /* Tom de verde */
+    background-color: #28a745;
 }
 
-/* Estilos para a legenda */
 .glossaryLegend {
     margin-bottom: 2rem;
     padding: 1rem;
@@ -157,17 +167,16 @@
     margin-top: 1em;
 }
 
-/* Opcional: ajustar margens para elementos específicos se necessário */
 .dataTableContainer :global(.dataTables_filter) {
     order: 1;
-    display: flex; /* Garante que o input de busca se ajuste ao flexbox */
-    flex-grow: 1; /* Permite que o filtro preencha o espaço */
-    justify-content: flex-start; /* Alinha o filtro à esquerda */
+    display: flex;
+    flex-grow: 1;
+    justify-content: flex-start;
 }
 
 .dataTableContainer :global(.dataTables_info) {
     order: 2;
-    text-align: right; /* Alinha as informações à direita */
+    text-align: right;
 }
 
 .dataTableContainer :global(.dataTables_length) {
