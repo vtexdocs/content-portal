@@ -12,8 +12,8 @@ import {
   FormattedGlossaryEntry,
 } from 'utils/crowdin-apis/crowdinController'
 
-import GrammarImage from '../../../../public/images/cs-grammar_desktop.png'
-import GrammarImageMobile from '../../../../public/images/cs-grammar_mobile.png'
+import GlossaryImage from '../../../../public/images/cs-glossary_desktop.png'
+import GlossaryImageMobile from '../../../../public/images/cs-glossary_mobile.png'
 import styles from './glossary.module.css'
 
 declare global {
@@ -44,20 +44,17 @@ const TermCell = ({ term }: { term: FormattedGlossaryEntry['term_en_US'] }) => {
     return <>{term.text}</>
   }
 
-  const badgeClass = isObsolete
-    ? styles.badgeObsolete
-    : styles.badgeNotRecommended
-  const badgeTextId = isObsolete
-    ? 'glossary_status_obsolete'
-    : 'glossary_status_not_recommended'
+  const statusCircleClass = isObsolete
+    ? styles.statusCircleObsolete
+    : styles.statusCircleNotRecommended
+  const statusTooltipText = isObsolete
+    ? intl.formatMessage({ id: 'glossary_status_avoid' })
+    : intl.formatMessage({ id: 'glossary_status_dont_use' })
 
   return (
-    <div>
-      <span>{term.text}</span>
-      <br />
-      <span className={`${styles.badge} ${badgeClass}`}>
-        {intl.formatMessage({ id: badgeTextId })}
-      </span>
+    <div className={styles.termWithStatus}>
+      <span>{term.text}</span>{' '}
+      <span className={statusCircleClass} title={statusTooltipText}></span>
     </div>
   )
 }
@@ -87,7 +84,10 @@ const GlossaryPage: NextPage<Props> = ({ branch, glossaryData }) => {
           searching: true,
           info: true,
           language: {
-            search: intl.formatMessage({ id: 'glossary_datatable_search' }),
+            searchPlaceholder: intl.formatMessage({
+              id: 'glossary_datatable_search',
+            }),
+            search: '_INPUT_',
             lengthMenu: intl.formatMessage({
               id: 'glossary_datatable_length_menu',
             }),
@@ -108,12 +108,12 @@ const GlossaryPage: NextPage<Props> = ({ branch, glossaryData }) => {
             },
           },
           columnDefs: [
-            { width: '6%', targets: 0 }, //ID
-            { width: '15%', targets: 1 }, // Term_en_US
-            { width: '15%', targets: 2 }, // Term_es_MX
-            { width: '15%', targets: 3 }, // Term_pt_BR
-            { width: '49%', targets: 4 }, // Definition
+            { width: '15%', targets: 0 }, // Term_en_US
+            { width: '15%', targets: 1 }, // Term_es_MX
+            { width: '15%', targets: 2 }, // Term_pt_BR
+            { width: '55%', targets: 3 }, // Definition
           ],
+          dom: ' <"top"fi><"clear">rt<"bottom"lp><"clear">',
         })
         setDataTableInstance(table)
         console.log('DataTable initialized successfully.')
@@ -171,8 +171,8 @@ const GlossaryPage: NextPage<Props> = ({ branch, glossaryData }) => {
           description={intl.formatMessage({
             id: 'glossary_card_subtitle',
           })}
-          imageUrlDesktop={GrammarImage}
-          imageUrlMobile={GrammarImageMobile}
+          imageUrlDesktop={GlossaryImage}
+          imageUrlMobile={GlossaryImageMobile}
           imageAlt={intl.formatMessage({
             id: 'glossary_card_subtitle',
           })}
@@ -180,6 +180,22 @@ const GlossaryPage: NextPage<Props> = ({ branch, glossaryData }) => {
 
         <div className={styles.dataTableContainer}>
           <div className="content">
+            <div className={styles.glossaryLegend}>
+              <h3>{intl.formatMessage({ id: 'glossary_legend_title' })}</h3>
+              <p>
+                <span className={styles.statusCircleObsolete}></span>{' '}
+                {intl.formatMessage({ id: 'glossary_status_avoid_full' })}
+              </p>
+              <p>
+                <span className={styles.statusCircleNotRecommended}></span>{' '}
+                {intl.formatMessage({ id: 'glossary_status_dont_use_full' })}
+              </p>
+              <p>
+                <span className={styles.statusCirclePreferred}></span>{' '}
+                {intl.formatMessage({ id: 'glossary_status_preffered_full' })}
+              </p>
+            </div>
+
             {glossaryData && glossaryData.length > 0 ? (
               <table
                 id="glossaryTable"
@@ -188,9 +204,6 @@ const GlossaryPage: NextPage<Props> = ({ branch, glossaryData }) => {
               >
                 <thead>
                   <tr>
-                    <th>
-                      {intl.formatMessage({ id: 'glossary_table_header_id' })}
-                    </th>
                     <th>
                       {intl.formatMessage({
                         id: 'glossary_table_header_term_en_us',
@@ -216,7 +229,6 @@ const GlossaryPage: NextPage<Props> = ({ branch, glossaryData }) => {
                 <tbody>
                   {glossaryData.map((item) => (
                     <tr key={item.id}>
-                      <td>{item.id}</td>
                       <td>
                         <TermCell term={item.term_en_US} />
                       </td>
@@ -277,18 +289,9 @@ const GlossaryPage: NextPage<Props> = ({ branch, glossaryData }) => {
   )
 }
 
-export const getStaticProps: GetStaticProps = async ({
-  preview,
-  previewData,
-}) => {
+export const getStaticProps: GetStaticProps = async ({}) => {
   const sidebarfallback = await getNavigation()
   const sectionSelected = 'Glossary'
-
-  const previewBranch =
-    preview && JSON.parse(JSON.stringify(previewData)).hasOwnProperty('branch')
-      ? JSON.parse(JSON.stringify(previewData)).branch
-      : 'main'
-  const branch = preview ? previewBranch : 'main'
 
   const glossaryData = await getCrowdinGlossaryData()
   console.log(`getStaticProps fetched ${glossaryData.length} entries.`)
@@ -297,7 +300,6 @@ export const getStaticProps: GetStaticProps = async ({
     props: {
       sidebarfallback,
       sectionSelected,
-      branch,
       glossaryData,
     },
     revalidate: 3600,

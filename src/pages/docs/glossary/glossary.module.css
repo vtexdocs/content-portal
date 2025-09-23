@@ -32,7 +32,31 @@
     background-color: #f9f9f9 !important;
 }
 
-.dataTableContainer :global(.dataTables_filter input),
+/* Ajustes para o campo de busca (filter) */
+.dataTableContainer :global(.dataTables_filter) label {
+    display: flex; /* Para alinhar o input e remover o "Search:" */
+    align-items: center;
+    visibility: hidden; /* Esconde a label "Search:" padrão */
+    width: 0;
+    height: 0;
+    overflow: hidden;
+}
+
+.dataTableContainer :global(.dataTables_filter input) {
+    border: 1px solid #aaa !important;
+    border-radius: 3px !important;
+    padding: 5px !important;
+    background-color: white !important;
+    margin-left: 0 !important; /* Remover a margem esquerda extra */
+    display: inline-block !important;
+    width: auto !important;
+    visibility: visible; /* Garante que o input seja visível */
+    height: auto;
+    flex-grow: 1; /* Permite que o input preencha o espaço disponível */
+    margin-right: 0.5em; /* Espaço entre o input e outros elementos no 'top' */
+}
+
+
 .dataTableContainer :global(.dataTables_length select) {
     border: 1px solid #aaa !important;
     border-radius: 3px !important;
@@ -58,23 +82,96 @@
     border-color: #337ab7 !important;
 }
 
-.badge {
-    margin-top: 10px;
-    padding: 3px 10px;
-    border-radius: 12px;
-    font-size: 0.6rem;
-    font-weight: 700;
-    line-height: 1.2;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+.termWithStatus {
+    display: flex;
+    align-items: center;
+    gap: 5px; /* Espaçamento entre o termo e o círculo */
 }
 
-.badgeObsolete {
-    background-color: #fff8e1;
-    color: #8c5a00;
+.statusCircleObsolete,
+.statusCircleNotRecommended {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    cursor: help; /* Indica que é um elemento interativo com tooltip */
+    flex-shrink: 0; /* Impede que o círculo diminua */
 }
 
-.badgeNotRecommended {
-    background-color: #ffebee;
-    color: #c62828;
+.statusCircleObsolete {
+    background-color: #ffc107; /* Tom de amarelo */
+}
+
+.statusCircleNotRecommended {
+    background-color: #dc3545; /* Tom de vermelho */
+}
+
+.statusCirclePreferred {
+    background-color: #28a745; /* Tom de verde */
+}
+
+/* Estilos para a legenda */
+.glossaryLegend {
+    margin-bottom: 2rem;
+    padding: 1rem;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    background-color: #fcfcfc;
+}
+
+.glossaryLegend h3 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    color: #333;
+    font-size: 1.2rem;
+}
+
+.glossaryLegend p {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.glossaryLegend p .statusCircleObsolete,
+.glossaryLegend p .statusCircleNotRecommended {
+    margin-right: 8px;
+    width: 12px;
+    height: 12px;
+}
+
+
+.dataTableContainer :global(.top) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1em;
+}
+
+.dataTableContainer :global(.bottom) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1em;
+}
+
+/* Opcional: ajustar margens para elementos específicos se necessário */
+.dataTableContainer :global(.dataTables_filter) {
+    order: 1;
+    display: flex; /* Garante que o input de busca se ajuste ao flexbox */
+    flex-grow: 1; /* Permite que o filtro preencha o espaço */
+    justify-content: flex-start; /* Alinha o filtro à esquerda */
+}
+
+.dataTableContainer :global(.dataTables_info) {
+    order: 2;
+    text-align: right; /* Alinha as informações à direita */
+}
+
+.dataTableContainer :global(.dataTables_length) {
+    order: 1;
+}
+
+.dataTableContainer :global(.dataTables_paginate) {
+    order: 2;
 }
