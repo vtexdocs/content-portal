@@ -1,0 +1,215 @@
+.dataTableContainer {
+    width: 80%;
+    margin: 0 auto;
+    padding: 2rem 0;
+}
+
+.dataTableContainer :global(table.dataTable) {
+    border-collapse: collapse !important;
+    border-spacing: 0 !important;
+    border: none !important;
+}
+
+.dataTableContainer :global(.dataTables_wrapper) {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+        Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 1rem;
+}
+
+.dataTableContainer :global(th),
+.dataTableContainer :global(td) {
+    padding: 12px 16px !important; 
+    border-left: none !important;
+    border-right: none !important;
+    border-top: none !important;
+    background: none !important;
+    color: inherit !important;
+    font-weight: normal !important;
+    text-align: left !important;
+    vertical-align: middle;
+}
+
+.dataTableContainer :global(thead th) {
+    font-weight: bold !important;
+    background-color: #f9f9f9 !important;
+}
+
+.dataTableContainer :global(tbody tr.odd),
+.dataTableContainer :global(tbody tr.even),
+.dataTableContainer :global(tbody tr) {
+    background-color: white !important; /* Keep all lines with default backgrond. Not working yet. */
+}
+
+.dataTableContainer :global(tbody tr:hover) {
+    background-color: #F8F7FC !important; /* Only change background on hover. Not working yet. */
+}
+
+.dataTableContainer :global(.dataTables_filter) label {
+    display: flex;
+    align-items: center;
+    visibility: hidden; 
+    width: 0;
+    height: 0;
+    overflow: hidden;
+}
+
+.dataTableContainer :global(.dataTables_filter input) {
+    border: 1px solid #aaa !important;
+    border-radius: 3px !important;
+    padding: 5px !important;
+    background-color: white !important;
+    margin-left: 0 !important;
+    display: inline-block !important;
+    width: 288px !important;
+    visibility: visible;
+    height: 40px;
+    flex-grow: 1;
+    margin-right: 0.5em;
+}
+
+
+.dataTableContainer :global(.dataTables_length select) {
+    border: 1px solid #aaa !important;
+    border-radius: 3px !important;
+    padding: 5px !important;
+    background-color: white !important;
+    margin-left: 0.5em;
+    display: inline-block !important;
+    width: auto !important;
+}
+
+.dataTableContainer :global(.dataTables_paginate .paginate_button) {
+    padding: 0.5em 1em !important;
+    margin: 0 2px !important;
+    border: 1px solid #ddd !important;
+    cursor: pointer;
+    color: #337ab7 !important;
+    background: white !important;
+}
+
+.dataTableContainer :global(.dataTables_paginate .paginate_button.current) {
+    background: #337ab7 !important;
+    color: white !important;
+    border-color: #337ab7 !important;
+}
+
+.termWithStatus {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.statusCircleObsolete,
+.statusCircleNotRecommended,
+.statusCirclePreferred {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.statusCircleObsolete {
+    background-color: #D8B401;
+}
+
+.statusCircleNotRecommended {
+    background-color: #dc3545;
+}
+
+.statusCirclePreferred {
+    background-color: #28a745;
+}
+
+.glossaryLegendInline {
+    display: flex;
+    align-items: center;
+    gap: 1.5em; 
+    margin: 0; /* Remover margem, pois o posicionamento será feito pelo pai */
+    flex-wrap: wrap; 
+    font-size: 0.9rem; 
+    color: #555;
+}
+
+.glossaryLegendInline p {
+    display: flex;
+    align-items: center;
+    margin: 0; 
+}
+
+.glossaryLegendInline p .statusCircleObsolete,
+.glossaryLegendInline p .statusCircleNotRecommended,
+.glossaryLegendInline p .statusCirclePreferred {
+    margin-right: 5px;
+    width: 10px; 
+    height: 10px;
+    flex-shrink: 0;
+}
+
+.dataTableContainer :global(.top) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1em;
+    flex-wrap: wrap; 
+    gap: 1em; 
+}
+
+/* Novos wrappers para o topo */
+.dataTableContainer :global(.top-left) {
+  display: flex;
+  flex-grow: 1;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1.5em;
+}
+
+.dataTableContainer :global(.top-right) {
+  display: flex;
+  flex-grow: 1;
+  justify-content: flex-end; /* Alinhar o conteúdo à direita */
+  align-items: center;
+  gap: 1.5em; /* Espaçamento entre os elementos no canto superior direito */
+  flex-wrap: wrap;
+}
+
+/* Ajustes para os elementos individuais */
+.dataTableContainer :global(.dataTables_filter) {
+    /* Mantém as propriedades de flex, mas agora está dentro de .top-left */
+    order: 1; /* Campo de busca aparece primeiro */
+    flex-shrink: 0; /* Impede que o campo encolha demais */
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.dataTableContainer :global(.dataTables_info) {
+    /* Mover para dentro de .top-right */
+    order: 1; /* Para aparecer antes da legenda se houver espaço */
+    text-align: right; /* Garante que o texto fique à direita */
+    flex-shrink: 0; /* Impede que o elemento encolha demais */
+}
+
+/* A legenda agora fica no .top-left ao lado do campo de busca */
+.dataTableContainer :global(.top-left) .glossaryLegendInline {
+    order: 2; /* Para aparecer depois do campo de busca */
+    margin-left: 0; /* Remover margem extra, o gap do pai já cuida */
+    flex-shrink: 0; /* Impede que a legenda encolha demais */
+}
+
+
+.dataTableContainer :global(.bottom) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1em;
+}
+
+.dataTableContainer :global(.dataTables_length) {
+    order: 1;
+}
+
+.dataTableContainer :global(.dataTables_paginate) {
+    order: 2;
+}

@@ -43,8 +43,8 @@ const PageHeader = ({
                 src={isMobile ? imageUrlMobile : imageUrlDesktop}
                 style={{
                   maxWidth: '100%',
-                  height: isMobile ? '242px' : 'auto',
-                  width: isMobile ? '100%' : '100%',
+                  height: isMobile ? '264px' : '250px',
+                  width: '100%',
                   objectFit: 'cover',
                   objectPosition: 'center',
                   display: 'block',
