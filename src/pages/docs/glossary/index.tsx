@@ -73,6 +73,7 @@ const GlossaryPage: NextPage<Props> = ({ branch, glossaryData }) => {
   const [dataTableInstance, setDataTableInstance] = useState<any>(null) //eslint-disable-line
   const [areScriptsLoaded, setAreScriptsLoaded] = useState(false)
   const jQueryLoadedRef = useRef(false)
+  const legendRef = useRef<HTMLDivElement>(null)
 
   setBranchPreview(branch)
 
@@ -122,10 +123,17 @@ const GlossaryPage: NextPage<Props> = ({ branch, glossaryData }) => {
             { width: '15%', targets: 2 }, // Term_pt_BR
             { width: '55%', targets: 3 }, // Definition
           ],
-          dom: ' <"top"fi><"clear">rt<"bottom"lp><"clear">',
+          dom: '<"top"<"top-left"f><"top-right"i><"clear">rt<"bottom"lp><"clear">',
         })
         setDataTableInstance(table)
         console.log('DataTable initialized successfully.')
+
+        if (legendRef.current) {
+          window
+            .jQuery('.top-left')
+            .append(legendRef.current)
+        }
+
       } catch (error) {
         console.error('Error initializing DataTable:', error)
       }
@@ -189,8 +197,11 @@ const GlossaryPage: NextPage<Props> = ({ branch, glossaryData }) => {
 
         <div className={styles.dataTableContainer}>
           <div className="content">
-            <div className={styles.glossaryLegend}>
-              <h3>{intl.formatMessage({ id: 'glossary_legend_title' })}</h3>
+            <div ref={legendRef} className={styles.glossaryLegendInline}>
+              <p>
+                <span className={styles.statusCirclePreferred}></span>{' '}
+                {intl.formatMessage({ id: 'glossary_status_preffered_full' })}
+              </p>
               <p>
                 <span className={styles.statusCircleObsolete}></span>{' '}
                 {intl.formatMessage({ id: 'glossary_status_avoid_full' })}
@@ -198,10 +209,6 @@ const GlossaryPage: NextPage<Props> = ({ branch, glossaryData }) => {
               <p>
                 <span className={styles.statusCircleNotRecommended}></span>{' '}
                 {intl.formatMessage({ id: 'glossary_status_dont_use_full' })}
-              </p>
-              <p>
-                <span className={styles.statusCirclePreferred}></span>{' '}
-                {intl.formatMessage({ id: 'glossary_status_preffered_full' })}
               </p>
             </div>
 

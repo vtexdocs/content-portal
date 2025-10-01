@@ -564,7 +564,7 @@
   "changelog_page_section.content.0.link": "/docs/changelog/changelog-test",
   "glossary_datatable_search": "Search",
   "glossary_datatable_length_menu": "View _MENU_ items per page",
-  "glossary_datatable_info": "Viewing _START_ to _END_ of _TOTAL_ items",
+  "glossary_datatable_info": "Viewing _START_ to _END_ of _TOTAL_ terms",
   "glossary_datatable_paginate_first": "First",
   "glossary_datatable_paginate_last": "Last",
   "glossary_datatable_paginate_next": "Next",
@@ -575,9 +575,9 @@
   "glossary_table_header_definition": "Definition",
   "glossary_legend_title": "Legend:",
   "glossary_status_avoid": "Avoid",
-  "glossary_status_avoid_full": "Obsolete (Not used anymore)",
+  "glossary_status_avoid_full": "Avoid",
   "glossary_status_dont_use": "Don't use",
-  "glossary_status_dont_use_full": "Don't use (Not approved for use)",
+  "glossary_status_dont_use_full": "Don't use",
   "glossary_status_preffered": "Preferred",
-  "glossary_status_preffered_full": "Preferred (Recommended variant)"
+  "glossary_status_preffered_full": "Recommended"
 }

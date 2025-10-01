@@ -47,7 +47,7 @@
 .dataTableContainer :global(.dataTables_filter) label {
     display: flex;
     align-items: center;
-    visibility: hidden;
+    visibility: hidden; 
     width: 0;
     height: 0;
     overflow: hidden;
@@ -122,61 +122,88 @@
     background-color: #28a745;
 }
 
-.glossaryLegend {
-    margin-bottom: 2rem;
-    padding: 1rem;
-    border: 1px solid #eee;
-    border-radius: 8px;
-    background-color: #fcfcfc;
-}
-
-.glossaryLegend h3 {
-    margin-top: 0;
-    margin-bottom: 1rem;
-    color: #333;
-    font-size: 1.2rem;
-}
-
-.glossaryLegend p {
+.glossaryLegendInline {
     display: flex;
     align-items: center;
-    margin-bottom: 0.5rem;
-    font-size: 0.9rem;
+    gap: 1.5em; 
+    margin: 0; /* Remover margem, pois o posicionamento será feito pelo pai */
+    flex-wrap: wrap; 
+    font-size: 0.9rem; 
+    color: #555;
 }
 
-.glossaryLegend p .statusCircleObsolete,
-.glossaryLegend p .statusCircleNotRecommended,
-.glossaryLegend p .statusCirclePreferred {
-    margin-right: 8px;
-    width: 12px;
-    height: 12px;
+.glossaryLegendInline p {
+    display: flex;
+    align-items: center;
+    margin: 0; 
 }
 
+.glossaryLegendInline p .statusCircleObsolete,
+.glossaryLegendInline p .statusCircleNotRecommended,
+.glossaryLegendInline p .statusCirclePreferred {
+    margin-right: 5px;
+    width: 10px; 
+    height: 10px;
+    flex-shrink: 0;
+}
 
 .dataTableContainer :global(.top) {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 1em;
+    flex-wrap: wrap; 
+    gap: 1em; 
 }
+
+/* Novos wrappers para o topo */
+.dataTableContainer :global(.top-left) {
+  display: flex;
+  flex-grow: 1;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1.5em;
+}
+
+.dataTableContainer :global(.top-right) {
+  display: flex;
+  flex-grow: 1;
+  justify-content: flex-end; /* Alinhar o conteúdo à direita */
+  align-items: center;
+  gap: 1.5em; /* Espaçamento entre os elementos no canto superior direito */
+  flex-wrap: wrap;
+}
+
+/* Ajustes para os elementos individuais */
+.dataTableContainer :global(.dataTables_filter) {
+    /* Mantém as propriedades de flex, mas agora está dentro de .top-left */
+    order: 1; /* Campo de busca aparece primeiro */
+    flex-shrink: 0; /* Impede que o campo encolha demais */
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.dataTableContainer :global(.dataTables_info) {
+    /* Mover para dentro de .top-right */
+    order: 1; /* Para aparecer antes da legenda se houver espaço */
+    text-align: right; /* Garante que o texto fique à direita */
+    flex-shrink: 0; /* Impede que o elemento encolha demais */
+}
+
+/* A legenda agora fica no .top-left ao lado do campo de busca */
+.dataTableContainer :global(.top-left) .glossaryLegendInline {
+    order: 2; /* Para aparecer depois do campo de busca */
+    margin-left: 0; /* Remover margem extra, o gap do pai já cuida */
+    flex-shrink: 0; /* Impede que a legenda encolha demais */
+}
+
 
 .dataTableContainer :global(.bottom) {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-top: 1em;
-}
-
-.dataTableContainer :global(.dataTables_filter) {
-    order: 1;
-    display: flex;
-    flex-grow: 1;
-    justify-content: flex-start;
-}
-
-.dataTableContainer :global(.dataTables_info) {
-    order: 2;
-    text-align: right;
 }
 
 .dataTableContainer :global(.dataTables_length) {
