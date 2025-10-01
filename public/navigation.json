@@ -286,6 +286,21 @@
                             "origin": "",
                             "type": "markdown",
                             "children": []
+                        },
+                        {
+                            "name": {
+                                "en": "Computer interfaces",
+                                "es": "Computer interfaces",
+                                "pt": "Computer interfaces"
+                            },
+                            "slug": {
+                                "en": "computer-interfaces",
+                                "es": "computer-interfaces",
+                                "pt": "computer-interfaces"
+                            },
+                            "origin": "",
+                            "type": "markdown",
+                            "children": []
                         }
                     ]
                 }
