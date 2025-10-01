@@ -74,91 +74,175 @@ const GlossaryPage: NextPage<Props> = ({ branch, glossaryData }) => {
   const [areScriptsLoaded, setAreScriptsLoaded] = useState(false)
   const jQueryLoadedRef = useRef(false)
   const legendRef = useRef<HTMLDivElement>(null)
+  const initializationAttempted = useRef(false)
+  const retryTimeoutRef = useRef<NodeJS.Timeout | null>(null)
 
   setBranchPreview(branch)
 
+  // Check if scripts are ready for initialization
+  const checkScriptsReady = () => {
+    return typeof window !== 'undefined' && 
+           typeof window.jQuery === 'function' &&
+           typeof window.jQuery.fn.DataTable === 'function'
+  }
+
+  // Initialize DataTable with retry logic
   const initializeDataTable = () => {
-    if (
-      areScriptsLoaded &&
-      window.jQuery &&
-      window.jQuery.fn.DataTable &&
-      glossaryData.length > 0 &&
-      !dataTableInstance
-    ) {
-      console.log('Attempting to initialize DataTable...')
-      try {
-        const table = window.jQuery('#glossaryTable').DataTable({
-          destroy: true,
-          paging: true,
-          searching: true,
-          info: true,
-          stripeClasses: [], // Prevent default striping to avoid conflicts with custom styles. Not working yet.
-          language: {
-            searchPlaceholder: intl.formatMessage({
-              id: 'glossary_datatable_search',
-            }),
-            search: '_INPUT_',
-            lengthMenu: intl.formatMessage({
-              id: 'glossary_datatable_length_menu',
-            }),
-            info: intl.formatMessage({ id: 'glossary_datatable_info' }),
-            paginate: {
-              first: intl.formatMessage({
-                id: 'glossary_datatable_paginate_first',
-              }),
-              last: intl.formatMessage({
-                id: 'glossary_datatable_paginate_last',
-              }),
-              next: intl.formatMessage({
-                id: 'glossary_datatable_paginate_next',
-              }),
-              previous: intl.formatMessage({
-                id: 'glossary_datatable_paginate_previous',
-              }),
-            },
-          },
-          columnDefs: [
-            { width: '15%', targets: 0 }, // Term_en_US
-            { width: '15%', targets: 1 }, // Term_es_MX
-            { width: '15%', targets: 2 }, // Term_pt_BR
-            { width: '55%', targets: 3 }, // Definition
-          ],
-          dom: '<"top"<"top-left"f><"top-right"i><"clear">rt<"bottom"lp><"clear">',
-        })
-        setDataTableInstance(table)
-        console.log('DataTable initialized successfully.')
+    // Skip if already initialized or no data
+    if (dataTableInstance || glossaryData.length === 0) {
+      return
+    }
 
-        if (legendRef.current) {
-          window
-            .jQuery('.top-left')
-            .append(legendRef.current)
-        }
-
-      } catch (error) {
-        console.error('Error initializing DataTable:', error)
+    console.log('Attempting to initialize DataTable...')
+    
+    if (!checkScriptsReady()) {
+      console.log('Scripts not ready, will retry...')
+      // Retry after a short delay
+      if (retryTimeoutRef.current) {
+        clearTimeout(retryTimeoutRef.current)
       }
-    } else if (glossaryData.length === 0) {
-      console.warn('No glossary data available to initialize DataTable.')
-    } else if (dataTableInstance) {
-      console.log(
-        'DataTable instance already exists, skipping re-initialization.'
-      )
-    } else if (!areScriptsLoaded) {
-      console.log('Scripts not yet loaded, deferring DataTable initialization.')
+      retryTimeoutRef.current = setTimeout(() => {
+        initializeDataTable()
+      }, 200)
+      return
+    }
+
+    try {
+      // Clear any existing timeout
+      if (retryTimeoutRef.current) {
+        clearTimeout(retryTimeoutRef.current)
+        retryTimeoutRef.current = null
+      }
+
+      // Check if table element exists
+      const tableElement = document.getElementById('glossaryTable')
+      if (!tableElement) {
+        console.warn('Table element not found, retrying...')
+        setTimeout(() => initializeDataTable(), 100)
+        return
+      }
+
+      const table = window.jQuery('#glossaryTable').DataTable({
+        destroy: true,
+        paging: true,
+        searching: true,
+        info: true,
+        stripeClasses: [], // Prevent default striping to avoid conflicts with custom styles. Not working yet.
+        language: {
+          searchPlaceholder: intl.formatMessage({
+            id: 'glossary_datatable_search',
+          }),
+          search: '_INPUT_',
+          lengthMenu: intl.formatMessage({
+            id: 'glossary_datatable_length_menu',
+          }),
+          info: intl.formatMessage({ id: 'glossary_datatable_info' }),
+          paginate: {
+            first: intl.formatMessage({
+              id: 'glossary_datatable_paginate_first',
+            }),
+            last: intl.formatMessage({
+              id: 'glossary_datatable_paginate_last',
+            }),
+            next: intl.formatMessage({
+              id: 'glossary_datatable_paginate_next',
+            }),
+            previous: intl.formatMessage({
+              id: 'glossary_datatable_paginate_previous',
+            }),
+          },
+        },
+        columnDefs: [
+          { width: '15%', targets: 0 }, // Term_en_US
+          { width: '15%', targets: 1 }, // Term_es_MX
+          { width: '15%', targets: 2 }, // Term_pt_BR
+          { width: '55%', targets: 3 }, // Definition
+        ],
+        dom: '<"top"<"top-left"f><"top-right"i><"clear">rt<"bottom"lp><"clear">',
+      })
+      
+      setDataTableInstance(table)
+      initializationAttempted.current = true
+      console.log('DataTable initialized successfully.')
+
+      // Move legend after successful initialization
+      setTimeout(() => {
+        if (legendRef.current) {
+          const topLeftContainer = document.querySelector('.top-left')
+          if (topLeftContainer && !topLeftContainer.contains(legendRef.current)) {
+            topLeftContainer.appendChild(legendRef.current)
+          }
+        }
+      }, 100)
+
+    } catch (error) {
+      console.error('Error initializing DataTable:', error)
+      // Retry once more after a delay
+      if (!initializationAttempted.current) {
+        console.log('Retrying DataTable initialization...')
+        setTimeout(() => initializeDataTable(), 500)
+      }
     }
   }
 
+  // Effect to initialize DataTable when component mounts or data changes
   useEffect(() => {
-    initializeDataTable()
+    const timer = setTimeout(() => {
+      initializeDataTable()
+    }, 100) // Small delay to ensure DOM is ready
 
-    return () => {
-      if (dataTableInstance) {
-        console.log('Destroying DataTable instance during cleanup.')
-        dataTableInstance.destroy()
-        setDataTableInstance(null)
+    return () => clearTimeout(timer)
+  }, [glossaryData])
+
+  // Effect to try initialization when scripts are loaded
+  useEffect(() => {
+    if (areScriptsLoaded || checkScriptsReady()) {
+      initializeDataTable()
+    }
+  }, [areScriptsLoaded])
+
+  // Effect to poll for scripts if they're not loaded yet
+  useEffect(() => {
+    if (!dataTableInstance && glossaryData.length > 0) {
+      const pollInterval = setInterval(() => {
+        if (checkScriptsReady()) {
+          clearInterval(pollInterval)
+          initializeDataTable()
+        }
+      }, 500)
+
+      // Clear interval after 10 seconds to avoid infinite polling
+      const timeout = setTimeout(() => {
+        clearInterval(pollInterval)
+      }, 10000)
+
+      return () => {
+        clearInterval(pollInterval)
+        clearTimeout(timeout)
       }
     }
-  }, [glossaryData, areScriptsLoaded])
+    
+    // Return empty cleanup function for other cases
+    return () => {}
+  }, [dataTableInstance, glossaryData])
+
+  // Cleanup effect
+  useEffect(() => {
+    return () => {
+      if (dataTableInstance) {
+        try {
+          console.log('Destroying DataTable instance during cleanup.')
+          dataTableInstance.destroy()
+          setDataTableInstance(null)
+        } catch (error) {
+          console.warn('Error destroying DataTable:', error)
+        }
+      }
+      if (retryTimeoutRef.current) {
+        clearTimeout(retryTimeoutRef.current)
+      }
+    }
+  }, [dataTableInstance])
 
   return (
     <>
@@ -268,37 +352,45 @@ const GlossaryPage: NextPage<Props> = ({ branch, glossaryData }) => {
 
       <Script
         src="https://code.jquery.com/jquery-3.7.1.min.js"
-        strategy="afterInteractive"
+        strategy="beforeInteractive"
         onLoad={() => {
-          if (typeof window.jQuery === 'function') {
-            console.log('jQuery script loaded.')
-            jQueryLoadedRef.current = true
+          console.log('jQuery script loaded.')
+          jQueryLoadedRef.current = true
+          
+          // Check if DataTables is already available and trigger initialization
+          if (checkScriptsReady()) {
+            setAreScriptsLoaded(true)
+            // Try to initialize immediately
+            setTimeout(() => initializeDataTable(), 50)
           }
+        }}
+        onError={() => {
+          console.error('Failed to load jQuery script')
         }}
       />
       <Script
         src="https://cdn.datatables.net/2.3.2/js/dataTables.js"
-        strategy="afterInteractive"
+        strategy="beforeInteractive"
         onLoad={() => {
-          if (
-            jQueryLoadedRef.current &&
-            typeof window.jQuery.fn.DataTable === 'function'
-          ) {
-            console.log(
-              'DataTables script loaded and jQuery is ready. Setting scripts loaded state.'
-            )
-            setAreScriptsLoaded(true)
-          } else {
-            console.error(
-              'DataTables script loaded but jQuery or DataTable function not found, or jQuery not fully initialized.'
-            )
-            if (!jQueryLoadedRef.current)
-              console.error('jQuery was not marked as loaded.')
-            if (typeof window.jQuery !== 'function')
-              console.error('window.jQuery is not a function.')
-            if (typeof window.jQuery.fn.DataTable !== 'function')
-              console.error('window.jQuery.fn.DataTable is not a function.')
+          console.log('DataTables script loaded.')
+          
+          // Wait a bit for jQuery to be fully ready if needed
+          const checkAndInit = () => {
+            if (checkScriptsReady()) {
+              console.log('Both jQuery and DataTables are ready.')
+              setAreScriptsLoaded(true)
+              // Try to initialize immediately
+              setTimeout(() => initializeDataTable(), 50)
+            } else {
+              // Retry after a short delay
+              setTimeout(checkAndInit, 100)
+            }
           }
+          
+          checkAndInit()
+        }}
+        onError={() => {
+          console.error('Failed to load DataTables script')
         }}
       />
     </>
@@ -323,3 +415,4 @@ export const getStaticProps: GetStaticProps = async ({}) => {
 }
 
 export default GlossaryPage
+
