@@ -81,9 +81,11 @@ const GlossaryPage: NextPage<Props> = ({ branch, glossaryData }) => {
 
   // Check if scripts are ready for initialization
   const checkScriptsReady = () => {
-    return typeof window !== 'undefined' && 
-           typeof window.jQuery === 'function' &&
-           typeof window.jQuery.fn.DataTable === 'function'
+    return (
+      typeof window !== 'undefined' &&
+      typeof window.jQuery === 'function' &&
+      typeof window.jQuery.fn.DataTable === 'function'
+    )
   }
 
   // Initialize DataTable with retry logic
@@ -94,7 +96,7 @@ const GlossaryPage: NextPage<Props> = ({ branch, glossaryData }) => {
     }
 
     console.log('Attempting to initialize DataTable...')
-    
+
     if (!checkScriptsReady()) {
       console.log('Scripts not ready, will retry...')
       // Retry after a short delay
@@ -160,7 +162,7 @@ const GlossaryPage: NextPage<Props> = ({ branch, glossaryData }) => {
         ],
         dom: '<"top"<"top-left"f><"top-right"i><"clear">rt<"bottom"lp><"clear">',
       })
-      
+
       setDataTableInstance(table)
       initializationAttempted.current = true
       console.log('DataTable initialized successfully.')
@@ -169,12 +171,14 @@ const GlossaryPage: NextPage<Props> = ({ branch, glossaryData }) => {
       setTimeout(() => {
         if (legendRef.current) {
           const topLeftContainer = document.querySelector('.top-left')
-          if (topLeftContainer && !topLeftContainer.contains(legendRef.current)) {
+          if (
+            topLeftContainer &&
+            !topLeftContainer.contains(legendRef.current)
+          ) {
             topLeftContainer.appendChild(legendRef.current)
           }
         }
       }, 100)
-
     } catch (error) {
       console.error('Error initializing DataTable:', error)
       // Retry once more after a delay
@@ -221,9 +225,9 @@ const GlossaryPage: NextPage<Props> = ({ branch, glossaryData }) => {
         clearTimeout(timeout)
       }
     }
-    
-    // Return empty cleanup function for other cases
-    return () => {}
+
+    // Always return a cleanup function or undefined
+    return undefined
   }, [dataTableInstance, glossaryData])
 
   // Cleanup effect
@@ -356,7 +360,7 @@ const GlossaryPage: NextPage<Props> = ({ branch, glossaryData }) => {
         onLoad={() => {
           console.log('jQuery script loaded.')
           jQueryLoadedRef.current = true
-          
+
           // Check if DataTables is already available and trigger initialization
           if (checkScriptsReady()) {
             setAreScriptsLoaded(true)
@@ -373,7 +377,7 @@ const GlossaryPage: NextPage<Props> = ({ branch, glossaryData }) => {
         strategy="beforeInteractive"
         onLoad={() => {
           console.log('DataTables script loaded.')
-          
+
           // Wait a bit for jQuery to be fully ready if needed
           const checkAndInit = () => {
             if (checkScriptsReady()) {
@@ -386,7 +390,7 @@ const GlossaryPage: NextPage<Props> = ({ branch, glossaryData }) => {
               setTimeout(checkAndInit, 100)
             }
           }
-          
+
           checkAndInit()
         }}
         onError={() => {
@@ -415,4 +419,3 @@ export const getStaticProps: GetStaticProps = async ({}) => {
 }
 
 export default GlossaryPage
-

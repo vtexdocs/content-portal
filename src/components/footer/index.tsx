@@ -2,7 +2,7 @@ import { Box, Flex, Link } from '@vtex/brand-ui'
 import styles from './styles'
 import { getGithubURL, getCommunityURL, getFeedbackURL } from 'utils/get-url'
 import { useIntl } from 'react-intl'
-import LocaleSwitcherFooter from 'components/locale-switcher-footer'
+// import LocaleSwitcherFooter from 'components/locale-switcher-footer'
 import VtexLogoFooter from 'components/icons/vtexLogoFooter'
 
 const Footer = () => {
@@ -38,7 +38,7 @@ const Footer = () => {
             {link.message}
           </Link>
         ))}
-        <LocaleSwitcherFooter sx={styles.localeSwitchLanding} />
+        {/* <LocaleSwitcherFooter sx={styles.localeSwitchLanding} /> */}
       </Flex>
     </Box>
   )
