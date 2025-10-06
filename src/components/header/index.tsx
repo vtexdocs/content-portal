@@ -8,7 +8,7 @@ import {
 import { useContext, useEffect, useRef, useState } from 'react'
 import { useRouter } from 'next/router'
 import { HamburgerMenu } from '@vtexdocs/components'
-// import { SearchInput } from '@vtexdocs/components'
+import { SearchInput } from '@vtexdocs/components'
 import DropdownMenu from 'components/dropdown-menu'
 import GridIcon from 'components/icons/grid-icon'
 import LongArrowIcon from 'components/icons/long-arrow-icon'
@@ -107,9 +107,9 @@ const Header = () => {
           <ContentPortalIcon sx={styles.logoSize} />
         </VtexLink>
 
-        {/* <Box sx={styles.searchContainer}>
+        <Box sx={styles.searchContainer}>
           <SearchInput />
-        </Box> */}
+        </Box>
 
         <HeaderBrand.RightLinks sx={styles.rightLinks}>
           <Flex
