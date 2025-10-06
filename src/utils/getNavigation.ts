@@ -17,7 +17,7 @@ export default async function getNavigation() {
     )
     const navigationJsonUrl =
       process.env.navigationJsonUrl ||
-      'https://contentguide.vtex.com//navigation.json'
+      'https://contentguide.vtex.com/navigation.json'
 
     const result = await fetch(navigationJsonUrl)
     const data = await result.json()

@@ -3,7 +3,7 @@
   "start_urls": ["https://contentguide.vtex.com//docs"],
   "stop_urls": [],
   "sitemap_urls": [
-    "https://contentguide.vtex.com//server-sitemap.xml"
+    "https://contentguide.vtex.com/server-sitemap.xml"
   ],
   "sitemap_alternate_links": true,
   "selectors": {

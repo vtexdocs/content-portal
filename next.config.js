@@ -40,7 +40,7 @@ const nextConfig = {
   },
   env: {
     navigationJsonUrl:
-      'https://contentguide.vtex.com//navigation.json',
+      'https://contentguide.vtex.com/navigation.json',
     contentOrg: '',
     contentRepo: '',
     contentBranch: '',
