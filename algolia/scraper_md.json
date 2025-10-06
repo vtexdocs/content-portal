@@ -1,6 +1,6 @@
 {
   "index_name": "content-platform",
-  "start_urls": ["https://contentguide.vtex.com//docs"],
+  "start_urls": ["https://contentguide.vtex.com"],
   "stop_urls": [],
   "sitemap_urls": [
     "https://contentguide.vtex.com/server-sitemap.xml"
