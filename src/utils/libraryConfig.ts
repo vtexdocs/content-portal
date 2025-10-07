@@ -4,7 +4,7 @@ import { SearchConfig } from '@vtexdocs/components'
 const libraryConfig = {
   appId: process.env.NEXT_PUBLIC_ALGOLIA_APP_ID || '',
   apiKey: process.env.NEXT_PUBLIC_ALGOLIA_WRITE_KEY || '',
-  index: 'helpcenter-docs',
+  index: 'content-platform',
 }
 
 export default SearchConfig(libraryConfig)
