@@ -17,7 +17,10 @@ const OtherResourcesCard = ({
   const descriptionRef = useRef<HTMLElement>()
 
   return (
-    <Link href={link}>
+    <Link
+      href={link}
+      {...(isExternalLink && { target: '_blank', rel: 'noopener noreferrer' })}
+    >
       <Flex sx={styles.cardContainer}>
         <Flex className="titleContainer" sx={styles.titleContainer}>
           <Text className="title" sx={styles.title}>

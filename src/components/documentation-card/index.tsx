@@ -3,10 +3,10 @@ import { Box, Flex, Text } from '@vtex/brand-ui'
 
 import styles from './styles'
 import { cardContainer, cardTitle, titleContainer } from './functions'
-import { DataElement } from 'utils/typings/types'
+import { DocDataElement } from 'utils/typings/types'
 import { MouseEventHandler } from 'react'
 
-export interface DocumentProps extends DataElement {
+export interface DocumentProps extends DocDataElement {
   title: string
 }
 export interface CardProps extends DocumentProps {
@@ -20,10 +20,18 @@ const DocumentationCard = ({
   containerType,
   Icon,
   onClick,
+  isExternalLink = false,
 }: CardProps) => {
   return (
     <Link href={link} legacyBehavior>
-      <a onClick={onClick} style={{ width: '100%' }}>
+      <a
+        onClick={onClick}
+        style={{ width: '100%' }}
+        {...(isExternalLink && {
+          target: '_blank',
+          rel: 'noopener noreferrer',
+        })}
+      >
         <Box sx={cardContainer(containerType)}>
           <Flex sx={titleContainer(containerType)}>
             <Icon size={24} sx={{ color: '#4A596B' }} />
