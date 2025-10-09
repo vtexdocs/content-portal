@@ -1,0 +1,20 @@
+name: Content Platform Scraper
+
+on:
+  pull_request:
+    branches:
+      - main
+    types: [closed]
+
+jobs:
+  devportal-scraper:
+    runs-on: ubuntu-latest
+    name: Run scraper_contentplatform
+    steps:
+    - uses: actions/checkout@v2
+    - name: Run Devportal Scraper
+      uses: vtexdocs/devportal-docsearch-action@main
+      with:
+        algolia_application_id: '${{ secrets.ALGOLIA_APP_ID }}'
+        algolia_api_key: ${{ secrets.ALGOLIA_WRITE_KEY }}
+        files: './configs/scraper_contentplatform.json'

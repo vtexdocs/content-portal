@@ -119,7 +119,7 @@ const TrackPage: NextPage<Props> = ({
     <>
       <Head>
         <title>{serialized.frontmatter?.title as string}</title>
-        <meta name="docsearch:doctype" content="tracks" />
+        <meta name="docsearch:doctype" content="grammar" />
         {serialized.frontmatter?.hidden && (
           <meta name="robots" content="noindex" />
         )}
@@ -204,7 +204,7 @@ const TrackPage: NextPage<Props> = ({
 
 export const getStaticPaths: GetStaticPaths = async () => {
   // Use getTracksPaths to get all available slugs for tracks
-  const docsPaths = await getTracksPaths('tracks')
+  const docsPaths = await getTracksPaths('grammar')
   // Generate a path for each slug/locale combination
   const paths = Object.entries(docsPaths).flatMap(([slug, entries]) =>
     entries.map(({ locale }) => ({
@@ -244,11 +244,11 @@ export const getStaticProps: GetStaticProps = async ({
     'en') as localeType
 
   if (!docsPathsGLOBAL) {
-    docsPathsGLOBAL = await getTracksPaths('tracks')
+    docsPathsGLOBAL = await getTracksPaths('grammar')
   }
   const docsPaths =
     preview || process.env.NEXT_PHASE !== PHASE_PRODUCTION_BUILD
-      ? await getTracksPaths('tracks', branch)
+      ? await getTracksPaths('grammar', branch)
       : docsPathsGLOBAL
 
   const logger = getLogger('TracksPage-GetStaticProps') // MODIFIED: More specific logger name
@@ -268,7 +268,7 @@ export const getStaticProps: GetStaticProps = async ({
   try {
     documentationContent = await getGithubFile(
       'vtexdocs',
-      'help-center-content',
+      'content-portal-content',
       branch,
       resolvedPath
     )
@@ -286,7 +286,7 @@ export const getStaticProps: GetStaticProps = async ({
   try {
     const fetchedContributors = await getFileContributors(
       'vtexdocs',
-      'help-center-content',
+      'content-portal-content',
       branch,
       resolvedPath
     )
@@ -363,7 +363,7 @@ export const getStaticProps: GetStaticProps = async ({
           try {
             const documentationContent =
               (await fetch(
-                `https://raw.githubusercontent.com/vtexdocs/help-center-content/main/${seeAlsoPath}`
+                `https://raw.githubusercontent.com/vtexdocs/content-portal-content/main/${seeAlsoPath}`
               )
                 .then((res) => res.text())
                 .catch((err) => console.log(err))) || ''

@@ -40,7 +40,7 @@ const nextConfig = {
   },
   env: {
     navigationJsonUrl:
-      'https://leafy-mooncake-7c2e5e.netlify.app/navigation.json',
+      'https://contentguide.vtex.com/navigation.json',
     contentOrg: '',
     contentRepo: '',
     contentBranch: '',

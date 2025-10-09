@@ -101,8 +101,8 @@ export const sectionsData = (intl: IntlShape) => {
       description: intl.formatMessage({
         id: 'glossary_card_subtitle',
       }),
-      link: 'https://docs.google.com/spreadsheets/d/1vSSg5CrimqSxvWjBoXLE5P7ATJCdRnPT/edit?gid=722394202#gid=722394202',
-      isExternalLink: true,
+      link: '/docs/glossary',
+      isExternalLink: false,
     },
   ]
   return data
@@ -179,8 +179,8 @@ export const menuSectionData = (intl: IntlShape) => {
       description: intl.formatMessage({
         id: 'glossary_card_subtitle',
       }),
-      link: 'https://docs.google.com/spreadsheets/d/1vSSg5CrimqSxvWjBoXLE5P7ATJCdRnPT/edit?gid=722394202#gid=722394202',
-      isExternalLink: true,
+      link: '/docs/glossary',
+      isExternalLink: false,
     },
   ]
   return data
