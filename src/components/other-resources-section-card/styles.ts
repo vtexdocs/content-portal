@@ -89,6 +89,11 @@ const quickStartedContainer: SxStyleProp = {
       color: '#000711',
       transition: 'all 0.3s ease-out',
     },
+
+    '.accessPortal': {
+      color: '#000711',
+      transition: 'all 0.3s ease-out',
+    },
   },
 }
 
@@ -103,6 +108,7 @@ const learnMoreText: SxStyleProp = {
 const accessPortal: SxStyleProp = {
   columnGap: '5px',
   alignItems: 'center',
+  color: 'muted.0',
 }
 
 export default {

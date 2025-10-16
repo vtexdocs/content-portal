@@ -38,11 +38,14 @@ const NewsletterSection = () => {
         />
         <Flex sx={styles.contentContainer}>
           <Text sx={styles.text}>
-            <FormattedMessage id="landing_subtitle_1" />{' '}
-            <span style={{ color: '#0366DD' }}>
-              <FormattedMessage id="landing_subtitle_2" />
-            </span>{' '}
-            <FormattedMessage id="landing_subtitle_3" />
+            <FormattedMessage
+              id="landing_subtitle_complete"
+              values={{
+                highlight: (chunks) => (
+                  <span style={{ color: '#0366DD' }}>{chunks}</span>
+                ),
+              }}
+            />
           </Text>
           <Text style={{ color: 'transparent' }}>just for spacing</Text>
           {/* <SearchInput /> */}

@@ -36,5 +36,6 @@ export const createDocFromUrl = (doc: {
     Icon,
     description: getTitleFromUrl(doc.category),
     link: doc.url,
+    id: '',
   }
 }

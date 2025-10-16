@@ -18,7 +18,10 @@ const DocumentationSectionCard = ({
   const descriptionRef = useRef<HTMLElement>()
 
   return (
-    <Link href={link}>
+    <Link
+      href={link}
+      {...(isExternalLink && { target: '_blank', rel: 'noopener noreferrer' })}
+    >
       <Flex sx={styles.cardContainer}>
         <Flex sx={styles.infoContainer}>
           <Icon sx={styles.icon} />

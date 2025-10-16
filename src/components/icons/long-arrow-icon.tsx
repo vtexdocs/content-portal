@@ -10,14 +10,14 @@ const LongArrowIcon = (props: IconProps) => (
   >
     <path
       d="M17.4431 6.05859L6 17.5017"
-      stroke="#4A596B"
+      stroke="currentColor"
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
     />
     <path
       d="M9.4082 6L17.4415 6.05664L17.4993 14.0911"
-      stroke="#4A596B"
+      stroke="currentColor"
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
