@@ -15,10 +15,8 @@ const WhatsNextCardTutorial = ({
         <Text sx={styles.title} className="title">
           {title}
         </Text>
-        <Flex sx={styles.linkContainer}>
-          <Text sx={styles.link} className="link">
-            {linkTitle}
-          </Text>
+        <Flex>
+          <Text className="link">{linkTitle}</Text>
           <IconCaret
             className="caret"
             color="#A1A8B3"

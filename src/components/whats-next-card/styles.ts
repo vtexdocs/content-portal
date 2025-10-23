@@ -20,19 +20,25 @@ const container: SxStyleProp = {
       color: '#000711',
     },
 
-    '.link, .caret': {
+    '.arrow': {
       transition: 'all 0.3s ease-out',
-      color: 'muted.0',
+      color: '#000711',
     },
   },
 }
 
-const title: SxStyleProp = {
+const titleContainer: SxStyleProp = {
   mb: '8px',
+  justifyContent: 'space-between',
+  alignItems: 'flex-start',
+  color: 'muted.0',
+}
+
+const title: SxStyleProp = {
   fontSize: '16px',
   fontWeight: '400',
   lineHeight: ['22px', '18px'],
-  color: 'muted.0',
+  flex: 1,
 }
 
 const description: SxStyleProp = {
@@ -42,14 +48,4 @@ const description: SxStyleProp = {
   color: 'muted.0',
 }
 
-const linkContainer: SxStyleProp = {
-  mt: '8px',
-  alignItems: 'center',
-}
-
-const link: SxStyleProp = {
-  ...description,
-  color: 'muted.1',
-}
-
-export default { container, title, description, linkContainer, link }
+export default { container, titleContainer, title, description }
