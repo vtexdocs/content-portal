@@ -17,10 +17,16 @@
   - [How to Add New Articles](#how-to-add-new-articles)
   - [Navigation Sidebar](#navigation-sidebar)
     - [Updating the Navigation Sidebar](#updating-the-navigation-sidebar)
+  - [Algolia Search](#algolia-search)
+    - [How Algolia Works](#how-algolia-works)
+    - [Configuration](#configuration)
+    - [Indexing Process](#indexing-process)
+    - [Search Interface](#search-interface)
+    - [Maintenance](#maintenance)
   - [Glossary Page](#glossary-page)
     - [How the Glossary Works](#how-the-glossary-works)
     - [Crowdin Integration](#crowdin-integration)
-    - [Maintenance](#maintenance)
+    - [Maintenance](#maintenance-1)
   - [Redirects](#redirects)
     - [Creating a Redirect](#creating-a-redirect)
 - [GitHub Actions](#github-actions)
@@ -358,6 +364,142 @@ Follow the steps below to add new content to the navigation sidebar:
 9. Once PR is approved, apply the merge to update the navigation sidebar.
 
    > ℹ️ For new information to appear in the Help Center, Education & Documentation team leaders must run the portal's build.
+
+### Algolia Search
+
+Algolia is the search engine used in the Content Style Guide to provide fast and relevant search results. It crawls and indexes all portal content, allowing users to quickly find articles, guides, and other documentation.
+
+#### How Algolia Works
+
+The Algolia integration consists of three main components:
+
+1. **Indexing**: Content from the portal is automatically crawled and indexed by Algolia
+2. **Search Interface**: A dedicated search page (`/search`) powered by the `@vtexdocs/components` library
+3. **Configuration**: Environment variables and scraper settings control the indexing behavior
+
+#### Configuration
+
+The Algolia implementation requires the following environment variables:
+
+- `NEXT_PUBLIC_ALGOLIA_APP_ID`: Your Algolia application ID
+- `NEXT_PUBLIC_ALGOLIA_WRITE_KEY`: API key with write permissions for indexing
+
+These variables are configured in:
+- `.env` file for local development
+- Netlify/deployment platform environment variables for production
+
+The search configuration is defined in `src/utils/libraryConfig.ts`:
+
+```typescript
+const libraryConfig = {
+  appId: process.env.NEXT_PUBLIC_ALGOLIA_APP_ID || '',
+  apiKey: process.env.NEXT_PUBLIC_ALGOLIA_WRITE_KEY || '',
+  index: 'content-platform',
+}
+```
+
+#### Indexing Process
+
+Content indexing is performed using a custom scraper based on DocSearch. The indexing configuration is located in `algolia/scraper_contentplatform.json`:
+
+**Key Configuration Settings:**
+
+- **Index Name**: `content-platform`
+- **Start URLs**: `https://contentguide.vtex.com`
+- **Sitemap**: Uses `server-sitemap.xml` for crawling
+- **Content Selectors**:
+  - `lvl0`: Article titles and H1 headings
+  - `lvl1`: H2 headings
+  - `lvl2`: H3 headings
+  - `lvl3`: H4 headings
+  - `lvl4`: H5 headings
+  - `text`: Paragraphs and list items
+- **Faceting Attributes**: `doctype` and `language` for filtering results
+- **Separator Indexing**: Underscores (`_`) are indexed to improve search for technical terms
+
+**Automatic Indexing:**
+
+The indexing process runs automatically via GitHub Actions when Pull Requests are merged into the `main` branch:
+
+- **Workflow**: `.github/workflows/docsearch-scraper.yml`
+- **Action**: `vtexdocs/devportal-docsearch-action@main`
+- **Trigger**: PR closed/merged to main branch
+
+**Manual Indexing:**
+
+To manually trigger the indexing process locally:
+
+```bash
+yarn index
+```
+
+This command executes the `algolia/scripts/scraper.sh` script, which:
+1. Clones the `vtexdocs/docsearch-scraper` repository
+2. Installs dependencies (pipenv, chromedriver)
+3. Runs the scraper with the configuration file
+4. Uploads indexed content to Algolia
+5. Cleans up temporary files
+
+#### Search Interface
+
+The search functionality is accessible at `/search` and is implemented using the `@vtexdocs/components` library:
+
+```typescript
+// src/pages/search/index.tsx
+import { Search } from '@vtexdocs/components'
+
+const SearchPage = () => {
+  return <Search />
+}
+```
+
+The Search component provides:
+- Real-time search as you type
+- Faceted filtering by document type and language
+- Highlighting of matching terms
+- Direct links to relevant content
+- Mobile-responsive interface
+
+#### Maintenance
+
+To maintain and update the Algolia search:
+
+1. **Updating Search Configuration**:
+   - Edit `algolia/scraper_contentplatform.json` to modify:
+     - Content selectors
+     - Indexed attributes
+     - Faceting options
+     - URL patterns
+   - Changes take effect on the next indexing run
+
+2. **Testing Indexing Locally**:
+   - Ensure environment variables are set in `.env`:
+     ```
+     NEXT_PUBLIC_ALGOLIA_APP_ID=your_app_id
+     NEXT_PUBLIC_ALGOLIA_WRITE_KEY=your_write_key
+     ```
+   - Run `yarn index` to test the scraper
+   - Verify indexed content in the Algolia dashboard
+
+3. **Monitoring Search Performance**:
+   - Log in to the [Algolia Dashboard](https://www.algolia.com/dashboard)
+   - Check the `content-platform` index for:
+     - Number of records indexed
+     - Search analytics and queries
+     - Response times
+     - Popular search terms
+
+4. **Troubleshooting**:
+   - **Empty search results**: Verify indexing completed successfully and check the GitHub Actions logs
+   - **Missing content**: Ensure the sitemap includes all pages and the scraper selectors match the HTML structure
+   - **Outdated results**: Trigger a manual reindex with `yarn index` or wait for the next automatic indexing
+   - **Slow searches**: Review indexed attributes and consider optimizing the index settings in Algolia dashboard
+
+5. **Dependencies**:
+   - `algoliasearch`: ^4.14.2 (Algolia JavaScript client)
+   - `react-instantsearch-dom`: ^6.37.0 (React search components)
+   - `search-insights`: ^2.3.0 (Analytics integration)
+   - `@vtexdocs/components`: Search UI components
 
 ### Glossary Page
 
