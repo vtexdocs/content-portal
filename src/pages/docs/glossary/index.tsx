@@ -158,7 +158,7 @@ const GlossaryPage: NextPage<Props> = ({ branch, glossaryData }) => {
           { width: '15%', targets: 0 }, // Term_en_US
           { width: '15%', targets: 1 }, // Term_es_MX
           { width: '15%', targets: 2 }, // Term_pt_BR
-          { width: '55%', targets: 3 }, // Definition
+          { width: '55%', targets: 3, searchable: false }, // Definition - excluded from search
         ],
         dom: '<"top"<"top-left"f><"top-right"i><"clear">rt<"bottom"lp><"clear">',
       })
