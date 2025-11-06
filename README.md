@@ -1,4 +1,4 @@
-# Help Center
+# VTEX Content Style Guide (Content Portal)
 
 ## Summary
 
@@ -363,8 +363,6 @@ Follow the steps below to add new content to the navigation sidebar:
 8. Send the PR link in the `#dev-portal-pr` Slack channel to be approved.
 9. Once PR is approved, apply the merge to update the navigation sidebar.
 
-   > ℹ️ For new information to appear in the Help Center, Education & Documentation team leaders must run the portal's build.
-
 ### Algolia Search
 
 Algolia is the search engine used in the Content Style Guide to provide fast and relevant search results. It crawls and indexes all portal content, allowing users to quickly find articles, guides, and other documentation.
@@ -591,7 +589,7 @@ Redirect is the functionality that allows the browser to open a page with an add
 Follow the steps below to create a new redirect:
 
 1. Open a [feature branch](#feature-branches) in the repository.
-2. In the [netlify.toml](https://github.com/content-portal/helpcenter/blob/main/netlify.toml) file, you will find an array of redirects. Add the one you want to create following the format below, replacing `from` and `to` with the desired slugs:
+2. In the [netlify.toml](https://github.com/content-portal/blob/main/netlify.toml) file, you will find an array of redirects. Add the one you want to create following the format below, replacing `from` and `to` with the desired slugs:
 
    ```toml
        [[redirects]]
