@@ -79,7 +79,6 @@ const GlossaryPage: NextPage<Props> = ({ branch, glossaryData }) => {
 
   setBranchPreview(branch)
 
-  // Check if scripts are ready for initialization
   const checkScriptsReady = () => {
     return (
       typeof window !== 'undefined' &&
@@ -88,9 +87,7 @@ const GlossaryPage: NextPage<Props> = ({ branch, glossaryData }) => {
     )
   }
 
-  // Initialize DataTable with retry logic
   const initializeDataTable = () => {
-    // Skip if already initialized or no data
     if (dataTableInstance || glossaryData.length === 0) {
       return
     }
@@ -99,7 +96,6 @@ const GlossaryPage: NextPage<Props> = ({ branch, glossaryData }) => {
 
     if (!checkScriptsReady()) {
       console.log('Scripts not ready, will retry...')
-      // Retry after a short delay
       if (retryTimeoutRef.current) {
         clearTimeout(retryTimeoutRef.current)
       }
@@ -110,13 +106,11 @@ const GlossaryPage: NextPage<Props> = ({ branch, glossaryData }) => {
     }
 
     try {
-      // Clear any existing timeout
       if (retryTimeoutRef.current) {
         clearTimeout(retryTimeoutRef.current)
         retryTimeoutRef.current = null
       }
 
-      // Check if table element exists
       const tableElement = document.getElementById('glossaryTable')
       if (!tableElement) {
         console.warn('Table element not found, retrying...')
@@ -129,7 +123,7 @@ const GlossaryPage: NextPage<Props> = ({ branch, glossaryData }) => {
         paging: true,
         searching: true,
         info: true,
-        stripeClasses: [], // Prevent default striping to avoid conflicts with custom styles. Not working yet.
+        stripeClasses: [],
         language: {
           searchPlaceholder: intl.formatMessage({
             id: 'glossary_datatable_search',
@@ -167,7 +161,6 @@ const GlossaryPage: NextPage<Props> = ({ branch, glossaryData }) => {
       initializationAttempted.current = true
       console.log('DataTable initialized successfully.')
 
-      // Move legend after successful initialization
       setTimeout(() => {
         if (legendRef.current) {
           const topLeftContainer = document.querySelector('.top-left')
@@ -181,7 +174,6 @@ const GlossaryPage: NextPage<Props> = ({ branch, glossaryData }) => {
       }, 100)
     } catch (error) {
       console.error('Error initializing DataTable:', error)
-      // Retry once more after a delay
       if (!initializationAttempted.current) {
         console.log('Retrying DataTable initialization...')
         setTimeout(() => initializeDataTable(), 500)
@@ -189,23 +181,20 @@ const GlossaryPage: NextPage<Props> = ({ branch, glossaryData }) => {
     }
   }
 
-  // Effect to initialize DataTable when component mounts or data changes
   useEffect(() => {
     const timer = setTimeout(() => {
       initializeDataTable()
-    }, 100) // Small delay to ensure DOM is ready
+    }, 100)
 
     return () => clearTimeout(timer)
   }, [glossaryData])
 
-  // Effect to try initialization when scripts are loaded
   useEffect(() => {
     if (areScriptsLoaded || checkScriptsReady()) {
       initializeDataTable()
     }
   }, [areScriptsLoaded])
 
-  // Effect to poll for scripts if they're not loaded yet
   useEffect(() => {
     if (!dataTableInstance && glossaryData.length > 0) {
       const pollInterval = setInterval(() => {
@@ -215,7 +204,6 @@ const GlossaryPage: NextPage<Props> = ({ branch, glossaryData }) => {
         }
       }, 500)
 
-      // Clear interval after 10 seconds to avoid infinite polling
       const timeout = setTimeout(() => {
         clearInterval(pollInterval)
       }, 10000)
@@ -226,11 +214,9 @@ const GlossaryPage: NextPage<Props> = ({ branch, glossaryData }) => {
       }
     }
 
-    // Always return a cleanup function or undefined
     return undefined
   }, [dataTableInstance, glossaryData])
 
-  // Cleanup effect
   useEffect(() => {
     return () => {
       if (dataTableInstance) {
@@ -361,10 +347,8 @@ const GlossaryPage: NextPage<Props> = ({ branch, glossaryData }) => {
           console.log('jQuery script loaded.')
           jQueryLoadedRef.current = true
 
-          // Check if DataTables is already available and trigger initialization
           if (checkScriptsReady()) {
             setAreScriptsLoaded(true)
-            // Try to initialize immediately
             setTimeout(() => initializeDataTable(), 50)
           }
         }}
@@ -378,15 +362,12 @@ const GlossaryPage: NextPage<Props> = ({ branch, glossaryData }) => {
         onLoad={() => {
           console.log('DataTables script loaded.')
 
-          // Wait a bit for jQuery to be fully ready if needed
           const checkAndInit = () => {
             if (checkScriptsReady()) {
               console.log('Both jQuery and DataTables are ready.')
               setAreScriptsLoaded(true)
-              // Try to initialize immediately
               setTimeout(() => initializeDataTable(), 50)
             } else {
-              // Retry after a short delay
               setTimeout(checkAndInit, 100)
             }
           }

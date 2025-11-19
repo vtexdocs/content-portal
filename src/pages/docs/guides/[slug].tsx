@@ -83,11 +83,10 @@ interface Props {
   }
   isListed: boolean
   branch: string
+  slug: string
 }
 
 const TrackPage: NextPage<Props> = ({
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  //@ts-ignore
   slug,
   serialized,
   path,
