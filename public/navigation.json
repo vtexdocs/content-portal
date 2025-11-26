@@ -71,8 +71,8 @@
                         {
                             "name": {
                                 "en": "US English standard",
-                                "es": "Estándar español neutro",
-                                "pt": "Padrão português brasileiro"
+                                "es": "Estándar inglés americano",
+                                "pt": "Padrão Inglês Americano"
                             },
                             "slug": {
                                 "en": "us-english-standard",
@@ -173,8 +173,8 @@
                         {
                             "name": {
                                 "en": "Contractions",
-                                "es": "Contracciones",
-                                "pt": "Contrações"
+                                "es": "Contracciones (inglés)",
+                                "pt": "Contrações (inglês)"
                             },
                             "slug": {
                                 "en": "contractions",
