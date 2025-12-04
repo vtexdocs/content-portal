@@ -127,7 +127,6 @@ const getIcon = (name: string) => {
   return IconsMap.find((icon) => icon.name === name)?.Icon
 }
 
-//Interfaces
 interface OverviewCardProps {
   icon: string
   children: string

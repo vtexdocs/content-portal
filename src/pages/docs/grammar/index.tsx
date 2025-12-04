@@ -8,6 +8,7 @@ import { useIntl } from 'react-intl'
 import styles from 'styles/documentation-landing-page'
 import { PreviewContext } from 'utils/contexts/preview'
 import getNavigation from 'utils/getNavigation'
+import { getTranslatedSectionName } from 'utils/getSectionNames'
 import { DocumentationTitle, UpdatesTitle } from 'utils/typings/unionTypes'
 import GrammarImage from '../../../../public/images/cs-grammar_desktop.png'
 import GrammarImageMobile from '../../../../public/images/cs-grammar_mobile.png'
@@ -94,11 +95,17 @@ const TracksPage: NextPage<Props> = ({ branch }) => {
 }
 
 export const getStaticProps: GetStaticProps = async ({
+  locale,
   preview,
   previewData,
 }) => {
   const sidebarfallback = await getNavigation()
-  const sectionSelected = 'Grammar'
+  const currentLocale = (locale || 'en') as 'en' | 'pt' | 'es'
+  const sectionSelected = getTranslatedSectionName(
+    sidebarfallback,
+    'Grammar',
+    currentLocale
+  )
 
   const previewBranch =
     preview && JSON.parse(JSON.stringify(previewData)).hasOwnProperty('branch')

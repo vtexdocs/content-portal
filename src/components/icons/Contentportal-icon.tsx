@@ -7,8 +7,6 @@ const ContentPortalIcon = (props: IconProps) => (
     viewBox="0 0 275 32"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
-    // width="275"
-    // height="32"
   >
     <path
       fill="#E31C58"

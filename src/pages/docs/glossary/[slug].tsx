@@ -25,6 +25,7 @@ import Breadcrumb from 'components/breadcrumb'
 
 import getHeadings from 'utils/getHeadings'
 import getNavigation from 'utils/getNavigation'
+import { getTranslatedSectionName } from 'utils/getSectionNames'
 import getGithubFile from 'utils/getGithubFile'
 import replaceMagicBlocks from 'utils/replaceMagicBlocks'
 import escapeCurlyBraces from 'utils/escapeCurlyBraces'
@@ -433,7 +434,12 @@ export const getStaticProps: GetStaticProps = async ({
     const parentsArrayType: string[] = []
     let sectionSelected = ''
     if (keyPath) {
-      sectionSelected = flattenedSidebar[`${keyPath[0]}.documentation`]
+      const englishSectionName = flattenedSidebar[`${keyPath[0]}.documentation`]
+      sectionSelected = getTranslatedSectionName(
+        sidebarfallback,
+        englishSectionName,
+        currentLocale
+      )
       getParents(
         keyPath,
         'name',

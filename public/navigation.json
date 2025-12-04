@@ -325,8 +325,8 @@
             "documentation": "Interface copy",
             "name": {
                 "en": "Interface copy",
-                "es": "Texto de interfaz",
-                "pt": "Texto da interface"
+                "es": "Textos de UI",
+                "pt": "Textos da UI"
             },
             "slugPrefix": "docs/interface-copy",
             "categories": [
@@ -457,8 +457,8 @@
             "documentation": "Documentation",
             "name": {
                 "en": "Documentation",
-                "es": "Documentación",
-                "pt": "Documentação"
+                "es": "Docs",
+                "pt": "Docs"
             },
             "slugPrefix": "docs/documentation",
             "categories": [
