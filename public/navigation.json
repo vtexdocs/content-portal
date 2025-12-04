@@ -301,6 +301,21 @@
                             "origin": "",
                             "type": "markdown",
                             "children": []
+                        },
+                        {
+                            "name": {
+                                "en": "Procedures",
+                                "es": "Procedimientos",
+                                "pt": "Instruções"
+                            },
+                            "slug": {
+                                "en": "procedures",
+                                "es": "procedures",
+                                "pt": "procedures"
+                            },
+                            "origin": "",
+                            "type": "markdown",
+                            "children": []
                         }
                     ]
                 }
