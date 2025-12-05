@@ -41,7 +41,6 @@ function MyApp({ Component, pageProps }: Props) {
         </Head>
         <PreviewContextProvider>
           <Layout
-            // ❌ REMOVED: sidebarfallback (now loaded client-side)
             hideSidebar={Component.hideSidebar}
             isPreview={pageProps.isPreview ?? false}
             sectionSelected={pageProps.sectionSelected}

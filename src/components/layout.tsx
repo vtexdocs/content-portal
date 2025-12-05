@@ -1,6 +1,6 @@
 import { Flex, Box } from '@vtex/brand-ui'
 import type { ReactElement } from 'react'
-import { useContext, useEffect } from 'react'
+import { useContext, useEffect, useMemo } from 'react'
 import { TrackerContext } from 'utils/contexts/trackerContext'
 import { useClientNavigation } from 'utils/useClientNavigation'
 import { ThemeProvider } from '@vtex/brand-ui'
@@ -22,20 +22,15 @@ import {
   menuSupportData,
 } from 'utils/constants'
 import { useIntl } from 'react-intl'
+import { localizeNavigationDocumentation } from 'utils/getSectionNames'
 
 interface Props {
-  // ❌ REMOVED: sidebarfallback prop (navigation now loaded client-side)
   children: ReactElement
   hideSidebar?: boolean
   isPreview: boolean
   sectionSelected?: DocumentationTitle | UpdatesTitle | ''
   parentsArray?: string[]
 }
-
-// const tracker = new OpenReplay({
-//   projectKey: "nvlaGLe4ZcfRvJmjqE61",
-//   ingestPoint: "https://openreplay.vtex.com/ingest",
-// });
 
 export default function Layout({
   children,
@@ -45,11 +40,23 @@ export default function Layout({
   parentsArray,
 }: Props) {
   const { initTracker, startTracking } = useContext(TrackerContext)
-  const { navigation } = useClientNavigation() // Load navigation client-side
+  const { navigation } = useClientNavigation()
   const intl = useIntl()
 
+  const localizedNavigation = useMemo(() => {
+    if (!navigation) return null
+    const localized = localizeNavigationDocumentation(
+      navigation,
+      intl.locale as 'en' | 'pt' | 'es'
+    )
+    return localized
+  }, [navigation, intl.locale])
+
   useEffect(() => {
-    // Lazy load tracker to avoid blocking main thread
+    console.log(sectionSelected)
+  }, [sectionSelected])
+
+  useEffect(() => {
     const timer = setTimeout(() => {
       initTracker()
       startTracking()
@@ -68,7 +75,7 @@ export default function Layout({
           feedbackSectionData(intl),
         ]}
         sectionSelected={sectionSelected ?? ''}
-        fallback={navigation} // Use client-side loaded navigation (null during loading)
+        fallback={localizedNavigation}
         isPreview={isPreview}
         locale={intl.locale as 'en' | 'pt' | 'es'}
       >

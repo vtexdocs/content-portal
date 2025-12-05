@@ -26,6 +26,7 @@ import Breadcrumb from 'components/breadcrumb'
 
 import getHeadings from 'utils/getHeadings'
 import getNavigation from 'utils/getNavigation'
+import { getTranslatedSectionName } from 'utils/getSectionNames'
 import getGithubFile from 'utils/getGithubFile'
 import { getDocsPaths as getTracksPaths } from 'utils/getDocsPaths'
 import replaceMagicBlocks from 'utils/replaceMagicBlocks'
@@ -83,11 +84,10 @@ interface Props {
   }
   isListed: boolean
   branch: string
+  slug: string
 }
 
 const TrackPage: NextPage<Props> = ({
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  //@ts-ignore
   slug,
   serialized,
   path,
@@ -453,7 +453,12 @@ export const getStaticProps: GetStaticProps = async ({
     const parentsArrayType: string[] = []
     let sectionSelected = ''
     if (keyPath) {
-      sectionSelected = flattenedSidebar[`${keyPath[0]}.documentation`]
+      const englishSectionName = flattenedSidebar[`${keyPath[0]}.documentation`]
+      sectionSelected = getTranslatedSectionName(
+        sidebarfallback,
+        englishSectionName,
+        currentLocale
+      )
       getParents(
         keyPath,
         'name',

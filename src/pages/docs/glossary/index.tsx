@@ -6,6 +6,7 @@ import { Fragment, useContext, useEffect, useState, useRef } from 'react'
 import { useIntl } from 'react-intl'
 import { PreviewContext } from 'utils/contexts/preview'
 import getNavigation from 'utils/getNavigation'
+import { getTranslatedSectionName } from 'utils/getSectionNames'
 import { DocumentationTitle, UpdatesTitle } from 'utils/typings/unionTypes'
 import {
   getCrowdinGlossaryData,
@@ -79,7 +80,6 @@ const GlossaryPage: NextPage<Props> = ({ branch, glossaryData }) => {
 
   setBranchPreview(branch)
 
-  // Check if scripts are ready for initialization
   const checkScriptsReady = () => {
     return (
       typeof window !== 'undefined' &&
@@ -88,18 +88,12 @@ const GlossaryPage: NextPage<Props> = ({ branch, glossaryData }) => {
     )
   }
 
-  // Initialize DataTable with retry logic
   const initializeDataTable = () => {
-    // Skip if already initialized or no data
     if (dataTableInstance || glossaryData.length === 0) {
       return
     }
 
-    console.log('Attempting to initialize DataTable...')
-
     if (!checkScriptsReady()) {
-      console.log('Scripts not ready, will retry...')
-      // Retry after a short delay
       if (retryTimeoutRef.current) {
         clearTimeout(retryTimeoutRef.current)
       }
@@ -110,13 +104,11 @@ const GlossaryPage: NextPage<Props> = ({ branch, glossaryData }) => {
     }
 
     try {
-      // Clear any existing timeout
       if (retryTimeoutRef.current) {
         clearTimeout(retryTimeoutRef.current)
         retryTimeoutRef.current = null
       }
 
-      // Check if table element exists
       const tableElement = document.getElementById('glossaryTable')
       if (!tableElement) {
         console.warn('Table element not found, retrying...')
@@ -129,7 +121,7 @@ const GlossaryPage: NextPage<Props> = ({ branch, glossaryData }) => {
         paging: true,
         searching: true,
         info: true,
-        stripeClasses: [], // Prevent default striping to avoid conflicts with custom styles. Not working yet.
+        stripeClasses: [],
         language: {
           searchPlaceholder: intl.formatMessage({
             id: 'glossary_datatable_search',
@@ -158,16 +150,14 @@ const GlossaryPage: NextPage<Props> = ({ branch, glossaryData }) => {
           { width: '15%', targets: 0 }, // Term_en_US
           { width: '15%', targets: 1 }, // Term_es_MX
           { width: '15%', targets: 2 }, // Term_pt_BR
-          { width: '55%', targets: 3 }, // Definition
+          { width: '55%', targets: 3, searchable: false }, // Definition - excluded from search
         ],
         dom: '<"top"<"top-left"f><"top-right"i><"clear">rt<"bottom"lp><"clear">',
       })
 
       setDataTableInstance(table)
       initializationAttempted.current = true
-      console.log('DataTable initialized successfully.')
 
-      // Move legend after successful initialization
       setTimeout(() => {
         if (legendRef.current) {
           const topLeftContainer = document.querySelector('.top-left')
@@ -181,31 +171,26 @@ const GlossaryPage: NextPage<Props> = ({ branch, glossaryData }) => {
       }, 100)
     } catch (error) {
       console.error('Error initializing DataTable:', error)
-      // Retry once more after a delay
       if (!initializationAttempted.current) {
-        console.log('Retrying DataTable initialization...')
         setTimeout(() => initializeDataTable(), 500)
       }
     }
   }
 
-  // Effect to initialize DataTable when component mounts or data changes
   useEffect(() => {
     const timer = setTimeout(() => {
       initializeDataTable()
-    }, 100) // Small delay to ensure DOM is ready
+    }, 100)
 
     return () => clearTimeout(timer)
   }, [glossaryData])
 
-  // Effect to try initialization when scripts are loaded
   useEffect(() => {
     if (areScriptsLoaded || checkScriptsReady()) {
       initializeDataTable()
     }
   }, [areScriptsLoaded])
 
-  // Effect to poll for scripts if they're not loaded yet
   useEffect(() => {
     if (!dataTableInstance && glossaryData.length > 0) {
       const pollInterval = setInterval(() => {
@@ -215,7 +200,6 @@ const GlossaryPage: NextPage<Props> = ({ branch, glossaryData }) => {
         }
       }, 500)
 
-      // Clear interval after 10 seconds to avoid infinite polling
       const timeout = setTimeout(() => {
         clearInterval(pollInterval)
       }, 10000)
@@ -226,16 +210,13 @@ const GlossaryPage: NextPage<Props> = ({ branch, glossaryData }) => {
       }
     }
 
-    // Always return a cleanup function or undefined
     return undefined
   }, [dataTableInstance, glossaryData])
 
-  // Cleanup effect
   useEffect(() => {
     return () => {
       if (dataTableInstance) {
         try {
-          console.log('Destroying DataTable instance during cleanup.')
           dataTableInstance.destroy()
           setDataTableInstance(null)
         } catch (error) {
@@ -358,13 +339,10 @@ const GlossaryPage: NextPage<Props> = ({ branch, glossaryData }) => {
         src="https://code.jquery.com/jquery-3.7.1.min.js"
         strategy="beforeInteractive"
         onLoad={() => {
-          console.log('jQuery script loaded.')
           jQueryLoadedRef.current = true
 
-          // Check if DataTables is already available and trigger initialization
           if (checkScriptsReady()) {
             setAreScriptsLoaded(true)
-            // Try to initialize immediately
             setTimeout(() => initializeDataTable(), 50)
           }
         }}
@@ -376,17 +354,11 @@ const GlossaryPage: NextPage<Props> = ({ branch, glossaryData }) => {
         src="https://cdn.datatables.net/2.3.2/js/dataTables.js"
         strategy="beforeInteractive"
         onLoad={() => {
-          console.log('DataTables script loaded.')
-
-          // Wait a bit for jQuery to be fully ready if needed
           const checkAndInit = () => {
             if (checkScriptsReady()) {
-              console.log('Both jQuery and DataTables are ready.')
               setAreScriptsLoaded(true)
-              // Try to initialize immediately
               setTimeout(() => initializeDataTable(), 50)
             } else {
-              // Retry after a short delay
               setTimeout(checkAndInit, 100)
             }
           }
@@ -401,12 +373,16 @@ const GlossaryPage: NextPage<Props> = ({ branch, glossaryData }) => {
   )
 }
 
-export const getStaticProps: GetStaticProps = async ({}) => {
+export const getStaticProps: GetStaticProps = async ({ locale }) => {
   const sidebarfallback = await getNavigation()
-  const sectionSelected = 'Glossary'
+  const currentLocale = (locale || 'en') as 'en' | 'pt' | 'es'
+  const sectionSelected = getTranslatedSectionName(
+    sidebarfallback,
+    'Glossary',
+    currentLocale
+  )
 
   const glossaryData = await getCrowdinGlossaryData()
-  console.log(`getStaticProps fetched ${glossaryData.length} entries.`)
 
   return {
     props: {

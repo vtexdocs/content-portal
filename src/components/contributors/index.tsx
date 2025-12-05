@@ -23,7 +23,6 @@ const Contributors = ({ contributors }: Props) => {
   const photosContainer = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    // Set client-side flag and initial width
     setIsClient(true)
     setPageWidth(window.innerWidth)
 
@@ -36,7 +35,6 @@ const Contributors = ({ contributors }: Props) => {
   }, [])
 
   useEffect(() => {
-    // Only calculate grid columns on client-side
     if (isClient && photosContainer.current) {
       const gridStyle = window.getComputedStyle(photosContainer.current)
       setPhotosPerRow(gridStyle.gridTemplateColumns.split(' ').length)

@@ -19,12 +19,10 @@ const innerContainer: SxStyleProp = {
 
 const infoContainer: SxStyleProp = {
   flexDirection: 'row',
-  // justifyContent: 'center',
   justifyContent: 'space-between',
   alignItems: 'space-between',
   pt: ['28px', '64px'],
   mx: '0',
-  // px: ['auto', '5em', '7em', '7em', '7em', '7em', '20em'],
 }
 
 const articleBox: SxStyleProp = {

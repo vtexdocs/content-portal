@@ -8,6 +8,7 @@ import { useIntl } from 'react-intl'
 import styles from 'styles/documentation-landing-page'
 import { PreviewContext } from 'utils/contexts/preview'
 import getNavigation from 'utils/getNavigation'
+import { getTranslatedSectionName } from 'utils/getSectionNames'
 import { DocumentationTitle, UpdatesTitle } from 'utils/typings/unionTypes'
 import GuidesImage from '../../../../public/images/cs-guides_desktop.png'
 import GuidesImageMobile from '../../../../public/images/cs-guides_mobile.png'
@@ -38,9 +39,6 @@ const ContentSection = ({ id, length }: { id: string; length: number }) => {
                 })}
                 description={intl.formatMessage({
                   id: `${id}.content.${index}.description`,
-                })}
-                linkTitle={intl.formatMessage({
-                  id: 'start_here_see_more',
                 })}
                 linkTo={intl.formatMessage({
                   id: `${id}.content.${index}.link`,
@@ -97,11 +95,18 @@ const TracksPage: NextPage<Props> = ({ branch }) => {
 }
 
 export const getStaticProps: GetStaticProps = async ({
+  locale,
   preview,
   previewData,
 }) => {
   const sidebarfallback = await getNavigation()
-  const sectionSelected = 'Guides'
+  const currentLocale = (locale || 'en') as 'en' | 'pt' | 'es'
+
+  const sectionSelected = getTranslatedSectionName(
+    sidebarfallback,
+    'Guides',
+    currentLocale
+  )
 
   const previewBranch =
     preview && JSON.parse(JSON.stringify(previewData)).hasOwnProperty('branch')

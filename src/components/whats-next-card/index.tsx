@@ -1,35 +1,27 @@
-import { Box, Flex, IconCaret, Text, Link } from '@vtex/brand-ui'
+import { Box, Flex, Text, Link } from '@vtex/brand-ui'
 
 import type { WhatsNextDataElement } from 'utils/typings/types'
+import ArrowRightIcon from 'components/icons/arrow-right-icon'
 
 import styles from './styles'
 
 const WhatsNextCard = ({
   title,
   description,
-  linkTitle,
   linkTo,
 }: WhatsNextDataElement) => {
   return (
     <Link href={linkTo} sx={styles.container}>
       <Box>
-        <Text sx={styles.title} className="title">
-          {title}
-        </Text>
+        <Flex sx={styles.titleContainer}>
+          <Text sx={styles.title} className="title">
+            {title}
+          </Text>
+          <ArrowRightIcon className="arrow" size={20} />
+        </Flex>
         <Text sx={styles.description} className="description">
           {description}
         </Text>
-        <Flex sx={styles.linkContainer}>
-          <Text sx={styles.link} className="link">
-            {linkTitle}
-          </Text>
-          <IconCaret
-            className="caret"
-            color="#A1A8B3"
-            direction="right"
-            size={16}
-          />
-        </Flex>
       </Box>
     </Link>
   )

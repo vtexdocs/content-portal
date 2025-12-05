@@ -176,22 +176,14 @@ export const getCrowdinGlossaryData = async (): Promise<
     return []
   }
 
-  console.log('Fetching Crowdin glossary data from the main glossary ID...')
-
   try {
     const concepts = await fetchConcepts(mainGlossaryID)
-    console.log(
-      `Fetched ${concepts.length} concepts from main glossary ID (${mainGlossaryID}).`
-    )
     if (concepts.length === 0) {
       console.warn('No concepts fetched. Returning empty glossary data.')
       return []
     }
 
     const allTermsFromMainGlossary = await fetchTerms(mainGlossaryID)
-    console.log(
-      `Fetched ${allTermsFromMainGlossary.length} terms from main glossary ID (${mainGlossaryID}).`
-    )
 
     const termMapEn = new Map<number, TermData>()
     const termMapEs = new Map<number, TermData>()
@@ -206,10 +198,6 @@ export const getCrowdinGlossaryData = async (): Promise<
         termMapPt.set(term.conceptId, term)
       }
     })
-
-    console.log(
-      `Organized ${termMapEn.size} English terms, ${termMapEs.size} Spanish terms, ${termMapPt.size} Portuguese terms.`
-    )
 
     const formattedData: FormattedGlossaryEntry[] = []
 
@@ -246,7 +234,6 @@ export const getCrowdinGlossaryData = async (): Promise<
           : null,
       })
     }
-    console.log(`Formatted ${formattedData.length} glossary entries.`)
     return formattedData
   } catch (error) {
     console.error('Unhandled error in getCrowdinGlossaryData:', error)
