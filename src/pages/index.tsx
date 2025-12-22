@@ -38,12 +38,12 @@ const Home: Page<Props> = ({ branch }) => {
         />
         <meta
           property="og:description"
-          content="Build and extend your world of commerce with VTEX development platform and Core Commerce APIs."
+          content="All things language for users of words at VTEX. Explore our guides, glossary, and best practices for creating consistent, high-quality content."
           key="desc"
         />
         <meta
           property="og:image"
-          content="https://cdn.jsdelivr.net/gh/vtexdocs/devportal@main/public/images/meta-image.png"
+          content="https://contentguide.vtex.com/images/content-style-guide_desktop.png"
         />
         {/* Preload critical LCP image */}
         <link rel="preload" as="image" href="/images/landing.png" />

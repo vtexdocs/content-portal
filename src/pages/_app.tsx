@@ -30,9 +30,14 @@ function MyApp({ Component, pageProps }: Props) {
     <TrackerProvider>
       <IntlProvider locale={currentLocale} messages={messages[currentLocale]}>
         <Head>
+          <meta property="og:title" content="VTEX Content Style Guide" />
+          <meta
+            property="og:description"
+            content="All things language for users of words at VTEX. Explore our guides, glossary, and best practices for creating consistent, high-quality content."
+          />
           <meta
             property="og:image"
-            content="https://cdn.jsdelivr.net/gh/vtexdocs/devportal@main/public/images/meta-image.png"
+            content="https://contentguide.vtex.com/images/content-style-guide_desktop.png"
           />
           <meta
             name="docsearch:language"
