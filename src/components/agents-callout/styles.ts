@@ -13,6 +13,12 @@ const container: SxStyleProp = {
   right: '50%',
   marginLeft: '-50vw',
   marginRight: '-50vw',
+  cursor: 'pointer',
+  transition: 'background-color 0.2s ease',
+
+  '&:hover': {
+    backgroundColor: '#FFE7F0',
+  },
 }
 
 const content: SxStyleProp = {

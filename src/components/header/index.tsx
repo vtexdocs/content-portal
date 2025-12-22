@@ -17,6 +17,7 @@ import AgentsIcon from 'components/icons/agents'
 import LongArrowIcon from 'components/icons/long-arrow-icon'
 import { getFeedbackURL } from 'utils/get-url'
 import { getCookie, setCookie, AGENTS_INTERACTED_COOKIE } from 'utils/cookies'
+import { listenToToggleAgentsDropdown } from 'utils/events'
 
 import AnnouncementBar from 'components/announcement-bar'
 import LocaleSwitcher from 'components/locale-switcher'
@@ -54,6 +55,21 @@ const Header = () => {
     setCookie(AGENTS_INTERACTED_COOKIE, 'true', 365)
     setShowTooltip(false)
   }
+
+  // Listen to toggle event from AgentsCallout
+  useEffect(() => {
+    const cleanup = listenToToggleAgentsDropdown(() => {
+      setShowAgentsDropdown(true)
+      // Scroll to top to ensure dropdown is visible
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+      // Auto-close after 10 seconds
+      setTimeout(() => {
+        setShowAgentsDropdown(false)
+      }, 10000)
+    })
+
+    return cleanup
+  }, [])
 
   useEffect(() => {
     const body = document.body
