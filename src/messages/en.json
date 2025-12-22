@@ -170,5 +170,16 @@
   "glossary_status_dont_use": "Don't use",
   "glossary_status_dont_use_full": "Don't use",
   "glossary_status_preffered": "Recommended",
-  "glossary_status_preffered_full": "Recommended"
+  "glossary_status_preffered_full": "Recommended",
+  "landing_page_header_agents.message": "Assistants",
+  "agents_dropdown_description.text": "VTEX localization assistants use our Content Style Guide and glossary to translate, review, apply terminology, and answer questions. Choose the text output language. You'll be redirected to the ChatGPT environment.",
+  "agents_dropdown_english.title": "English",
+  "agents_dropdown_english.descriptions": "TODO",
+  "agents_dropdown_portuguese.title": "Portuguese",
+  "agents_dropdown_portuguese.descriptions": "TODO",
+  "agents_dropdown_spanish.title": "Spanish",
+  "agents_dropdown_spanish.descriptions": "TODO",
+  "agents_dropdown_footer.text": "VTEXers: You can also use a Glean-powered assistant via the \"Content assistant\" workflow in {channel} on Slack",
+  "agents_callout.message": "Localization assistants now available: Translate, review, apply VTEX terminology, and more",
+  "agents_tooltip.message": "Localization assistants now available: Translate, review, apply VTEX terminology, and more"
 }

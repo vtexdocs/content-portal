@@ -18,6 +18,7 @@ import InterfacesIcon from 'components/icons/interface-copy-icon'
 import EducationIcon from 'components/icons/education-icon'
 import GlossaryIcon from 'components/icons/glossary-icon'
 import GrammarIcon from 'components/icons/grammar-icon'
+import GptIcon from 'components/icons/gpt'
 
 libraryConfig
 export const messages = getMessages()
@@ -193,6 +194,59 @@ export const feedbackSectionData = (intl: IntlShape) => {
   ]
 
   return data
+}
+
+export const agentsSectionData = (intl: IntlShape) => {
+  const data: DocDataElement[] = [
+    {
+      id: 'agents-english',
+      Icon: GptIcon,
+      title: intl.formatMessage({
+        id: 'agents_dropdown_english.title',
+      }),
+      description: intl.formatMessage({
+        id: 'agents_dropdown_english.descriptions',
+      }),
+      link: 'https://chatgpt.com/g/g-68e3d00aed9c8191b5856e5f4b18c2d8-vtex-localization-assistant-english',
+      isExternalLink: true,
+    },
+    {
+      id: 'agents-portuguese',
+      Icon: GptIcon,
+      title: intl.formatMessage({
+        id: 'agents_dropdown_portuguese.title',
+      }),
+      description: intl.formatMessage({
+        id: 'agents_dropdown_portuguese.descriptions',
+      }),
+      link: 'https://chatgpt.com/g/g-693966251b7881919b7aa0e0909251b9-vtex-localization-assistant-portuguese',
+      isExternalLink: true,
+    },
+    {
+      id: 'agents-spanish',
+      Icon: GptIcon,
+      title: intl.formatMessage({
+        id: 'agents_dropdown_spanish.title',
+      }),
+      description: intl.formatMessage({
+        id: 'agents_dropdown_spanish.descriptions',
+      }),
+      link: 'https://chatgpt.com/g/g-6939655a93308191a591aeda103d6ab3-vtex-localization-assistant-spanish',
+      isExternalLink: true,
+    },
+  ]
+
+  return data
+}
+
+export const agentsDropdownData = (intl: IntlShape) => {
+  return {
+    description: intl.formatMessage({
+      id: 'agents_dropdown_description.text',
+    }),
+    options: agentsSectionData(intl),
+    channelLink: 'https://vtex.enterprise.slack.com/archives/C03M28QG82U',
+  }
 }
 
 export const menuSupportData = (intl: IntlShape) => {

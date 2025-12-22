@@ -1,8 +1,7 @@
 import { SxStyleProp } from '@vtex/brand-ui'
 
 const section: SxStyleProp = {
-  width: ['375px', '100%', '100%'],
-  maxWidth: '1440px',
+  width: '100vw',
   height: ['530px', 'auto', '498px'],
   borderBottom: '1px solid #E7E9EE',
   display: 'flex',
@@ -10,10 +9,11 @@ const section: SxStyleProp = {
   justifyContent: 'center',
   alignItems: 'center',
   position: 'relative',
-  overflow: 'hidden',
   textAlign: 'center',
-  px: ['16px', '32px', '0px'],
-  margin: '0 auto',
+  left: '50%',
+  right: '50%',
+  marginLeft: '-50vw',
+  marginRight: '-50vw',
 }
 
 const imageContainer: SxStyleProp = {

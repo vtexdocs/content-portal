@@ -2,6 +2,7 @@ import { Grid } from '@vtex/brand-ui'
 import type { Page } from 'utils/typings/types'
 
 import NewsletterSection from 'components/newsletter-section'
+import AgentsCallout from 'components/agents-callout'
 import SectionsSection from 'components/sections-section'
 import OtherResourcesSection from 'components/other-resources-section'
 
@@ -55,6 +56,7 @@ const Home: Page<Props> = ({ branch }) => {
       </Head>
       <Grid sx={styles.grid}>
         <NewsletterSection />
+        <AgentsCallout />
         <SectionsSection />
         <OtherResourcesSection />
       </Grid>

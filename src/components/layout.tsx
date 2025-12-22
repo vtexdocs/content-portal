@@ -20,6 +20,7 @@ import {
   sectionsData,
   feedbackSectionData,
   menuSupportData,
+  agentsSectionData,
 } from 'utils/constants'
 import { useIntl } from 'react-intl'
 import { localizeNavigationDocumentation } from 'utils/getSectionNames'
@@ -71,6 +72,7 @@ export default function Layout({
         sections={[sectionsData(intl)]}
         hamburguerMenuSections={[
           sectionsData(intl),
+          agentsSectionData(intl),
           menuSupportData(intl),
           feedbackSectionData(intl),
         ]}
@@ -99,10 +101,21 @@ export default function Layout({
           onAccept={() => {
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
             const window2 = window as any
-            window2.gtag('consent', 'update', {
-              ad_storage: 'granted',
-              analytics_storage: 'granted',
-            })
+            if (typeof window2.gtag === 'function') {
+              window2.gtag('consent', 'update', {
+                ad_storage: 'granted',
+                analytics_storage: 'granted',
+              })
+            } else {
+              setTimeout(() => {
+                if (typeof window2.gtag === 'function') {
+                  window2.gtag('consent', 'update', {
+                    ad_storage: 'granted',
+                    analytics_storage: 'granted',
+                  })
+                }
+              }, 1000)
+            }
           }}
         />
         <Header />
