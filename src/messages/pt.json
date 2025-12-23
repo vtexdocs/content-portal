@@ -170,5 +170,16 @@
   "glossary_status_dont_use": "Não usar",
   "glossary_status_dont_use_full": "Não usar",
   "glossary_status_preffered": "Recomendado",
-  "glossary_status_preffered_full": "Recomendado"
+  "glossary_status_preffered_full": "Recomendado",
+  "landing_page_header_agents.message": "Assistentes",
+  "agents_dropdown_description.text": "Os assistentes de localização da VTEX usam como base nosso conteúdo de guia de estilo e glossário para traduzir, revisar, aplicar terminologia e responder perguntas. Selecione o idioma de destino para ser redirecionado ao ChatGPT.",
+  "agents_dropdown_english.title": "Inglês",
+  "agents_dropdown_english.descriptions": "Assistente para texto de destino em inglês",
+  "agents_dropdown_portuguese.title": "Português",
+  "agents_dropdown_portuguese.descriptions": "Assistente para texto de destino em português",
+  "agents_dropdown_spanish.title": "Espanhol",
+  "agents_dropdown_spanish.descriptions": "Assistente para texto de destino em espanhol",
+  "agents_dropdown_footer.text": "VTEXers: vocês também podem usar o fluxo \"Content assistant\" configurado no Glean pelo canal {channel} do Slack.",
+  "agents_callout.message": "Assistentes de localização: tradução, revisão, terminologia oficial da VTEX e mais",
+  "agents_tooltip.message": "Assistentes de localização: tradução, revisão, terminologia oficial da VTEX e mais"
 }

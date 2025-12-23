@@ -88,6 +88,7 @@ const dropdownContainer: SxStyleProp = {
     'none !important',
     'flex !important',
   ],
+  position: 'relative',
   textTransform: 'none',
   justifyContent: 'flex-end',
   height: 'calc(100% + 1px)',

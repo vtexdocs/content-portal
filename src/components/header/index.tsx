@@ -10,9 +10,14 @@ import { useRouter } from 'next/router'
 import { HamburgerMenu } from '@vtexdocs/components'
 import { SearchInput } from '@vtexdocs/components'
 import DropdownMenu from 'components/dropdown-menu'
+import AgentsDropdown from 'components/agents-dropdown'
+import AgentsTooltip from 'components/agents-tooltip'
 import GridIcon from 'components/icons/grid-icon'
+import AgentsIcon from 'components/icons/agents'
 import LongArrowIcon from 'components/icons/long-arrow-icon'
 import { getFeedbackURL } from 'utils/get-url'
+import { getCookie, setCookie, AGENTS_INTERACTED_COOKIE } from 'utils/cookies'
+import { listenToToggleAgentsDropdown } from 'utils/events'
 
 import AnnouncementBar from 'components/announcement-bar'
 import LocaleSwitcher from 'components/locale-switcher'
@@ -32,7 +37,39 @@ const Header = () => {
   const lastScroll = useRef(0)
   const modalOpen = useRef(false)
   const [showDropdown, setShowDropdown] = useState(false)
+  const [showAgentsDropdown, setShowAgentsDropdown] = useState(false)
+  const [showTooltip, setShowTooltip] = useState(false)
   const headerElement = useRef<HTMLElement>()
+
+  // Check if user has interacted with Agents menu and if on internal page
+  useEffect(() => {
+    const hasInteracted = getCookie(AGENTS_INTERACTED_COOKIE)
+    const isHomePage = router.pathname === '/'
+
+    // Show tooltip only if user hasn't interacted and is NOT on home page
+    setShowTooltip(!hasInteracted && !isHomePage)
+  }, [router.pathname])
+
+  const handleAgentsClick = () => {
+    // Set cookie when user interacts with Agents menu
+    setCookie(AGENTS_INTERACTED_COOKIE, 'true', 365)
+    setShowTooltip(false)
+  }
+
+  // Listen to toggle event from AgentsCallout
+  useEffect(() => {
+    const cleanup = listenToToggleAgentsDropdown(() => {
+      setShowAgentsDropdown(true)
+      // Scroll to top to ensure dropdown is visible
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+      // Auto-close after 10 seconds
+      setTimeout(() => {
+        setShowAgentsDropdown(false)
+      }, 10000)
+    })
+
+    return cleanup
+  }, [])
 
   useEffect(() => {
     const body = document.body
@@ -56,6 +93,7 @@ const Header = () => {
   useEffect(() => {
     const onScroll = () => {
       setShowDropdown(false)
+      setShowAgentsDropdown(false)
       if (headerElement.current && !modalOpen.current) {
         const headerHeight = headerElement.current.children[0].clientHeight
         if (
@@ -77,12 +115,13 @@ const Header = () => {
   }, [headerElement.current])
 
   useEffect(() => {
-    const hideDropdown = () => {
+    const hideDropdowns = () => {
       setShowDropdown(false)
+      setShowAgentsDropdown(false)
     }
 
-    router.events.on('routeChangeStart', hideDropdown)
-    return () => router.events.off('routeChangeStart', hideDropdown)
+    router.events.on('routeChangeStart', hideDropdowns)
+    return () => router.events.off('routeChangeStart', hideDropdowns)
   }, [])
 
   return (
@@ -114,6 +153,25 @@ const Header = () => {
         <HeaderBrand.RightLinks sx={styles.rightLinks}>
           <Flex
             sx={styles.dropdownContainer}
+            onMouseOver={() => setShowAgentsDropdown(true)}
+            onMouseLeave={() => setShowAgentsDropdown(false)}
+            onClick={handleAgentsClick}
+          >
+            <Flex sx={styles.dropdownButton(showAgentsDropdown)}>
+              <AgentsIcon />
+              <Text sx={styles.rightButtonsText} data-cy="agents-dropdown">
+                <FormattedMessage id="landing_page_header_agents.message" />
+              </Text>
+            </Flex>
+
+            {showAgentsDropdown && (
+              <AgentsDropdown onLinkClick={handleAgentsClick} />
+            )}
+            <AgentsTooltip show={showTooltip && !showAgentsDropdown} />
+          </Flex>
+
+          <Flex
+            sx={{ ...styles.dropdownContainer, marginLeft: '32px' }}
             onMouseOver={() => setShowDropdown(true)}
             onMouseLeave={() => setShowDropdown(false)}
           >
