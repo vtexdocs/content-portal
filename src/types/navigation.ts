@@ -2,12 +2,14 @@ export interface LocalizedText {
   en: string
   es: string
   pt: string
+  ro: string
 }
 
 export interface LocalizedSlug {
   en: string
   es: string
   pt: string
+  ro: string
 }
 
 export interface Document {

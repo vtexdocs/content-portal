@@ -28,7 +28,7 @@ export async function getAllDocsPaths(branch = 'main') {
   repoTree.tree.map((node: any) => {
     const path = node.path
     const re =
-      /^(?<path>.+\/)*(?<locale>pt|es|en+)\/(?<localeDir>.+\/)*(?<filename>.+)\.(?<filetype>.+)$/
+      /^(?<path>.+\/)*(?<locale>pt|es|en|ro)\/(?<localeDir>.+\/)*(?<filename>.+)\.(?<filetype>.+)$/
     if (path.startsWith(`docs/`)) {
       const match = path.match(re)
       const filename = match?.groups?.filename ? match?.groups?.filename : ''
@@ -60,7 +60,7 @@ function buildDocsPathsFromTree(repoTree: any, category: string) {
   repoTree.tree.map((node: any) => {
     const path = node.path
     // Match docs/{locale}/{category}/.../{filename}.md(x)
-    const re = /^docs\/(?<locale>pt|es|en)\/(?<rest>.+)\.(?<filetype>md|mdx)$/
+    const re = /^docs\/(?<locale>pt|es|en|ro)\/(?<rest>.+)\.(?<filetype>md|mdx)$/
     const match = path.match(re)
     if (match) {
       const { locale, rest } = match.groups as any
@@ -126,7 +126,7 @@ export async function getStaticPathsForDocType(
   )
 
   const pathRegex = new RegExp(
-    '^(?<lang>en|es|pt)/docs/(?<actualDocType>tracks|tutorials)/(?<slug>.+)\\.(md|mdx)$'
+    '^(?<lang>en|es|pt|ro)/docs/(?<actualDocType>tracks|tutorials)/(?<slug>.+)\\.(md|mdx)$'
   )
 
   // @ts-ignore
