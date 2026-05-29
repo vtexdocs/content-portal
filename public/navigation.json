@@ -6,7 +6,7 @@
                 "en": "Guides",
                 "es": "Guías",
                 "pt": "Guias",
-                "ro": "Guides"
+                "ro": "Ghiduri"
             },
             "slugPrefix": "docs/guides",
             "categories": [
@@ -31,7 +31,7 @@
                                 "en": "Inclusive language",
                                 "es": "Lenguaje inclusivo",
                                 "pt": "Linguagem inclusiva",
-                                "ro": "Inclusive language"
+                                "ro": "Limbaj incluziv"
                             },
                             "slug": {
                                 "en": "inclusive-language",
@@ -48,7 +48,7 @@
                                 "en": "Product and feature naming",
                                 "es": "Naming de productos y funcionalidades",
                                 "pt": "Nomeação de produtos e funcionalidades",
-                                "ro": "Product and feature naming"
+                                "ro": "Denumirea produselor și funcționalităților"
                             },
                             "slug": {
                                 "en": "product-and-feature-naming",
@@ -65,7 +65,7 @@
                                 "en": "Tone of voice",
                                 "es": "Tono de voz",
                                 "pt": "Tom de voz",
-                                "ro": "Tone of voice"
+                                "ro": "Ton de voce"
                             },
                             "slug": {
                                 "en": "tone-of-voice",
@@ -82,7 +82,7 @@
                                 "en": "US English standard",
                                 "es": "Estándar inglés americano",
                                 "pt": "Padrão Inglês Americano",
-                                "ro": "US English standard"
+                                "ro": "Standard de engleză americană"
                             },
                             "slug": {
                                 "en": "us-english-standard",
@@ -295,7 +295,7 @@
                                 "en": "Computer interfaces",
                                 "es": "Interfaz de usuario",
                                 "pt": "Interfaces de usuário",
-                                "ro": "Interfețe computer"
+                                "ro": "Interfețe de utilizator"
                             },
                             "slug": {
                                 "en": "computer-interfaces",
@@ -517,7 +517,7 @@
                 "en": "Documentation",
                 "es": "Docs",
                 "pt": "Docs",
-                "ro": "Documentation"
+                "ro": "Documentație"
             },
             "slugPrefix": "docs/documentation",
             "categories": [
@@ -526,7 +526,7 @@
                         "en": "Guidelines",
                         "es": "Guías de documentación",
                         "pt": "Diretrizes de documentação",
-                        "ro": "Guidelines"
+                        "ro": "Orientări de documentare"
                     },
                     "slug": {
                         "en": "index-documentation",
@@ -542,7 +542,7 @@
                                 "en": "Contribution guidelines",
                                 "es": "Directrices de contribución",
                                 "pt": "Diretrizes de contribuição",
-                                "ro": "Contribution guidelines"
+                                "ro": "Ghid de contribuție"
                             },
                             "slug": {
                                 "en": "contribution-guidelines",
@@ -559,7 +559,7 @@
                                 "en": "Documentation overview",
                                 "es": "Información general",
                                 "pt": "Visão geral da documentação",
-                                "ro": "Documentation overview"
+                                "ro": "Prezentare generală a documentației"
                             },
                             "slug": {
                                 "en": "documentation-overview",
@@ -578,7 +578,7 @@
                         "en": "Templates",
                         "es": "Plantillas",
                         "pt": "Templates",
-                        "ro": "Templates"
+                        "ro": "Șabloane"
                     },
                     "slug": {
                         "en": "index-documentation",
@@ -594,7 +594,7 @@
                                 "en": "Announcements",
                                 "es": "Comunicados",
                                 "pt": "Anúncios",
-                                "ro": "Announcements"
+                                "ro": "Anunțuri"
                             },
                             "slug": {
                                 "en": "announcement-template",
@@ -611,7 +611,7 @@
                                 "en": "App documentation",
                                 "es": "Documentación de aplicaciones",
                                 "pt": "Documentação de aplicativos",
-                                "ro": "App documentation"
+                                "ro": "Documentație pentru aplicații"
                             },
                             "slug": {
                                 "en": "app-documentation-template",
@@ -628,7 +628,7 @@
                                 "en": "How-to guides",
                                 "es": "Guías de uso",
                                 "pt": "Guias práticos",
-                                "ro": "How-to guides"
+                                "ro": "Ghiduri practice"
                             },
                             "slug": {
                                 "en": "how-to-guides-template",
@@ -645,7 +645,7 @@
                                 "en": "Known issues overview",
                                 "es": "Problemas conocidos",
                                 "pt": "Visão geral de problemas conhecidos",
-                                "ro": "Known issues overview"
+                                "ro": "Prezentare generală a problemelor cunoscute"
                             },
                             "slug": {
                                 "en": "known-issues-overview",
@@ -679,7 +679,7 @@
                                 "en": "Release notes",
                                 "es": "Notas de release",
                                 "pt": "Release notes",
-                                "ro": "Release notes"
+                                "ro": "Note de versiune"
                             },
                             "slug": {
                                 "en": "release-note-template",
@@ -696,7 +696,7 @@
                                 "en": "Troubleshooting",
                                 "es": "Resolución de problemas",
                                 "pt": "Problemas conhecidos",
-                                "ro": "Troubleshooting"
+                                "ro": "Depanare"
                             },
                             "slug": {
                                 "en": "troubleshooting-template",
@@ -713,7 +713,7 @@
                                 "en": "Tutorials",
                                 "es": "Tutoriales",
                                 "pt": "Tutoriais",
-                                "ro": "Tutorials"
+                                "ro": "Tutoriale"
                             },
                             "slug": {
                                 "en": "tutorial-template",
@@ -735,7 +735,7 @@
                 "en": "Glossary",
                 "es": "Glosario",
                 "pt": "Glossário",
-                "ro": "Glossary"
+                "ro": "Glosar"
             },
             "slugPrefix": "docs/glossary",
             "categories": []
