@@ -49,7 +49,7 @@ const nextConfig = {
     return []
   },
   i18n: {
-    locales: ['en', 'pt', 'es'],
+    locales: ['en', 'pt', 'es', 'ro'],
     defaultLocale: 'en',
   },
 }

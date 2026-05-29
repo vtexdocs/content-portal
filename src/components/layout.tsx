@@ -48,7 +48,7 @@ export default function Layout({
     if (!navigation) return null
     const localized = localizeNavigationDocumentation(
       navigation,
-      intl.locale as 'en' | 'pt' | 'es'
+      intl.locale as 'en' | 'pt' | 'es' | 'ro'
     )
     return localized
   }, [navigation, intl.locale])
@@ -79,7 +79,7 @@ export default function Layout({
         sectionSelected={sectionSelected ?? ''}
         fallback={localizedNavigation}
         isPreview={isPreview}
-        locale={intl.locale as 'en' | 'pt' | 'es'}
+        locale={intl.locale as 'en' | 'pt' | 'es' | 'ro'}
       >
         <iframe
           src="https://www.googletagmanager.com/ns.html?id=GTM-KZ58QQP5"

@@ -1,4 +1,4 @@
-export type Locale = 'en' | 'pt' | 'es'
+export type Locale = 'en' | 'pt' | 'es' | 'ro'
 
 export type DocumentationTitle =
   | 'Guides'
