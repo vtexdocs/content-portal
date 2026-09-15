@@ -655,6 +655,48 @@
             },
             "slugPrefix": "docs/glossary",
             "categories": []
+        },
+        {
+            "documentation": "AI",
+            "name": {
+                "en": "AI",
+                "es": "IA",
+                "pt": "IA"
+            },
+            "slugPrefix": "docs/ai",
+            "categories": [
+                {
+                    "name": {
+                        "en": "General",
+                        "es": "General",
+                        "pt": "Geral"
+                    },
+                    "slug": {
+                        "en": "index-ai",
+                        "es": "index-ai",
+                        "pt": "index-ai"
+                    },
+                    "origin": "",
+                    "type": "category",
+                    "children": [
+                        {
+                            "name": {
+                                "en": "VTEX Localization Agent",
+                                "es": "VTEX Localization Agent",
+                                "pt": "VTEX Localization Agent"
+                            },
+                            "slug": {
+                                "en": "vtex-localization-agent",
+                                "es": "vtex-localization-agent",
+                                "pt": "vtex-localization-agent"
+                            },
+                            "origin": "",
+                            "type": "markdown",
+                            "children": []
+                        }
+                    ]
+                }
+            ]
         }
     ]
 }
