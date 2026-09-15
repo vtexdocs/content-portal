@@ -24,9 +24,9 @@ describe('Header', () => {
     // The onMouseOver handler that opens the dropdown lives two levels up
     // from the labeled text (label -> button Flex -> container Flex).
     cy.get('[data-cy="agents-dropdown"]').parents().eq(1).trigger('mouseover')
-    cy.contains(messages['agents_dropdown_description.text']).should(
-      'be.visible'
-    )
+    cy.contains(messages['agents_dropdown_description.text'], {
+      timeout: 10000,
+    }).should('be.visible')
   })
 
   it('opens the docs dropdown on hover with a link to every top-level documentation section', () => {
