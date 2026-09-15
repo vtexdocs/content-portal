@@ -672,8 +672,6 @@ This workflow runs Cypress integration tests against Pull Requests to ensure cod
 - `jakepartusch/wait-for-netlify-action@v1.4`: Waits for Netlify preview URL
   - Ensures the preview site is accessible
   - Requires `NETLIFY_TOKEN` secret
-- `wei/curl@v1`: Downloads navigation data
-  - Fetches navigation.json for test fixtures
 - `cypress-io/github-action@v5`: Runs Cypress tests
   - Executes integration tests
   - Requires environment variables:
@@ -699,8 +697,6 @@ This workflow runs comprehensive Cypress tests against the production environmen
 **Dependencies:**
 
 - `actions/checkout@v1`: Checks out the repository code
-- `wei/curl@v1`: Downloads navigation data
-  - Fetches navigation.json for test fixtures
 - `cypress-io/github-action@v5`: Runs Cypress tests
   - Executes integration tests
   - Requires environment variables:
