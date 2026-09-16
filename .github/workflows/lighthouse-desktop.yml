@@ -15,19 +15,6 @@ jobs:
       - name: Install
         run: |
           yarn install --frozen-lockfile
-      - name: Debug PRIVATEKEY format (no secret values printed)
-        run: |
-          echo "Raw length: ${#GITHUB_PRIVATEKEY}"
-          printf '%s' "$GITHUB_PRIVATEKEY" | grep -c 'BEGIN' || echo "0 BEGIN markers found (raw)"
-          printf '%s' "$GITHUB_PRIVATEKEY" | grep -o '\\\\n' | wc -l | xargs echo "Literal \\n sequences found:"
-          printf '%s\n' "$GITHUB_PRIVATEKEY" | wc -l | xargs echo "Real newlines found:"
-          printf '%s' "$GITHUB_PRIVATEKEY" | sed 's/\\n/\n/g' > /tmp/debug.pem
-          echo "Lines after sed: $(wc -l < /tmp/debug.pem)"
-          echo "BEGIN markers after sed: $(grep -c 'BEGIN' /tmp/debug.pem || echo 0)"
-          echo "END markers after sed: $(grep -c 'END' /tmp/debug.pem || echo 0)"
-          rm -f /tmp/debug.pem
-        env:
-          GITHUB_PRIVATEKEY: ${{ secrets.PRIVATEKEY }}
       - name: Build
         run: |
           yarn run build
@@ -35,34 +22,8 @@ jobs:
           GITHUB_PRIVATEKEY: ${{ secrets.PRIVATEKEY }}
           GITHUB_APPID: ${{ secrets.APPID }}
           GITHUB_INSTALLATIONID: ${{ secrets.INSTALLATIONID }}
-      - name: Debug NETLIFY_TOKEN access (no secret values printed)
-        run: |
-          STATUS=$(curl -s -o /tmp/netlify_response.json -w "%{http_code}" -H "Authorization: Bearer $NETLIFY_TOKEN" "https://api.netlify.com/api/v1/sites?filter=all")
-          echo "HTTP status: $STATUS"
-          echo "Total sites visible to this token: $(python3 -c "import json;print(len(json.load(open('/tmp/netlify_response.json'))))" 2>/dev/null || echo 'parse error')"
-          echo "Site names visible to this token:"
-          python3 -c "import json; print([s.get('name') for s in json.load(open('/tmp/netlify_response.json'))])" 2>/dev/null || head -c 500 /tmp/netlify_response.json
-          echo "--- Same request the action makes (filter=all&name=language-hub) ---"
-          STATUS2=$(curl -s -o /tmp/netlify_filtered.json -w "%{http_code}" -H "Authorization: Bearer $NETLIFY_TOKEN" "https://api.netlify.com/api/v1/sites?filter=all&name=language-hub")
-          echo "Filtered HTTP status: $STATUS2"
-          echo "Filtered result count: $(python3 -c "import json;print(len(json.load(open('/tmp/netlify_filtered.json'))))" 2>/dev/null || echo 'parse error')"
-          echo "--- Exact fields for the language-hub entry from the unfiltered list ---"
-          python3 -c "
-          import json
-          data = json.load(open('/tmp/netlify_response.json'))
-          for s in data:
-              if s.get('name') == 'language-hub':
-                  print('repr(name):', repr(s.get('name')))
-                  print('id:', s.get('id'))
-                  print('account_slug:', s.get('account_slug'))
-                  print('account_name:', s.get('account_name'))
-                  print('admin_url:', s.get('admin_url'))
-          " 2>/dev/null || echo "python parse failed"
-          rm -f /tmp/netlify_response.json /tmp/netlify_filtered.json
-        env:
-          NETLIFY_TOKEN: ${{ secrets.NETLIFY_TOKEN }}
       - name: Waiting for 200 from the Netlify Preview
-        uses: kamranayub/wait-for-netlify-action@2.0.0
+        uses: kamranayub/wait-for-netlify-action@v2.1.1
         id: wait-for-netflify-preview
         with:
           site_name: 'language-hub'

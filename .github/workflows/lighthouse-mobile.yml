@@ -23,7 +23,7 @@ jobs:
           GITHUB_APPID: ${{ secrets.APPID }}
           GITHUB_INSTALLATIONID: ${{ secrets.INSTALLATIONID }}
       - name: Waiting for 200 from the Netlify Preview
-        uses: kamranayub/wait-for-netlify-action@2.0.0
+        uses: kamranayub/wait-for-netlify-action@v2.1.1
         id: wait-for-netflify-preview
         with:
           site_name: "language-hub"
