@@ -42,7 +42,23 @@ jobs:
           echo "Total sites visible to this token: $(python3 -c "import json;print(len(json.load(open('/tmp/netlify_response.json'))))" 2>/dev/null || echo 'parse error')"
           echo "Site names visible to this token:"
           python3 -c "import json; print([s.get('name') for s in json.load(open('/tmp/netlify_response.json'))])" 2>/dev/null || head -c 500 /tmp/netlify_response.json
-          rm -f /tmp/netlify_response.json
+          echo "--- Same request the action makes (filter=all&name=language-hub) ---"
+          STATUS2=$(curl -s -o /tmp/netlify_filtered.json -w "%{http_code}" -H "Authorization: Bearer $NETLIFY_TOKEN" "https://api.netlify.com/api/v1/sites?filter=all&name=language-hub")
+          echo "Filtered HTTP status: $STATUS2"
+          echo "Filtered result count: $(python3 -c "import json;print(len(json.load(open('/tmp/netlify_filtered.json'))))" 2>/dev/null || echo 'parse error')"
+          echo "--- Exact fields for the language-hub entry from the unfiltered list ---"
+          python3 -c "
+          import json
+          data = json.load(open('/tmp/netlify_response.json'))
+          for s in data:
+              if s.get('name') == 'language-hub':
+                  print('repr(name):', repr(s.get('name')))
+                  print('id:', s.get('id'))
+                  print('account_slug:', s.get('account_slug'))
+                  print('account_name:', s.get('account_name'))
+                  print('admin_url:', s.get('admin_url'))
+          " 2>/dev/null || echo "python parse failed"
+          rm -f /tmp/netlify_response.json /tmp/netlify_filtered.json
         env:
           NETLIFY_TOKEN: ${{ secrets.NETLIFY_TOKEN }}
       - name: Waiting for 200 from the Netlify Preview
