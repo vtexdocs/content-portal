@@ -34,4 +34,4 @@ jobs:
           yarn global add @lhci/cli@0.8.x
           lhci autorun --upload.target=temporary-public-storage --collect.url=${{ steps.wait-for-netflify-preview.outputs.url }} --collect.settings.preset="desktop" || echo "LHCI failed!"
         env:
-          LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
+          LHCI_GITHUB_TOKEN: ${{ secrets.LHCI_GITHUB_TOKEN }}

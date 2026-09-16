@@ -725,7 +725,10 @@ This workflow runs Lighthouse performance tests against mobile configurations.
   - Requires `NETLIFY_TOKEN` secret
 - `@lhci/cli@0.8.x`: Lighthouse CI tool
   - Runs performance tests
-  - Requires `LHCI_GITHUB_APP_TOKEN` secret
+  - Requires `LHCI_GITHUB_TOKEN` secret (a personal access token with the
+    `repo:status` scope; see [Lighthouse CI's Getting Started
+    guide](https://googlechrome.github.io/lighthouse-ci/docs/getting-started.html)
+    for details)
 
 **Trigger Conditions:**
 
@@ -750,7 +753,10 @@ This workflow runs Lighthouse performance tests against desktop configurations.
   - Requires `NETLIFY_TOKEN` secret
 - `@lhci/cli@0.8.x`: Lighthouse CI tool
   - Runs performance tests
-  - Requires `LHCI_GITHUB_APP_TOKEN` secret
+  - Requires `LHCI_GITHUB_TOKEN` secret (a personal access token with the
+    `repo:status` scope; see [Lighthouse CI's Getting Started
+    guide](https://googlechrome.github.io/lighthouse-ci/docs/getting-started.html)
+    for details)
 
 **Trigger Conditions:**
 
