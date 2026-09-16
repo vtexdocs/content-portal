@@ -35,6 +35,16 @@ jobs:
           GITHUB_PRIVATEKEY: ${{ secrets.PRIVATEKEY }}
           GITHUB_APPID: ${{ secrets.APPID }}
           GITHUB_INSTALLATIONID: ${{ secrets.INSTALLATIONID }}
+      - name: Debug NETLIFY_TOKEN access (no secret values printed)
+        run: |
+          STATUS=$(curl -s -o /tmp/netlify_response.json -w "%{http_code}" -H "Authorization: Bearer $NETLIFY_TOKEN" "https://api.netlify.com/api/v1/sites?filter=all")
+          echo "HTTP status: $STATUS"
+          echo "Total sites visible to this token: $(python3 -c "import json;print(len(json.load(open('/tmp/netlify_response.json'))))" 2>/dev/null || echo 'parse error')"
+          echo "Site names visible to this token:"
+          python3 -c "import json; print([s.get('name') for s in json.load(open('/tmp/netlify_response.json'))])" 2>/dev/null || head -c 500 /tmp/netlify_response.json
+          rm -f /tmp/netlify_response.json
+        env:
+          NETLIFY_TOKEN: ${{ secrets.NETLIFY_TOKEN }}
       - name: Waiting for 200 from the Netlify Preview
         uses: kamranayub/wait-for-netlify-action@2.0.0
         id: wait-for-netflify-preview
