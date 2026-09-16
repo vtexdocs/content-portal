@@ -4,6 +4,8 @@ import nodeEvents from './src/tests/cypress/plugins/index.mjs'
 export default defineConfig({
   video: false,
   screenshotOnRunFailure: false,
+  viewportWidth: 1366,
+  viewportHeight: 768,
   fixturesFolder: 'src/tests/cypress/fixtures',
   downloadsFolder: 'src/tests/cypress/downloads',
   chromeWebSecurity: false,
