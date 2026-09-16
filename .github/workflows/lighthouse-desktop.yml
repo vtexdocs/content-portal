@@ -15,6 +15,19 @@ jobs:
       - name: Install
         run: |
           yarn install --frozen-lockfile
+      - name: Debug PRIVATEKEY format (no secret values printed)
+        run: |
+          echo "Raw length: ${#GITHUB_PRIVATEKEY}"
+          printf '%s' "$GITHUB_PRIVATEKEY" | grep -c 'BEGIN' || echo "0 BEGIN markers found (raw)"
+          printf '%s' "$GITHUB_PRIVATEKEY" | grep -o '\\\\n' | wc -l | xargs echo "Literal \\n sequences found:"
+          printf '%s\n' "$GITHUB_PRIVATEKEY" | wc -l | xargs echo "Real newlines found:"
+          printf '%s' "$GITHUB_PRIVATEKEY" | sed 's/\\n/\n/g' > /tmp/debug.pem
+          echo "Lines after sed: $(wc -l < /tmp/debug.pem)"
+          echo "BEGIN markers after sed: $(grep -c 'BEGIN' /tmp/debug.pem || echo 0)"
+          echo "END markers after sed: $(grep -c 'END' /tmp/debug.pem || echo 0)"
+          rm -f /tmp/debug.pem
+        env:
+          GITHUB_PRIVATEKEY: ${{ secrets.PRIVATEKEY }}
       - name: Build
         run: |
           yarn run build
