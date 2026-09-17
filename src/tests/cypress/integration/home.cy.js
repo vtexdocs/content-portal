@@ -24,12 +24,9 @@ describe('Home page', () => {
     cy.title().should('eq', 'VTEX Content Style Guide')
   })
 
-  it('shows the localization assistants callout', () => {
-    // Clicking the callout opens the same header dropdown covered by
-    // header.cy.js (it dispatches a custom event the header listens to).
-    // That indirect, event-based interaction is flaky in isolation, so here
-    // we only assert the callout itself renders with the expected copy.
-    cy.contains(messages['agents_callout.message']).should('be.visible')
+  it('shows the localization assistants callout and links to the agent page', () => {
+    cy.contains(messages['agents_callout.message']).should('be.visible').click()
+    cy.location('pathname').should('eq', '/docs/ai/vtex-localization-agent')
   })
 
   it('lists one card per top-level documentation section from public/navigation.json', () => {
@@ -39,15 +36,16 @@ describe('Home page', () => {
       .should('have.length', navigation.navbar.length)
   })
 
-  it("links the first card to the first section's overview page", () => {
-    const firstSection = navigation.navbar[0]
-
+  it("links the first card to the AI section's overview page", () => {
+    // The AI section card is pinned as the first card on the homepage on
+    // purpose, even though it's the last entry in public/navigation.json
+    // (which controls the sidebar order instead).
     cy.get('[data-cy="documentation-section-card-list"]')
       .children()
       .first()
       .as('firstCard')
 
     cy.get('@firstCard').click()
-    cy.location('pathname').should('eq', `/${firstSection.slugPrefix}`)
+    cy.location('pathname').should('eq', '/docs/ai')
   })
 })
