@@ -20,7 +20,6 @@ import {
   sectionsData,
   feedbackSectionData,
   menuSupportData,
-  agentsSectionData,
 } from 'utils/constants'
 import { useIntl } from 'react-intl'
 import { localizeNavigationDocumentation } from 'utils/getSectionNames'
@@ -72,7 +71,6 @@ export default function Layout({
         sections={[sectionsData(intl)]}
         hamburguerMenuSections={[
           sectionsData(intl),
-          agentsSectionData(intl),
           menuSupportData(intl),
           feedbackSectionData(intl),
         ]}

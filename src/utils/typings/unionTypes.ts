@@ -1,6 +1,7 @@
 export type Locale = 'en' | 'pt' | 'es'
 
 export type DocumentationTitle =
+  | 'AI'
   | 'Guides'
   | 'Grammar'
   | 'Formatting'

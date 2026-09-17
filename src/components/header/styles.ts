@@ -95,6 +95,38 @@ const dropdownContainer: SxStyleProp = {
   cursor: 'pointer',
 }
 
+const agentsLinkContainer: SxStyleProp = {
+  display: [
+    'none !important',
+    'none !important',
+    'none !important',
+    'flex !important',
+  ],
+  position: 'relative',
+  textTransform: 'none',
+  justifyContent: 'flex-end',
+  height: 'calc(100% + 1px)',
+  cursor: 'pointer',
+}
+
+const agentsLinkButton: SxStyleProp = {
+  color: '#4A596B',
+  alignItems: 'center',
+  svg: {
+    mr: '8px',
+    path: {
+      fill: '#4A596B',
+    },
+  },
+
+  ':hover': {
+    color: '#C81E51',
+    'svg path': {
+      fill: '#C81E51',
+    },
+  },
+}
+
 const dropdownButton: (active: boolean) => SxStyleProp = (active: boolean) => ({
   color: active ? '#D71D55' : '#4A596B',
   alignItems: 'center',
@@ -232,6 +264,8 @@ export default {
   rightButtonsText,
   dropdownButton,
   dropdownContainer,
+  agentsLinkContainer,
+  agentsLinkButton,
   documentationContainer,
   updatesContainer,
   innerHambugerContainer,
