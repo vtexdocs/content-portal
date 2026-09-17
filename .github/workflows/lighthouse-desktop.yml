@@ -8,10 +8,10 @@ jobs:
 
     steps:
       - uses: actions/checkout@v1
-      - name: Use Node.js 14.x
-        uses: actions/setup-node@v1
+      - name: Use Node.js 18.x
+        uses: actions/setup-node@v4
         with:
-          node-version: 14.x
+          node-version: 18.x
       - name: Install
         run: |
           yarn install --frozen-lockfile
@@ -23,10 +23,10 @@ jobs:
           GITHUB_APPID: ${{ secrets.APPID }}
           GITHUB_INSTALLATIONID: ${{ secrets.INSTALLATIONID }}
       - name: Waiting for 200 from the Netlify Preview
-        uses: kamranayub/wait-for-netlify-action@2.0.0
+        uses: kamranayub/wait-for-netlify-action@v2.1.1
         id: wait-for-netflify-preview
         with:
-          site_name: 'elated-hoover-5c29bf'
+          site_name: 'language-hub'
         env:
           NETLIFY_TOKEN: ${{secrets.NETLIFY_TOKEN}}
       - name: Lighthouse CI
@@ -34,4 +34,4 @@ jobs:
           yarn global add @lhci/cli@0.8.x
           lhci autorun --upload.target=temporary-public-storage --collect.url=${{ steps.wait-for-netflify-preview.outputs.url }} --collect.settings.preset="desktop" || echo "LHCI failed!"
         env:
-          LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
+          LHCI_GITHUB_TOKEN: ${{ secrets.LHCI_GITHUB_TOKEN }}

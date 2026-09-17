@@ -1,6 +1,5 @@
 /// <reference types="cypress" />
 import clipboardy from 'clipboardy'
-import { unlink } from 'fs'
 // ***********************************************************
 // This example plugins/index.js can be used to load plugins
 //
@@ -22,13 +21,6 @@ export default function plugins(on, config) {
   // `on` is used to hook into various events Cypress emits
   // `config` is the resolved Cypress config
   on('task', {
-    setUrl: (url) => {
-      global.url = url
-      return null
-    },
-    getUrl: () => {
-      return global.url
-    },
     getClipboard: () => {
       return clipboardy.readSync()
     },
