@@ -94,7 +94,8 @@ export async function getDocsPaths(
     | 'faq'
     | 'known-issues'
     | 'tracks'
-    | 'troubleshooting',
+    | 'troubleshooting'
+    | 'ai',
   branch = 'main'
 ) {
   const staticBuild = isStaticBuild()
