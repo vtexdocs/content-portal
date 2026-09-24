@@ -1,12 +1,15 @@
 import { Box, Flex, Text } from '@vtex/brand-ui'
+import { useRouter } from 'next/router'
 import { FormattedMessage } from 'react-intl'
 import AgentsIcon from 'components/icons/agents'
-import { emitToggleAgentsDropdown } from 'utils/events'
+import { AGENT_PAGE_PATH } from 'utils/constants'
 import styles from './styles'
 
 const AgentsCallout = () => {
+  const router = useRouter()
+
   const handleClick = () => {
-    emitToggleAgentsDropdown()
+    router.push(AGENT_PAGE_PATH)
   }
 
   return (
