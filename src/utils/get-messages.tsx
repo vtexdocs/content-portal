@@ -1,6 +1,7 @@
 import en from '../messages/en.json'
 import pt from '../messages/pt.json'
 import es from '../messages/es.json'
+import ro from '../messages/ro.json'
 
 interface Messages {
   [key: string]: {
@@ -12,6 +13,7 @@ const messages: Messages = {
   en,
   pt,
   es,
+  ro,
 }
 
 export const getMessages = (): Messages => {

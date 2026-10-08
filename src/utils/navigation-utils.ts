@@ -29,7 +29,7 @@ export const getKeysByValue = (
   return Object.keys(object).filter((key) => object[key] === value)
 }
 
-export type localeType = 'en' | 'pt' | 'es'
+export type localeType = 'en' | 'pt' | 'es' | 'ro'
 
 export const getParents = (
   path: string,

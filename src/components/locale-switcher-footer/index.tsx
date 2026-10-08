@@ -16,6 +16,7 @@ interface Slug {
   en?: string
   pt?: string
   es?: string
+  ro?: string
   [key: string]: string | undefined
 }
 
@@ -88,6 +89,10 @@ export default function LocaleSwitcherFooter() {
       label: 'ES',
       value: 'es',
     },
+    {
+      label: 'RO',
+      value: 'ro',
+    },
   ]
 
   const handleOptionClick = async (option: string) => {
@@ -95,7 +100,7 @@ export default function LocaleSwitcherFooter() {
     const currentPath = window.location.pathname
     const pathParts = currentPath.split('/')
 
-    const allowedLocales = ['en', 'es', 'pt']
+    const allowedLocales = ['en', 'es', 'pt', 'ro']
     const currentLocale = allowedLocales.includes(pathParts[1])
       ? pathParts[1]
       : 'en'

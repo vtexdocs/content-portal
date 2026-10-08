@@ -100,7 +100,7 @@ export const getStaticProps: GetStaticProps = async ({
   previewData,
 }) => {
   const sidebarfallback = await getNavigation()
-  const currentLocale = (locale || 'en') as 'en' | 'pt' | 'es'
+  const currentLocale = (locale || 'en') as 'en' | 'pt' | 'es' | 'ro'
   const sectionSelected = getTranslatedSectionName(
     sidebarfallback,
     'Formatting',

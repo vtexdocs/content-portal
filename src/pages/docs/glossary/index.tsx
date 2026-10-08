@@ -375,7 +375,7 @@ const GlossaryPage: NextPage<Props> = ({ branch, glossaryData }) => {
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
   const sidebarfallback = await getNavigation()
-  const currentLocale = (locale || 'en') as 'en' | 'pt' | 'es'
+  const currentLocale = (locale || 'en') as 'en' | 'pt' | 'es' | 'ro'
   const sectionSelected = getTranslatedSectionName(
     sidebarfallback,
     'Glossary',

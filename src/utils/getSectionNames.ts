@@ -1,7 +1,7 @@
 export const getTranslatedSectionName = (
   sidebarfallback: any, //eslint-disable-line
   documentationField: string,
-  locale: 'en' | 'pt' | 'es'
+  locale: 'en' | 'pt' | 'es' | 'ro'
 ): string => {
   const navbarArray = Array.isArray(sidebarfallback)
     ? sidebarfallback
@@ -26,7 +26,7 @@ export const getTranslatedSectionName = (
 
 export const localizeNavigationDocumentation = (
   navigation: any, //eslint-disable-line
-  locale: 'en' | 'pt' | 'es'
+  locale: 'en' | 'pt' | 'es' | 'ro'
 ): any => { //eslint-disable-line
   const navbarArray = Array.isArray(navigation)
     ? navigation
