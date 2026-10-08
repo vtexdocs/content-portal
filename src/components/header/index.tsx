@@ -7,8 +7,11 @@ import {
 } from '@vtex/brand-ui'
 import { useContext, useEffect, useRef, useState } from 'react'
 import { useRouter } from 'next/router'
-import { HamburgerMenu } from '@vtexdocs/components'
-import { SearchInput } from '@vtexdocs/components'
+import {
+  AnnouncementBar,
+  HamburgerMenu,
+  SearchInput,
+} from '@vtexdocs/components'
 import DropdownMenu from 'components/dropdown-menu'
 import GridIcon from 'components/icons/grid-icon'
 import AgentsIcon from 'components/icons/agents'
@@ -16,7 +19,6 @@ import LongArrowIcon from 'components/icons/long-arrow-icon'
 import { getFeedbackURL } from 'utils/get-url'
 import { AGENT_PAGE_PATH } from 'utils/constants'
 
-import AnnouncementBar from 'components/announcement-bar'
 import LocaleSwitcher from 'components/locale-switcher'
 
 import styles from './styles'

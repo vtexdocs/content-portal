@@ -6,8 +6,9 @@ import { useClientNavigation } from 'utils/useClientNavigation'
 import { ThemeProvider } from '@vtex/brand-ui'
 
 import styles from 'styles/documentation-page'
-import Header from 'components/header'
-import Footer from 'components/footer'
+import { Header, Footer } from '@vtexdocs/components'
+import LocaleSwitcher from 'components/locale-switcher'
+import ContentPortalIcon from 'components/icons/Contentportal-icon'
 
 import { DocumentationTitle, UpdatesTitle } from 'utils/typings/unionTypes'
 import Script from 'next/script'
@@ -16,11 +17,7 @@ import {
   LibraryContextProvider,
   Sidebar,
 } from '@vtexdocs/components'
-import {
-  sectionsData,
-  feedbackSectionData,
-  menuSupportData,
-} from 'utils/constants'
+import { sectionsData, menuSupportData } from 'utils/constants'
 import { useIntl } from 'react-intl'
 import { localizeNavigationDocumentation } from 'utils/getSectionNames'
 
@@ -69,11 +66,7 @@ export default function Layout({
     <ThemeProvider>
       <LibraryContextProvider
         sections={[sectionsData(intl)]}
-        hamburguerMenuSections={[
-          sectionsData(intl),
-          menuSupportData(intl),
-          feedbackSectionData(intl),
-        ]}
+        hamburguerMenuSections={[sectionsData(intl), menuSupportData(intl)]}
         sectionSelected={sectionSelected ?? ''}
         fallback={localizedNavigation}
         isPreview={isPreview}
@@ -116,7 +109,17 @@ export default function Layout({
             }
           }}
         />
-        <Header />
+        <Header
+          logo={
+            <ContentPortalIcon
+              sx={{
+                width: ['172px', '172px', '204px'],
+                height: ['24px', '24px', '32px'],
+              }}
+            />
+          }
+          localeSwitcher={<LocaleSwitcher />}
+        />
         <Flex sx={styles.container}>
           {!hideSidebar && <Sidebar parentsArray={parentsArray} />}
           <Box sx={styles.mainContainer}>{children}</Box>

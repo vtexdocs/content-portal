@@ -4,14 +4,12 @@ import {
   getLearningCenterURL,
   getDeveloperPortalURL,
   getSupportURL,
-  getFeedbackURL,
 } from 'utils/get-url'
 
 import { DocDataElement, ResourceDataElement } from './typings/types'
 import { IntlShape } from 'react-intl'
 import libraryConfig from './libraryConfig'
 import DeveloperPortalIcon from 'components/icons/developer-portal-icon'
-import LongArrowIcon from 'components/icons/long-arrow-icon'
 import GuidesIcon from 'components/icons/guides-icon'
 import FormattingIcon from 'components/icons/formatting-icon'
 import InterfacesIcon from 'components/icons/interface-copy-icon'
@@ -206,49 +204,8 @@ export const menuSectionData = (intl: IntlShape) => {
   return data
 }
 
-export const feedbackSectionData = (intl: IntlShape) => {
-  const data: DocDataElement[] = [
-    {
-      id: 'Feedback',
-      Icon: LongArrowIcon,
-      title: intl.formatMessage({
-        id: 'landing_page_header_feedback.message',
-      }),
-      description: '',
-      link: getFeedbackURL(),
-      isExternalLink: true,
-    },
-  ]
-
-  return data
-}
-
 export const menuSupportData = (intl: IntlShape) => {
   const data: DocDataElement[] = [
-    {
-      id: 'FastStore',
-      Icon: DeveloperPortalIcon,
-      title: intl.formatMessage({
-        id: 'faststore_card_title',
-      }),
-      description: intl.formatMessage({
-        id: 'faststore_card_subtitle',
-      }),
-      link: 'https://developers.vtex.com/docs/guides/faststore/',
-      isExternalLink: true,
-    },
-    {
-      id: 'Brand',
-      Icon: DeveloperPortalIcon,
-      title: intl.formatMessage({
-        id: 'brand_card_title',
-      }),
-      description: intl.formatMessage({
-        id: 'brand_card_subtitle',
-      }),
-      link: 'https://brand.vtex.com/',
-      isExternalLink: true,
-    },
     {
       id: 'Developer Portal',
       Icon: DeveloperPortalIcon,
@@ -270,7 +227,19 @@ export const menuSupportData = (intl: IntlShape) => {
       description: intl.formatMessage({
         id: 'help_center_card_subtitle',
       }),
-      link: 'https://help.vtex.com/en/',
+      link: 'https://help.vtex.com/',
+      isExternalLink: true,
+    },
+    {
+      id: 'Brand',
+      Icon: DeveloperPortalIcon,
+      title: intl.formatMessage({
+        id: 'brand_card_title',
+      }),
+      description: intl.formatMessage({
+        id: 'brand_card_subtitle',
+      }),
+      link: 'https://brand.vtex.com/',
       isExternalLink: true,
     },
   ]
@@ -281,18 +250,6 @@ export const menuSupportData = (intl: IntlShape) => {
 export const otherPortals = (intl: IntlShape) => {
   const data: DocDataElement[] = [
     {
-      id: 'FastStore',
-      Icon: DeveloperPortalIcon,
-      title: intl.formatMessage({
-        id: 'faststore_card_title',
-      }),
-      description: intl.formatMessage({
-        id: 'faststore_card_subtitle',
-      }),
-      isExternalLink: true,
-      link: 'https://developers.vtex.com/docs/guides/faststore/',
-    },
-    {
       id: 'Brand',
       Icon: DeveloperPortalIcon,
       title: intl.formatMessage({
@@ -305,6 +262,18 @@ export const otherPortals = (intl: IntlShape) => {
       link: 'https://brand.vtex.com/',
     },
     {
+      id: 'Help Center',
+      Icon: DeveloperPortalIcon,
+      title: intl.formatMessage({
+        id: 'help_center_card_title',
+      }),
+      description: intl.formatMessage({
+        id: 'help_center_card_subtitle',
+      }),
+      isExternalLink: true,
+      link: 'https://help.vtex.com/',
+    },
+    {
       id: 'Developer Portal',
       Icon: DeveloperPortalIcon,
       title: intl.formatMessage({
@@ -315,18 +284,6 @@ export const otherPortals = (intl: IntlShape) => {
       }),
       isExternalLink: true,
       link: 'https://developers.vtex.com/',
-    },
-    {
-      id: 'Help Center',
-      Icon: DeveloperPortalIcon,
-      title: intl.formatMessage({
-        id: 'help_center_card_title',
-      }),
-      description: intl.formatMessage({
-        id: 'help_center_card_subtitle',
-      }),
-      isExternalLink: true,
-      link: 'https://help.vtex.com/en/',
     },
   ]
   return data

@@ -1,10 +1,11 @@
 html,
-body, *:not(i) {
+body,
+*:not(i) {
   font-family: 'VTEX Trust Regular', -apple-system, system-ui,
     BlinkMacSystemFont, sans-serif !important;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale; 
-    text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 body.modal-open {
@@ -45,36 +46,75 @@ pre {
   overflow-x: auto;
 }
 
-table {
-  border-collapse: collapse;
-  max-width: 100%;
-  overflow-x: auto;
-  display: inline-block;
-  margin: 16px 0;
-  border-radius: 4px;
-}
-
-table thead {
-  border: 1px solid #e7e9ef;
-  font-weight: 500;
-}
-
 pre,
 code,
 pre *,
 code * {
-  font-family: Consolas,monaco,monospace !important;
+  font-family: Consolas, monaco, monospace !important;
+}
+
+table {
+  width: 100%;
+  text-align: left;
+  margin: 1.5em 0;
+  font-size: 0.875em;
+  line-height: 1.7em;
+  border-collapse: collapse;
+  table-layout: auto;
+}
+
+.table-scroll {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
+  margin: 1.5em 0;
+}
+
+.table-scroll > table {
+  margin: 0;
+  width: 100%;
+}
+
+table thead {
+  border-bottom: 1px solid #cbd5e1;
+}
+
+table thead th {
+  font-weight: 600;
+  color: rgb(15, 23, 42);
+  text-align: left;
+  vertical-align: bottom;
+  padding: 0 0.75em 0.75em 0.75em;
+}
+
+table thead th:first-of-type {
+  padding-left: 0;
+}
+
+table tbody tr {
+  border-bottom: 1px solid #e2e8f0;
+}
+
+table tbody tr:last-of-type {
+  border-bottom: none;
+}
+
+table tbody td {
+  vertical-align: baseline;
+  padding: 0.75em;
+}
+
+table tbody td:first-of-type {
+  padding-left: 0;
 }
 
 table td,
 table th {
-  font-size: 0.875em;
-  border: 1px solid #e7e9ef;
-  padding: 0.5em;
   min-width: 60px;
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: none;
 }
-
-table tbody tr:nth-of-type(even) {
-  background-color: #f8f7fc;
-}
-
