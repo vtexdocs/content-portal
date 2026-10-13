@@ -1,6 +1,6 @@
-import { Box, Flex, Text } from '@vtex/brand-ui'
+import { Box, Text } from '@vtex/brand-ui'
 import PageHeader from 'components/page-header'
-import WhatsNextCard from 'components/whats-next-card'
+import { WhatsNextCard } from '@vtexdocs/components'
 import { GetStaticProps, NextPage } from 'next'
 import Head from 'next/head'
 import { Fragment, useContext } from 'react'
@@ -27,7 +27,7 @@ const ContentSection = ({ id, length }: { id: string; length: number }) => {
       <Text sx={styles.contentTitle}>
         {intl.formatMessage({ id: `${id}.title` })}
       </Text>
-      <Flex sx={styles.cardsContainer}>
+      <Box sx={styles.cardsContainer}>
         {Array(length)
           .fill('')
           .map((_, index) => {
@@ -47,7 +47,7 @@ const ContentSection = ({ id, length }: { id: string; length: number }) => {
               />
             )
           })}
-      </Flex>
+      </Box>
     </>
   )
 }

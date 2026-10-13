@@ -1,12 +1,13 @@
 import { Box, Flex, Link, Text } from '@vtex/brand-ui'
-import Breadcrumb from 'components/breadcrumb'
-
-import FeedbackSection from 'components/feedback-section'
+import {
+  ArticlePagination,
+  Breadcrumb,
+  FeedbackSection,
+} from '@vtexdocs/components'
 import startHereImage from '../../../public/images/start-here.png'
 import PageHeader from 'components/page-header'
 
 import styles from 'styles/documentation-page'
-import ArticlePagination from 'components/article-pagination'
 import { useIntl } from 'react-intl'
 
 const TutorialIndexing = ({ ...props }) => {

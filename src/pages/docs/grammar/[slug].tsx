@@ -1,9 +1,8 @@
-import Head from 'next/head'
-import { useEffect, useState, useContext, useRef } from 'react'
+import { useEffect, useContext } from 'react'
+import { useRouter } from 'next/router'
 import { NextPage, GetStaticPaths, GetStaticProps } from 'next'
 import { PHASE_PRODUCTION_BUILD } from 'next/constants'
 import jp from 'jsonpath'
-import ArticlePagination from 'components/article-pagination'
 import { serialize } from 'next-mdx-remote/serialize'
 import { MDXRemoteSerializeResult } from 'next-mdx-remote'
 import remarkGFM from 'remark-gfm'
@@ -13,16 +12,7 @@ import remarkBlockquote from 'utils/remark_plugins/rehypeBlockquote'
 import { remarkCodeHike } from '@code-hike/mdx'
 import remarkImages from 'utils/remark_plugins/plaiceholder'
 
-import { Box, Flex, Text } from '@vtex/brand-ui'
-
-import DocumentContextProvider from 'utils/contexts/documentContext'
-
-import Contributors from 'components/contributors'
-import FeedbackSection from 'components/feedback-section'
-import OnThisPage from 'components/on-this-page'
-import SeeAlsoSection from 'components/see-also-section'
-import { Item, LibraryContext, TableOfContents } from '@vtexdocs/components'
-import Breadcrumb from 'components/breadcrumb'
+import { ArticleRender, Item, LibraryContext } from '@vtexdocs/components'
 
 import getHeadings from 'utils/getHeadings'
 import getNavigation from 'utils/getNavigation'
@@ -34,7 +24,6 @@ import escapeCurlyBraces from 'utils/escapeCurlyBraces'
 import replaceHTMLBlocks from 'utils/replaceHTMLBlocks'
 import { PreviewContext } from 'utils/contexts/preview'
 
-import styles from 'styles/documentation-page'
 import getFileContributors, {
   ContributorsType,
 } from 'utils/getFileContributors'
@@ -46,14 +35,10 @@ import {
   getParents,
   localeType,
 } from 'utils/navigation-utils'
-import { MarkdownRenderer } from '@vtexdocs/components'
-
 import { remarkReadingTime } from 'utils/remark_plugins/remarkReadingTime'
 
 import theme from 'styles/code-hike-theme'
-import TimeToRead from 'components/TimeToRead'
 import { getBreadcrumbsList } from 'utils/getBreadcrumbsList'
-import CopyLinkButton from 'components/copy-link-button'
 
 let docsPathsGLOBAL: Record<string, { locale: string; path: string }[]> | null =
   null
@@ -99,100 +84,40 @@ const TrackPage: NextPage<Props> = ({
   breadcrumbList,
   branch,
 }) => {
-  const [headings, setHeadings] = useState<Item[]>([])
   const { setBranchPreview } = useContext(PreviewContext)
   setBranchPreview(branch)
   const { setActiveSidebarElement } = useContext(LibraryContext)
-  const articleRef = useRef<HTMLElement>(null)
+  const router = useRouter()
 
   useEffect(() => {
     setActiveSidebarElement(slug)
-    setHeadings(headingList)
-  }, [serialized.frontmatter])
+  }, [slug, setActiveSidebarElement])
+
+  const localePrefix =
+    router.locale && router.locale !== router.defaultLocale
+      ? `/${router.locale}`
+      : ''
+  const pageUrl = `https://contentguide.vtex.com${localePrefix}${
+    router.asPath.split('#')[0].split('?')[0]
+  }`
 
   return (
-    <>
-      <Head>
-        <title>{serialized.frontmatter?.title as string}</title>
-        <meta name="docsearch:doctype" content="grammar" />
-        {serialized.frontmatter?.hidden && (
-          <meta name="robots" content="noindex" />
-        )}
-        {serialized.frontmatter?.excerpt && (
-          <meta
-            property="og:description"
-            content={serialized.frontmatter?.excerpt as string}
-          />
-        )}
-      </Head>
-      <DocumentContextProvider headings={headings}>
-        <Flex sx={styles.innerContainer}>
-          <Box sx={styles.articleBox}>
-            <Box sx={styles.contentContainer}>
-              <Box sx={styles.textContainer}>
-                <article ref={articleRef}>
-                  <header>
-                    <Breadcrumb breadcrumbList={breadcrumbList} />
-                    <Flex sx={styles.flexContainer}>
-                      <Text sx={styles.documentationTitle} className="title">
-                        {serialized.frontmatter?.title}
-                      </Text>
-                      {serialized.frontmatter?.readingTime && (
-                        <TimeToRead
-                          minutes={
-                            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                            (serialized.frontmatter.readingTime as any)?.text ||
-                            String(serialized.frontmatter.readingTime)
-                          }
-                        />
-                      )}
-                      <Flex
-                        sx={{
-                          display: 'flex',
-                          justifyContent: 'flex-end',
-                          alignItems: 'center',
-                          ml: 2,
-                        }}
-                      >
-                        <CopyLinkButton />
-                      </Flex>
-                    </Flex>
-                  </header>
-                  <MarkdownRenderer serialized={serialized} />
-                </article>
-              </Box>
-            </Box>
-
-            <Box sx={styles.bottomContributorsContainer}>
-              <Box sx={styles.bottomContributorsDivider} />
-              <Contributors contributors={contributors} />
-            </Box>
-
-            <FeedbackSection docPath={path} slug={slug} />
-            {isListed && (
-              <ArticlePagination
-                hidePaginationNext={
-                  Boolean(serialized.frontmatter?.hidePaginationNext) || false
-                }
-                hidePaginationPrevious={
-                  Boolean(serialized.frontmatter?.hidePaginationPrevious) ||
-                  false
-                }
-                pagination={pagination}
-              />
-            )}
-            {serialized.frontmatter?.seeAlso && (
-              <SeeAlsoSection docs={seeAlsoData} />
-            )}
-          </Box>
-          <Box sx={styles.rightContainer}>
-            <Contributors contributors={contributors} />
-            <TableOfContents headingList={headings} />
-          </Box>
-          <OnThisPage />
-        </Flex>
-      </DocumentContextProvider>
-    </>
+    <ArticleRender
+      serialized={serialized}
+      breadcrumbList={breadcrumbList}
+      slug={slug}
+      path={path}
+      type="grammar"
+      pageUrl={pageUrl}
+      urlToEdit={`https://github.com/vtexdocs/content-portal-content/edit/main/${path}`}
+      rawContentBaseUrl="https://raw.githubusercontent.com/vtexdocs/content-portal-content/main/"
+      contributors={contributors}
+      headingList={headingList}
+      pagination={pagination}
+      seeAlso={seeAlsoData}
+      showArticlePagination={isListed}
+      showSeeAlso={Boolean(serialized.frontmatter?.seeAlso)}
+    />
   )
 }
 

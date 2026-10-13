@@ -3,9 +3,11 @@ import type { SxStyleProp } from '@vtex/brand-ui'
 const welcomeHeader: SxStyleProp = {
   pt: ['initial', '100px'],
   position: ['initial', 'absolute'],
-  mb: ['32px', 'initial'],
+  mb: ['24px', 'initial'],
   zIndex: '1000',
-  width: ['320px', '345px', '345px', '345px', '345px', '720px'],
+  width: ['100%', '345px', '345px', '345px', '345px', '720px'],
+  px: ['16px', '0px'],
+  boxSizing: 'border-box',
 }
 
 const welcomeSubtitle: SxStyleProp = {

@@ -11,6 +11,7 @@ const InterfacesIcon = (props: IconProps) => (
   >
     <path
       fill="currentColor"
+      style={{ stroke: 'none' }}
       d="M2 20V4h20v16zm18-9V6H4v5zm-10 7h10v-5H10zm-6 0h4v-5H4z"
     />
   </Icon>

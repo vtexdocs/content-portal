@@ -12,12 +12,12 @@ const mainContainer: SxStyleProp = {
 
 const contentContainer: SxStyleProp = {
   mx: 'auto',
-  mt: ['16px', '32px'],
+  mt: ['8px', '32px'],
   mb: ['32px', '64px'],
-  px: ['18px', 'initial'],
-  maxWidth: ['324px', 'initial'],
-  width: ['auto', '544px', '544px', '544px', '720px', '720px', '1400px'],
-  boxSizing: 'initial',
+  px: ['16px', '0px'],
+  boxSizing: 'border-box',
+  width: ['100%', '544px', '544px', '544px', '720px', '720px', '1400px'],
+  maxWidth: '100%',
   color: '#4A4A4A',
   lineHeight: ['22px', '24px'],
   fontSize: ['16px', '18px'],
@@ -33,8 +33,26 @@ const subtitle: SxStyleProp = {
 }
 
 const cardsContainer: SxStyleProp = {
-  flexWrap: 'wrap',
-  justifyContent: 'space-between',
+  display: 'grid',
+  gridTemplateColumns: ['1fr', '1fr 1fr'],
+  gap: ['12px', '16px'],
+  alignItems: 'stretch',
+  '> a': {
+    width: '100%',
+    maxWidth: '100%',
+    minWidth: 0,
+    height: 'auto',
+    alignSelf: 'stretch',
+    '.title, .description': {
+      overflowWrap: 'anywhere',
+    },
+    '.title': {
+      display: 'flex',
+      justifyContent: 'space-between',
+      alignItems: 'flex-start',
+      gap: '8px',
+    },
+  },
 }
 
 const resourcesSectionContainer: SxStyleProp = {
@@ -50,7 +68,7 @@ const resourceContainer: SxStyleProp = {
 
 const contentTitle: SxStyleProp = {
   paddingBottom: '6px',
-  marginTop: '40px',
+  marginTop: ['24px', '40px'],
   fontSize: ['18px', '22px'],
   lineHeight: ['30px', '32px'],
   fontWeight: '400',
